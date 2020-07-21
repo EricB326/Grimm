@@ -25,29 +25,29 @@ public class EntityStats : MonoBehaviour
     [Serializable]
     private struct entityData
     {
-        public string name;             // This modifies the 'Element #' within the inspector view. Used to make things a bit more readable.
-        public GameObject entityObject; // This is here in case it is ever needed. I have my doubts at this point in time.
-        public float health;            // The health, or hit points, of the entity.
-        public float stamina;           // The maximum stamina the entity has.
-        public float timeBeforeStaminaRegain;  // The amount of time the player must of not used stamina before it beings to regain.
-        public float speedOfStaminaRegain;
-        [HideInInspector] public float maxStamina;
-        [HideInInspector] public float timeSinceLastStaminaDeminish;
+        public string name;                                          // This modifies the 'Element #' within the inspector view. Used to make things a bit more readable.
+        //public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
+        public float health;                                         // The health, or hit points, of the entity.
+        public float stamina;                                        // The maximum stamina the entity has.
+        public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
+        public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
+        [HideInInspector] public float maxStamina;                   // Maximum amount of stamina the entity has.
+        [HideInInspector] public float timeSinceLastStaminaDeminish; // The amount of time since the entity last lost stamina.
 
         /* Default constructor on a per entity bases. Trying to get this to still work within inspector view.
            Note: Beginning to think it isnt possible to have structs have base values by default within the inspector prior runtime. Going to keep this here,
            for when and if a new entity needs to be instantiated.
         */
-        private entityData(string _name = "New Entity", GameObject _entityObject = null, float _health = 100f, float _stamina = 50f, float _timeBeforeStaminaRegain = 3f, float _timeSinceLastStaminaDeminish = 0f)
+        private entityData(string _name = "New Entity", GameObject _entityObject = null, float _health = 100f, float _stamina = 50f, float _timeBeforeStaminaRegain = 3f, float _speedOfStaminaRegain = 3f)
         {
             name = _name;
-            entityObject = _entityObject;
+            //entityObject = _entityObject;
             health = _health;
             stamina = _stamina;
             timeBeforeStaminaRegain = _timeBeforeStaminaRegain;
+            speedOfStaminaRegain = _speedOfStaminaRegain;
             maxStamina = stamina;
-            speedOfStaminaRegain = 0f;
-            timeSinceLastStaminaDeminish = _timeSinceLastStaminaDeminish;
+            timeSinceLastStaminaDeminish = 0f;
         }
     }
 
@@ -69,6 +69,7 @@ public class EntityStats : MonoBehaviour
         else
             instance = this;
 
+        // Loop over all entities in the entity list and set the max stamina to the first state of current stamina.
         for (int i = 0; i < entityList.Count; i++)
         {
             entityData newData = entityList[i];
@@ -81,17 +82,26 @@ public class EntityStats : MonoBehaviour
      */
     public static EntityStats Instance { get { return instance; } }
 
+    /* @brief Updates runs once per frame.
+     */
     private void Update()
     {
+        // Begin replenishing the stamina for the appropriate entities.
         ReplenishStamina();
     }
 
+    /* @brief Handles replenishing the entities stamina based on set conditions on if they are able to replenish as well as
+     *        if they actually need to replenish.
+     */
     private void ReplenishStamina()
     {
+        // Loop over each entity in the entity list.
         for (int i = 0; i < entityList.Count; i++)
         {
+            // If the entity is not at the maximum amount of stamina they have elegated, they can move onto further checks.
             if (entityList[i].stamina != entityList[i].maxStamina)
             {
+                // If the entity has not deminished stamina after a set period, they can begin to regain stamina.
                 if ((entityList[i].timeSinceLastStaminaDeminish + entityList[i].timeBeforeStaminaRegain) < Time.time)
                 {
                     entityData newData = entityList[i];
@@ -101,6 +111,7 @@ public class EntityStats : MonoBehaviour
             }
             else
             {
+                // If the entity is at full stamina, have a fail safe to insure they do not go above max.
                 entityData newData = entityList[i];
                 newData.stamina = entityList[i].maxStamina;
                 entityList[i] = newData;
