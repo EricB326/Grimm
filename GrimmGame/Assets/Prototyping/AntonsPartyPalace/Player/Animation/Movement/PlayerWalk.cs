@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerWalk : StateMachineBehaviour
 {
     // SO I don't have to create a new vector all the time?
-    private UnityEngine.Vector3 m_movement;
+    private Vector3 m_movement;
 
-    public Transform m_transform;
-    public int m_damage;
+    // For rotation
+    private float turnSmoothVelocity;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -26,33 +28,40 @@ public class PlayerWalk : StateMachineBehaviour
         if (animator.GetFloat("Input/X") != 0 || animator.GetFloat("Input/Z") != 0)
         {
             // Direction of the camera to move in.
-            UnityEngine.Vector3 movementx = (new UnityEngine.Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * animator.GetFloat("Input/X"));
-            UnityEngine.Vector3 movementz = (new UnityEngine.Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * animator.GetFloat("Input/Z"));
-            UnityEngine.Vector3 m_movement = (movementz + movementx);
-
+            Vector3 movementx = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * animator.GetFloat("Input/X"));
+            Vector3 movementz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * animator.GetFloat("Input/Z"));
+            Vector3 m_movement = (movementz + movementx);
+            m_movement = m_movement.normalized;
+           
 
             // Player will be rotated towards camera and strafe
             if (movementstats.m_lockOn)
             {
                 // Rotate towards what camera is looking at or camera target.
-                player.transform.LookAt(player.GetComponent<PlayerMovementVariables>().m_target.transform);
+                //player.transform.LookAt(player.GetComponent<PlayerMovementVariables>().m_target.transform);
+                Vector3 bossdirection = movementstats.m_target.transform.position - player.transform.position;
+                bossdirection = bossdirection.normalized;
+                Debug.DrawRay(player.transform.position, bossdirection);
+                float targetAngle = Mathf.Atan2(bossdirection.x, bossdirection.z) * Mathf.Rad2Deg;
+                float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
+                player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
             else
             {
-                //Vector3 direction = Camera.main.transform.TransformDirection(m_movement);
-                //direction.y = 0;
-
-                //// Rotate towards where player is moving towards.
-                ////Vector3 newDirection =  Vector3.RotateTowards(player.transform.position, m_movement, movementstats.m_roationSpeed, 0.0f);
-                ////newDirection.y = 0;
-                ////Debug.Log(newDirection);
-                //player.transform.rotation = Quaternion.LookRotation(direction);
+                
+                float targetAngle = Mathf.Atan2(m_movement.x, m_movement.z) * Mathf.Rad2Deg;
+                float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
+                player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
-            //m_movement = new UnityEngine.Vector3(animator.GetFloat("Input/X") * player.transform.position.x, 0, animator.GetFloat("Input/Z") * player.transform.position.z);
-            //player.transform.Translate(m_movement * movementstats.m_walkSpeed * Time.deltaTime);
 
             // Player movement.
             player.GetComponent<Rigidbody>().AddForce(m_movement * movementstats.m_walkSpeed, ForceMode.Impulse);
+            Vector3 toAnim = player.transform.worldToLocalMatrix* m_movement;
+            toAnim = toAnim.normalized;
+            //Debug.DrawRay(player.transform.position,toAnim);
+            //Debug.Log(toAnim);
+            animator.SetFloat("Movement/X", toAnim.x);
+            animator.SetFloat("Movement/Z", toAnim.z);
         }
     }
 
