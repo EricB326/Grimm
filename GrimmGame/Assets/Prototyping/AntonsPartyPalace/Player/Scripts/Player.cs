@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// A placeholder till input buffer is completed
+// Wasd controls passed to animator.
+
+
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
-
-     // Stores dettected input.
-    //public List<InputBuffer> m_inputBuffer =  new List<InputBuffer>();
+   
 
     private Animator m_characterAnim;
 
@@ -64,16 +65,6 @@ public class Player : MonoBehaviour
         if (a_attack)
             m_characterAnim.SetTrigger("Input/Attack");
 
-    }
-
-    // EveryFrame animation occurs.
-    // Occurs after
-    private void OnAnimatorMove()
-    {
-        // Note that you can get information in and out of the animator.
-        // Useful for logic
-        //m_characterAnim.GetFloat("");
-     
     }
 
 }
