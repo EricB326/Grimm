@@ -47,16 +47,18 @@ public class PlayerWalk : StateMachineBehaviour
             }
             // Otherwise you rotate towards the direction your walking towards
             // and never sidestep or circle.
-            // Needs rules in here for preserving current direction if rotated backwards.
+            // Rule needs to be preserving the direction started moving in if it is within <120
+            // then derive all movement from that.
+            // 1. Rotate towards target
+            // 2. Run while preserving direction with any changes compared against preserved rather then camera.
+            // 3. Clamp movement to the 120 forward degree area(Can only run forward, slightly left, slightly right)
+            // 4. If change in direction is not infront anymore or no more input Start from step.1.
             else
             {
-                
                 float targetAngle = Mathf.Atan2(m_movement.x, m_movement.z) * Mathf.Rad2Deg;
                 float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
                 player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
-
-
             // Player movement. Player is jittery because of result of math.
             player.GetComponent<Rigidbody>().AddForce(m_movement * movementstats.m_walkSpeed, ForceMode.Force);
 
