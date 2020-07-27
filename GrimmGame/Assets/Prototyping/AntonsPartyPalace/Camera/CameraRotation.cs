@@ -22,15 +22,15 @@ public class CameraRotation : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            if(m_freeCam.Priority == 1)
+            if(m_freeCam.Priority == 2)
             {
-                m_freeCam.Priority = 2;
-                m_lockOn.Priority = 1;
+                m_freeCam.Priority = 3;
+                m_lockOn.Priority = 2;
             }
             else
             {
-                m_freeCam.Priority = 1;
-                m_lockOn.Priority = 2;
+                m_freeCam.Priority = 2;
+                m_lockOn.Priority = 3;
             }
         }
 
