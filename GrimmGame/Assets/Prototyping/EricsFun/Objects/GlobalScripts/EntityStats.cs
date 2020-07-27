@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // Passive increase stamina, after a set amount of time. Also change how fast staminia regains on a per entity bases
 // Once stamina is <= 0, no longer allow for attacks.
@@ -30,7 +31,9 @@ public class EntityStats : MonoBehaviour
         public float health;                                         // The health, or hit points, of the entity.
         public float stamina;                                        // The maximum stamina the entity has.
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
+        public float speedOfHealthRegain;                           // How fast the entity will regain their stamina after a period of time.
         public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
+        [HideInInspector] public float maxHealth;                    // Maximum amount of health the entity has.
         [HideInInspector] public float maxStamina;                   // Maximum amount of stamina the entity has.
         [HideInInspector] public float timeSinceLastStaminaDeminish; // The amount of time since the entity last lost stamina.
 
@@ -38,18 +41,27 @@ public class EntityStats : MonoBehaviour
            Note: Beginning to think it isnt possible to have structs have base values by default within the inspector prior runtime. Going to keep this here,
            for when and if a new entity needs to be instantiated.
         */
-        private entityData(string _name = "New Entity", GameObject _entityObject = null, float _health = 100f, float _stamina = 50f, float _timeBeforeStaminaRegain = 3f, float _speedOfStaminaRegain = 3f)
-        {
-            name = _name;
-            //entityObject = _entityObject;
-            health = _health;
-            stamina = _stamina;
-            timeBeforeStaminaRegain = _timeBeforeStaminaRegain;
-            speedOfStaminaRegain = _speedOfStaminaRegain;
-            maxStamina = stamina;
-            timeSinceLastStaminaDeminish = 0f;
-        }
+        //private entityData(string _name = "New Entity", GameObject _entityObject = null, float _health = 100f, float _stamina = 50f, float _timeBeforeStaminaRegain = 3f, float _speedOfHealthRegain = 3f, float _speedOfStaminaRegain = 3f)
+        //{
+        //    name = _name;
+        //    //entityObject = _entityObject;
+        //    health = _health;
+        //    stamina = _stamina;
+        //    timeBeforeStaminaRegain = _timeBeforeStaminaRegain;
+        //    speedOfHealthRegain = _speedOfHealthRegain;
+        //    speedOfStaminaRegain = _speedOfStaminaRegain;
+        //    maxHealth = health;
+        //    maxStamina = stamina;
+        //    timeSinceLastStaminaDeminish = 0f;
+        //}
     }
+
+    public event EventHandler onDamageTaken;
+    public event EventHandler onStaminaTaken;
+    public event EventHandler onHealthReplenish;
+    public event EventHandler onStaminaReplenish;
+
+    private entityData newData;
 
     /* Store a list of the different entities in the scene that should have stats like health, stamina, etc.
      */
@@ -69,10 +81,11 @@ public class EntityStats : MonoBehaviour
         else
             instance = this;
 
-        // Loop over all entities in the entity list and set the max stamina to the first state of current stamina.
+        // Loop over all entities in the entity list and set the max health/stamina to the first state of current health/stamina.
         for (int i = 0; i < entityList.Count; i++)
         {
             entityData newData = entityList[i];
+            newData.maxHealth = entityList[i].health;
             newData.maxStamina = entityList[i].stamina;
             entityList[i] = newData;
         }
@@ -88,6 +101,13 @@ public class EntityStats : MonoBehaviour
     {
         // Begin replenishing the stamina for the appropriate entities.
         ReplenishStamina();
+
+        // If the boss loses a life from a phase, each entity should regain.
+        if (shouldStatsRestore)
+        {
+            RestoreAllStats();
+        }
+        //RestoreAllStats();
     }
 
     /* @brief Handles replenishing the entities stamina based on set conditions on if they are able to replenish as well as
@@ -104,9 +124,12 @@ public class EntityStats : MonoBehaviour
                 // If the entity has not deminished stamina after a set period, they can begin to regain stamina.
                 if ((entityList[i].timeSinceLastStaminaDeminish + entityList[i].timeBeforeStaminaRegain) < Time.time)
                 {
-                    entityData newData = entityList[i];
-                    newData.stamina += entityList[i].speedOfStaminaRegain;
+                    newData = entityList[i];
+                    newData.stamina += newData.speedOfStaminaRegain;
                     entityList[i] = newData;
+
+                    if (onStaminaReplenish != null)
+                        onStaminaReplenish(this, EventArgs.Empty);
                 }
             }
             else
@@ -117,6 +140,36 @@ public class EntityStats : MonoBehaviour
                 entityList[i] = newData;
             }
         }
+    }
+
+    private bool shouldStatsRestore = false;
+
+    public void RestoreAllStats()
+    {
+        shouldStatsRestore = true;
+
+        if (onHealthReplenish != null)
+            onHealthReplenish(this, EventArgs.Empty);
+
+        for (int i = 0; i < entityList.Count; i++)
+        {
+            RestoreStatsOfEntity(i);
+        }
+    }
+
+    private void RestoreStatsOfEntity(int _entityIndex)
+    {
+        newData = entityList[_entityIndex];
+
+        if (entityList[_entityIndex].name != "Player")
+            newData.stamina = newData.maxStamina;
+
+        if (entityList[_entityIndex].health != entityList[_entityIndex].maxHealth)
+            newData.health += newData.speedOfHealthRegain;
+        else
+            newData.health = newData.maxHealth;
+
+        entityList[_entityIndex] = newData;
     }
 
     /* @brief This function serves as a way to retrieve the health of any entity within the list at a given string key (name).
@@ -139,6 +192,32 @@ public class EntityStats : MonoBehaviour
         return entityList[DoesEntityExist(_entityName)].stamina;
     }
 
+    public float GetNormalisedHealthOfEntity(string _entityName)
+    {
+        // The index of the entity is stored because it is used multiple times throughout the function.
+        // Rather than doign the loop each time, just store it the first and only time.
+        int entityIndex = DoesEntityExist(_entityName);
+
+        // If the entityIndex is the error value returned, no reason to continue the function.
+        if (entityIndex == ENTITY_INDEX_OUT_OF_RANGE)
+            return -1f;
+
+        return entityList[entityIndex].health / entityList[entityIndex].maxHealth;
+    }
+
+    public float GetNormalisedStaminaOfEntity(string _entityName)
+    {
+        // The index of the entity is stored because it is used multiple times throughout the function.
+        // Rather than doign the loop each time, just store it the first and only time.
+        int entityIndex = DoesEntityExist(_entityName);
+
+        // If the entityIndex is the error value returned, no reason to continue the function.
+        if (entityIndex == ENTITY_INDEX_OUT_OF_RANGE)
+            return -1f;
+
+        return entityList[entityIndex].stamina / entityList[entityIndex].maxStamina;
+    }
+
     /* @brief This function serves as a way to remove health from an entity at the given string key (name).
      *        Once the entity is found, remove the amount of health according to the argument passed.
      * @param The string key (name) to lookup within the entity list.
@@ -154,22 +233,30 @@ public class EntityStats : MonoBehaviour
         if (entityIndex == ENTITY_INDEX_OUT_OF_RANGE)
             return;
 
+        shouldStatsRestore = false;
+
         // See the last two lines of commented code in this function.
-        entityData newData = entityList[entityIndex];
+        newData = entityList[entityIndex];
 
         // If the entity already has zero health, don't continue the function.
         if (entityList[entityIndex].health <= 0f)
         {
             newData.health = 0;
             entityList[entityIndex] = newData;
-            
+
             return;
         }
 
         // Due to C# poor design in handling struct properties, I cant just assign an individual member of the entityData struct
         // for the given entity at the index. Instead I had to assign an entire struct... Please modifiy this if there is a work around.
         newData.health -= _amountToDeminish;
+        if (newData.health <= 0f)
+            newData.health = 0f;
+
         entityList[entityIndex] = newData;
+
+        if (onDamageTaken != null)
+            onDamageTaken(this, EventArgs.Empty);
     }
 
     /* @brief This function serves as a way to remove stamina from an entity at the given string key (name).
@@ -188,7 +275,7 @@ public class EntityStats : MonoBehaviour
             return;
 
         // See the last two lines of commented code in this function.
-        entityData newData = entityList[entityIndex];
+        newData = entityList[entityIndex];
 
         // If the entity already has zero stamina, don't continue the function.
         if (entityList[entityIndex].stamina <= 0f)
@@ -203,6 +290,9 @@ public class EntityStats : MonoBehaviour
         // for the given entity at the index. Instead I had to assign an entire struct... Please modifiy this if there is a work around.
         newData.stamina -= _amountToDeminish;
         entityList[entityIndex] = newData;
+
+        if (onStaminaTaken != null)
+            onStaminaTaken(this, EventArgs.Empty);
     }
 
     /* @brief Checks to see if an entity will be able to make a move (attacking etc.). Based on how much stamina the
@@ -216,19 +306,22 @@ public class EntityStats : MonoBehaviour
 
         // Check that the amount of stamina the entity currently has minus the amount of stamina the move will cost.
         // If the amount of stamina remaining is a valid amount (greater than zero), then the move can occur.
-        if ((entityList[entityIndex].stamina - _animStaminaCost) >= 0)
+        if ((entityList[entityIndex].stamina /*- _animStaminaCost*/) >= 0)
         {
-            DeminishStaminaOffEntity(_entityName, _animStaminaCost);
+            if (entityList[entityIndex].name != "Boss")
+            { 
+                DeminishStaminaOffEntity(_entityName, _animStaminaCost);
 
-            // Update the time since the last stamina deminish to now.
-            entityData newData = entityList[entityIndex];
-            newData.timeSinceLastStaminaDeminish = Time.time;
-            entityList[entityIndex] = newData;
+                // Update the time since the last stamina deminish to now.
+                newData = entityList[entityIndex];
+                newData.timeSinceLastStaminaDeminish = Time.time;
+                entityList[entityIndex] = newData;
+            }
 
             return true;
         }
 
-        return false;     
+        return false;
     }
 
     /* @brief This function will search the entity list to see if the entity desired at the specified key (name) exists.
