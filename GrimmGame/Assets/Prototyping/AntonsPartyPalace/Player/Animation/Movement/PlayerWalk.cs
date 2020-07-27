@@ -38,12 +38,12 @@ public class PlayerWalk : StateMachineBehaviour
             // Slightly different data is used but the math is the same in either case.
             // If locked on you rotate towards your target when you move resulting in 
             // circling the target.
-            if (movementstats.m_lockOn)
+            if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
             {
                 Vector3 bossdirection = movementstats.m_target.transform.position - player.transform.position;
                 bossdirection = bossdirection.normalized;
                 Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
-                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, movementstats.m_roationTime);
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, movementstats.m_rotationTime);
                 ////Debug.DrawRay(player.transform.position, bossdirection);
                 //float targetAngle = Mathf.Atan2(bossdirection.x, bossdirection.z) * Mathf.Rad2Deg;
                 //float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
@@ -53,8 +53,7 @@ public class PlayerWalk : StateMachineBehaviour
             {
                 // Position to look towards
                 Quaternion targetRotation = Quaternion.LookRotation(m_cameraPosition);
-                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, movementstats.m_roationTime);
-                
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation, movementstats.m_rotationTime);
             }
 
             m_movement = new Vector3(m_cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, m_cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);

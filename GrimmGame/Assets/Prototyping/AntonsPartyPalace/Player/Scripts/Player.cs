@@ -70,12 +70,16 @@ public class Player : MonoBehaviour
             // Slightly different data is used but the math is the same in either case.
             // If locked on you rotate towards your target when you move resulting in 
             // circling the target.
-            if (movementstats.m_lockOn)
+            CameraRotation cameraReference = Camera.main.GetComponent<CameraRotation>();
+            if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
             {
-                Vector3 bossdirection = movementstats.m_target.transform.position - this.transform.position;
+                Vector3 bossdirection = cameraReference.m_lockOn.LookAt.transform.position - this.transform.position;
                 bossdirection = bossdirection.normalized;
+                // To make sure player doesn't up or down. Only facing.
+                // Take not that head will need the y.
+                bossdirection.y = 0;
                 Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_roationTime);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_rotationTime);
 
                 //Debug.DrawRay(player.transform.position, bossdirection);
                 //float targetAngle = Mathf.Atan2(bossdirection.x, bossdirection.z) * Mathf.Rad2Deg;
@@ -86,8 +90,7 @@ public class Player : MonoBehaviour
             {
                 // Position to look towards
                 Quaternion targetRotation = Quaternion.LookRotation(m_cameraPosition);
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_roationTime);
-
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_rotationTime);
             }
 
             Vector3 m_movement = new Vector3(m_cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, m_cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
