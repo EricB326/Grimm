@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class ConsumeDataPlayer : StateMachineBehaviour
 {
-
+    public List<PlayerDataEnums> m_dataToClear;
 
 
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        foreach (PlayerDataEnums clear in m_dataToClear)
+        {
+            switch (clear)
+            {
+                case PlayerDataEnums.Attack:
+                    {
+                        animator.SetBool("Input/Attack", false);
+                        break;
+                    }
+                case PlayerDataEnums.Roll:
+                    {
+                        animator.SetBool("Input/Roll", false);
+                        break;
+                    }
+            }
+        }
+    }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

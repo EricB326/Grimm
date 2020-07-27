@@ -6,12 +6,14 @@ using UnityEngine;
 // A placeholder till input buffer is completed
 // Wasd controls passed to animator.
 
-
+[RequireComponent(typeof(PlayerMovementVariables))]
 public class Player : MonoBehaviour
 {
    
 
     private Animator animator;
+
+    private float turnSmoothVelocity;
 
     private void Start()
     {
@@ -56,11 +58,11 @@ public class Player : MonoBehaviour
 
         // This if check may be redundant.
         // Only way into this state is for input is received.
-        if (animator.GetFloat("Input/X") != 0 || animator.GetFloat("Input/Z") != 0)
+        if (x != 0 || y != 0)
         {
             // Direction for the player to move towards based on camera.
-            Vector3 camerax = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * animator.GetFloat("Input/X"));
-            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * animator.GetFloat("Input/Z"));
+            Vector3 camerax = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * x);
+            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * y);
             Vector3 m_cameraPosition = (cameraz + camerax);
             //m_movement = m_movement.normalized;
 
@@ -74,10 +76,11 @@ public class Player : MonoBehaviour
                 bossdirection = bossdirection.normalized;
                 Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_roationTime);
-                ////Debug.DrawRay(player.transform.position, bossdirection);
+
+                //Debug.DrawRay(player.transform.position, bossdirection);
                 //float targetAngle = Mathf.Atan2(bossdirection.x, bossdirection.z) * Mathf.Rad2Deg;
-                //float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
-                //player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                //float angle = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
+                //this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
             else
             {
@@ -102,6 +105,11 @@ public class Player : MonoBehaviour
             //Debug.Log(toAnim);
             animator.SetFloat("Movement/X", toAnim.x);
             animator.SetFloat("Movement/Z", toAnim.z);
+        }
+        else
+        {
+            animator.SetFloat("Movement/X", 0);
+            animator.SetFloat("Movement/Z", 0);
         }
     }
 
