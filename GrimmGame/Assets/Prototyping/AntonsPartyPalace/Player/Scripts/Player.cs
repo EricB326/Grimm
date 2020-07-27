@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
             CameraRotation cameraReference = Camera.main.GetComponent<CameraRotation>();
             if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
             {
-                Vector3 bossdirection = cameraReference.m_lockOn.LookAt.transform.position - this.transform.position;
+                Vector3 bossdirection = cameraReference.m_lockOnCamera.LookAt.transform.position - this.transform.position;
                 bossdirection = bossdirection.normalized;
                 // To make sure player doesn't up or down. Only facing.
                 // Take not that head will need the y.

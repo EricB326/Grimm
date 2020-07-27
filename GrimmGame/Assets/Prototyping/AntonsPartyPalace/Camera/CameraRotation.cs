@@ -10,69 +10,77 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
-    public CinemachineFreeLook m_freeCam;
-    public CinemachineVirtualCamera m_lockOn;
+    public CinemachineFreeLook m_freeCamera;
+    public CinemachineVirtualCamera m_lockOnCamera;
 
+    public bool m_lockOn = false;
 
-    public bool lockon = false;
     // Update is called once per frame
     void Update()
     {
         float x = 0, y = 0;
 
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if(m_freeCam.Priority == 2)
+            if (m_lockOn)
             {
-                m_freeCam.Priority = 3;
-                m_lockOn.Priority = 2;
+                m_lockOn = false;
             }
             else
             {
-                m_freeCam.Priority = 2;
-                m_lockOn.Priority = 3;
+                m_lockOn = true;
             }
+            // Switching camera system
+            //if(m_freeCamera.Priority == 2)
+            //{
+            //    m_freeCamera.Priority = 3;
+            //    m_lockOnCamera.Priority = 2;
+            //}
+            //else
+            //{
+            //    m_freeCamera.Priority = 2;
+            //    m_lockOnCamera.Priority = 3;
+            //}
         }
 
-        if (!lockon)
+
+        // To be replaced by xbox axis which we only need to read data on x and y out.
+        if (Input.GetKey(KeyCode.Q))
         {
-            // To be replaced by xbox axis which we only need to read data on x and y out.
-            if (Input.GetKey(KeyCode.Q))
-            {
-                x++;
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                x--;
-            }
+            x++;
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            x--;
+        }
 
-            if (Input.GetKey(KeyCode.R))
-            {
-                y++;
-            }
-            if (Input.GetKey(KeyCode.T))
-            {
-                y--;
-            }
+        if (Input.GetKey(KeyCode.R))
+        {
+            y++;
+        }
+        if (Input.GetKey(KeyCode.T))
+        {
+            y--;
+        }
 
-            if (x != 0)
-            {
-                m_freeCam.m_XAxis.m_InputAxisValue = x;
-            }
-            else if(y != 0)
-            {
-                m_freeCam.m_YAxis.m_InputAxisValue = y;
-            }
-            else // have to make sure nothing is passed through
-            {
-                m_freeCam.m_XAxis.m_InputAxisValue = 0;
-                m_freeCam.m_YAxis.m_InputAxisValue = 0;
-            }
-
+        if (x != 0)
+        {
+            m_freeCamera.m_XAxis.m_InputAxisValue = x;
+        }
+        else if (y != 0)
+        {
+            m_freeCamera.m_YAxis.m_InputAxisValue = y;
+        }
+        else // have to make sure nothing is passed through
+        {
+            m_freeCamera.m_XAxis.m_InputAxisValue = 0;
+            m_freeCamera.m_YAxis.m_InputAxisValue = 0;
+        }
+    
 
 
             // Most of the below is redundant.
-            // Cinemachine will do all this for us.
+            // Cinemachine will do all this for us but leaving in case.
             //    if (x != 0)
             //{
             //    localMultiplyerX = localMultiplyerX + increment;
@@ -93,6 +101,5 @@ public class CameraRotation : MonoBehaviour
             //    freelook.m_XAxis.m_InputAxisValue = 0;
             //    freelook.m_YAxis.m_InputAxisValue = 0;
             //}
-        }
     }
 }
