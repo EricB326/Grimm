@@ -11,11 +11,12 @@ public class PlayerMovementVariables : MonoBehaviour
 {
     // Multiplied by direction stick input. -1 to 1 on both axis
     public float m_walkSpeed;
+    // Speed will increase to this value.
     public float m_runSpeed;
 
     [Range(0,1)]
     public float m_rotationTime;
-    // Used in the player walk for the time being.
+    // Used in the player walk till access to entity list.
     public GameObject m_target;
 
 
