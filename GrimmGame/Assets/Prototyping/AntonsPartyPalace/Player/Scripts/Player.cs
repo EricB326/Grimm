@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float x = 0;
         float y = 0;
