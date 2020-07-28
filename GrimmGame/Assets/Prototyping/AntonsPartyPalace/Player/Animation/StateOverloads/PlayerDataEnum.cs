@@ -5,5 +5,6 @@ using UnityEngine;
 public enum PlayerDataEnums
 { 
      Roll,
-     Attack
+     Attack,
+     Hit
 }

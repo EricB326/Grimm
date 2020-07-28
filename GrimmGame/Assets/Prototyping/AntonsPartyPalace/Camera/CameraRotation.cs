@@ -10,25 +10,46 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
-    public CinemachineFreeLook m_freeCamera;
-    public CinemachineVirtualCamera m_lockOnCamera;
+    public List<CinemachineFreeLook> m_camList;
+    //public CinemachineFreeLook m_freeCamera;
+    //public CinemachineFreeLook m_lockOnCamera;
 
+    private int m_selectedCamera = 0; // 0 for free 1 for lock. 2> Different rules
+    // Defaults to false.
+    [HideInInspector]
     public bool m_lockOn = false;
+
+    private void Start()
+    {
+        m_lockOn = false;
+    }
+
+
+
 
     // Update is called once per frame
     void Update()
     {
         float x = 0, y = 0;
 
+        // This could be done a LOT better
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (m_lockOn)
             {
                 m_lockOn = false;
+                m_camList[0].Priority = 2;
+                m_camList[1].Priority = 1;
+                Debug.Log("Lockoff");
+                m_selectedCamera = 0;
             }
             else
             {
                 m_lockOn = true;
+                m_camList[0].Priority = 1;
+                m_camList[1].Priority = 2;
+                Debug.Log("LockOn");
+                m_selectedCamera = 1;
             }
             // Switching camera system
             //if(m_freeCamera.Priority == 2)
@@ -43,40 +64,43 @@ public class CameraRotation : MonoBehaviour
             //}
         }
 
+        // Ruleset for free cam
 
-        // To be replaced by xbox axis which we only need to read data on x and y out.
-        if (Input.GetKey(KeyCode.Q))
         {
-            x++;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            x--;
-        }
+            // To be replaced by xbox axis which we only need to read data on x and y out.
+            if (Input.GetKey(KeyCode.Q))
+            {
+                x++;
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                x--;
+            }
 
-        if (Input.GetKey(KeyCode.R))
-        {
-            y++;
-        }
-        if (Input.GetKey(KeyCode.T))
-        {
-            y--;
-        }
+            if (Input.GetKey(KeyCode.R))
+            {
+                y++;
+            }
+            if (Input.GetKey(KeyCode.T))
+            {
+                y--;
+            }
 
-        if (x != 0)
-        {
-            m_freeCamera.m_XAxis.m_InputAxisValue = x;
-        }
-        else if (y != 0)
-        {
-            m_freeCamera.m_YAxis.m_InputAxisValue = y;
-        }
-        else // have to make sure nothing is passed through
-        {
-            m_freeCamera.m_XAxis.m_InputAxisValue = 0;
-            m_freeCamera.m_YAxis.m_InputAxisValue = 0;
-        }
-    
+            if (x != 0)
+            {
+                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = x;
+            }
+            else if (y != 0)
+            {
+                m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = y;
+            }
+            else // have to make sure nothing is passed through
+            {
+                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
+                m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = 0;
+            }
+
+            // Get the direction from the player to the boss.
 
 
             // Most of the below is redundant.
@@ -101,5 +125,6 @@ public class CameraRotation : MonoBehaviour
             //    freelook.m_XAxis.m_InputAxisValue = 0;
             //    freelook.m_YAxis.m_InputAxisValue = 0;
             //}
+        }
     }
 }
