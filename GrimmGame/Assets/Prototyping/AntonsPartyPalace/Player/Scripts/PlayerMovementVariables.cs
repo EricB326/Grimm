@@ -18,6 +18,6 @@ public class PlayerMovementVariables : MonoBehaviour
     public float m_rotationTime;
     // Used in the player walk till access to entity list.
     public GameObject m_target;
-
-
+    // Just a Quick way to get to the sword
+    public Collider m_AttackHitbox;
 }

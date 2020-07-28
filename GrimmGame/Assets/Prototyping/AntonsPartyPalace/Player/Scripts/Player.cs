@@ -7,6 +7,7 @@ using UnityEngine;
 // Wasd controls passed to animator.
 
 [RequireComponent(typeof(PlayerMovementVariables))]
+[RequireComponent(typeof(AnimationEventsPlayer))]
 public class Player : MonoBehaviour
 {
    
@@ -48,9 +49,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             attack = true;
+            Debug.Log("attack");
         }
 
         UpdateAnimations(x, y, attack);
+
+       
 
        
         PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
@@ -128,10 +132,9 @@ public class Player : MonoBehaviour
         animator.SetFloat("Input/Z", a_y);
 
         if (a_attack)
-            animator.SetTrigger("Input/Attack");
+            animator.SetBool("Input/Attack", true);
 
     }
-
 }
 
 

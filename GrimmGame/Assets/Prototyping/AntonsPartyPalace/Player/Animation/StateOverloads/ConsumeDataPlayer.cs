@@ -24,6 +24,11 @@ public class ConsumeDataPlayer : StateMachineBehaviour
                         animator.SetBool("Input/Roll", false);
                         break;
                     }
+                case PlayerDataEnums.Hit:
+                    {
+                        animator.SetInteger("AnyState/Input", 0);
+                        break;
+                    }
             }
         }
     }
