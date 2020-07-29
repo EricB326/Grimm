@@ -34,6 +34,11 @@ public class ConsumeDataPlayer : StateMachineBehaviour
                         animator.SetInteger("AnyState/Death", 0);
                         break;
                     }
+                case PlayerDataEnums.Cutscene:
+                    {
+                        animator.SetInteger("AnyState/Cutscene", 0);
+                        break;
+                    }
             }
         }
     }
