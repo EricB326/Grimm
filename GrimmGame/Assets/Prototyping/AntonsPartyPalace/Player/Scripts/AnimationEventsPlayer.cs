@@ -12,7 +12,7 @@ public class AnimationEventsPlayer : MonoBehaviour
     // Activates hitboxes on player model to cause damage
    public void ActivateHitBox(int a_colliderNumber)
     {
-        //EntityStats.Instance.DeminishStaminaOffEntity("Player", EntityStats.Instance);
+        //EntityStats.Instance. ("Player",/* EntityStats.Instance*/);
         Debug.Log("Activated hitbox");
     }
     // Disables hitboxes on player model to no longer cause damage

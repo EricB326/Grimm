@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Prototyping/AntonsPartyPalace/Scenes/Animation Demo.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/BeautyCorner/Scenes/BeautyScene.unity
+    guid: dbc2fd518ba2a5144906156f4f40e1fe
   m_configObjects: {}
