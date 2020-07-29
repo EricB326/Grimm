@@ -27,11 +27,11 @@ public class EntityStats : MonoBehaviour
     private struct entityData
     {
         public string name;                                          // This modifies the 'Element #' within the inspector view. Used to make things a bit more readable.
-        //public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
+        public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
         public float health;                                         // The health, or hit points, of the entity.
         public float stamina;                                        // The maximum stamina the entity has.
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
-        public float speedOfHealthRegain;                           // How fast the entity will regain their stamina after a period of time.
+        public float speedOfHealthRegain;                            // How fast the entity will regain their stamina after a period of time.
         public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
         [HideInInspector] public float maxHealth;                    // Maximum amount of health the entity has.
         [HideInInspector] public float maxStamina;                   // Maximum amount of stamina the entity has.
@@ -89,6 +89,7 @@ public class EntityStats : MonoBehaviour
             newData.maxStamina = entityList[i].stamina;
             entityList[i] = newData;
         }
+
     }
 
     /* @brief Get the instance of the static singleton.
@@ -170,6 +171,12 @@ public class EntityStats : MonoBehaviour
             newData.health = newData.maxHealth;
 
         entityList[_entityIndex] = newData;
+    }
+
+    public GameObject GetObjectOfEntity(string _entityName)
+    {
+        // Return the health of the entity at the index found within the entity list.
+        return entityList[DoesEntityExist(_entityName)].entityObject;
     }
 
     /* @brief This function serves as a way to retrieve the health of any entity within the list at a given string key (name).
