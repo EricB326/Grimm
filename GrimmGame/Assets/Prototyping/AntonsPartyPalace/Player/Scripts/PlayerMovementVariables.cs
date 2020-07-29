@@ -20,4 +20,7 @@ public class PlayerMovementVariables : MonoBehaviour
     public GameObject m_target;
     // Just a Quick way to get to the sword
     public Collider m_AttackHitbox;
+
+    public int m_attackStaminaDrain = 20;
+
 }

@@ -268,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c4a74b69d7544f4b933f093f30bf5bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0b13aa5111c8a46bb15b8a9f1bc225, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -532,12 +532,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3243913, g: 0.8679245, b: 0, a: 1}
+  m_Color: {r: 0.3735228, g: 0.9716981, b: 0.01375042, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94a0479ec058f0340b7c2b8ed909e499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0b13aa5111c8a46bb15b8a9f1bc225, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -880,7 +880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94a0479ec058f0340b7c2b8ed909e499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0b13aa5111c8a46bb15b8a9f1bc225, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1144,12 +1144,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  m_Color: {r: 0.8867924, g: 0.72365606, b: 0.8789363, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c4a74b69d7544f4b933f093f30bf5bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0b13aa5111c8a46bb15b8a9f1bc225, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2047,8 +2047,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityList:
   - name: Player
+    entityObject: {fileID: 0}
     health: 100
-    stamina: 1000
+    stamina: 100
     timeBeforeStaminaRegain: 2
     speedOfHealthRegain: 0.5
     speedOfStaminaRegain: 2
@@ -2056,6 +2057,7 @@ MonoBehaviour:
     maxStamina: 0
     timeSinceLastStaminaDeminish: 0
   - name: Boss
+    entityObject: {fileID: 0}
     health: 100
     stamina: 5
     timeBeforeStaminaRegain: 3
@@ -2160,12 +2162,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  m_Color: {r: 0.6132076, g: 0.53511035, b: 0.53511035, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c4a74b69d7544f4b933f093f30bf5bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0b13aa5111c8a46bb15b8a9f1bc225, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2801,12 +2803,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.24877714, g: 0.19708972, b: 0.9716981, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94a0479ec058f0340b7c2b8ed909e499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0b13aa5111c8a46bb15b8a9f1bc225, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2847,7 +2849,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449753061}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2856,10 +2858,10 @@ RectTransform:
   - {fileID: 190682297}
   m_Father: {fileID: 1289025509}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -20}
+  m_AnchoredPosition: {x: 27, y: -339}
   m_SizeDelta: {x: 300, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1460691653
@@ -3088,7 +3090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.2, y: 358.1}
+  m_AnchoredPosition: {x: -269, y: -225}
   m_SizeDelta: {x: 250, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1548858791
@@ -3804,9 +3806,9 @@ RectTransform:
   m_Father: {fileID: 1289025509}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 515, y: 378.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -176, y: -19}
   m_SizeDelta: {x: 300, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1932459965

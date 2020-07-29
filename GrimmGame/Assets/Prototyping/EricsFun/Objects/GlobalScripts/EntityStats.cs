@@ -27,7 +27,7 @@ public class EntityStats : MonoBehaviour
     private struct entityData
     {
         public string name;                                          // This modifies the 'Element #' within the inspector view. Used to make things a bit more readable.
-        //public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
+        public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
         public float health;                                         // The health, or hit points, of the entity.
         public float stamina;                                        // The maximum stamina the entity has.
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.

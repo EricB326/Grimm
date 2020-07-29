@@ -44,7 +44,7 @@ public class SwordCollision : MonoBehaviour
         if (other.gameObject.tag == "Boss")
         {
             Debug.Log("Boss hit");
-           
+            //EntityStats.Instance;
         }
     }
 

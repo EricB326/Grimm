@@ -125,15 +125,17 @@ public class Player : MonoBehaviour
     // Send inputs to animator
     void UpdateAnimations(float a_x, float a_y, bool a_attack)
     {
-
+        Debug.Log(a_attack);
         // x axis
         animator.SetFloat("Input/X", a_x);
         // y axis
         animator.SetFloat("Input/Z", a_y);
-
-        if (a_attack)
+        // If attack pressed and enough stamina.
+        if (a_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_attackStaminaDrain))
+        {
+            Debug.Log("Player has enough stamina");
             animator.SetBool("Input/Attack", true);
-
+        }
     }
 }
 
