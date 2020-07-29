@@ -315,15 +315,15 @@ public class EntityStats : MonoBehaviour
         // If the amount of stamina remaining is a valid amount (greater than zero), then the move can occur.
         if ((entityList[entityIndex].stamina /*- _animStaminaCost*/) >= 0)
         {
-            if (entityList[entityIndex].name != "Boss")
-            { 
-                DeminishStaminaOffEntity(_entityName, _animStaminaCost);
+            //if (entityList[entityIndex].name != "Boss")
+            //{ 
+            //    DeminishStaminaOffEntity(_entityName, _animStaminaCost);
 
-                // Update the time since the last stamina deminish to now.
-                newData = entityList[entityIndex];
-                newData.timeSinceLastStaminaDeminish = Time.time;
-                entityList[entityIndex] = newData;
-            }
+            //    // Update the time since the last stamina deminish to now.
+            //    newData = entityList[entityIndex];
+            //    newData.timeSinceLastStaminaDeminish = Time.time;
+            //    entityList[entityIndex] = newData;
+            //}
 
             return true;
         }
