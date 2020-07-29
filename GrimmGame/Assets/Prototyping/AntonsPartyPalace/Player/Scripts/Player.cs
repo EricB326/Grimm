@@ -8,6 +8,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementVariables))]
 [RequireComponent(typeof(AnimationEventsPlayer))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
    
