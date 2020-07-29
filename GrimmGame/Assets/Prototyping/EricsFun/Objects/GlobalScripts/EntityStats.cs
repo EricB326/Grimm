@@ -31,7 +31,7 @@ public class EntityStats : MonoBehaviour
         public float health;                                         // The health, or hit points, of the entity.
         public float stamina;                                        // The maximum stamina the entity has.
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
-        public float speedOfHealthRegain;                           // How fast the entity will regain their stamina after a period of time.
+        public float speedOfHealthRegain;                            // How fast the entity will regain their stamina after a period of time.
         public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
         [HideInInspector] public float maxHealth;                    // Maximum amount of health the entity has.
         [HideInInspector] public float maxStamina;                   // Maximum amount of stamina the entity has.
@@ -89,6 +89,7 @@ public class EntityStats : MonoBehaviour
             newData.maxStamina = entityList[i].stamina;
             entityList[i] = newData;
         }
+
     }
 
     /* @brief Get the instance of the static singleton.
@@ -170,6 +171,12 @@ public class EntityStats : MonoBehaviour
             newData.health = newData.maxHealth;
 
         entityList[_entityIndex] = newData;
+    }
+
+    public GameObject GetObjectOfEntity(string _entityName)
+    {
+        // Return the health of the entity at the index found within the entity list.
+        return entityList[DoesEntityExist(_entityName)].entityObject;
     }
 
     /* @brief This function serves as a way to retrieve the health of any entity within the list at a given string key (name).
@@ -308,15 +315,15 @@ public class EntityStats : MonoBehaviour
         // If the amount of stamina remaining is a valid amount (greater than zero), then the move can occur.
         if ((entityList[entityIndex].stamina /*- _animStaminaCost*/) >= 0)
         {
-            if (entityList[entityIndex].name != "Boss")
-            { 
-                DeminishStaminaOffEntity(_entityName, _animStaminaCost);
+            //if (entityList[entityIndex].name != "Boss")
+            //{ 
+            //    DeminishStaminaOffEntity(_entityName, _animStaminaCost);
 
-                // Update the time since the last stamina deminish to now.
-                newData = entityList[entityIndex];
-                newData.timeSinceLastStaminaDeminish = Time.time;
-                entityList[entityIndex] = newData;
-            }
+            //    // Update the time since the last stamina deminish to now.
+            //    newData = entityList[entityIndex];
+            //    newData.timeSinceLastStaminaDeminish = Time.time;
+            //    entityList[entityIndex] = newData;
+            //}
 
             return true;
         }
