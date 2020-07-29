@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+// DEEFUNCT
+
 // Mostly a class to store all input in 1 place.
 // It will be in charge of:
 // What the input is.
@@ -17,7 +21,7 @@ using UnityEngine;
     // The funcitons and containter for the inputs.
     // Allows for multiple presses of inputs per frame.
     // Could have some form of logic that 
-public class InputBuffer
+public class DEFUNCTInputBuffer
 {
     // Not in the right place.
     public float m_timeBeforeDiscard;
