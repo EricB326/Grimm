@@ -3,7 +3,22 @@ guid: 123ca9125c61bb74081e0e23319f8ece
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GRASS_BLADE_1
+    second: {fileID: 2100000, guid: 13ba8562beb06094daaad6ad61477ecb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GRASS_BLADE_2
+    second: {fileID: 2100000, guid: 13ba8562beb06094daaad6ad61477ecb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GRASS_BLADE_3
+    second: {fileID: 2100000, guid: 13ba8562beb06094daaad6ad61477ecb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +96,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.017
+    globalScale: 1.7
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
