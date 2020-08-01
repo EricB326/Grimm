@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,18 +11,23 @@ public class AnimationEventsPlayer : MonoBehaviour
 {
 
     // Activates hitboxes on player model to cause damage
-   public void ActivateHitBox(int a_colliderNumber)
+    public void ActivateHitBox(int a_colliderNumber)
     {
-        //EntityStats.Instance. ("Player",/* EntityStats.Instance*/);
+        //Debug.Log(a_colliderNumber);
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_attackHitBox.enabled = true;
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_swordHitBox.enabled = true;
+        EntityStats.Instance.DeminishStaminaOffEntity("Player", 20);
         Debug.Log("Activated hitbox");
     }
     // Disables hitboxes on player model to no longer cause damage
-    public void DeavtivateHitBox(Collider hitbox)
+    // Occurs when hitting boss or swing near end.
+    public void DeavtivateHitBox(int a_colliderNumber)
     {
-
-
-        Debug.Log("Activated hitbox ");
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_attackHitBox.enabled = false;
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_swordHitBox.enabled = false;
+        Debug.Log("Deactivated hitbox");
     }
+
 }
 
 

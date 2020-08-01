@@ -7,44 +7,24 @@ using UnityEngine;
 // This is currently used for sword collision.
 // Seperated out from player in case there are 
 // conflicts with using onCollider ect.
-// 
+// It is mainly used to trigger particles and sounds
+// for the environment
 
 public class SwordCollision : MonoBehaviour
 {
-    private void Start()
-    {
-        
-    }
-
-
-
-
-
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log(collision.gameObject.tag);
-    //    Debug.DrawRay(this.transform.position, collision.transform.position);
-
-    //    if (collision.gameObject.tag == "Boss")
-    //    {
-    //        Debug.Log("Boss hit");
-    //    }
-    //}
-
+ 
 
     // If it hits the boss it disables the hitbox and does damage.
     // If we want to pass information into the animator it would happen
     // here as well
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
-        Debug.DrawRay(this.transform.position, other.transform.position);
-
-        if (other.gameObject.tag == "Boss")
+        if (other.tag != "Boss" || other.tag != "Ground")
         {
-            Debug.Log("Boss hit");
-            //EntityStats.Instance;
+            // OnHitEffects - Gets the information from whatever it made contact with to paly sounds and particles.
+            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_swordHitBox.enabled = false;
+            // Need a sword sword contact with world.
+            // Will have issues if the ground is not tagged.
         }
     }
 

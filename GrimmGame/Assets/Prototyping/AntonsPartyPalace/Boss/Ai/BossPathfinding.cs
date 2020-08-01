@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
+// THIS SCRIPT IS DEFUNCT AND NEEDS TO BE REPLACED.
+// Nav mesh is no longer used.
+
 public class BossPathfinding : MonoBehaviour
 {
     // Set in start.

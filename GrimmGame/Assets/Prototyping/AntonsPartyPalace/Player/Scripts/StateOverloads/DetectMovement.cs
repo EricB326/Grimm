@@ -15,11 +15,11 @@ public class DetectMovement : StateMachineBehaviour
     {
         if (animator.GetFloat("Input/Z") != 0 || animator.GetFloat("Input/X") != 0)
         {
-            animator.SetBool("Input/Received", true);
+            animator.SetBool("Input/Movement", true);
         }
         else
         {
-            animator.SetBool("Input/Received", false);
+            animator.SetBool("Input/Movement", false);
         }
     }
 

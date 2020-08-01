@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             attack = true;
-            Debug.Log("attack");
+            //Debug.Log("attack");
         }
 
         UpdateAnimations(x, y, attack);
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         // If attack pressed and enough stamina.
         if (a_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_attackStaminaDrain))
         {
-            Debug.Log("Player has enough stamina");
+            //Debug.Log("Player has enough stamina");
             animator.SetBool("Input/Attack", a_attack);
         }
         else
