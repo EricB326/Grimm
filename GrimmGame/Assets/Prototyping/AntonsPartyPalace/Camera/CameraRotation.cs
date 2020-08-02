@@ -40,7 +40,7 @@ public class CameraRotation : MonoBehaviour
                 m_lockOn = false;
                 m_camList[0].Priority = 2;
                 m_camList[1].Priority = 1;
-                Debug.Log("Lockoff");
+                //Debug.Log("Lockoff");
                 m_selectedCamera = 0;
             }
             else
@@ -48,7 +48,7 @@ public class CameraRotation : MonoBehaviour
                 m_lockOn = true;
                 m_camList[0].Priority = 1;
                 m_camList[1].Priority = 2;
-                Debug.Log("LockOn");
+                //Debug.Log("LockOn");
                 m_selectedCamera = 1;
             }
             // Switching camera system

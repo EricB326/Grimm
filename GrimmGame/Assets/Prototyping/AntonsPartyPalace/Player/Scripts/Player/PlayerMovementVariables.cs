@@ -18,9 +18,12 @@ public class PlayerMovementVariables : MonoBehaviour
     public float m_rotationTime;
     // Used in the player walk till access to entity list.
     public GameObject m_target;
-    // Just a Quick way to get to the sword
-    public Collider m_AttackHitbox;
-
+    // Just a quick way to get to the sword.
+    // For visuals and particles.
+    public Collider m_swordHitBox;
+    // Consistent attack hitbox. 
+    // If entity is inside this it will trigger OnHitEffects including damage.
+    public Collider m_attackHitBox;
+    // Stamina drain on attack.
     public int m_attackStaminaDrain = 20;
-
 }

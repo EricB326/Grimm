@@ -14,29 +14,34 @@ public class ConsumeDataPlayer : StateMachineBehaviour
         {
             switch (clear)
             {
-                case PlayerDataEnums.Attack:
+                case PlayerDataEnums.INPUT_ATTACK:
                     {
                         animator.SetBool("Input/Attack", false);
                         break;
                     }
-                case PlayerDataEnums.Roll:
+                case PlayerDataEnums.INPUT_ROLL:
                     {
                         animator.SetBool("Input/Roll", false);
                         break;
                     }
-                case PlayerDataEnums.Damage:
+                case PlayerDataEnums.INPUT_DAMAGE:
                     {
                         animator.SetInteger("AnyState/Damage", 0);
                         break;
                     }
-                case PlayerDataEnums.Death:
+                case PlayerDataEnums.INPUT_DEATH:
                     {
                         animator.SetInteger("AnyState/Death", 0);
                         break;
                     }
-                case PlayerDataEnums.Cutscene:
+                case PlayerDataEnums.INPUT_CUTSCENE:
                     {
                         animator.SetInteger("AnyState/Cutscene", 0);
+                        break;
+                    }
+                default:
+                    {
+                        Debug.Log("VALUE " +  m_dataToClear.ToString() + " NOT SET TO BE CONSUMED AS OF YET. IT'S ANTON'S FAULT.");
                         break;
                     }
             }

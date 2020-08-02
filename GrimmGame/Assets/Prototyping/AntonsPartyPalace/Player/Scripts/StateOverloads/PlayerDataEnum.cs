@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerDataEnums
-{ 
-     Damage,
-     Cutscene,
-     Death,
-     Roll,
-     Attack,
+{
+    INPUT_DAMAGE,
+    INPUT_CUTSCENE,
+    INPUT_DEATH,
+    INPUT_ROLL,
+    INPUT_ATTACK,
+    INPUT_MOVEMENT,
+    OUTPUT_CANMOVE,
+    OUTPUT_ISROLLING
 }
