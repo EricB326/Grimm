@@ -748,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_hit: {fileID: 2100000, guid: adfeb6922c62a8d4994676744d2a4d78, type: 2}
   m_noHit: {fileID: 2100000, guid: c9d9db46d5bea33488e63a648b21bbf3, type: 2}
-  m_delay: 2
+  m_delay: 0.2
 --- !u!65 &165655577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6188,7 +6188,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125963042}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.12
   m_Height: 1.25
