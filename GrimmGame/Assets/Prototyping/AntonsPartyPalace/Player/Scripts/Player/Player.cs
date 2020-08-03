@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
         float x = 0;
         float y = 0;
         bool attack = false;
+        bool roll = false;
         // Inputs not stored should be 
         if (Input.GetKey(KeyCode.W))
         {
@@ -54,7 +55,13 @@ public class Player : MonoBehaviour
             //Debug.Log("attack");
         }
 
-        UpdateAnimations(x, y, attack);
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            roll = true;
+        }
+
+
+        UpdateAnimations(x, y, attack, roll);
 
 
         // Value are adjusted by animation state overloading.
@@ -128,7 +135,7 @@ public class Player : MonoBehaviour
 
 
     // Send inputs to animator
-    void UpdateAnimations(float a_x, float a_y, bool a_attack)
+    void UpdateAnimations(float a_x, float a_y, bool a_attack, bool a_roll)
     {
         // x axis
         animator.SetFloat("Input/X", a_x);
@@ -144,6 +151,15 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("Input/Attack", false);
 
+        }
+
+        if(a_roll)
+        {
+            animator.SetBool("Input/Roll", true);
+        }
+        else
+        {
+            animator.SetBool("Input/Roll", false);
         }
     }
 }

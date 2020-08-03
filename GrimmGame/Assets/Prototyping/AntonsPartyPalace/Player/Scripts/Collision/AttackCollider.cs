@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-// Quick script for 
+// Quick script for attacking boss
 
 public class AttackCollider : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class AttackCollider : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            Debug.Log("Hit");
+           
         }
     }
 }

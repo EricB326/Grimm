@@ -8,7 +8,7 @@ TagManager:
   - Ground
   - Boss
   - Sword
-  - AttackhitBox
+  - AttackHitBox
   layers:
   - Default
   - TransparentFX

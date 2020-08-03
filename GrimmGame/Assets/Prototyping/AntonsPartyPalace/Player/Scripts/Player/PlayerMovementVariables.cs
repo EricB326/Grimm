@@ -26,4 +26,7 @@ public class PlayerMovementVariables : MonoBehaviour
     public Collider m_attackHitBox;
     // Stamina drain on attack.
     public int m_attackStaminaDrain = 20;
+
+    public int m_attackDamage = 10;
+
 }

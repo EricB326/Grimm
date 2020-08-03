@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+// This is a base for on hit effects.
+// They will be divided up into Player, Boss, Scenery.
+// The will have their own scripts for the time being and 
+// any similar funcitons and variables 
+
 public class OnHitBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   
 
-    // Update is called once per frame
-    void Update()
+
+    virtual public void Update()
     {
         
     }
