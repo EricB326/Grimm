@@ -8,13 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HeightBlend
-  m_Shader: {fileID: -6465566751694194690, guid: 32785f59da79782458f7885291e9a75f,
-    type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: eb607f5e8fc16e140b732f33d26c8c31, type: 3}
+  m_ShaderKeywords: _TERRAIN_BLEND_HEIGHT _TERRAIN_INSTANCED_PERPIXEL_NORMAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -23,6 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BlendTex1:
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: d94a7eb8b25f42344953cf5e6ab31e03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -57,3 +57,45 @@ Material:
     m_Floats:
     - _BlendFactor: 0.01
     m_Colors: []
+=======
+        m_Texture: {fileID: 2800000, guid: 4a4e3a5731c46e64d99dfc6650f5e0cf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BlendTex2:
+        m_Texture: {fileID: 2800000, guid: 217623af48a0e3a45b5db96d02b00c87, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightTex1:
+        m_Texture: {fileID: 2800000, guid: a92dd8dbe5d41d04584408bf71831bc0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightTex2:
+        m_Texture: {fileID: 2800000, guid: 267d22788ecc50c4590ef27d04241c1b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AddPrecomputedVelocity: 0
+    - _BlendFactor: 0.01
+    - _CullMode: 2
+    - _EnableHeightBlend: 1
+    - _EnableInstancedPerPixelNormal: 1
+    - _HeightTransition: 0
+    - _ReceivesSSR: 1
+    - _StencilRef: 2
+    - _StencilRefDepth: 0
+    - _StencilRefGBuffer: 2
+    - _StencilWriteMask: 3
+    - _StencilWriteMaskDepth: 48
+    - _StencilWriteMaskGBuffer: 51
+    - _SupportDecals: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> Kaz
