@@ -25,6 +25,7 @@ public class InputBuffer
 
     public void Update()
     {
+        //THIS NEEDS TO BE AN ATTACHED MONOBEHAVIOR
         JacksMonobehaviour.jacksMonobehaviour.inputBuffer = this;
         if (m_inputList.Count < m_inputListString.Length || m_inputList.Count == 0)
         {
@@ -41,7 +42,6 @@ public class InputBuffer
                 c.m_buffer[b].m_used = c.m_buffer[b + 1].m_used;
             }
         }
-        
     }
 
     void InitializeBuffer()
@@ -61,7 +61,7 @@ public class InputBufferItem
     public string m_button;
     public List<InputBufferItemState> m_buffer;
 
-    public static int bufferWindow = 12;
+    public static int bufferWindow = 32;
 
     public InputBufferItem()
     {
