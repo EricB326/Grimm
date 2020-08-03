@@ -136,7 +136,7 @@ public class EntityStats : MonoBehaviour
             else
             {
                 // If the entity is at full stamina, have a fail safe to insure they do not go above max.
-                entityData newData = entityList[i];
+                newData = entityList[i];
                 newData.stamina = entityList[i].maxStamina;
                 entityList[i] = newData;
             }
@@ -296,6 +296,10 @@ public class EntityStats : MonoBehaviour
         // Due to C# poor design in handling struct properties, I cant just assign an individual member of the entityData struct
         // for the given entity at the index. Instead I had to assign an entire struct... Please modifiy this if there is a work around.
         newData.stamina -= _amountToDeminish;
+
+        // Begin the countdown for stamina regeneration.
+        newData.timeSinceLastStaminaDeminish = Time.time;
+
         entityList[entityIndex] = newData;
 
         if (onStaminaTaken != null)
@@ -318,7 +322,7 @@ public class EntityStats : MonoBehaviour
             //if (entityList[entityIndex].name != "Boss")
             //{ 
             //    DeminishStaminaOffEntity(_entityName, _animStaminaCost);
-
+            //
             //    // Update the time since the last stamina deminish to now.
             //    newData = entityList[entityIndex];
             //    newData.timeSinceLastStaminaDeminish = Time.time;

@@ -34,7 +34,8 @@ public class playertest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            EntityStats.Instance.CanEntityMoveOccur("Player", 115);
+            if (EntityStats.Instance.CanEntityMoveOccur("Player", 15))
+                EntityStats.Instance.DeminishStaminaOffEntity("Player", 15);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
