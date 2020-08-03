@@ -23,21 +23,37 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BlendTex1:
-        m_Texture: {fileID: 2800000, guid: 2fc5452e42e0aaa4d871202fb41de001, type: 3}
+        m_Texture: {fileID: 2800000, guid: d94a7eb8b25f42344953cf5e6ab31e03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BlendTex2:
-        m_Texture: {fileID: 2800000, guid: 136e34b5fc3222442b08fb1bef55a2b8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 91d8794c2a574a04d9ffb3c128fa6080, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FirstNorm:
+        m_Texture: {fileID: 2800000, guid: ea63cda837893d84bba2d61c1e5f790d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FirstRough:
+        m_Texture: {fileID: 2800000, guid: bd628c4a0edbbba498d32985ca6d0b3f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightTex1:
-        m_Texture: {fileID: 2800000, guid: f51cee9b48b78954bb969d974e902027, type: 3}
+        m_Texture: {fileID: 2800000, guid: e051f62f2bfd17045937bf617e94ea1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightTex2:
-        m_Texture: {fileID: 2800000, guid: ac5ba7ca2c803a64993c1e422dd42d9a, type: 3}
+        m_Texture: {fileID: 2800000, guid: bcc7ae726ecacac41aa302f43cdc60f7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecNorm:
+        m_Texture: {fileID: 2800000, guid: 75342f31b825f9f44845a1cde738e66d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondRough:
+        m_Texture: {fileID: 2800000, guid: adb66da6fa672c04a809556e9cf893d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BlendFactor: 0.084
+    - _BlendFactor: 0.01
     m_Colors: []

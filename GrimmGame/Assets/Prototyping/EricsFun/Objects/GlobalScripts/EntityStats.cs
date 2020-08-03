@@ -30,6 +30,7 @@ public class EntityStats : MonoBehaviour
         public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
         public float health;                                         // The health, or hit points, of the entity.
         public float stamina;                                        // The maximum stamina the entity has.
+        public float inputBuffer;                                    // The maximum stamina the entity has.
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
         public float speedOfHealthRegain;                            // How fast the entity will regain their stamina after a period of time.
         public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
@@ -84,9 +85,11 @@ public class EntityStats : MonoBehaviour
         // Loop over all entities in the entity list and set the max health/stamina to the first state of current health/stamina.
         for (int i = 0; i < entityList.Count; i++)
         {
-            entityData newData = entityList[i];
+            newData = entityList[i];
+
             newData.maxHealth = entityList[i].health;
             newData.maxStamina = entityList[i].stamina;
+
             entityList[i] = newData;
         }
 
@@ -118,9 +121,9 @@ public class EntityStats : MonoBehaviour
     {
         // Loop over each entity in the entity list.
         for (int i = 0; i < entityList.Count; i++)
-        {
+        {  
             // If the entity is not at the maximum amount of stamina they have elegated, they can move onto further checks.
-            if (entityList[i].stamina != entityList[i].maxStamina)
+            if (entityList[i].stamina < entityList[i].maxStamina)
             {
                 // If the entity has not deminished stamina after a set period, they can begin to regain stamina.
                 if ((entityList[i].timeSinceLastStaminaDeminish + entityList[i].timeBeforeStaminaRegain) < Time.time)
@@ -137,7 +140,8 @@ public class EntityStats : MonoBehaviour
             {
                 // If the entity is at full stamina, have a fail safe to insure they do not go above max.
                 newData = entityList[i];
-                newData.stamina = entityList[i].maxStamina;
+                newData.stamina = newData.maxStamina;
+
                 entityList[i] = newData;
             }
         }
@@ -197,6 +201,11 @@ public class EntityStats : MonoBehaviour
     {
         // Return the stamina of the entity at the index found within the entity list.
         return entityList[DoesEntityExist(_entityName)].stamina;
+    }
+
+    public float GetBufferOfPlayer()
+    {
+        return entityList[DoesEntityExist("Player")].inputBuffer;
     }
 
     public float GetNormalisedHealthOfEntity(string _entityName)
@@ -283,15 +292,6 @@ public class EntityStats : MonoBehaviour
 
         // See the last two lines of commented code in this function.
         newData = entityList[entityIndex];
-
-        // If the entity already has zero stamina, don't continue the function.
-        if (entityList[entityIndex].stamina <= 0f)
-        {
-            newData.stamina = 0;
-            entityList[entityIndex] = newData;
-
-            return;
-        }
 
         // Due to C# poor design in handling struct properties, I cant just assign an individual member of the entityData struct
         // for the given entity at the index. Instead I had to assign an entire struct... Please modifiy this if there is a work around.
