@@ -30,6 +30,7 @@ public class EntityStats : MonoBehaviour
         public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
         public float health;                                         // The health, or hit points, of the entity.
         public float stamina;                                        // The maximum stamina the entity has.
+        public float inputBuffer;                                    // The maximum stamina the entity has.
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
         public float speedOfHealthRegain;                            // How fast the entity will regain their stamina after a period of time.
         public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
@@ -120,7 +121,7 @@ public class EntityStats : MonoBehaviour
     {
         // Loop over each entity in the entity list.
         for (int i = 0; i < entityList.Count; i++)
-        {
+        {  
             // If the entity is not at the maximum amount of stamina they have elegated, they can move onto further checks.
             if (entityList[i].stamina < entityList[i].maxStamina)
             {
@@ -200,6 +201,11 @@ public class EntityStats : MonoBehaviour
     {
         // Return the stamina of the entity at the index found within the entity list.
         return entityList[DoesEntityExist(_entityName)].stamina;
+    }
+
+    public float GetBufferOfPlayer()
+    {
+        return entityList[DoesEntityExist("Player")].inputBuffer;
     }
 
     public float GetNormalisedHealthOfEntity(string _entityName)
