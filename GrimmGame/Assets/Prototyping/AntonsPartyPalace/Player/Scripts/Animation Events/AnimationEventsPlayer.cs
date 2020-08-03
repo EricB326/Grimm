@@ -9,14 +9,14 @@ using UnityEngine;
 
 public class AnimationEventsPlayer : MonoBehaviour
 {
-
+   
     // Activates hitboxes on player model to cause damage
     public void ActivateHitBox(int a_colliderNumber)
     {
         //Debug.Log(a_colliderNumber);
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_attackHitBox.enabled = true;
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_swordHitBox.enabled = true;
-        EntityStats.Instance.DeminishStaminaOffEntity("Player", 20);
+        EntityStats.Instance.DeminishStaminaOffEntity("Player", GetComponent<PlayerMovementVariables>().m_attackStaminaDrain);
         Debug.Log("Activated hitbox");
     }
     // Disables hitboxes on player model to no longer cause damage
@@ -27,7 +27,6 @@ public class AnimationEventsPlayer : MonoBehaviour
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_swordHitBox.enabled = false;
         Debug.Log("Deactivated hitbox");
     }
-
 }
 
 

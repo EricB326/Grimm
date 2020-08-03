@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: bd1667051396080488847e6359ce37c9
+guid: bca0b41b41fa8f74e86afd5606ed8962
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: New_Player_Attack_1
+    second: New_Player_Roll_Forward
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: New_Player_Attack_1
+      name: New_Player_Roll_Forward
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
-      lastFrame: 30
+      firstFrame: 60
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,14 +59,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
+      - time: 0.2658228
         functionName: ActivateHitBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.822446
+      - time: 0.82297254
         functionName: DeavtivateHitBox
         data: 
         objectReferenceParameter: {instanceID: 0}

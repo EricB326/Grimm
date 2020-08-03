@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: bd1667051396080488847e6359ce37c9
+guid: 45009956cad55e54792ca26391bcb6db
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: New_Player_Attack_1
+      74: -3100369314251171874
+    second: Boss_Idle
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,8 +35,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: New_Player_Attack_1
-      takeName: Take 001
+      name: Boss_Idle
+      takeName: Idle
       internalID: 0
       firstFrame: 1
       lastFrame: 30
@@ -58,25 +58,11 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: ActivateHitBox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.822446
-        functionName: DeavtivateHitBox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
