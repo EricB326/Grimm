@@ -93,12 +93,12 @@ public class Player : MonoBehaviour
             }
             else if (animator.GetBool("Input/Roll"))
             {
-                StartRoll();
+                StartRoll(axisX, axisY);
             }
         }
         else
         {
-
+            Rolling();
         }
         
 
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
     }
 
 
-    // Movement logic 
+    // Walking/Running
     private void Movement(float a_axisX, float a_axisY)
     {
         PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
@@ -200,14 +200,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Initial roll math.
+    private void StartRoll(float a_axisX, float a_axisY)
+    {
+        // Stores direction wanting to move reletive to camera.
+        // if no input back by default.
+        // then do the rolling
+    }
 
-    private void StartRoll()
+    private void Rolling()
     {
 
     }
-
-
-
 }
 
 
