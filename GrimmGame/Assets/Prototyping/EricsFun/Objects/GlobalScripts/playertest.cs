@@ -21,7 +21,7 @@ public class playertest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(SystemInfo.graphicsDeviceName);
     }
 
     // Update is called once per frame
