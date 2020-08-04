@@ -10,10 +10,11 @@ using UnityEngine;
 public class PlayerMovementVariables : MonoBehaviour
 {
     // Multiplied by direction stick input. -1 to 1 on both axis
-    public float m_walkSpeed;
+    public float m_walkSpeed = 5;
     // Speed will increase to this value.
-    public float m_runSpeed;
-
+    public float m_runSpeed = 7;
+    // Roll speed.
+    public float m_rollSpeed = 9;
     [Range(0,1)]
     public float m_rotationTime;
     // Used in the player walk till access to entity list.
@@ -28,5 +29,6 @@ public class PlayerMovementVariables : MonoBehaviour
     public int m_attackStaminaDrain = 20;
 
     public int m_attackDamage = 10;
+
 
 }

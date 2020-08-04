@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 
 // A placeholder till input buffer is completed
@@ -31,105 +32,76 @@ public class Player : MonoBehaviour
         float y = 0;
         bool attack = false;
         bool roll = false;
-        // Inputs not stored should be 
-        if (Input.GetKey(KeyCode.W))
-        {
-            y++;
-        }
-        if(Input.GetKey(KeyCode.S))
-        {
-            y--;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            x--;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            x++;
-        }
 
-        if (Input.GetKey(KeyCode.Space))
+        float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
+
+        float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
+
+
+        //// Keyboard controls
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    y++;
+        //}
+        //if(Input.GetKey(KeyCode.S))
+        //{
+        //    y--;
+        //}
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    x--;
+        //}
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    x++;
+        //}
+
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    attack = true;
+        //    //Debug.Log("attack");
+        //}
+
+        //if(Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    roll = true;
+        //}
+
+
+        if (XCI.GetButton(XboxButton.A))
         {
             attack = true;
-            //Debug.Log("attack");
         }
 
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (XCI.GetButton(XboxButton.B))
         {
             roll = true;
         }
 
 
-        UpdateAnimations(x, y, attack, roll);
+
+        UpdateAnimations(axisX, axisY, attack, roll);
 
 
         // Value are adjusted by animation state overloading.
         // Rules for rolling and movement are almost exactley the same.
-        if (animator.GetBool("Output/CanMove") || animator.GetBool("Output/IsRolling"))
-        {
-            PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
-
-
-            // This if check may be redundant.
-            // Only way into this state is for input is received.
-            if (x != 0 || y != 0)
+        if (!animator.GetBool("IsRolling"))
             {
-                // Direction for the player to move towards based on camera.
-                Vector3 camerax = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * x);
-                Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * y);
-                Vector3 m_cameraPosition = (cameraz + camerax);
-                //m_movement = m_movement.normalized;
-
-
-                // Slightly different data is used but the math is the same in either case.
-                // If locked on you rotate towards your target when you move resulting in 
-                // circling the target.
-                CameraRotation cameraReference = Camera.main.GetComponent<CameraRotation>();
-                if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
-                {
-                    Vector3 bossdirection = movementstats.m_target.transform.position - this.transform.position;
-                    bossdirection = bossdirection.normalized;
-                    // To make sure player doesn't up or down. Only facing.
-                    // Take not that head will need the y.
-                    bossdirection.y = 0;
-                    Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
-                    this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_rotationTime);
-
-                    //Debug.DrawRay(player.transform.position, bossdirection);
-                    //float targetAngle = Mathf.Atan2(bossdirection.x, bossdirection.z) * Mathf.Rad2Deg;
-                    //float angle = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
-                    //this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                }
-                else
-                {
-                    // Position to look towards
-                    Quaternion targetRotation = Quaternion.LookRotation(m_cameraPosition);
-                    this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_rotationTime);
-                }
-
-                Vector3 m_movement = new Vector3(m_cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, m_cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
-
-                //Debug.Log(m_movement);
-                Debug.DrawRay(this.transform.position, m_movement);
-                this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
-                //player.transform.position = player.transform.position + m_movement;
-                // What to pass to the animator.
-                // May need extra rules to avoid sidesteps into diagonal.
-                // They would go after the norm.
-                Vector3 toAnim = this.transform.worldToLocalMatrix * m_movement;
-                toAnim = toAnim.normalized;
-                //Debug.DrawRay(player.transform.position,toAnim);
-                //Debug.Log(toAnim);
-                animator.SetFloat("Movement/X", toAnim.x);
-                animator.SetFloat("Movement/Z", toAnim.z);
+            if (animator.GetBool("Output/CanMove"))
+            {
+                Movement(axisX, axisY);
             }
-            else
+            else if (animator.GetBool("Input/Roll"))
             {
-                animator.SetFloat("Movement/X", 0);
-                animator.SetFloat("Movement/Z", 0);
+                StartRoll();
             }
         }
+        else
+        {
+
+        }
+        
+
     }
 
 
@@ -150,9 +122,7 @@ public class Player : MonoBehaviour
         else
         {
             animator.SetBool("Input/Attack", false);
-
         }
-
         if(a_roll)
         {
             animator.SetBool("Input/Roll", true);
@@ -162,6 +132,82 @@ public class Player : MonoBehaviour
             animator.SetBool("Input/Roll", false);
         }
     }
+
+
+    // Movement logic 
+    private void Movement(float a_axisX, float a_axisY)
+    {
+        PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
+
+        // This if check may be redundant.
+        // Only way into this state is for input is received.
+        if (a_axisX != 0 || a_axisY != 0)
+        {
+            // Direction for the player to move towards based on camera.
+            Vector3 camerax = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
+            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisY);
+            Vector3 m_cameraPosition = (cameraz + camerax);
+            //m_movement = m_movement.normalized;
+
+
+            // Slightly different data is used but the math is the same in either case.
+            // If locked on you rotate towards your target when you move resulting in 
+            // circling the target.
+            CameraRotation cameraReference = Camera.main.GetComponent<CameraRotation>();
+            if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
+            {
+                Vector3 bossdirection = movementstats.m_target.transform.position - this.transform.position;
+                bossdirection = bossdirection.normalized;
+                // To make sure player doesn't up or down. Only facing.
+                // Take not that head will need the y.
+                bossdirection.y = 0;
+                Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_rotationTime);
+
+                //Debug.DrawRay(player.transform.position, bossdirection);
+                //float targetAngle = Mathf.Atan2(bossdirection.x, bossdirection.z) * Mathf.Rad2Deg;
+                //float angle = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, movementstats.m_roationTime);
+                //this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            }
+            else
+            {
+                // Position to look towards
+                Quaternion targetRotation = Quaternion.LookRotation(m_cameraPosition);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, movementstats.m_rotationTime);
+            }
+
+            Vector3 m_movement = new Vector3(m_cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, m_cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
+
+            //Debug.Log(m_movement);
+            Debug.DrawRay(this.transform.position, m_movement);
+            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
+            //player.transform.position = player.transform.position + m_movement;
+            // What to pass to the animator.
+            // May need extra rules to avoid sidesteps into diagonal.
+            // They would go after the norm.
+            Vector3 toAnim = this.transform.worldToLocalMatrix * m_movement;
+            toAnim = toAnim.normalized;
+            //Debug.DrawRay(player.transform.position,toAnim);
+            //Debug.Log(toAnim);
+            float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisY));
+            animator.SetFloat("Movement/X", toAnim.x * scale);
+            animator.SetFloat("Movement/Z", toAnim.z * scale);
+        }
+        else
+        {
+            animator.SetFloat("Movement/X", 0);
+            animator.SetFloat("Movement/Z", 0);
+        }
+    }
+
+
+    private void StartRoll()
+    {
+
+    }
+
+
+
 }
 
 
