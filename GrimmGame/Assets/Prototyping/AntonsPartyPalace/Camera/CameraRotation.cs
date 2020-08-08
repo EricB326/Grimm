@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 
 // A test to see if the axis values can be edited outside of
@@ -30,10 +31,28 @@ public class CameraRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = 0, y = 0;
+        //float x = 0, y = 0;
 
         // This could be done a LOT better
-        if (Input.GetKeyDown(KeyCode.Tab))
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    if (m_lockOn)
+        //    {
+        //        m_lockOn = false;
+        //        m_camList[0].Priority = 2;
+        //        m_camList[1].Priority = 1;
+        //        //Debug.Log("Lockoff");
+        //        m_selectedCamera = 0;
+        //    }
+        //    else
+        //    {
+        //        m_lockOn = true;
+        //        m_camList[0].Priority = 1;
+        //        m_camList[1].Priority = 2;
+        //        //Debug.Log("LockOn");
+        //        m_selectedCamera = 1;
+        //    }
+        if (XCI.GetButtonDown(XboxButton.RightStick))
         {
             if (m_lockOn)
             {
@@ -51,6 +70,8 @@ public class CameraRotation : MonoBehaviour
                 //Debug.Log("LockOn");
                 m_selectedCamera = 1;
             }
+
+
             // Switching camera system
             //if(m_freeCamera.Priority == 2)
             //{
@@ -68,31 +89,37 @@ public class CameraRotation : MonoBehaviour
 
         {
             // To be replaced by xbox axis which we only need to read data on x and y out.
-            if (Input.GetKey(KeyCode.Q))
-            {
-                x++;
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                x--;
-            }
+            //if (Input.GetKey(KeyCode.Q))
+            //{
+            //    x++;
+            //}
+            //if (Input.GetKey(KeyCode.E))
+            //{
+            //    x--;
+            //}
 
-            if (Input.GetKey(KeyCode.R))
-            {
-                y++;
-            }
-            if (Input.GetKey(KeyCode.T))
-            {
-                y--;
-            }
+            //if (Input.GetKey(KeyCode.R))
+            //{
+            //    y++;
+            //}
+            //if (Input.GetKey(KeyCode.T))
+            //{
+            //    y--;
+            //}
 
-            if (x != 0)
+            float axisX = XCI.GetAxis(XboxAxis.RightStickX);
+
+            float axisY = XCI.GetAxis(XboxAxis.RightStickY);
+
+
+
+            if (axisX != 0)
             {
-                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = x;
+                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = axisX;
             }
-            else if (y != 0)
+            else if (axisY != 0)
             {
-                m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = y;
+                m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = axisY;
             }
             else // have to make sure nothing is passed through
             {

@@ -27,6 +27,26 @@ public class AnimationEventsPlayer : MonoBehaviour
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_swordHitBox.enabled = false;
         Debug.Log("Deactivated hitbox");
     }
+
+    // Bool to true and stamina drain
+    // May have visual/sound issues depending how they are handled.
+    public void IFramesOn()
+    {
+        if (EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_InvinceFrames == false)
+        {
+            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_InvinceFrames = true;
+            EntityStats.Instance.DeminishStaminaOffEntity("Player", GetComponent<PlayerMovementVariables>().m_rollStaminaDrain);
+            // And visual effects.
+        }
+    }
+
+    // Bool to false.
+    // May have visual/sound issues depending how they are handled.
+    public void IFramesOff()
+    {
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_InvinceFrames = false;
+    }
+
 }
 
 

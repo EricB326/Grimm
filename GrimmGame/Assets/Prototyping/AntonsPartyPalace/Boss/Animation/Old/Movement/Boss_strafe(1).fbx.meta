@@ -5,7 +5,10 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Boss_Strafe
+    second: _old
+  - first:
+      74: 5221828438790393315
+    second: Boss_Strafe_old
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,7 +38,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_Strafe
+      name: Boss_Strafe_old
       takeName: Take 001
       internalID: 0
       firstFrame: 1
