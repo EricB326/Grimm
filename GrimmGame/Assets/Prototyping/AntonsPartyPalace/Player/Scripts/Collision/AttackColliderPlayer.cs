@@ -8,7 +8,7 @@ using UnityEngine;
 // Once target is hit will disable itself unitl next swing.
 // Does damage to boss here.
 
-public class AttackCollider : MonoBehaviour
+public class AttackColliderPlayer : MonoBehaviour
 {
     private Collider m_collider;
 

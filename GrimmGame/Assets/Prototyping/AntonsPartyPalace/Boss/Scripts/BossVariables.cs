@@ -8,10 +8,28 @@ using UnityEngine;
 public class BossVariables : MonoBehaviour
 {
 
-    public Collider m_sword;
-    public Collider m_claw;
+    public List<Collider> m_weaponColliders;
 
-    public Collider m_leftFoot;
-    public Collider m_rightFoot;
+    //public Collider m_sword;
+    //public Collider m_claw;
+
+    //public Collider m_leftFoot;
+    //public Collider m_rightFoot;
+
+
+    private void Start()
+    {
+        //m_sword.enabled = false;
+        //m_sword.enabled = false;
+        //m_leftFoot.enabled = false;
+        //m_rightFoot.enabled = false;
+
+        foreach(Collider c in m_weaponColliders)
+        {
+            c.enabled = false;
+        }
+    }
+
+
 
 }

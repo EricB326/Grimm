@@ -7,5 +7,6 @@ public enum BossDataEnums
    AI_MAXPHASEINCREASE,
    AI_ATTACK,
    AI_PHASE,
-   AI_MOVEMENT
+   AI_ISMOVEMENT,
+   AI_ISDASHING
 }

@@ -100,7 +100,6 @@ public class BossPathfindingOld : MonoBehaviour
         }
         else
             return false;
-
     }
 
 }

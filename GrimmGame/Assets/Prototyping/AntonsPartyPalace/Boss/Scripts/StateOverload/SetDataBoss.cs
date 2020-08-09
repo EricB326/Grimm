@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// Used to turn Outputs types on when entering and off when exiting.
-
-public class SetDataPlayer : StateMachineBehaviour
+public class SetDataBoss : StateMachineBehaviour
 {
-    public PlayerDataEnums m_data;
+    public BossDataEnums m_data;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("StartMove");
         switch (m_data)
         {
-            case PlayerDataEnums.OUTPUT_ISROLLING:
+            case BossDataEnums.AI_ISMOVEMENT:
                 {
-                    animator.SetBool("Output/IsRolling", true);
+                    animator.SetBool("Ai/IsMoving", true);
                     break;
                 }
-            case PlayerDataEnums.OUTPUT_CANMOVE:
+            case BossDataEnums.AI_ISDASHING:
                 {
-                    animator.SetBool("Output/CanMove", true);
+                    animator.SetBool("Ai/IsDashing", true);
                     break;
                 }
             default:
@@ -32,25 +30,26 @@ public class SetDataPlayer : StateMachineBehaviour
         }
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    
     //}
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("StopMove");
         switch (m_data)
         {
-            case PlayerDataEnums.OUTPUT_ISROLLING:
+               
+            case BossDataEnums.AI_ISMOVEMENT:
                 {
-                    animator.SetBool("Output/IsRolling", false);
+                    animator.SetBool("Ai/IsMoving", false);
                     break;
                 }
-            case PlayerDataEnums.OUTPUT_CANMOVE:
+            case BossDataEnums.AI_ISDASHING:
                 {
-                    animator.SetBool("Output/CanMove", false);
+                    animator.SetBool("Ai/IsDashing", false);
                     break;
                 }
             default:
@@ -58,18 +57,31 @@ public class SetDataPlayer : StateMachineBehaviour
                     Debug.Log("VALUE " + m_data.ToString() + " NOT SET TO BE SET AS OF YET. IT'S ANTON'S FAULT.");
                     break;
                 }
+         
         }
     }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
+    // OnStateMove is called before OnStateMove is called on any state inside this state machine
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    // Implement code that processes and affects root motion
+    //    
     //}
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
+    // OnStateIK is called before OnStateIK is called on any state inside this state machine
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
+    //    
+    //}
+
+    // OnStateMachineEnter is called when entering a state machine via its Entry Node
+    //override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    //{
+    //    
+    //}
+
+    // OnStateMachineExit is called when exiting a state machine via its Exit Node
+    //override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    //{
+    //    
     //}
 }
