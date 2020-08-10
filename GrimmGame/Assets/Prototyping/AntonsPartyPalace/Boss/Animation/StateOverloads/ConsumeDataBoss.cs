@@ -4,40 +4,35 @@ using UnityEngine;
 
 public class ConsumeDataBoss : StateMachineBehaviour
 {
-     public List<AiDataEnums> m_dataToClear;
+     public List<BossDataEnums> m_dataToClear;
 
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        foreach (AiDataEnums clear in m_dataToClear)
+        foreach (BossDataEnums clear in m_dataToClear)
         {
             switch (clear)
             {
-                case AiDataEnums.MoveSet:
-                    {
-                        animator.SetInteger("Ai/Moveset", 0);
-                        break;
-                    }
-                case AiDataEnums.CounterAttack:
-                    {
-                        animator.SetInteger("Ai/CounterAttack", 0);
-                        break;
-                    }
-                case AiDataEnums.TimePassed:
-                    {
-                        animator.SetInteger("Ai/TimePassed", 0);
-                        break;
-                    }
-                case AiDataEnums.RemainingBudget:
-                    {
-                        animator.SetInteger("Ai/RemainingBudget", 0);
-                        break;
-                    }
-                case AiDataEnums.Attack:
+                case BossDataEnums.AI_ATTACK:
                     {
                         animator.SetInteger("Ai/Attack", 0);
+                        break;
+                    }
+                case BossDataEnums.AI_PHASE:
+                    {
+                        animator.SetInteger("Ai/AttackPhase", 0);
+                        break;
+                    }
+                case BossDataEnums.AI_ISDASHING:
+                    {
+                        animator.SetBool("Ai/IsDashing", false);
+                        break;
+                    }
+                default:
+                    {
+                        Debug.Log("VALUE " + m_dataToClear.ToString() + " NOT SET TO BE CONSUMED AS OF YET. IT'S ANTON'S FAULT.");
                         break;
                     }
             }
