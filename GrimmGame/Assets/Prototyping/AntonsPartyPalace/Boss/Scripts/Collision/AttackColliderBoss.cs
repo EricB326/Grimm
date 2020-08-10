@@ -23,9 +23,12 @@ public class AttackColliderBoss : MonoBehaviour
             // Need to check if player is not in Iframes. If so skip.
             if (!playermovementVar.m_InvinceFrames)
             {
+                // Get damage from attack list.
+                float damageToDo = 20;
+                //float damageToDo = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttackVariables.m_damage[EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttackVariables.m_attackInChain];
                 // Check if currently rolling. If so reduce damage by multiplyer
                 // If not do full damage.
-                float damageToDo = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttackVariables.m_damage[EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttackVariables.m_attackInChain];
+
                 if (playerAnimator.GetBool("Output/IsRolling"))
                 {
                     damageToDo *= playermovementVar.m_rollDamagemultiplier;
@@ -33,6 +36,7 @@ public class AttackColliderBoss : MonoBehaviour
                 EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(0);
                 EntityStats.Instance.DeminishHealthOffEntity("Player", damageToDo);
                 // Trigger on hit effects in the animation controller.
+                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().DecreaseRevengeValue();
             }
         }
     }

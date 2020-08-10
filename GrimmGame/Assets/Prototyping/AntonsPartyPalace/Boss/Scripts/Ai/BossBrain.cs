@@ -36,16 +36,32 @@ public class BossBrain : MonoBehaviour
     public GameObject m_target;
     // When was the last decision made.
     private float m_lastDecision;
+    [Range(5, 20)]
+    public float m_delay;
+    // 0 wander, 1 seek, 2 evade, 3 attack.
+    public int m_mode;
 
+    private bool m_getNewBehavior = true;
 
-
-
+    // Selected attack from phase list.
     public BossAttackVariables m_currentAttackVariables;
+
+    // Current revenge value used to determin a
+    // counter attack.
+    public int m_revengeValue = 0;
+    // Amount increased when taking damage or 
+    // changing behaviors.
+    public int m_revengeValueIncrease = 1;
+
+    public int m_revengeValueDecrease = 5;
+    // Once this is hit a counter attack happens.
+    public int m_revengeValueThreshold = 10;
 
     private void Start()
     {
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
+        m_lastDecision = 0;
     }
 
 
@@ -57,34 +73,67 @@ public class BossBrain : MonoBehaviour
         // to launch the attack so where is that stored?
         // Damage can be stored on the animation stateoverloads.
         // I'VE GOT IT!
-        // The range will just be a value passed in to the animator at all times
-        // and be used as a condition to get into the next attacks.
-        // So there will be 3 conditions before an attack can be launched.
-        Vector3 directionToMove = m_target.transform.position - transform.position;
 
-        if (m_animator.GetBool("Ai/IsMoving"))
+        Vector3 directionToMove = m_target.transform.position - transform.position;
+        if (!m_animator.GetBool("Ai/IsAttacking"))
         {
             Quaternion targetRotation = Quaternion.LookRotation(directionToMove);
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
         }
 
-
-        if (directionToMove.magnitude > m_desiredRange)
+        if (m_revengeValue < m_revengeValueThreshold)
         {
-            directionToMove = this.transform.worldToLocalMatrix * directionToMove.normalized;
-
-            Debug.DrawRay(this.transform.position, directionToMove);
-
-            m_animator.SetFloat("Movement/Z", directionToMove.z);
-            m_animator.SetFloat("Movement/X", directionToMove.x);
+            // Rotates towards target if capabale of it.
+            if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
+            {
+                m_revengeValue += m_revengeValueIncrease;
+                m_mode = Random.Range(0, 3);
+                m_getNewBehavior = true;
+            }
+            // Regular ai behaviors
+            DoThing(directionToMove);
         }
         else
         {
-            m_animator.SetFloat("Movement/Z", 0);
-            m_animator.SetFloat("Movement/X", 0);
+            m_revengeValue -= m_revengeValueThreshold;
+            CounterAttack(directionToMove);
         }
     }
-    
+
+    private void DoThing(Vector3 a_directionToMove)
+    {
+        switch (m_mode)
+        {
+            case 0: // Wander state - Walk left or right facing player
+                if (m_getNewBehavior)
+                {
+                    Wander();
+                    m_lastDecision = Time.time + 4;
+                    m_getNewBehavior = false;
+                }
+                break;
+            case 1: // Dodge state
+                if (m_getNewBehavior)
+                {
+                    Dodge(a_directionToMove);
+                }
+                break;
+            case 2: // Attack
+                {
+                    Attack(a_directionToMove);
+                }
+                break;
+            default:
+                Debug.Log("How did we get here?");
+                break;
+        }
+    // Seek towards target if range not met
+    // m_animator.SetFloat("Movement/Z", a_directionToMove.z);
+    // m_animator.SetFloat("Movement/X", a_directionToMove.x);
+    //a_directionToMove = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
+    //m_animator.SetFloat("Movement/Z", 0);
+    //m_animator.SetFloat("Movement/X", 0);
+    }
 
 
     // Returns true if within range
@@ -124,5 +173,90 @@ public class BossBrain : MonoBehaviour
             return false;
     }
 
+    // Will dodge away from player.
+    public void Dodge(Vector3 a_directionToMove)
+    {
+        Vector3 thing = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
+        if (thing.x <= 0)
+        {
+            thing.x = -1;
+        }
+        else
+        {
+            thing.x = 1;
+        }
+        m_animator.SetFloat("Movement/Z", 0);
+        m_animator.SetFloat("Movement/X", thing.x);
 
+        m_animator.SetBool("Ai/IsDashing", true);
+        m_getNewBehavior = false;
+    }
+
+    // More like circle but shits okay
+    public void Wander()
+    {
+        int dir = Random.Range(0, 2);
+        if (dir == 0)
+        {
+            // Move left
+            m_animator.SetFloat("Movement/Z", 0);
+            m_animator.SetFloat("Movement/X", 1);
+        }
+        else
+        {
+            // Move right
+            m_animator.SetFloat("Movement/Z", 0);
+            m_animator.SetFloat("Movement/X", -1);
+        }
+    }
+
+    // Seek and attack together as one.
+    // Should seperate seek out.
+    public void Attack(Vector3 a_directionToMove)
+    {
+        if (!CalculateDistance(a_directionToMove))
+        {
+            a_directionToMove = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
+            m_animator.SetFloat("Movement/Z", a_directionToMove.z);
+            m_animator.SetFloat("Movement/X", a_directionToMove.x);
+            m_animator.SetInteger("Ai/Attack", 0);
+            m_animator.SetBool("Ai/IsPursuing", true);
+            m_animator.SetFloat("ForwardMultiplyer", 2);
+        }
+        else
+        {
+            CorrectFacing();
+            m_animator.SetFloat("Movement/Z", 0);
+            m_animator.SetFloat("Movement/X", 0);
+            m_animator.SetInteger("Ai/Attack", 1);
+            m_animator.SetBool("Ai/IsPursuing", false);
+            m_animator.SetFloat("ForwardMultiplyer", 1);
+            m_lastDecision = 0;
+        }
+    }
+
+
+    // Dodge away then attack.
+    public void CounterAttack(Vector3 a_directionToMove)
+    {
+        Dodge(a_directionToMove);
+        m_mode = 2; // ATTACK MODE GO
+        Attack(a_directionToMove);
+    }
+
+
+    public void IncreaseRevengeValue()
+    {
+        m_revengeValue += m_revengeValueIncrease;
+    }
+
+    // If boss lands a hit on player should decrease value
+    public void DecreaseRevengeValue()
+    {
+        m_revengeValue -= m_revengeValueDecrease;
+        if(m_revengeValue < 0)
+        {
+            m_revengeValue = 0;
+        }
+    }
 }

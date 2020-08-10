@@ -9,7 +9,6 @@ public class SetDataBoss : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("StartMove");
         switch (m_data)
         {
             case BossDataEnums.AI_ISMOVEMENT:
@@ -20,6 +19,11 @@ public class SetDataBoss : StateMachineBehaviour
             case BossDataEnums.AI_ISDASHING:
                 {
                     animator.SetBool("Ai/IsDashing", true);
+                    break;
+                }
+            case BossDataEnums.AI_ISATTACKING:
+                {
+                    animator.SetBool("Ai/IsAttacking", true);
                     break;
                 }
             default:
@@ -38,10 +42,8 @@ public class SetDataBoss : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("StopMove");
         switch (m_data)
         {
-               
             case BossDataEnums.AI_ISMOVEMENT:
                 {
                     animator.SetBool("Ai/IsMoving", false);
@@ -52,8 +54,13 @@ public class SetDataBoss : StateMachineBehaviour
                     animator.SetBool("Ai/IsDashing", false);
                     break;
                 }
-            default:
+            case BossDataEnums.AI_ISATTACKING:
                 {
+                    animator.SetBool("Ai/IsAttacking", false);
+                    break;
+                }
+            default:
+                { 
                     Debug.Log("VALUE " + m_data.ToString() + " NOT SET TO BE SET AS OF YET. IT'S ANTON'S FAULT.");
                     break;
                 }

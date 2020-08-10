@@ -8,5 +8,6 @@ public enum BossDataEnums
    AI_ATTACK,
    AI_PHASE,
    AI_ISMOVEMENT,
-   AI_ISDASHING
+   AI_ISDASHING,
+   AI_ISATTACKING
 }

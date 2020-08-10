@@ -29,6 +29,9 @@ public class AttackColliderPlayer : MonoBehaviour
             Debug.Log("Hit Boss");
             EntityStats.Instance.DeminishHealthOffEntity("Boss", EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_attackDamage);
             EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<AnimationEventsPlayer>().DeavtivateHitBox(0);
+            
+            // Should be inside an on hit event.
+            EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().IncreaseRevengeValue();
             // Need to trigger visual effects on boss taking damage.
             // Should have a OnHitEffects with a list of things to do.
         }

@@ -25,6 +25,11 @@ public class ConsumeDataBoss : StateMachineBehaviour
                         animator.SetInteger("Ai/AttackPhase", 0);
                         break;
                     }
+                case BossDataEnums.AI_ISDASHING:
+                    {
+                        animator.SetBool("Ai/IsDashing", false);
+                        break;
+                    }
                 default:
                     {
                         Debug.Log("VALUE " + m_dataToClear.ToString() + " NOT SET TO BE CONSUMED AS OF YET. IT'S ANTON'S FAULT.");

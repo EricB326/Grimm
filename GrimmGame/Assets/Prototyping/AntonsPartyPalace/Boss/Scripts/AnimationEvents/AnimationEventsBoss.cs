@@ -10,12 +10,14 @@ public class AnimationEventsBoss : MonoBehaviour
 {
     public void ActivateHitBox(int a_colliderNumber)
     {
-        GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
-        BossBrain brain = boss.GetComponent<BossBrain>();
+       GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
+       BossBrain brain = boss.GetComponent<BossBrain>();
 
-       int colliderToModify = (int)brain.m_currentAttackVariables.m_colliderToActivate[brain.m_currentAttackVariables.m_attackInChain];
+        // Need to get correct colider from attack stored within boss.
+        // int colliderToModify = (int)brain.m_currentAttackVariables.m_colliderToActivate[brain.m_currentAttackVariables.m_attackInChain];
 
-        boss.GetComponent<BossVariables>().m_weaponColliders[colliderToModify].enabled = true;
+        boss.GetComponent<BossVariables>().m_weaponColliders[a_colliderNumber].enabled = true;
+        //boss.GetComponent<BossVariables>().m_weaponColliders[colliderToModify].enabled = true;
     }
 
     public void DeavtivateHitBox(int a_colliderNumber)
@@ -23,9 +25,11 @@ public class AnimationEventsBoss : MonoBehaviour
         GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
         BossBrain brain = boss.GetComponent<BossBrain>();
       
-        int colliderToModify = (int)brain.m_currentAttackVariables.m_colliderToActivate[brain.m_currentAttackVariables.m_attackInChain];
+        // Need to get correct colider from attack stored within boss.
+        // int colliderToModify = (int)brain.m_currentAttackVariables.m_colliderToActivate[brain.m_currentAttackVariables.m_attackInChain];
 
-        boss.GetComponent<BossVariables>().m_weaponColliders[colliderToModify].enabled = false;
+        boss.GetComponent<BossVariables>().m_weaponColliders[a_colliderNumber].enabled = false;
+        //boss.GetComponent<BossVariables>().m_weaponColliders[colliderToModify].enabled = false;
         //boss.GetComponent<BossBrain>().m_currentAttackVariables.m_attackInChain++;
     }
 }
