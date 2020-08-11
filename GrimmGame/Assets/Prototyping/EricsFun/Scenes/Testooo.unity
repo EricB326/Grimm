@@ -204,6 +204,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 039ef2863f247e240b90b63aaecb3561, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c204fc14b9c07f438ece2f351a8561e, type: 3}
+--- !u!1 &427184418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2c204fc14b9c07f438ece2f351a8561e,
+    type: 3}
+  m_PrefabInstance: {fileID: 253925881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1112227541
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,3 +487,89 @@ MonoBehaviour:
   kernelSize: 5
   lightAngle: 1
   maxDepthBias: 0.001
+--- !u!1 &1936930660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1936930662}
+  - component: {fileID: 1936930661}
+  - component: {fileID: 1936930663}
+  m_Layer: 0
+  m_Name: FakeBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1936930661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936930660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3018dfa8120f7524bada7482138e57b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossAttackList:
+  - attackName: Lung
+    animationNumber: 0
+    attackDamage: 20
+    attackRange: 100
+    collidersToModify: 00000000
+  - attackName: Sweep
+    animationNumber: 1
+    attackDamage: 10
+    attackRange: 100
+    collidersToModify: 0000000001000000
+--- !u!4 &1936930662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936930660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6384922, y: 1.9857744, z: 0.1013429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1936930663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936930660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9037ad07fa938d44ba9f7f715312ebbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffectList:
+  - name: Knockback Weak
+    hitEffect: 0
+    animationsToPlay:
+    - {fileID: 427184418}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    particlesToPlay:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 1112227541}
+    - {fileID: 0}
