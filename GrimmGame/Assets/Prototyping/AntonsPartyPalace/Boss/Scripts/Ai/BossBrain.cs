@@ -44,13 +44,13 @@ public class BossBrain : MonoBehaviour
 
     public List<BossPhase> m_bossPhaseList;
 
-    public BossPhase m_curreentPhase;
+    public int m_currentPhase;
 
     public int m_revengeValue = 0;
 
     private void Start()
     {
-        m_curreentPhase = m_bossPhaseList[0];
+        m_currentPhase = 0;
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_lastDecision = 0;
@@ -62,7 +62,7 @@ public class BossBrain : MonoBehaviour
         // Get the decision.
         if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
         {
-            m_revengeValue += m_curreentPhase.m_revengeValueIncrease;
+            m_revengeValue += m_bossPhaseList[m_currentPhase].m_revengeValueIncrease;
             m_mode = Random.Range(0, 3);
             m_getNewBehavior = true;
         }
@@ -77,12 +77,12 @@ public class BossBrain : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
         }
 
-        if (m_revengeValue < m_curreentPhase.m_revengeValueThreshold)
+        if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_revengeValueThreshold)
         {
             // Rotates towards target if capabale of it.
             if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
             {
-                m_revengeValue += m_curreentPhase.m_revengeValueIncrease;
+                m_revengeValue +=  m_bossPhaseList[m_currentPhase].m_revengeValueIncrease;
                 m_mode = Random.Range(0, 3);
                 m_getNewBehavior = true;
             }
@@ -91,7 +91,7 @@ public class BossBrain : MonoBehaviour
         }
         else
         {
-            m_revengeValue -= m_curreentPhase.m_revengeValueThreshold;
+            m_revengeValue -= m_bossPhaseList[m_currentPhase].m_revengeValueThreshold;
             CounterAttack(directionToMove);
         }
     }
@@ -243,13 +243,13 @@ public class BossBrain : MonoBehaviour
 
     public void IncreaseRevengeValue()
     {
-        m_revengeValue += m_curreentPhase.m_revengeValueIncrease;
+        m_revengeValue += m_bossPhaseList[m_currentPhase].m_revengeValueIncrease;
     }
 
     // If boss lands a hit on player should decrease value
     public void DecreaseRevengeValue()
     {
-        m_revengeValue -= m_curreentPhase.m_revengeValueDecrease;
+        m_revengeValue -= m_bossPhaseList[m_currentPhase].m_revengeValueDecrease;
         if(m_revengeValue < 0)
         {
             m_revengeValue = 0;

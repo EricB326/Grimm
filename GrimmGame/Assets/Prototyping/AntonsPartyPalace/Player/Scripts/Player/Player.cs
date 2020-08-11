@@ -16,17 +16,13 @@ using XboxCtrlrInput;
 [RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
-  
     private Animator m_animator;
 
     private float turnSmoothVelocity;
          
     private Vector3 m_storedRollDirection;
+
     private float m_rollMultipliyer;
-
-
-
-
 
     private void Start()
     {
@@ -92,7 +88,6 @@ public class Player : MonoBehaviour
         {
             LockOnLook();
         }
-
 
         // Oh god this is an if else loop that is cancer. Why did I do this?
         // Needs to occur only if the player presses the input and is not currently rolling
@@ -160,6 +155,9 @@ public class Player : MonoBehaviour
             {
                 FreeLook(a_axisX, a_axisY);
             }
+
+            //RaycastHit hit;
+            //r
 
             Vector3 m_movement = new Vector3(cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
 
@@ -244,8 +242,8 @@ public class Player : MonoBehaviour
     // Character rotates towards direction they're moving.
     private void FreeLook(float a_axisX, float a_axisY)
     {
-        Vector3 camerax = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
-        Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisY);
+        Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * a_axisX);
+        Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * a_axisY);
         Vector3 cameraPosition = (cameraz + camerax);
 
         Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
