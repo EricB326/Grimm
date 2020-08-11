@@ -12,7 +12,6 @@ public class BossBrain : MonoBehaviour
     // Components to get
     private Animator m_animator;
 
-
     [Range(0, 1)]
     public float m_rotationSpeed;
     [Header("DEBUG. VALUES PASSED IN BY ANIMATOR")]
@@ -36,29 +35,22 @@ public class BossBrain : MonoBehaviour
     public GameObject m_target;
     // When was the last decision made.
     private float m_lastDecision;
-    [Range(5, 20)]
-    public float m_delay;
     // 0 wander, 1 seek, 2 evade, 3 attack.
     public int m_mode;
-
+    
     private bool m_getNewBehavior = true;
-
     // Selected attack from phase list.
     public BossAttackVariables m_currentAttackVariables;
 
-    // Current revenge value used to determin a
-    // counter attack.
-    public int m_revengeValue = 0;
-    // Amount increased when taking damage or 
-    // changing behaviors.
-    public int m_revengeValueIncrease = 1;
+    public List<BossPhase> m_bossPhaseList;
 
-    public int m_revengeValueDecrease = 5;
-    // Once this is hit a counter attack happens.
-    public int m_revengeValueThreshold = 10;
+    public BossPhase m_curreentPhase;
+
+    public int m_revengeValue = 0;
 
     private void Start()
     {
+        m_curreentPhase = m_bossPhaseList[0];
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_lastDecision = 0;
@@ -67,12 +59,16 @@ public class BossBrain : MonoBehaviour
 
     private void Update()
     {
-        // So the ai needs to get information about it's next attack
-        // from the animation states themselves.
-        // Therefore the boss needs to know if it is within range(both angle and distance)
-        // to launch the attack so where is that stored?
-        // Damage can be stored on the animation stateoverloads.
-        // I'VE GOT IT!
+        // Get the decision.
+        if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
+        {
+            m_revengeValue += m_curreentPhase.m_revengeValueIncrease;
+            m_mode = Random.Range(0, 3);
+            m_getNewBehavior = true;
+        }
+
+
+
 
         Vector3 directionToMove = m_target.transform.position - transform.position;
         if (!m_animator.GetBool("Ai/IsAttacking"))
@@ -81,12 +77,12 @@ public class BossBrain : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
         }
 
-        if (m_revengeValue < m_revengeValueThreshold)
+        if (m_revengeValue < m_curreentPhase.m_revengeValueThreshold)
         {
             // Rotates towards target if capabale of it.
             if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
             {
-                m_revengeValue += m_revengeValueIncrease;
+                m_revengeValue += m_curreentPhase.m_revengeValueIncrease;
                 m_mode = Random.Range(0, 3);
                 m_getNewBehavior = true;
             }
@@ -95,7 +91,7 @@ public class BossBrain : MonoBehaviour
         }
         else
         {
-            m_revengeValue -= m_revengeValueThreshold;
+            m_revengeValue -= m_curreentPhase.m_revengeValueThreshold;
             CounterAttack(directionToMove);
         }
     }
@@ -247,13 +243,13 @@ public class BossBrain : MonoBehaviour
 
     public void IncreaseRevengeValue()
     {
-        m_revengeValue += m_revengeValueIncrease;
+        m_revengeValue += m_curreentPhase.m_revengeValueIncrease;
     }
 
     // If boss lands a hit on player should decrease value
     public void DecreaseRevengeValue()
     {
-        m_revengeValue -= m_revengeValueDecrease;
+        m_revengeValue -= m_curreentPhase.m_revengeValueDecrease;
         if(m_revengeValue < 0)
         {
             m_revengeValue = 0;

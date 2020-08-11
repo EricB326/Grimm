@@ -16,7 +16,5 @@ public class OnHitBoss : MonoBehaviour
             m_blood.Play();
         }
     }
-
-
 }
 
