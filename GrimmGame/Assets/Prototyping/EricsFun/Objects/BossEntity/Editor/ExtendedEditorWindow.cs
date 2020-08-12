@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//========== Grimm - BossAttacks.cs - 11/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//=========================================================//
 using UnityEngine;
 using UnityEditor;
 
@@ -51,11 +53,11 @@ public class ExtendedEditorWindow : EditorWindow
 			}
 		}
 
-		if (GUILayout.Button("Add Item"))
+		if (GUILayout.Button("Add Element"))
 		{
 			_property.InsertArrayElementAtIndex(_property.arraySize);
 		}
-		if (GUILayout.Button("Remove Item") && _property.arraySize > 0)
+		if (GUILayout.Button("Remove Element") && _property.arraySize > 0)
 		{
 			_property.DeleteArrayElementAtIndex(_property.arraySize - 1);
 		}

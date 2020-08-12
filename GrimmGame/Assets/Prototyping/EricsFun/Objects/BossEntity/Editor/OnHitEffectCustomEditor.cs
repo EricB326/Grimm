@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//========== Grimm - BossAttacks.cs - 11/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//=========================================================//
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
 
 // Might use for single editors, allows for double-clicking to open the window.
 //public class AssetHandler

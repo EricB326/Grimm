@@ -1,5 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿//========== Grimm - OnHitEffects.cs - 11/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//==========================================================//
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;

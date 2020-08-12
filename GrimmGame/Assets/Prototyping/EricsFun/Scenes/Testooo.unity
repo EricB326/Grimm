@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2c204fc14b9c07f438ece2f351a8561e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0815554
+      value: -4.459
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2c204fc14b9c07f438ece2f351a8561e,
         type: 3}
@@ -215,11 +215,11 @@ GameObject:
   - component: {fileID: 450002799}
   - component: {fileID: 450002798}
   - component: {fileID: 450002797}
+  - component: {fileID: 450002800}
   - component: {fileID: 450002796}
   - component: {fileID: 450002795}
   - component: {fileID: 450002794}
   - component: {fileID: 450002793}
-  - component: {fileID: 450002800}
   m_Layer: 0
   m_Name: Boss?
   m_TagString: Untagged
@@ -240,7 +240,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1698930804}
-  availableAttacks: {fileID: 450002795}
+  phaseAttacks:
+  - attackName: 
+    animationNumber: 0
+    attackDamage: 0
+    attackRange: 0
+    attackEffectList: 
+    collidersToModify: 
+  - attackName: 
+    animationNumber: 0
+    attackDamage: 0
+    attackRange: 0
+    attackEffectList: 
+    collidersToModify: 
 --- !u!114 &450002794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +272,18 @@ MonoBehaviour:
     particlesToPlay:
     - {fileID: 1365131416}
     soundsToPlay: []
+  - name: Knockback Weak
+    hitEffect: 0
+    animationsToPlay: {fileID: 0}
+    particlesToPlay:
+    - {fileID: 1365131416}
+    soundsToPlay: []
+  - name: Knockback Weak
+    hitEffect: 0
+    animationsToPlay: {fileID: 0}
+    particlesToPlay:
+    - {fileID: 1365131416}
+    soundsToPlay: []
 --- !u!114 &450002795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,22 +293,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 450002792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3018dfa8120f7524bada7482138e57b9, type: 3}
+  m_Script: {fileID: 11500000, guid: b7340ab7a6084574db1ab778253e3869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossAttackList:
-  - attackName: Swing
-    animationNumber: 10
-    attackDamage: 20
-    attackRange: 2
-    attackEffectList: 00000000
-    collidersToModify: 
-  - attackName: Lung
-    animationNumber: 13
-    attackDamage: 10
-    attackRange: 5
-    attackEffectList: 01000000
-    collidersToModify: 
+  m_rotationSpeed: 0.368
+  m_desiredRange: 0
+  m_target: {fileID: 0}
+  m_currentAttackVariables: {fileID: 0}
+  m_bossPhaseList:
+  - m_name: 
+    m_increase: 0
+    m_decrease: 0
+    m_threshold: 0
+    m_phaseAttacks: []
+  m_actionQue: 
+  m_currentAction: 0
+  m_currentPhase: 0
+  m_revengeValue: 0
 --- !u!65 &450002796
 BoxCollider:
   m_ObjectHideFlags: 0
