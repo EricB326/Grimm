@@ -4,6 +4,7 @@
 //=========================================================//
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
@@ -18,8 +19,8 @@ public class BossAttacks : MonoBehaviour
         public int animationNumber;
         public float attackDamage;
         public float attackRange;
+        public List<HitEffectsEnum> attackEffectList;
         public List<BossWeaponColliderEnums> collidersToModify;
-        //public List<OnHitEffects> attackEffectList; -- To be implemented.
     }
 
     /* Store a list of the attacks the boss can do as well as some extra values.
@@ -97,6 +98,40 @@ public class BossAttacks : MonoBehaviour
 
         int numberOfColliders = bossAttackList[_attackIndex].collidersToModify.Count;
         return numberOfColliders;
+    }
+
+    public string GetAttackName(int _attackIndex)
+    {
+        if (!DoesAttackIndexExists(_attackIndex))
+            return string.Empty;
+
+        return bossAttackList[_attackIndex].attackName;
+    }
+
+    public int GetNumberOfAttacksInList()
+    {
+        return bossAttackList.Count;
+    }
+
+    public void ResolveOnHitEffects(int _attackIndex, GameObject _target, Vector3 _collisionPoint)
+    {
+        if (!DoesAttackIndexExists(_attackIndex))
+            return;
+
+        for (int i = 0; i < bossAttackList[_attackIndex].attackEffectList.Count; i++)
+        {
+            switch (bossAttackList[_attackIndex].attackEffectList[i])
+            {
+                case HitEffectsEnum.KNOCKBACK_WEAK:
+                    OnHitEffects.Instance.ResolveKnockbackWeak(_target, _collisionPoint);
+                    break;
+                case HitEffectsEnum.KNOCKBACK_STRONG:
+                    OnHitEffects.Instance.ResolveKnockbackStrong(_target);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     /* @brief Checks to see if the index passed is valid or not.
