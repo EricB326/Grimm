@@ -13,13 +13,15 @@ public class BossPhase
     public string m_name;
     // Amount increased when taking damage or 
     // changing behaviors.
-    public int m_revengeValueIncrease;
+
+    [Header("REVENGE VALUE")]
+    public int m_increase;
     // Value decreases
-    public int m_revengeValueDecrease;
+    public int m_decrease;
     // Once this is hit a counter attack happens.
-    public int m_revengeValueThreshold;
+    public int m_threshold;
     // public List<BossAttacks> m_;
-    public int m_delayBetweenDecisions;
+    //public int m_delayBetweenDecisions;
     // The list of phase attacks?
     public List<BossAttacks> m_phaseAttacks;
 

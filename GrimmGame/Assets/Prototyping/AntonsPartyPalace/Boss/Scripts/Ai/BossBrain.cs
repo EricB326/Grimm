@@ -35,14 +35,19 @@ public class BossBrain : MonoBehaviour
     public GameObject m_target;
     // When was the last decision made.
     private float m_lastDecision;
-    // 0 wander, 1 seek, 2 evade, 3 attack.
-    public int m_mode;
     
     private bool m_getNewBehavior = true;
     // Selected attack from phase list.
     public BossAttackVariables m_currentAttackVariables;
 
     public List<BossPhase> m_bossPhaseList;
+
+
+    public List<int> m_actionQue;
+
+    // 0 wander, 1 seek, 2 evade, 3 attack.
+    public int m_currentAction;
+    
 
     public int m_currentPhase;
 
@@ -62,8 +67,8 @@ public class BossBrain : MonoBehaviour
         // Get the decision.
         if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
         {
-            m_revengeValue += m_bossPhaseList[m_currentPhase].m_revengeValueIncrease;
-            m_mode = Random.Range(0, 3);
+            m_revengeValue += m_bossPhaseList[m_currentPhase].m_increase;
+            m_currentAction = Random.Range(0, 3);
             m_getNewBehavior = true;
         }
 
@@ -77,13 +82,13 @@ public class BossBrain : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
         }
 
-        if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_revengeValueThreshold)
+        if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_increase)
         {
             // Rotates towards target if capabale of it.
             if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
             {
-                m_revengeValue +=  m_bossPhaseList[m_currentPhase].m_revengeValueIncrease;
-                m_mode = Random.Range(0, 3);
+                m_revengeValue +=  m_bossPhaseList[m_currentPhase].m_increase;
+                m_currentAction = Random.Range(0, 3);
                 m_getNewBehavior = true;
             }
             // Regular ai behaviors
@@ -91,21 +96,25 @@ public class BossBrain : MonoBehaviour
         }
         else
         {
-            m_revengeValue -= m_bossPhaseList[m_currentPhase].m_revengeValueThreshold;
+            m_revengeValue =- m_bossPhaseList[m_currentPhase].m_threshold;
             CounterAttack(directionToMove);
         }
     }
 
     private void DoThing(Vector3 a_directionToMove)
     {
-        switch (m_mode)
+        switch (m_currentAction)
         {
             case 0: // Wander state - Walk left or right facing player
-                if (m_getNewBehavior)
+                if (m_currentAction == 0) // If current action correct do thing.
                 {
                     Wander();
                     m_lastDecision = Time.time + 4;
                     m_getNewBehavior = false;
+                }
+                else // Store action for later
+                {
+                    
                 }
                 break;
             case 1: // Dodge state
@@ -172,17 +181,17 @@ public class BossBrain : MonoBehaviour
     // Will dodge away from player.
     public void Dodge(Vector3 a_directionToMove)
     {
-        Vector3 thing = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
-        if (thing.x <= 0)
+        //Vector3 thing = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
+        if (a_directionToMove.x <= 0)
         {
-            thing.x = -1;
+            a_directionToMove.x = -1;
         }
         else
         {
-            thing.x = 1;
+            a_directionToMove.x = 1;
         }
         m_animator.SetFloat("Movement/Z", 0);
-        m_animator.SetFloat("Movement/X", thing.x);
+        m_animator.SetFloat("Movement/X", a_directionToMove.x);
 
         m_animator.SetBool("Ai/IsDashing", true);
         m_getNewBehavior = false;
@@ -218,6 +227,7 @@ public class BossBrain : MonoBehaviour
             m_animator.SetInteger("Ai/Attack", 0);
             m_animator.SetBool("Ai/IsPursuing", true);
             m_animator.SetFloat("ForwardMultiplyer", 2);
+            m_getNewBehavior = false;
         }
         else
         {
@@ -228,6 +238,7 @@ public class BossBrain : MonoBehaviour
             m_animator.SetBool("Ai/IsPursuing", false);
             m_animator.SetFloat("ForwardMultiplyer", 1);
             m_lastDecision = 0;
+            m_getNewBehavior = true;
         }
     }
 
@@ -236,23 +247,25 @@ public class BossBrain : MonoBehaviour
     public void CounterAttack(Vector3 a_directionToMove)
     {
         Dodge(a_directionToMove);
-        m_mode = 2; // ATTACK MODE GO
         Attack(a_directionToMove);
     }
 
 
     public void IncreaseRevengeValue()
     {
-        m_revengeValue += m_bossPhaseList[m_currentPhase].m_revengeValueIncrease;
+        m_revengeValue += m_bossPhaseList[m_currentPhase].m_increase;
     }
 
     // If boss lands a hit on player should decrease value
     public void DecreaseRevengeValue()
     {
-        m_revengeValue -= m_bossPhaseList[m_currentPhase].m_revengeValueDecrease;
+        m_revengeValue -= m_bossPhaseList[m_currentPhase].m_increase;
         if(m_revengeValue < 0)
         {
             m_revengeValue = 0;
         }
     }
 }
+
+
+// Boss needs a que for actions

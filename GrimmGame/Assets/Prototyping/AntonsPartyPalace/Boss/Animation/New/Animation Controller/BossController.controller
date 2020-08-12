@@ -266,7 +266,7 @@ AnimatorStateMachine:
   m_AnyStatePosition: {x: 50, y: 70, z: 0}
   m_EntryPosition: {x: 50, y: 130, z: 0}
   m_ExitPosition: {x: 660, y: 70, z: 0}
-  m_ParentStateMachinePosition: {x: 350, y: 10, z: 0}
+  m_ParentStateMachinePosition: {x: 370, y: -90, z: 0}
   m_DefaultState: {fileID: -3046808609392732113}
 --- !u!1101 &-4694747692917479841
 AnimatorStateTransition:
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f7d132324cc54cb4ceef11851e5a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dataToClear: 04000000
+  m_dataToClear: 040000000600000007000000
 --- !u!114 &1237198419525532713
 MonoBehaviour:
   m_ObjectHideFlags: 1
