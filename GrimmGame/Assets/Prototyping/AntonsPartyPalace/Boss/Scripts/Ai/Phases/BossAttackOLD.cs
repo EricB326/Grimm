@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 
-public class BossAttack : MonoBehaviour
+public class BossAttackOLD : MonoBehaviour
 {
     // Mostly to easily navigate list.
     public string m_name;
@@ -19,6 +19,4 @@ public class BossAttack : MonoBehaviour
     // Number of attacks.
     // May be redundant if attacks are and needs more thinking.
     public int m_numberOfAttacks;
-
-   
 }
