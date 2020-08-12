@@ -156,8 +156,27 @@ public class Player : MonoBehaviour
                 FreeLook(a_axisX, a_axisY);
             }
 
-            //RaycastHit hit;
-            //r
+
+            // Adjust movement direction by angle below 
+            // Eg angle is 45 therfore forward is 45 up.
+            // cast in the direciton moved and cast straight down.
+            // Cast straight down
+            // cast down in direciton heading.
+            // If conatct position in direciton heading higher pos movement
+            // If conatct position in direciton heading lower neg movement
+            RaycastHit hit1;
+            Debug.DrawLine(transform.position, transform.up);
+            if (Physics.Raycast(transform.position, -transform.up, out hit1, 2)) // Cast down
+            {
+                Debug.Log(hit1.point);
+                RaycastHit hit2;
+                if (Physics.Raycast(transform.position + (cameraPosition.normalized/2), -transform.up, out hit2, 2)) // cast in direction
+                {
+
+                }
+
+            }
+            
 
             Vector3 m_movement = new Vector3(cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
 

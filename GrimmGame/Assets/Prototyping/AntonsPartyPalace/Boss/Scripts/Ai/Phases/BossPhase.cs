@@ -20,6 +20,19 @@ public class BossPhase
     public int m_revengeValueThreshold;
     // public List<BossAttacks> m_;
     public int m_delayBetweenDecisions;
+    // The list of phase attacks?
+    public List<BossAttacks> m_phaseAttacks;
 
-    //ublic List<>
+
+
+
+    public void EvaluateAtack()
+    {
+        // Needs to go through attacks in phase and evaluate their suitability
+        // Range needed to move like a bell curve around the target.
+        //
+        
+    }
+
+
 }
