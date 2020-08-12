@@ -119,7 +119,7 @@ public class BossBrain : MonoBehaviour
                     m_actionQue.Remove(0);
                 break;
             case 3: // Seek
-                if (Seek())
+                if (Seek(a_directionToMove))
                     m_actionQue.Remove(0);
                 break;
             default:
@@ -268,12 +268,16 @@ public class BossBrain : MonoBehaviour
     }
 
     // Move towards targets.
-    private bool Seek()
+    private bool Seek(Vector3 a_directionToMove)
     {
-        // if()
-        // return true if within range
-        // else return false.
-        return true;
+        if(CalculateDistance(a_directionToMove))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     // Dodge away then attack.
