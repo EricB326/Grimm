@@ -25,8 +25,8 @@ public class BossPhase
     // The list of phase attacks?
     public List<BossAttacks> m_phaseAttacks;
 
-
-
+    // How long boss wanders.
+    public float m_wanderTime;
 
     public void EvaluateAtack()
     {
