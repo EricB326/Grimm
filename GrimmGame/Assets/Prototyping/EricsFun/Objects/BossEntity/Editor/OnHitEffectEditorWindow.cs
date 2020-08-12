@@ -31,7 +31,7 @@ public class OnHitEffectEditorWindow : ExtendedEditorWindow
         if (selectedProperty != null)
             DrawSelectedPropertiesPanel();
         else
-            EditorGUILayout.LabelField("Select an item from the list");
+            EditorGUILayout.LabelField("Select/Add an item from the list");
 
         EditorGUILayout.EndVertical();
         EditorGUILayout.EndHorizontal();
