@@ -32,7 +32,7 @@ public class BossPhase
     {
         // Needs to go through attacks in phase and evaluate their suitability
         // Range needed to move like a bell curve around the target.
-        //
+
         
     }
 

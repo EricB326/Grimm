@@ -34,23 +34,18 @@ public class BossBrain : MonoBehaviour
     public GameObject m_target;
     // When was the last decision made.
 
-    // Selected attack from phase list.
-    public BossAttackVariables m_currentAttackVariables;
-
-    public List<BossPhase> m_bossPhaseList;
-
-    public List<int> m_actionQue;
+    public List<BossPhase> m_bossPhaseList = new List<BossPhase>();
+    // List of actions
+    // Will one day become a enums.
+    public List<int> m_actionQue = new List<int>();
 
     // When a state requires 2 steps.
     private bool m_continue = false;
     // If behaviors require a timer.
     private float m_timeOut = 0;
     // Should be empty unless attack in 
-    private BossAttacks m_currentAttack;
+    private BossAttacks m_currentAttack = null;
 
-    // 0 wander, 1 seek, 2 evade, 3 attack.
-    public int m_currentAction;
-    
     public int m_currentPhase;
 
     public int m_revengeValue = 0;
@@ -65,14 +60,11 @@ public class BossBrain : MonoBehaviour
 
     private void Update()
     {
-        // If action in list do action
-
-        // else decide on next action
+        
         // Wait(x sec) wander(x sec) randomly attack or do preset action list
         if(m_actionQue.Count == 0)
         {
-            // Either get list of pre determined combinations.
-            // Or randomly choose attack
+            //m_actionQue.Add(0);
         }
         
         // Ideally the bosses movements will then give movements direction
@@ -81,7 +73,7 @@ public class BossBrain : MonoBehaviour
 
         if (!m_animator.GetBool("Ai/IsAttacking"))
         {
-            RotateBoss(directionToMove);
+            //RotateBoss(directionToMove);
         }
 
         if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_threshold)
@@ -104,26 +96,39 @@ public class BossBrain : MonoBehaviour
 
     private void DoThing(Vector3 a_directionToMove)
     {
-        switch (m_currentAction)
+        if(m_actionQue.Count != 0)
+        switch (m_actionQue[0])
         {
             case 0: // Wander
                 if (Wander())
-                    m_actionQue.Remove(0);
+                {
+                    Debug.Log(m_actionQue[0]);
+                    m_actionQue.RemoveAt(0);
+                }
                 break;
             case 1: // Dodge
                 if (Dodge())
-                    m_actionQue.Remove(0);
+                {
+                    Debug.Log(m_actionQue[0]);
+                    m_actionQue.RemoveAt(0);
+                }
                 break;
             case 2: // Attack
                 if (Attack())
-                    m_actionQue.Remove(0);
+                {
+                    Debug.Log(m_actionQue[0]);
+                    m_actionQue.RemoveAt(0);
+                }
                 break;
             case 3: // Seek
                 if (Seek(a_directionToMove))
-                    m_actionQue.Remove(0);
+                {
+                    Debug.Log(m_actionQue[0]);
+                    m_actionQue.RemoveAt(0);
+                }
                 break;
             default:
-                Debug.Log("How did we get here? Current action is: " + m_currentAction);
+                Debug.Log("How did we get here? Current action is: " + m_actionQue[0]);
                 break;
         }
     // Seek towards target if range not met
@@ -198,9 +203,9 @@ public class BossBrain : MonoBehaviour
 
         // Dodge away from player.
 
+        
+        //m_animator.SetBool("Ai/IsDashing", true);
 
-
-        m_animator.SetBool("Ai/IsDashing", true);
         return true;
     }
 
@@ -213,11 +218,11 @@ public class BossBrain : MonoBehaviour
         {
             if (Random.Range(0, 2) == 0)
             {
-                m_animator.SetInteger("Movement/X", 1);
+                m_animator.SetFloat("Movement/X", 1);
             }
             else
             {
-                m_animator.SetInteger("Movement/X", -1);
+                m_animator.SetFloat("Movement/X", -1);
             }
             // Avoid getting another.
             m_continue = true;
@@ -247,7 +252,8 @@ public class BossBrain : MonoBehaviour
     {
         if (CorrectFacing() && !m_continue)
         {
-            m_animator.SetInteger("Ai/Attack", 0/*m_currentAttack*/);
+            //m_animator.SetBool("Ai/IsAttacking", true);
+            m_animator.SetInteger("Ai/Attack", 1/*m_currentAttack*/);
             m_continue = true;
             return false;
         }
@@ -285,8 +291,8 @@ public class BossBrain : MonoBehaviour
     {
         // Remove everything from the list
         // should get specific behaviors located in counter
-        Dodge();
-        Attack();
+        //Dodge();
+        //Attack();
     }
 
     // A helper function to simplify resetting
@@ -324,3 +330,7 @@ public class BossBrain : MonoBehaviour
     }
 }
 
+public enum AI_BEHAVIOR
+{
+
+}
