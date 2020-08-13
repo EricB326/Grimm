@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//========== Grimm - BossAttacks.cs - 11/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//=========================================================//
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -6,7 +9,7 @@ using UnityEngine;
 public class BossTestin : MonoBehaviour
 {
 	[SerializeField] private GameObject playerTarget = null;
-	[SerializeField] private BossAttacks availableAttacks = null;
+	[SerializeField] private List<BossActions> phaseAttacks;
 	private int currentAttackIndex = 0;
 	private bool canCalculateNextAttack = false;
 
@@ -26,7 +29,7 @@ public class BossTestin : MonoBehaviour
 						 Mathf.Pow(this.transform.position.z - playerTarget.transform.position.z, 2f);
 
 		currentAttackIndex = DetermineBestAttack(distance);
-		Debug.Log("Winning attack is: " + availableAttacks.GetAttackName(currentAttackIndex));
+		//Debug.Log("Winning attack is: " + availableAttacks.GetAttackName(currentAttackIndex));
 
 		// Some function Anton creates to actually get the boss in position and play the animation etc...
 		ResolveAttack();
@@ -44,17 +47,17 @@ public class BossTestin : MonoBehaviour
 		int optimalAttackIndex = 0;
 
 		// Loop through each available attack within the BossAttacks list.
-		for (int i = 0; i < availableAttacks.GetNumberOfAttacksInList(); i++)
+		for (int i = 0; i < phaseAttacks.Count; i++)
 		{
 			float currentAttackScore = 0;
 
-			coolnessFactor = availableAttacks.GetAnimNum(i);
+			coolnessFactor = phaseAttacks[i].GetAnimNum;
 			currentAttackScore += coolnessFactor;
 
-			damageOfAttack = availableAttacks.GetAttackDamage(i);
+			damageOfAttack = phaseAttacks[i].AttackDamage;
 			currentAttackScore += damageOfAttack;
 
-			float attackRange = availableAttacks.GetAttackRange(i);
+			float attackRange = phaseAttacks[i].AttackRange;
 			// If the attack is out of range, it is more effort.
 			if (attackRange > _bossToTargetDist)
 				effortToGetInRange += attackRange - _bossToTargetDist;
@@ -62,12 +65,12 @@ public class BossTestin : MonoBehaviour
 
 			// If this attack scores higher than the current highest, it becomes the new hights and current optimal index.
 			if (currentAttackScore > highestScoringAttack)
-			{ 
+			{
 				highestScoringAttack = currentAttackScore;
 				optimalAttackIndex = i;
 			}
 
-			Debug.Log("Attack: " + availableAttacks.GetAttackName(i) + " has a score of: " + currentAttackScore);
+			Debug.Log("Attack: " + phaseAttacks[i].GetAttackName + " has a score of: " + currentAttackScore);
 		}
 
 		return optimalAttackIndex;
@@ -93,7 +96,7 @@ public class BossTestin : MonoBehaviour
 
 		// Resolve any and all On Hit Effects the attack at the current index may have. The point of collision should also be passed for particles.
 		// I've just passed the first contact points position.
-		availableAttacks.ResolveOnHitEffects(currentAttackIndex, playerTarget, collision.contacts[0].point);
+		phaseAttacks[currentAttackIndex].ResolveOnHitEffects(playerTarget, collision.contacts[0].point);
 
 		// After all OnCollision logic is done, it will be appropraite to allowed the next attack to be added in.
 		canCalculateNextAttack = true;

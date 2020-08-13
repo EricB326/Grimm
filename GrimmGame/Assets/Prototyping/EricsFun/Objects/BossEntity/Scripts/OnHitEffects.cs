@@ -1,5 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿//========== Grimm - OnHitEffects.cs - 11/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//==========================================================//
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
@@ -8,7 +11,8 @@ using UnityEngine.UIElements;
 public enum HitEffectsEnum
 {
     KNOCKBACK_WEAK,
-    KNOCKBACK_STRONG
+    KNOCKBACK_STRONG,
+    PARTICLE_EFFECT
 }
 
 

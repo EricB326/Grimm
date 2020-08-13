@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//========== Grimm - OnHitEffectEditorWindow.cs - 11/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//=====================================================================//
 using UnityEditor;
 using UnityEngine;
 
