@@ -11089,7 +11089,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11099,7 +11099,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[1].m_bossActions.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11114,17 +11114,17 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_increase
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_threshold
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_decrease
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11134,27 +11134,27 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[1].m_name
-      value: Eric
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[1].m_increase
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[1].m_decrease
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[1].m_threshold
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[1].m_wanderTime
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11184,7 +11184,42 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_name
-      value: 
+      value: Test Phase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].attackName
+      value: Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].animationNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].attackName
+      value: Attack 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].animationNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].behaviourType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6751559370182339429, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
