@@ -9,7 +9,7 @@ public class BossVariables : MonoBehaviour
 {
 
     public List<Collider> m_weaponColliders;
-
+    public Transform m_lookPoint;
     //public Collider m_sword;
     //public Collider m_claw;
 

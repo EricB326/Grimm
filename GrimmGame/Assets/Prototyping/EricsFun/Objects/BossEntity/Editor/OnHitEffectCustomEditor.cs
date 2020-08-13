@@ -1,7 +1,7 @@
-﻿//========== Grimm - BossAttacks.cs - 11/08/2020 ==========//
+﻿//========== Grimm - OnHitEffectCustomEditor.cs - 11/08/2020 ==========//
 // Author:  Eric Brkic
 // Purpose: 
-//=========================================================//
+//=====================================================================//
 using UnityEngine;
 using UnityEditor;
 

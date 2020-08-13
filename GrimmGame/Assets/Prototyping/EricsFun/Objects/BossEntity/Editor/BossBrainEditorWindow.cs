@@ -1,5 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//========== Grimm - BossBrainEditorWindow.cs - 12/08/2020 ==========//
+// Author:  Eric Brkic
+// Purpose: 
+//===================================================================//
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Rendering;
@@ -9,10 +11,10 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
     private bool inBasePanel = true;
     private bool inPhasePanel = false;
 
-    public static void Open(YoinkBossBrain _dataObject)
+    public static void Open(BossBrain _dataObject)
     {
         BossBrainEditorWindow window = CreateInstance<BossBrainEditorWindow>();
-        Texture windowIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/Prototyping/EricsFun/Objects/BossEntity/Editor/smile.png");
+        Texture windowIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/Prototyping/EricsFun/Objects/BossEntity/Editor/bwain.png");
         GUIContent windowTitleContent = new GUIContent("Boss Brain Editor", windowIcon);
 
         window.titleContent = windowTitleContent;
@@ -26,7 +28,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
     {
         serializedObject.Update();
 
-        currentProperty = serializedObject.FindProperty("YoinkBossBrain");
+        currentProperty = serializedObject.FindProperty("BossBrain");
 
         EditorGUILayout.BeginHorizontal();
 
@@ -50,7 +52,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
         inBasePanel = true;
         inPhasePanel = false;
 
-        currentProperty = serializedObject.FindProperty("YoinkBossBrain");
+        currentProperty = serializedObject.FindProperty("BossBrain");
 
         EditorGUILayout.BeginVertical("box");
 
@@ -80,6 +82,8 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
         EditorGUILayout.EndVertical();
     }
+
+    private bool displayAttackList = false;
 
     private void DrawPhaseGUIPanel()
     {
@@ -122,12 +126,18 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
                         if (GUILayout.Button("Display Attack List for this Phase", EditorStyles.toolbarButton))
                         {
-                            inBasePanel = false;
-                            inPhasePanel = false;
+                            displayAttackList = !displayAttackList;
                         }
 
                     EditorGUILayout.EndHorizontal();
-                }
+
+                     if (displayAttackList)
+                     {
+                         EditorGUILayout.BeginVertical("box");
+                            DrawField("m_bossActions", true);
+                         EditorGUILayout.EndVertical();
+                     }
+                 }
                 else
                     EditorGUILayout.LabelField("Select/Add a phase from the list.");
 

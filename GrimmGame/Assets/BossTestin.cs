@@ -9,7 +9,7 @@ using UnityEngine;
 public class BossTestin : MonoBehaviour
 {
 	[SerializeField] private GameObject playerTarget = null;
-	[SerializeField] private List<BossAttacks> phaseAttacks;
+	[SerializeField] private List<BossActions> phaseAttacks;
 	private int currentAttackIndex = 0;
 	private bool canCalculateNextAttack = false;
 
@@ -51,13 +51,13 @@ public class BossTestin : MonoBehaviour
 		{
 			float currentAttackScore = 0;
 
-			coolnessFactor = phaseAttacks[i].GetAnimNum();
+			coolnessFactor = phaseAttacks[i].GetAnimNum;
 			currentAttackScore += coolnessFactor;
 
-			damageOfAttack = phaseAttacks[i].GetAttackDamage();
+			damageOfAttack = phaseAttacks[i].AttackDamage;
 			currentAttackScore += damageOfAttack;
 
-			float attackRange = phaseAttacks[i].GetAttackRange();
+			float attackRange = phaseAttacks[i].AttackRange;
 			// If the attack is out of range, it is more effort.
 			if (attackRange > _bossToTargetDist)
 				effortToGetInRange += attackRange - _bossToTargetDist;
@@ -70,7 +70,7 @@ public class BossTestin : MonoBehaviour
 				optimalAttackIndex = i;
 			}
 
-			Debug.Log("Attack: " + phaseAttacks[i].GetAttackName() + " has a score of: " + currentAttackScore);
+			Debug.Log("Attack: " + phaseAttacks[i].GetAttackName + " has a score of: " + currentAttackScore);
 		}
 
 		return optimalAttackIndex;
