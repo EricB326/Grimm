@@ -37,7 +37,7 @@ public class BossBrain : MonoBehaviour
     public List<BossPhase> m_bossPhaseList = new List<BossPhase>();
     // List of actions
     // Will one day become a enums.
-    public List<AI_BEHAVIOR> m_actionQue = new List<AI_BEHAVIOR>();
+    public List<BossActions> m_actionQue = new List<BossActions>();
 
     // When a state requires 2 steps.
     private bool m_continue = false;
@@ -67,9 +67,11 @@ public class BossBrain : MonoBehaviour
         // Wait(x sec) wander(x sec) randomly attack or do preset action list
         if(m_actionQue.Count == 0)
         {
-            m_actionQue.Add(AI_BEHAVIOR.WANDER);
-            m_actionQue.Add(AI_BEHAVIOR.SEEK);
-            m_actionQue.Add(AI_BEHAVIOR.ATTACK);
+            // Calls the eveluate attack function or
+            // the predefined funciton list.
+            // m_actionQue.Add(SteeringBehaviours.WANDER_BEHAVIOUR);
+            // m_actionQue.Add(SteeringBehaviours.SEEK_BEHAVIOUR);
+            // m_actionQue.Add(SteeringBehaviours.ATTACK_BEHAVIOUR);
         }
         
         // Ideally the bosses movements will then give movements direction
@@ -95,30 +97,30 @@ public class BossBrain : MonoBehaviour
     private void DoThing(Vector3 a_directionToMove)
     {
         if(m_actionQue.Count != 0)
-        switch (m_actionQue[0])
+        switch (m_actionQue[0].GetBehaviourType)
         {
-            case AI_BEHAVIOR.WANDER: // Wander
+            case SteeringBehaviours.WANDER_BEHAVIOUR: // Wander
                 if (Wander())
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case AI_BEHAVIOR.DODGE: // Dodge
+            case SteeringBehaviours.DODGE_BEHAVIOUR: // Dodge
                 if (Dodge())
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case AI_BEHAVIOR.ATTACK: // Attack
+            case SteeringBehaviours.ATTACK_BEHAVIOUR: // Attack
                 if (Attack())
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case AI_BEHAVIOR.SEEK: // Seek
+            case SteeringBehaviours.SEEK_BEHAVIOUR: // Seek
                 if (Seek(a_directionToMove))
                 {
                     Debug.Log(m_actionQue[0]);
@@ -311,8 +313,8 @@ public class BossBrain : MonoBehaviour
     private void CounterAttack()
     {
         m_actionQue.Clear();
-        m_actionQue.Add(AI_BEHAVIOR.ATTACK);
-        m_actionQue.Add(AI_BEHAVIOR.DODGE);
+        //m_actionQue.Add(AI_BEHAVIOR.ATTACK); // Need to get from phase
+        //m_actionQue.Add(AI_BEHAVIOR.DODGE); // Need to get from phase
         // Empty list out and add dodge and
         // attack to list.
     }
@@ -352,12 +354,4 @@ public class BossBrain : MonoBehaviour
             m_revengeValue = 0;
         }
     }
-}
-
-public enum AI_BEHAVIOR
-{
-    WANDER,
-    DODGE,
-    ATTACK,
-    SEEK
 }

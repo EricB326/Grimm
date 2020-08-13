@@ -11,7 +11,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
     private bool inBasePanel = true;
     private bool inPhasePanel = false;
 
-    public static void Open(YoinkBossBrain _dataObject)
+    public static void Open(BossBrain _dataObject)
     {
         BossBrainEditorWindow window = CreateInstance<BossBrainEditorWindow>();
         Texture windowIcon = AssetDatabase.LoadAssetAtPath<Texture>("Assets/Prototyping/EricsFun/Objects/BossEntity/Editor/bwain.png");
@@ -28,7 +28,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
     {
         serializedObject.Update();
 
-        currentProperty = serializedObject.FindProperty("YoinkBossBrain");
+        currentProperty = serializedObject.FindProperty("BossBrain");
 
         EditorGUILayout.BeginHorizontal();
 
@@ -52,7 +52,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
         inBasePanel = true;
         inPhasePanel = false;
 
-        currentProperty = serializedObject.FindProperty("YoinkBossBrain");
+        currentProperty = serializedObject.FindProperty("BossBrain");
 
         EditorGUILayout.BeginVertical("box");
 
@@ -134,7 +134,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
                      if (displayAttackList)
                      {
                          EditorGUILayout.BeginVertical("box");
-                            DrawField("m_phaseAttacks", true);
+                            DrawField("m_bossActions", true);
                          EditorGUILayout.EndVertical();
                      }
                  }
