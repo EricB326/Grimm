@@ -217,96 +217,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 450002792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7340ab7a6084574db1ab778253e3869, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d46246b762e3514eb4fcd9feab2cd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rotationSpeed: 0.368
+  m_rotationSpeed: 0
   m_desiredRange: 0
-  m_target: {fileID: 1698930804}
-  m_currentAttackVariables: {fileID: 0}
+  m_target: {fileID: 0}
   m_bossPhaseList:
   - m_name: Phase 1
+    m_healthAtStart: 0
     m_increase: 0
     m_decrease: 0
     m_threshold: 0
-    m_phaseAttacks:
-    - attackName: Swing
-      animationNumber: 15
-      attackDamage: 20
-      attackRange: 2
-      attackWeight: 400
-      lastTimeUsed: 400
-      numberOfUses: 400
-      behaviourType: 0
-      attackEffectList: 00000000
+    m_wanderTime: 0
+    m_bossActions:
+    - attackName: Action 1
+      animationNumber: 0
+      attackDamage: 0
+      attackRange: 0
+      attackWeight: 0
+      lastTimeUsed: 0
+      numberOfUses: 0
+      behaviourType: 1
+      attackEffectList: 
       collidersToModify: 
-    - attackName: Lung
-      animationNumber: 10
-      attackDamage: 10
-      attackRange: 5
-      attackWeight: 10
-      lastTimeUsed: 10
-      numberOfUses: 10
-      behaviourType: 0
-      attackEffectList: 01000000
+    - attackName: Action 2
+      animationNumber: 0
+      attackDamage: 0
+      attackRange: 0
+      attackWeight: 0
+      lastTimeUsed: 0
+      numberOfUses: 0
+      behaviourType: 2
+      attackEffectList: 
       collidersToModify: 
-  - m_name: Phase 2
-    m_increase: 0
-    m_decrease: 0
-    m_threshold: 0
-    m_phaseAttacks:
-    - attackName: Swing
-      animationNumber: 15
-      attackDamage: 20
-      attackRange: 2
-      attackWeight: 400
-      lastTimeUsed: 400
-      numberOfUses: 400
-      behaviourType: 0
-      attackEffectList: 00000000
-      collidersToModify: 
-    - attackName: Lung
-      animationNumber: 10
-      attackDamage: 10
-      attackRange: 5
-      attackWeight: 10
-      lastTimeUsed: 10
-      numberOfUses: 10
-      behaviourType: 0
-      attackEffectList: 01000000
-      collidersToModify: 
-    - attackName: Lung
-      animationNumber: 10
-      attackDamage: 10
-      attackRange: 5
-      attackWeight: 10
-      lastTimeUsed: 10
-      numberOfUses: 10
-      behaviourType: 0
-      attackEffectList: 01000000
-      collidersToModify: 
-    - attackName: Lung
-      animationNumber: 10
-      attackDamage: 10
-      attackRange: 5
-      attackWeight: 10
-      lastTimeUsed: 10
-      numberOfUses: 10
-      behaviourType: 0
-      attackEffectList: 01000000
-      collidersToModify: 
-    - attackName: Lung
-      animationNumber: 10
-      attackDamage: 10
-      attackRange: 5
-      attackWeight: 10
-      lastTimeUsed: 10
-      numberOfUses: 10
-      behaviourType: 0
-      attackEffectList: 01000000
-      collidersToModify: 
-  m_actionQue: 
-  m_currentAction: 0
+    m_preDefinedActions: 
+  m_actionQue: []
   m_currentPhase: 0
   m_revengeValue: 0
 --- !u!65 &450002796
