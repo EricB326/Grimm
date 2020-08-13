@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
             Debug.DrawLine(transform.position, transform.up);
             if (Physics.Raycast(transform.position, -transform.up, out hit1, 2)) // Cast down
             {
-                Debug.Log(hit1.point);
+                //Debug.Log(hit1.point);
                 RaycastHit hit2;
                 if (Physics.Raycast(transform.position + (cameraPosition.normalized/2), -transform.up, out hit2, 2)) // cast in direction
                 {

@@ -37,15 +37,18 @@ public class BossBrain : MonoBehaviour
     public List<BossPhase> m_bossPhaseList = new List<BossPhase>();
     // List of actions
     // Will one day become a enums.
-    public List<int> m_actionQue = new List<int>();
+    public List<AI_BEHAVIOR> m_actionQue = new List<AI_BEHAVIOR>();
 
     // When a state requires 2 steps.
     private bool m_continue = false;
     // If behaviors require a timer.
     private float m_timeOut = 0;
-    // Should be empty unless attack in 
+    
+    // When ai makes is attacking(either by command or random)
+    // It places the attack in here so it has all the info it needs
+    // at that time.
     private BossAttacks m_currentAttack = null;
-
+    // private BossSeek m_currentSeek = null;
     public int m_currentPhase;
 
     public int m_revengeValue = 0;
@@ -64,7 +67,9 @@ public class BossBrain : MonoBehaviour
         // Wait(x sec) wander(x sec) randomly attack or do preset action list
         if(m_actionQue.Count == 0)
         {
-            //m_actionQue.Add(0);
+            m_actionQue.Add(AI_BEHAVIOR.WANDER);
+            m_actionQue.Add(AI_BEHAVIOR.SEEK);
+            m_actionQue.Add(AI_BEHAVIOR.ATTACK);
         }
         
         // Ideally the bosses movements will then give movements direction
@@ -73,18 +78,11 @@ public class BossBrain : MonoBehaviour
 
         if (!m_animator.GetBool("Ai/IsAttacking"))
         {
-            //RotateBoss(directionToMove);
+            RotateBoss(directionToMove);
         }
-
+            
         if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_threshold)
         {
-            // Rotates towards target if capabale of it.
-            //if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
-            //{
-            //    m_revengeValue +=  m_bossPhaseList[m_currentPhase].m_increase;
-            //    m_currentAction = Random.Range(0, 3);
-            //}
-            //// Regular ai behaviors
             DoThing(directionToMove);
         }
         else
@@ -99,28 +97,28 @@ public class BossBrain : MonoBehaviour
         if(m_actionQue.Count != 0)
         switch (m_actionQue[0])
         {
-            case 0: // Wander
+            case AI_BEHAVIOR.WANDER: // Wander
                 if (Wander())
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case 1: // Dodge
+            case AI_BEHAVIOR.DODGE: // Dodge
                 if (Dodge())
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case 2: // Attack
+            case AI_BEHAVIOR.ATTACK: // Attack
                 if (Attack())
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case 3: // Seek
+            case AI_BEHAVIOR.SEEK: // Seek
                 if (Seek(a_directionToMove))
                 {
                     Debug.Log(m_actionQue[0]);
@@ -189,24 +187,35 @@ public class BossBrain : MonoBehaviour
     // couterattaking.
     public bool Dodge()
     {
-        ////Vector3 thing = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
-        //if (a_directionToMove.x <= 0)
-        //{
-        //    a_directionToMove.x = -1;
-        //}
-        //else
-        //{
-        //    a_directionToMove.x = 1;
-        //}
-        //m_animator.SetFloat("Movement/Z", 0);
-        //m_animator.SetFloat("Movement/X", a_directionToMove.x);
+        // Needs to move away from player.
+        // Pick a direction then constantly move until animation is done
 
-        // Dodge away from player.
 
-        
-        //m_animator.SetBool("Ai/IsDashing", true);
+        // Acquire dodge direction
+        if (!m_continue)
+        {
+            Vector3 dodgeAway = this.transform.position - m_target.transform.position;
+            if (dodgeAway.x <= 0)
+            {
+                dodgeAway.x = -1;
+            }
+            else
+            {
+                dodgeAway.x = 1;
+            }
+            m_animator.SetFloat("Movement/Z", 0);
+            m_animator.SetFloat("Movement/X", dodgeAway.x);
+            m_animator.SetBool("Ai/IsDashing", true);
+            return false;
+        }
+        // Check if still dodging
+        if(!m_animator.GetBool("Ai/IsDashing")) 
+        {
+            return true;
+        }
 
-        return true;
+
+        return false;
     }
 
     // More like circle but shits okay
@@ -276,12 +285,24 @@ public class BossBrain : MonoBehaviour
     // Move towards targets.
     private bool Seek(Vector3 a_directionToMove)
     {
+        //a_directionToMove = transform.worldToLocalMatrix * a_directionToMove.normalized;
+        if (!m_continue)
+        {
+            // Do special seek behavior
+            m_continue = true;
+        }
         if(CalculateDistance(a_directionToMove))
         {
+            ResetState();
             return true;
         }
         else
         {
+            a_directionToMove = transform.worldToLocalMatrix * a_directionToMove.normalized;
+            Debug.Log(a_directionToMove);
+
+            m_animator.SetFloat("Movement/X", a_directionToMove.x);
+            m_animator.SetFloat("Movement/Y", a_directionToMove.y);
             return false;
         }
     }
@@ -289,10 +310,11 @@ public class BossBrain : MonoBehaviour
     // Dodge away then attack.
     private void CounterAttack()
     {
-        // Remove everything from the list
-        // should get specific behaviors located in counter
-        //Dodge();
-        //Attack();
+        m_actionQue.Clear();
+        m_actionQue.Add(AI_BEHAVIOR.ATTACK);
+        m_actionQue.Add(AI_BEHAVIOR.DODGE);
+        // Empty list out and add dodge and
+        // attack to list.
     }
 
     // A helper function to simplify resetting
@@ -300,6 +322,8 @@ public class BossBrain : MonoBehaviour
     // emptied this will be called.
     private void ResetState()
     {
+
+        // Current attack will be removed.
         m_currentAttack = null;
         m_continue = false;
         m_timeOut = 0;
@@ -332,5 +356,8 @@ public class BossBrain : MonoBehaviour
 
 public enum AI_BEHAVIOR
 {
-
+    WANDER,
+    DODGE,
+    ATTACK,
+    SEEK
 }
