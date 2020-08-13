@@ -272,18 +272,6 @@ MonoBehaviour:
     particlesToPlay:
     - {fileID: 1365131416}
     soundsToPlay: []
-  - name: Knockback Weak
-    hitEffect: 0
-    animationsToPlay: {fileID: 0}
-    particlesToPlay:
-    - {fileID: 1365131416}
-    soundsToPlay: []
-  - name: Knockback Weak
-    hitEffect: 0
-    animationsToPlay: {fileID: 0}
-    particlesToPlay:
-    - {fileID: 1365131416}
-    soundsToPlay: []
 --- !u!114 &450002795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,11 +289,35 @@ MonoBehaviour:
   m_target: {fileID: 0}
   m_currentAttackVariables: {fileID: 0}
   m_bossPhaseList:
-  - m_name: 
+  - m_name: Pjhase 1
     m_increase: 0
     m_decrease: 0
     m_threshold: 0
-    m_phaseAttacks: []
+    m_phaseAttacks:
+    - attackName: 
+      animationNumber: 0
+      attackDamage: 0
+      attackRange: 0
+      attackEffectList: 00000000000000000000000000000000
+      collidersToModify: 
+    - attackName: 
+      animationNumber: 0
+      attackDamage: 0
+      attackRange: 0
+      attackEffectList: 
+      collidersToModify: 
+    - attackName: 
+      animationNumber: 0
+      attackDamage: 0
+      attackRange: 0
+      attackEffectList: 
+      collidersToModify: 
+    - attackName: 
+      animationNumber: 0
+      attackDamage: 0
+      attackRange: 0
+      attackEffectList: 
+      collidersToModify: 
   m_actionQue: 
   m_currentAction: 0
   m_currentPhase: 0
