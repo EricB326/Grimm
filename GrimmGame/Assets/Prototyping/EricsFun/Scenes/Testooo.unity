@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rotationSpeed: 0
+  m_diagnosticMode: 1
   m_desiredRange: 0
   m_target: {fileID: 0}
   m_bossPhaseList:
@@ -252,7 +253,9 @@ MonoBehaviour:
       behaviourType: 2
       attackEffectList: 
       collidersToModify: 
+    m_timeBetweenPreDefinedAndRandom: 0
     m_preDefinedActions: 
+    m_storedTime: 0
   m_actionQue: []
   m_currentPhase: 0
   m_revengeValue: 0

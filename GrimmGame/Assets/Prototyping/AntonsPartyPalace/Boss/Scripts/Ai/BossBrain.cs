@@ -399,4 +399,10 @@ public class BossBrain : MonoBehaviour
             m_revengeValue = 0;
         }
     }
+
+    public bool DiagnosticMode
+    {
+        get { return m_diagnosticMode; }
+        set { m_diagnosticMode = value; }
+    }
 }
