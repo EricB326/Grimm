@@ -65,12 +65,12 @@ public class YoinkBossBrain : MonoBehaviour
     private void Update()
     {
         // Get the decision.
-        if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
-        {
-            m_revengeValue += m_bossPhaseList[m_currentPhase].m_increase;
-            m_currentAction = Random.Range(0, 3);
-            m_getNewBehavior = true;
-        }
+        //if (m_lastDecision < Time.time && !m_animator.GetBool("Ai/IsDashing") && !m_animator.GetBool("Ai/IsPursuing"))
+        //{
+        //    m_revengeValue += m_bossPhaseList[m_currentPhase].m_increase;
+        //    m_currentAction = Random.Range(0, 3);
+        //    m_getNewBehavior = true;
+        //}
 
 
 

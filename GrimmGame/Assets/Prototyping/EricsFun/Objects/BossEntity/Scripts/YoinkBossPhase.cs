@@ -23,7 +23,7 @@ public class YoinkBossPhase
     // public List<BossAttacks> m_;
     //public int m_delayBetweenDecisions;
     // The list of phase attacks?
-    public List<BossAttacks> m_phaseAttacks;
+    public List<BossActions> m_phaseAttacks;
 
 
 

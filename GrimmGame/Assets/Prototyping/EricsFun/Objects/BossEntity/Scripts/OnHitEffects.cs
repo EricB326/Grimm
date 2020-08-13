@@ -11,7 +11,8 @@ using UnityEngine.UIElements;
 public enum HitEffectsEnum
 {
     KNOCKBACK_WEAK,
-    KNOCKBACK_STRONG
+    KNOCKBACK_STRONG,
+    PARTICLE_EFFECT
 }
 
 
