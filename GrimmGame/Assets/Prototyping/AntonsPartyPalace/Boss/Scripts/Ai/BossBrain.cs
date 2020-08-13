@@ -175,7 +175,7 @@ public class BossBrain : MonoBehaviour
         // Probs a dot product.
         // If within certain angle start attack.
 
-        // Not 
+        
         if(true)
         {
             return true;
@@ -264,7 +264,7 @@ public class BossBrain : MonoBehaviour
         if (CorrectFacing() && !m_continue)
         {
             //m_animator.SetBool("Ai/IsAttacking", true);
-            m_animator.SetInteger("Ai/Attack", 1/*m_currentAttack*/);
+            m_animator.SetInteger("Ai/Attack", 1/*m_currentaction.attackanimation*/);
             m_continue = true;
             return false;
         }
