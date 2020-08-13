@@ -12,13 +12,13 @@ using UnityEditor;
 //    public static bool OpenEditor(int _instanceID, int _line)
 //    {
 //        OnHitEffects obj = EditorUtility.InstanceIDToObject(_instanceID) as OnHitEffects;
-
+//
 //        if (obj != null)
 //        {
 //            OnHitEffectEditorWindow.Open(obj);
 //            return true;
 //        }
-
+//
 //        return false;
 //    }
 //}

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(BossBrain))]
+[CanEditMultipleObjects()]
 public class BossBrainCustomEditor : Editor
 {
     public override void OnInspectorGUI()

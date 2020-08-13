@@ -143,13 +143,13 @@ GameObject:
   - component: {fileID: 450002799}
   - component: {fileID: 450002798}
   - component: {fileID: 450002797}
-  - component: {fileID: 450002800}
   - component: {fileID: 450002796}
   - component: {fileID: 450002795}
   - component: {fileID: 450002794}
   - component: {fileID: 450002793}
+  - component: {fileID: 450002800}
   m_Layer: 0
-  m_Name: Boss?
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   hitEffectList:
   - name: Knockback Weak
     hitEffect: 0
+    effectForce: {x: 0, y: 0, z: 0}
     animationsToPlay: {fileID: 0}
     particlesToPlay:
     - {fileID: 1365131416}
@@ -344,6 +345,74 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &484543889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 484543891}
+  - component: {fileID: 484543890}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &484543890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484543889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19ccedb2aabb364089964eaeb3a7ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityList:
+  - name: Player
+    entityObject: {fileID: 1698930804}
+    health: 100
+    stamina: 100
+    mass: 60
+    inputBuffer: 0
+    timeBeforeStaminaRegain: 3
+    speedOfHealthRegain: 3
+    speedOfStaminaRegain: 3
+    maxHealth: 0
+    maxStamina: 0
+    timeSinceLastStaminaDeminish: 0
+  - name: Boss
+    entityObject: {fileID: 450002792}
+    health: 100
+    stamina: 100
+    mass: 100
+    inputBuffer: 0
+    timeBeforeStaminaRegain: 3
+    speedOfHealthRegain: 3
+    speedOfStaminaRegain: 3
+    maxHealth: 0
+    maxStamina: 0
+    timeSinceLastStaminaDeminish: 0
+--- !u!4 &484543891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484543889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9596057, y: -0.8426793, z: 5.654294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915015209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,7 +1301,7 @@ GameObject:
   - component: {fileID: 1698930805}
   - component: {fileID: 1698930809}
   m_Layer: 0
-  m_Name: Player?
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
