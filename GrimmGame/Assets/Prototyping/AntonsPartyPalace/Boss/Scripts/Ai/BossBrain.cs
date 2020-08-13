@@ -295,9 +295,8 @@ public class BossBrain : MonoBehaviour
         }
         else
         {
+            // Evaluate best way to get to target.
             m_actionQue.Add(m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistance(a_directionToMove), m_desiredRange));
-            // add a seek to top of list.
-            // add a seek bahavior.
             return false;
         }
     }

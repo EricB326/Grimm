@@ -44,7 +44,16 @@ public class BossPhase
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-            // Evaluate best attack using weighing method
+            if (t.GetBehaviourType == SteeringBehaviours.ATTACK_BEHAVIOUR)
+            {
+                // Weighing happens here
+                // If desirability is greater than previous replace.
+                // bossaction
+                // Only here to test
+                output = t;
+                break;
+            }
+            // Adjust the weighing values of the list
         }
         return output;
     }
@@ -59,19 +68,32 @@ public class BossPhase
             {
                 // Weighing happens here
                 // If desirability is greater than previous replace.
-                // 
+                // bossaction
                 // Only here to test
+                output = t;
                 break;
             }
+            // Adjust the weighing values of the list
         }
         return output;
     }
-    public BossActions EvaluateDodge()
+    // Dodge away from the player.
+    // Requries their direction
+    public BossActions EvaluateDodge(Vector3 m_playerDirection)
     {
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-
+            if (t.GetBehaviourType == SteeringBehaviours.DODGE_BEHAVIOUR)
+            {
+                // Weighing happens here
+                // If desirability is greater than previous replace.
+                // bossaction
+                // Only here to test
+                output = t;
+                break;
+            }
+            // Adjust the weighing values of the list
         }
         return output;
     }
