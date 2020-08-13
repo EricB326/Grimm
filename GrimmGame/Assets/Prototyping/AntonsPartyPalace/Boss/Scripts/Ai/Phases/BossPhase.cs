@@ -24,11 +24,7 @@ public class BossPhase
     //public int m_delayBetweenDecisions;
     // The list of phase attacks?
     //public List<BossAttacks> m_phaseAttacks;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> Eric
 
     // How long boss wanders.
     public float m_wanderTime;

@@ -47,7 +47,7 @@ public class BossBrain : MonoBehaviour
     // When ai makes is attacking(either by command or random)
     // It places the attack in here so it has all the info it needs
     // at that time.
-    private BossAttacks m_currentAttack = null;
+    private BossActions m_currentAttack = null;
     // private BossSeek m_currentSeek = null;
     public int m_currentPhase;
 

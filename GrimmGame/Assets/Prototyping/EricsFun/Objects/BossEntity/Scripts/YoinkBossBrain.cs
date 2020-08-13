@@ -38,7 +38,6 @@ public class YoinkBossBrain : MonoBehaviour
     
     private bool m_getNewBehavior = true;
     // Selected attack from phase list.
-    public BossAttackVariables m_currentAttackVariables;
 
     public List<YoinkBossPhase> m_bossPhaseList;
 
