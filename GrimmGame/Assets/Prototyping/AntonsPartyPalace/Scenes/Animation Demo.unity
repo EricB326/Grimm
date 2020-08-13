@@ -7131,12 +7131,12 @@ PrefabInstance:
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10945594
+      value: 0.10945593
       objectReference: {fileID: 0}
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.81957716
+      value: 0.8195771
       objectReference: {fileID: 0}
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
@@ -7146,7 +7146,7 @@ PrefabInstance:
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2813892
+      value: 0.28138912
       objectReference: {fileID: 0}
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
@@ -11089,7 +11089,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11104,6 +11104,11 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[2].m_bossActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_preDefinedActions.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
@@ -11129,7 +11134,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_wanderTime
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11199,7 +11204,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].attackRange
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11214,12 +11219,67 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].attackRange
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].behaviourType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].attackDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].attackName
+      value: Dodge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].animationNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].attackDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].attackRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].behaviourType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_preDefinedActions.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_preDefinedActions.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].behaviourType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_timeBetweenPreDefinedAndRandom
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_diagnosticMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751559370182339429, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}

@@ -59,28 +59,29 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
             DrawField("m_rotationSpeed", true);
 
             showDebugVariables = EditorGUILayout.ToggleLeft("Show Debug Variables. **NOT TO BE MODIFIED!**", showDebugVariables);
-            if (showDebugVariables)
-            {
-                /****************************************************************************************************************************
-                // THIS IS WHERE YOU PLACE THE DEBUG VARIABLES.
-                // DrawField("variableName", true); "variableName" MUST be ONE to ONE with the name of the variable in the BossBrain script!
-                // ONLY PUBLIC & [SerializeField] PRIVATE VARAIBLES CAN BE DISPLAYED! YOU WILL GET AN ERROR TRYING TO DISPLAY A PRIVATE VAR!
-                ***************************************************************************************************************************/
-                DrawField("m_desiredRange", true);
-                DrawField("m_target", true);
-                DrawField("m_currentPhase", true);
-                DrawField("m_revengeValue", true);
-                DrawField("m_actionQue", true);
-            }
+        if (showDebugVariables)
+        {
+            /****************************************************************************************************************************
+            // THIS IS WHERE YOU PLACE THE DEBUG VARIABLES.
+            // DrawField("variableName", true); "variableName" MUST be ONE to ONE with the name of the variable in the BossBrain script!
+            // ONLY PUBLIC & [SerializeField] PRIVATE VARAIBLES CAN BE DISPLAYED! YOU WILL GET AN ERROR TRYING TO DISPLAY A PRIVATE VAR!
+            ***************************************************************************************************************************/
+            DrawField("m_diagnosticMode", true);
+            DrawField("m_desiredRange", true);
+            DrawField("m_target", true);
+            DrawField("m_currentPhase", true);
+            DrawField("m_revengeValue", true);
+            DrawField("m_actionQue", true);
+        }
 
 
             EditorGUILayout.BeginHorizontal("box");
 
-                if (GUILayout.Button("Display Phase List", EditorStyles.toolbarButton))
-                {
-                    inBasePanel = false;
-                    inPhasePanel = true;
-                }
+        if (GUILayout.Button("Display Phase List", EditorStyles.toolbarButton))
+        {
+            inBasePanel = false;
+            inPhasePanel = true;
+        }
 
             EditorGUILayout.EndHorizontal();
 
@@ -104,11 +105,11 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
                 EditorGUILayout.BeginHorizontal("box");
 
-                    if (GUILayout.Button("Return to the Base Panel", EditorStyles.toolbarButton))
-                    {
-                        inBasePanel = true;
-                        inPhasePanel = false;
-                    }
+        if (GUILayout.Button("Return to the Base Panel", EditorStyles.toolbarButton))
+        {
+            inBasePanel = true;
+            inPhasePanel = false;
+        }
 
                 EditorGUILayout.EndHorizontal();
 
@@ -117,33 +118,36 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
             EditorGUILayout.BeginVertical("box", GUILayout.ExpandHeight(true));
 
-                if (selectedProperty != null)
-                {
-                    currentProperty = selectedProperty;
+        if (selectedProperty != null)
+        {
+            currentProperty = selectedProperty;
 
-                    DrawField("m_name", true);
-                    DrawField("m_increase", true);
-                    DrawField("m_decrease", true);
-                    DrawField("m_threshold", true);
+            DrawField("m_name", true);
+            DrawField("m_increase", true);
+            DrawField("m_decrease", true);
+            DrawField("m_threshold", true);
+            DrawField("m_wanderTime", true);
+            DrawField("m_timeBetweenPreDefinedAndRandom", true);
+            DrawField("m_preDefinedActions", true);
 
-                    EditorGUILayout.BeginHorizontal("box");
+            EditorGUILayout.BeginHorizontal("box");
 
-                        if (GUILayout.Button("Display Action List for this Phase", EditorStyles.toolbarButton))
-                        {
-                            displayAttackList = !displayAttackList;
-                        }
+            if (GUILayout.Button("Display Action List for this Phase", EditorStyles.toolbarButton))
+            {
+                displayAttackList = !displayAttackList;
+            }
 
-                    EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();
 
-                     if (displayAttackList)
-                     {
-                         EditorGUILayout.BeginVertical("box");
-                            DrawField("m_bossActions", true);
-                         EditorGUILayout.EndVertical();
-                     }
-                 }
-                else
-                    EditorGUILayout.LabelField("Select/Add a phase from the list.");
+            if (displayAttackList)
+            {
+                EditorGUILayout.BeginVertical("box");
+                DrawField("m_bossActions", true);
+                EditorGUILayout.EndVertical();
+            }
+        }
+        else
+            EditorGUILayout.LabelField("Select/Add a phase from the list.");
 
             EditorGUILayout.EndVertical();
 

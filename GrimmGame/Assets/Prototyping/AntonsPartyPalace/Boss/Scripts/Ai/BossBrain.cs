@@ -11,9 +11,12 @@ public class BossBrain : MonoBehaviour
     // Components to get
     private Animator m_animator;
 
+
     [Range(0, 1)]
     public float m_rotationSpeed;
     [Header("DEBUG. VALUES PASSED IN BY ANIMATOR")]
+    // Used to check if can.
+    public bool m_diagnosticMode = false;
     // The range to reach before attack begins.
     // Passed out of the animator and here for debugging.
     // This is set in the boss Phase.
@@ -63,41 +66,52 @@ public class BossBrain : MonoBehaviour
 
     private void Update()
     {
+        // This is a bad name - Really it is both distance and direction.
+        Vector3 directionToMove = m_target.transform.position - transform.position;
 
         // Wait(x sec) wander(x sec) randomly attack or do preset action list
         if (m_actionQue.Count == 0)
         {
-            foreach (int action in m_bossPhaseList[m_currentPhase].m_preDefinedActions)
+            // If action list is empty and the predefined list 
+            // has occured too recently we do a random attack from
+            // the phase.
+            if (m_bossPhaseList[m_currentPhase].m_storedTime > Time.time)
             {
-               BossActions t = m_bossPhaseList[m_currentPhase].m_bossActions[action];
-                // Check if the behavior added to the list will be an attack.
-                if (t.GetBehaviourType == SteeringBehaviours.ATTACK_BEHAVIOUR)
+                m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAtack(GetDistanceToPlayer(directionToMove)));
+            }
+            else
+            {
+                foreach (int action in m_bossPhaseList[m_currentPhase].m_preDefinedActions)
                 {
-                    m_desiredRange = t.AttackRange;
+                    BossActions t = m_bossPhaseList[m_currentPhase].m_bossActions[action];
+                    // Check if the behavior added to the list will be an attack.
+                    if (t.GetBehaviourType == SteeringBehaviours.ATTACK_BEHAVIOUR)
+                    {
+                        m_desiredRange = t.AttackRange;
+                    }
+                    m_actionQue.Add(t);
                 }
-                m_actionQue.Add(t);
+                m_bossPhaseList[m_currentPhase].m_storedTime = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenPreDefinedAndRandom;
             }
             // Calls the eveluate attack function or
             // the predefined funciton list.
             // Sets the desired range here.
         }
-        
-        // Ideally the bosses movements will then give movements direction
-        Vector3 directionToMove = m_target.transform.position - transform.position;
-
-
-        if (!m_animator.GetBool("Ai/IsAttacking"))
+        if (!m_diagnosticMode)
         {
-            RotateBoss(directionToMove);
-        }
-        if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_threshold)
-        {
-            DoThing(directionToMove);
-        }
-        else
-        {
-            m_revengeValue =- m_bossPhaseList[m_currentPhase].m_threshold;
-            CounterAttack();
+            if (!m_animator.GetBool("Ai/IsAttacking"))
+            {
+                RotateBoss(directionToMove);
+            }
+            if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_threshold)
+            {
+                DoThing(directionToMove);
+            }
+            else
+            {
+                m_revengeValue = -m_bossPhaseList[m_currentPhase].m_threshold;
+                CounterAttack(directionToMove);
+            }
         }
     }
 
@@ -109,33 +123,33 @@ public class BossBrain : MonoBehaviour
             case SteeringBehaviours.WANDER_BEHAVIOUR: // Wander
                 if (Wander())
                 {
-                    Debug.Log(m_actionQue[0]);
+                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
             case SteeringBehaviours.DODGE_BEHAVIOUR: // Dodge
                 if (Dodge())
                 {
-                    Debug.Log(m_actionQue[0]);
+                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
             case SteeringBehaviours.ATTACK_BEHAVIOUR: // Attack
                 if (Attack(a_directionToMove))
                 {
-                    Debug.Log(m_actionQue[0]);
+                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
             case SteeringBehaviours.SEEK_BEHAVIOUR: // Seek
                 if (Seek(a_directionToMove))
                 {
-                    Debug.Log(m_actionQue[0]);
+                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
             default:
-                Debug.Log("How did we get here? Current action is: " + m_actionQue[0]);
+                Debug.Log("How did we get here? Current action is: " + m_actionQue[0].GetBehaviourType);
                 break;
         }
     }
@@ -167,7 +181,7 @@ public class BossBrain : MonoBehaviour
             return false;
 
     }
-    private float GetDistance(Vector3 a_direction)
+    private float GetDistanceToPlayer(Vector3 a_direction)
     { 
         float largestDistance = Mathf.Max(Mathf.Abs(a_direction.x), Mathf.Abs(a_direction.z));
         return largestDistance;
@@ -215,6 +229,7 @@ public class BossBrain : MonoBehaviour
             m_animator.SetFloat("Movement/Z", 0);
             m_animator.SetFloat("Movement/X", dodgeAway.x);
             m_animator.SetBool("Ai/IsDashing", true);
+            m_continue = true;
             return false;
         }
         // Check if still dodging
@@ -222,8 +237,6 @@ public class BossBrain : MonoBehaviour
         {
             return true;
         }
-
-
         return false;
     }
 
@@ -234,7 +247,7 @@ public class BossBrain : MonoBehaviour
         // Get a direction.
         if (!m_continue)
         {
-            m_desiredRange = m_actionQue[0].AttackRange;
+           
             if (Random.Range(0, 2) == 0)
             {
                 m_animator.SetFloat("Movement/X", 1);
@@ -296,7 +309,7 @@ public class BossBrain : MonoBehaviour
         else
         {
             // Evaluate best way to get to target.
-            m_actionQue.Add(m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistance(a_directionToMove), m_desiredRange));
+            m_actionQue.Insert(0 ,m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove), m_desiredRange));
             return false;
         }
     }
@@ -341,9 +354,11 @@ public class BossBrain : MonoBehaviour
     }
 
     // Dodge away then attack.
-    private void CounterAttack()
+    private void CounterAttack(Vector3 a_directionToMove)
     {
         m_actionQue.Clear();
+        m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDodge(a_directionToMove.normalized));
+        m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAtack(GetDistanceToPlayer(a_directionToMove)));
         //m_actionQue.Add(AI_BEHAVIOR.ATTACK); // Need to get from phase
         //m_actionQue.Add(AI_BEHAVIOR.DODGE); // Need to get from phase
         // Empty list out and add dodge and
