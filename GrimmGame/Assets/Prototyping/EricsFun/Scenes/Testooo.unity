@@ -250,6 +250,61 @@ MonoBehaviour:
       behaviourType: 0
       attackEffectList: 01000000
       collidersToModify: 
+  - m_name: Phase 2
+    m_increase: 0
+    m_decrease: 0
+    m_threshold: 0
+    m_phaseAttacks:
+    - attackName: Swing
+      animationNumber: 15
+      attackDamage: 20
+      attackRange: 2
+      attackWeight: 400
+      lastTimeUsed: 400
+      numberOfUses: 400
+      behaviourType: 0
+      attackEffectList: 00000000
+      collidersToModify: 
+    - attackName: Lung
+      animationNumber: 10
+      attackDamage: 10
+      attackRange: 5
+      attackWeight: 10
+      lastTimeUsed: 10
+      numberOfUses: 10
+      behaviourType: 0
+      attackEffectList: 01000000
+      collidersToModify: 
+    - attackName: Lung
+      animationNumber: 10
+      attackDamage: 10
+      attackRange: 5
+      attackWeight: 10
+      lastTimeUsed: 10
+      numberOfUses: 10
+      behaviourType: 0
+      attackEffectList: 01000000
+      collidersToModify: 
+    - attackName: Lung
+      animationNumber: 10
+      attackDamage: 10
+      attackRange: 5
+      attackWeight: 10
+      lastTimeUsed: 10
+      numberOfUses: 10
+      behaviourType: 0
+      attackEffectList: 01000000
+      collidersToModify: 
+    - attackName: Lung
+      animationNumber: 10
+      attackDamage: 10
+      attackRange: 5
+      attackWeight: 10
+      lastTimeUsed: 10
+      numberOfUses: 10
+      behaviourType: 0
+      attackEffectList: 01000000
+      collidersToModify: 
   m_actionQue: 
   m_currentAction: 0
   m_currentPhase: 0
