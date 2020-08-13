@@ -23,6 +23,7 @@ public class OnHitEffects : MonoBehaviour
     {
         public string name;
         public HitEffectsEnum hitEffect;
+        public Vector3 effectForce;
         public GameObject animationsToPlay;   // Needs to be changed from GameObject.
         public List<VisualEffect> particlesToPlay;
         public List<GameObject> soundsToPlay; // Needs to be changed from GameObject.
@@ -48,6 +49,17 @@ public class OnHitEffects : MonoBehaviour
     public void ResolveKnockbackWeak(GameObject _effectedEntity, Vector3 _particlePosition)
     {
         int index = LocateHitEffect(HitEffectsEnum.KNOCKBACK_WEAK);
+
+        float massOfEntity = EntityStats.Instance.GetHealthOfEntity(_effectedEntity.name);
+
+        Vector3 impact = Vector3.zero;
+        impact += hitEffectList[index].effectForce / massOfEntity;
+
+        if (impact.magnitude > 0.2f)
+            _effectedEntity.transform.Translate(impact * Time.deltaTime, Space.World);
+
+        impact = Vector3.Lerp(impact, Vector3.zero, Time.deltaTime);
+
 
         if (hitEffectList[index].particlesToPlay.Count > 0)
         {
