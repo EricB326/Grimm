@@ -26,22 +26,54 @@ public class BossPhase
     // How long boss wanders.
     public float m_wanderTime;
 
-
-
     public List<BossActions> m_bossActions;
-    public void EvaluateAtack()
-    {
-        // Needs to go through attacks in phase and evaluate their suitability
-        // Range needed to move like a bell curve around the target.
-    }
-    public void EvaluateSeek()
-    {
-        // Needs to go through attacks in phase and evaluate their suitability
-        // Range needed to move like a bell curve around the target.
-    }
-    public void EvaluateDodge()
-    {
 
+    // If so desired you can choose a bunch of action 
+    // from the above list and gaurentee them happening
+    // in the order they are in.
+    // Ideally you need a seek followed by an attack
+    // Great for testing.
+    public List<int> m_preDefinedActions;
+
+
+    // Needs to know if the attack is launchable.
+    // Attacks that need to be launched from a larger 
+    // distance will be weighted
+    public BossActions EvaluateAtack(float a_distanceToPlayer)
+    {
+        BossActions output = null;
+        foreach (BossActions t in m_bossActions)
+        {
+            // Evaluate best attack using weighing method
+        }
+        return output;
+    }
+    // m_desiredrange = TotalDisanceToCover
+    // a_distanceToPlaye = 
+    public BossActions EvaluateSeek(float a_distanceToPlayer, float m_desiredRange)
+    {
+        BossActions output = null;
+        foreach (BossActions t in m_bossActions)
+        {
+            if(t.GetBehaviourType == SteeringBehaviours.SEEK_BEHAVIOUR)
+            {
+                // Weighing happens here
+                // If desirability is greater than previous replace.
+                // 
+                // Only here to test
+                break;
+            }
+        }
+        return output;
+    }
+    public BossActions EvaluateDodge()
+    {
+        BossActions output = null;
+        foreach (BossActions t in m_bossActions)
+        {
+
+        }
+        return output;
     }
 
 }

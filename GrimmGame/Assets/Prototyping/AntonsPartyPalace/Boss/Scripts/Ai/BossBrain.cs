@@ -16,7 +16,8 @@ public class BossBrain : MonoBehaviour
     [Header("DEBUG. VALUES PASSED IN BY ANIMATOR")]
     // The range to reach before attack begins.
     // Passed out of the animator and here for debugging.
-    public float m_desiredRange;
+    // This is set in the boss Phase.
+    public float m_desiredRange = 0;
     // What the current phase of the boss is.
     // Either this lives in the animator or out here.
     //public int m_phase;
@@ -47,7 +48,6 @@ public class BossBrain : MonoBehaviour
     // When ai makes is attacking(either by command or random)
     // It places the attack in here so it has all the info it needs
     // at that time.
-    private BossActions m_currentAttack = null;
     // private BossSeek m_currentSeek = null;
     public int m_currentPhase;
 
@@ -63,15 +63,23 @@ public class BossBrain : MonoBehaviour
 
     private void Update()
     {
-        
+
         // Wait(x sec) wander(x sec) randomly attack or do preset action list
-        if(m_actionQue.Count == 0)
+        if (m_actionQue.Count == 0)
         {
+            foreach (int action in m_bossPhaseList[m_currentPhase].m_preDefinedActions)
+            {
+               BossActions t = m_bossPhaseList[m_currentPhase].m_bossActions[action];
+                // Check if the behavior added to the list will be an attack.
+                if (t.GetBehaviourType == SteeringBehaviours.ATTACK_BEHAVIOUR)
+                {
+                    m_desiredRange = t.AttackRange;
+                }
+                m_actionQue.Add(t);
+            }
             // Calls the eveluate attack function or
             // the predefined funciton list.
-            // m_actionQue.Add(SteeringBehaviours.WANDER_BEHAVIOUR);
-            // m_actionQue.Add(SteeringBehaviours.SEEK_BEHAVIOUR);
-            // m_actionQue.Add(SteeringBehaviours.ATTACK_BEHAVIOUR);
+            // Sets the desired range here.
         }
         
         // Ideally the bosses movements will then give movements direction
@@ -82,7 +90,6 @@ public class BossBrain : MonoBehaviour
         {
             RotateBoss(directionToMove);
         }
-            
         if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_threshold)
         {
             DoThing(directionToMove);
@@ -114,7 +121,7 @@ public class BossBrain : MonoBehaviour
                 }
                 break;
             case SteeringBehaviours.ATTACK_BEHAVIOUR: // Attack
-                if (Attack())
+                if (Attack(a_directionToMove))
                 {
                     Debug.Log(m_actionQue[0]);
                     m_actionQue.RemoveAt(0);
@@ -131,12 +138,6 @@ public class BossBrain : MonoBehaviour
                 Debug.Log("How did we get here? Current action is: " + m_actionQue[0]);
                 break;
         }
-    // Seek towards target if range not met
-    // m_animator.SetFloat("Movement/Z", a_directionToMove.z);
-    // m_animator.SetFloat("Movement/X", a_directionToMove.x);
-    //a_directionToMove = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
-    //m_animator.SetFloat("Movement/Z", 0);
-    //m_animator.SetFloat("Movement/X", 0);
     }
 
     // Rotates the boss by the speed stored in the phase.
@@ -158,7 +159,6 @@ public class BossBrain : MonoBehaviour
         // This isn't correct?... or at best kinda dodgy/can be done a different way.
         float largestDistance = Mathf.Max(Mathf.Abs(a_direction.x), Mathf.Abs(a_direction.z));
 
-
         if (largestDistance <= m_desiredRange)
         {
             return true;
@@ -167,6 +167,13 @@ public class BossBrain : MonoBehaviour
             return false;
 
     }
+    private float GetDistance(Vector3 a_direction)
+    { 
+        float largestDistance = Mathf.Max(Mathf.Abs(a_direction.x), Mathf.Abs(a_direction.z));
+        return largestDistance;
+    }
+
+
 
     // Returns true if facing is acceptable
     // Called by the attack
@@ -227,6 +234,7 @@ public class BossBrain : MonoBehaviour
         // Get a direction.
         if (!m_continue)
         {
+            m_desiredRange = m_actionQue[0].AttackRange;
             if (Random.Range(0, 2) == 0)
             {
                 m_animator.SetFloat("Movement/X", 1);
@@ -259,38 +267,53 @@ public class BossBrain : MonoBehaviour
     // Will be the action in list and will try for x amount
     // of time (2 secs)
 
-    private bool Attack()
+    private bool Attack(Vector3 a_directionToMove)
     {
-        if (CorrectFacing() && !m_continue)
+        if (CalculateDistance(a_directionToMove))
         {
-            //m_animator.SetBool("Ai/IsAttacking", true);
-            m_animator.SetInteger("Ai/Attack", 1/*m_currentaction.attackanimation*/);
-            m_continue = true;
-            return false;
-        }
-        else
-        {
-            // If attack variants would need to check what ones to go down somewhere
-
-            if (m_animator.GetBool("Ai/IsAttacking"))
+            if (CorrectFacing() && !m_continue)
             {
+                //m_animator.SetBool("Ai/IsAttacking", true);
+                m_animator.SetInteger("Ai/Attack", 1/*m_currentaction.attackanimation*/);
+                m_continue = true;
                 return false;
             }
             else
             {
-                ResetState();
-                return true;
+                // If attack variants would need to check what ones to go down somewhere
+
+                if (m_animator.GetBool("Ai/IsAttacking"))
+                {
+                    return false;
+                }
+                else
+                {
+                    ResetState();
+                    return true;
+                }
             }
+        }
+        else
+        {
+            m_actionQue.Add(m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistance(a_directionToMove), m_desiredRange));
+            // add a seek to top of list.
+            // add a seek bahavior.
+            return false;
         }
     }
 
     // Move towards targets.
+    // Needs to play an animation if special
+    // ability.
     private bool Seek(Vector3 a_directionToMove)
     {
         //a_directionToMove = transform.worldToLocalMatrix * a_directionToMove.normalized;
-        if (!m_continue)
+        if (!m_continue) // Also needs to see if the target is within special seek behavior range(not too far or close)
         {
             // Do special seek behavior
+            // Shoould be an animation and a direction right?
+            // The animation should contain what it needs so if
+            // it needs x and z they are passed in below.
             m_continue = true;
         }
         if(CalculateDistance(a_directionToMove))
@@ -300,11 +323,20 @@ public class BossBrain : MonoBehaviour
         }
         else
         {
-            a_directionToMove = transform.worldToLocalMatrix * a_directionToMove.normalized;
-            Debug.Log(a_directionToMove);
-
+            a_directionToMove = this.transform.worldToLocalMatrix * a_directionToMove.normalized;
+            m_animator.SetFloat("Movement/Z", a_directionToMove.z);
             m_animator.SetFloat("Movement/X", a_directionToMove.x);
-            m_animator.SetFloat("Movement/Y", a_directionToMove.y);
+            m_animator.SetInteger("Ai/Attack", 0);
+            m_animator.SetBool("Ai/IsPursuing", true);
+            m_animator.SetFloat("ForwardMultiplyer", 2);
+
+
+
+            //a_directionToMove = transform.worldToLocalMatrix * a_directionToMove.normalized;
+            //Debug.Log(a_directionToMove);
+
+            //m_animator.SetFloat("Movement/X", a_directionToMove.x);
+            //m_animator.SetFloat("Movement/Y", a_directionToMove.y);
             return false;
         }
     }
@@ -326,7 +358,6 @@ public class BossBrain : MonoBehaviour
     {
 
         // Current attack will be removed.
-        m_currentAttack = null;
         m_continue = false;
         m_timeOut = 0;
     }

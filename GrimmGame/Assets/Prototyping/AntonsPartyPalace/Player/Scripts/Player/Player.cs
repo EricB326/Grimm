@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         {
             m_animator.SetBool("Input/Attack", false);
         }
-        if (a_roll && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_rollStaminaDrain))
+        if (a_roll && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_rollStaminaDrain) && !m_animator.GetBool("Output/IsRolling"))
         {
             m_animator.SetBool("Input/Roll", true);
         }
