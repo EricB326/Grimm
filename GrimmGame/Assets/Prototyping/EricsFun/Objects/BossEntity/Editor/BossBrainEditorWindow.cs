@@ -60,13 +60,17 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
             showDebugVariables = EditorGUILayout.ToggleLeft("Show Debug Variables. **NOT TO BE MODIFIED!**", showDebugVariables);
             if (showDebugVariables)
-            { 
+            {
+                /****************************************************************************************************************************
+                // THIS IS WHERE YOU PLACE THE DEBUG VARIABLES.
+                // DrawField("variableName", true); "variableName" MUST be ONE to ONE with the name of the variable in the BossBrain script!
+                // ONLY PUBLIC & [SerializeField] PRIVATE VARAIBLES CAN BE DISPLAYED! YOU WILL GET AN ERROR TRYING TO DISPLAY A PRIVATE VAR!
+                ***************************************************************************************************************************/
                 DrawField("m_desiredRange", true);
                 DrawField("m_target", true);
-                DrawField("m_currentAttackVariables", true);
-                DrawField("m_currentAction", true);
                 DrawField("m_currentPhase", true);
                 DrawField("m_revengeValue", true);
+                DrawField("m_actionQue", true);
             }
 
 
@@ -124,7 +128,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
                     EditorGUILayout.BeginHorizontal("box");
 
-                        if (GUILayout.Button("Display Attack List for this Phase", EditorStyles.toolbarButton))
+                        if (GUILayout.Button("Display Action List for this Phase", EditorStyles.toolbarButton))
                         {
                             displayAttackList = !displayAttackList;
                         }
@@ -145,50 +149,4 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
 
         EditorGUILayout.EndHorizontal();
     }
-
-    //private void DrawAttackGUIPanel()
-    //{
-    //    inBasePanel = false;
-    //    inPhasePanel = false;
-    //    inAttackPanel = true;
-
-    //    currentProperty = serializedObject.FindProperty("m_phaseAttacks");
-
-    //    EditorGUILayout.BeginHorizontal();
-
-    //        EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(150), GUILayout.ExpandHeight(true));
-
-    //            DrawSidebar(currentProperty);
-
-    //            EditorGUILayout.BeginHorizontal("box");
-
-    //                if (GUILayout.Button("Return to the Phase Panel", EditorStyles.toolbarButton))
-    //                {
-    //                    inBasePanel = false;
-    //                    inPhasePanel = true;
-    //                    inAttackPanel = false;
-    //                }
-
-    //            EditorGUILayout.EndHorizontal();
-
-    //        EditorGUILayout.EndVertical();
-
-    //        EditorGUILayout.BeginVertical("box", GUILayout.ExpandHeight(true));
-
-    //            if (selectedProperty != null)
-    //            {
-    //                currentProperty = selectedProperty;
-
-    //                DrawField("attackName", true);
-    //                DrawField("animationNumber", true);
-    //                DrawField("attackDamage", true);
-    //                DrawField("attackRange", true);
-    //            }
-    //            else
-    //                EditorGUILayout.LabelField("Select/Add an attack from the list for this phase.");
-
-    //        EditorGUILayout.EndVertical();
-
-    //    EditorGUILayout.EndHorizontal();
-    //}
 }
