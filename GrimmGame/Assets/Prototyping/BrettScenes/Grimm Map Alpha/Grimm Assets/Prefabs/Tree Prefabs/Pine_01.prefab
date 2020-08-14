@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6476158794170491456}
   - component: {fileID: 784604313162227385}
   - component: {fileID: 143006286483318059}
+  - component: {fileID: 631254058515050065}
   m_Layer: 0
   m_Name: Pine_01
   m_TagString: Untagged
@@ -92,7 +93,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: 0.08621931, y: 7.669279, z: 0.11393452}
   m_Size: 15.610683
-  m_FadeMode: 1
+  m_FadeMode: 2
   m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
@@ -109,6 +110,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8159366636777589599}
   m_Enabled: 1
+--- !u!136 &631254058515050065
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359998557634177637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.55
+  m_Height: 2.9500618
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4907294605459868267
 GameObject:
   m_ObjectHideFlags: 0
