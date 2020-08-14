@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 
@@ -32,7 +31,6 @@ public class AttackColliderBoss : MonoBehaviour
                 {
                     damageToDo *= playermovementVar.m_rollDamagemultiplier;
                 }
-                Debug.Log(damageToDo);
                 EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(0);
                 EntityStats.Instance.DeminishHealthOffEntity("Player", damageToDo);
                 // Trigger on hit effects in the animation controller.

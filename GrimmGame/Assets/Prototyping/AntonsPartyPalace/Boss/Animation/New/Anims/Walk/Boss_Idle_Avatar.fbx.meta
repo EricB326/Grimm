@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 9b190073fbedf43459252da798d1ef65
+guid: 4708545eea4bcd84ca362c87506b573c
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: -4792919270183793147
-    second: Boss_Walk_Back
+      74: 963917420611336028
+    second: Boss_Idle
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -19,23 +19,21 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: Boss_Rig:Root
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'Boss_Rig:Jnt_Leg_Low_L'
-      : rotation error = 22.823469 deg\n\t'Boss_Rig:Jnt_Leg_Low_R' : rotation error
-      = 12.985296 deg\n"
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
+      in configuration does not match rotation in animation file:\n\t'Boss_Rig:Jnt_Leg_Low_L'
+      : rotation error = 23.444975 deg\n\t'Boss_Rig:Jnt_Leg_Low_R' : rotation error
+      = 31.015022 deg\n"
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Boss_Walk_Back' has import animation warnings
-      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Boss_Rig:Jnt_Spine_01' has translation animation
-      that will be discarded.\n\t'Boss_Rig:Jnt_Spine_02' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_R'
+    animationImportWarnings: "\nClip 'Boss_Idle' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Boss_Rig:Jnt_Leg_Low_L' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_R'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -44,8 +42,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_Walk_Back
-      takeName: Boss_Walk_Back
+      name: Boss_Idle
+      takeName: Boss_Idle
       internalID: 0
       firstFrame: 1
       lastFrame: 60
@@ -56,7 +54,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -110,7 +108,7 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
+  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human:
@@ -1004,8 +1002,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4708545eea4bcd84ca362c87506b573c,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0

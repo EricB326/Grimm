@@ -35,8 +35,13 @@ public class LookDemo : StateMachineBehaviour
         Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position - animator.gameObject.transform.position;
         if (direction.magnitude <= 5)
         {
+
             animator.SetLookAtWeight(0.4f);
             animator.SetLookAtPosition(EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_lookPoint.position);
+        }
+        else
+        {
+            animator.SetLookAtWeight(0);
         }
     }
 

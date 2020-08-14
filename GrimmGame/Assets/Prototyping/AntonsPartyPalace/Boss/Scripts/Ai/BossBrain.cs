@@ -330,6 +330,7 @@ public class BossBrain : MonoBehaviour
         }
         if(CalculateDistance(a_directionToMove))
         {
+            m_animator.SetFloat("ForwardMultiplyer", 1);
             ResetState();
             return true;
         }
