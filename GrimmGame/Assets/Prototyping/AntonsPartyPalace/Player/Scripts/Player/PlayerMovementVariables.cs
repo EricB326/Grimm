@@ -35,7 +35,7 @@ public class PlayerMovementVariables : MonoBehaviour
     // Damage per attack. Should be consistent.
     public int m_attackDamage = 10;
 
-
+    public GameObject m_lookPoint;
     // Only used to decide if the player can be hit. Basicaly god mode.
     // Unable to be hit if IFrames true;
     // Modified by an animation event.

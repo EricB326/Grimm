@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LookDemo : StateMachineBehaviour
 {
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -32,17 +31,34 @@ public class LookDemo : StateMachineBehaviour
     // OnStateIK is called right after Animator.OnAnimatorIK()
     override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position - animator.gameObject.transform.position;
-        if (direction.magnitude <= 5)
+        float ikWeight = animator.GetFloat("LookWeight");
+        //Probably better for lock on and not running.
+        Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position 
+            - animator.gameObject.transform.position;
+        if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
         {
-
-            animator.SetLookAtWeight(0.4f);
-            animator.SetLookAtPosition(EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_lookPoint.position);
+            ikWeight += 0.05f;
+            if (ikWeight > 1)
+            {
+                ikWeight = 1;
+            }
+            animator.SetLookAtWeight(ikWeight);
+            // This should be target
+            animator.SetLookAtPosition(EntityStats.Instance.GetObjectOfEntity("Boss")
+                .GetComponent<BossVariables>().m_lookPoint.transform.position);
         }
         else
         {
-            animator.SetLookAtWeight(0);
+            ikWeight -= 0.1f;
+            if (ikWeight < 0)
+            {
+                ikWeight = 0;
+            }
+            animator.SetLookAtWeight(ikWeight);
+            animator.SetLookAtPosition(EntityStats.Instance.GetObjectOfEntity("Boss")
+      .GetComponent<BossVariables>().m_lookPoint.transform.position);
         }
+        animator.SetFloat("LookWeight", ikWeight);
     }
 
 }

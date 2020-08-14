@@ -113,6 +113,11 @@ public class BossBrain : MonoBehaviour
                 CounterAttack(directionToMove);
             }
         }
+        else
+        {
+            m_animator.SetFloat("Movement/Z", 0);
+            m_animator.SetFloat("Movement/X", 0);
+        }
     }
 
     private void DoThing(Vector3 a_directionToMove)

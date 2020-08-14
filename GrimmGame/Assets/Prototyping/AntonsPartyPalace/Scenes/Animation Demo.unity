@@ -5769,6 +5769,7 @@ MonoBehaviour:
   m_rollStaminaDrain: 25
   m_rollDamagemultiplier: 0.8
   m_attackDamage: 10
+  m_lookPoint: {fileID: 945345498167982098}
   m_InvinceFrames: 0
 --- !u!54 &945345498050762018
 Rigidbody:
@@ -7206,12 +7207,12 @@ PrefabInstance:
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10945594
+      value: 0.10945593
       objectReference: {fileID: 0}
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.81957716
+      value: 0.8195771
       objectReference: {fileID: 0}
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
@@ -7221,7 +7222,7 @@ PrefabInstance:
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2813892
+      value: 0.28138912
       objectReference: {fileID: 0}
     - target: {fileID: 363316031106955214, guid: c6e68682d770a3a4cb937ca552c5cee9,
         type: 3}
@@ -11680,6 +11681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[3].m_timeBetweenPreDefinedAndRandom
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_rotationSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751559370182339429, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
