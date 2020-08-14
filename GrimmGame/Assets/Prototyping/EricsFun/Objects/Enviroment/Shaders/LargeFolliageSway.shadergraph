@@ -70,7 +70,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"Turbulence\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"0cc970c9-0738-4be8-8f92-b92fe2f48204\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_F477D62F\",\n    \"m_OverrideReferenceName\": \"_Turbulence\",\n    \"m_Precision\": 0,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.5,\n        \"y\": 5.0\n    },\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"Turbulence\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"0cc970c9-0738-4be8-8f92-b92fe2f48204\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_F477D62F\",\n    \"m_OverrideReferenceName\": \"_Turbulence\",\n    \"m_Precision\": 0,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 5.0\n    },\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {
