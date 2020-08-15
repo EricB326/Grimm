@@ -5771,6 +5771,8 @@ MonoBehaviour:
   m_attackDamage: 10
   m_lookPoint: {fileID: 945345498167982098}
   m_InvinceFrames: 0
+  m_lockon: 0
+  m_inputBuffer: {fileID: 8296172669218742073}
 --- !u!54 &945345498050762018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11685,7 +11687,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_rotationSpeed
-      value: 0
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 6751559370182339429, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -23524,6 +23526,7 @@ GameObject:
   - component: {fileID: 945345498050762019}
   - component: {fileID: 945345498050762076}
   - component: {fileID: 8296172669218742072}
+  - component: {fileID: 8296172669218742073}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -23543,6 +23546,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1d015430e1f5647b270fafacfdd76d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8296172669218742073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172669218742071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131eb63f6f11c9e41a3e5a83216e8021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_framesToRetainFor: 30
+  m_heldframesBeforeRun: 20
 --- !u!4 &8296766709375360367
 Transform:
   m_ObjectHideFlags: 0

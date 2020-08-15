@@ -40,4 +40,8 @@ public class PlayerMovementVariables : MonoBehaviour
     // Unable to be hit if IFrames true;
     // Modified by an animation event.
     public bool m_InvinceFrames = false;
+
+    public bool m_lockon = false;
+
+    public BasicBuffer m_inputBuffer;
 }

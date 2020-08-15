@@ -16,16 +16,16 @@ public class CameraRotation : MonoBehaviour
     //public CinemachineFreeLook m_lockOnCamera;
 
     private int m_selectedCamera = 0; // 0 for free 1 for lock. 2> Different rules
-    // Defaults to false.
-    [HideInInspector]
-    public bool m_lockOn = false;
+                                      // Defaults to false.
+
+    // Player houses the lockon variable.
+    private GameObject m_player;
+    private GameObject m_target;
 
     private void Start()
     {
-        m_lockOn = false;
+        m_player = EntityStats.Instance.GetObjectOfEntity("Player");
     }
-
-
 
 
     // Update is called once per frame
@@ -54,20 +54,18 @@ public class CameraRotation : MonoBehaviour
         //    }
         if (XCI.GetButtonDown(XboxButton.RightStick))
         {
-            if (m_lockOn)
+            if (m_player.GetComponent<PlayerMovementVariables>().m_lockon)
             {
-                m_lockOn = false;
+                m_player.GetComponent<PlayerMovementVariables>().m_lockon = false;
                 m_camList[0].Priority = 2;
                 m_camList[1].Priority = 1;
-                //Debug.Log("Lockoff");
                 m_selectedCamera = 0;
             }
             else
             {
-                m_lockOn = true;
+                m_player.GetComponent<PlayerMovementVariables>().m_lockon = true;
                 m_camList[0].Priority = 1;
                 m_camList[1].Priority = 2;
-                //Debug.Log("LockOn");
                 m_selectedCamera = 1;
             }
 

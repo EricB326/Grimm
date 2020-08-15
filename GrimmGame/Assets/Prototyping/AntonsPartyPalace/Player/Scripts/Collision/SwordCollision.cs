@@ -10,6 +10,8 @@ using UnityEngine;
 // It is mainly used to trigger particles and sounds
 // and will most likely be cut.
 
+// PLEASE MODIFY ATTACKCOLLIDERPLAYER FOR GAMEPLAY AND ONHIT EFFECTS.
+
 public class SwordCollision : MonoBehaviour
 {
  

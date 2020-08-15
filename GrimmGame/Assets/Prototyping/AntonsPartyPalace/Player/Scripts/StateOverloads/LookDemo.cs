@@ -35,7 +35,7 @@ public class LookDemo : StateMachineBehaviour
         //Probably better for lock on and not running.
         Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position 
             - animator.gameObject.transform.position;
-        if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
+        if (animator.gameObject.GetComponent<PlayerMovementVariables>().m_lockon)
         {
             ikWeight += 0.05f;
             if (ikWeight > 1)
@@ -59,6 +59,10 @@ public class LookDemo : StateMachineBehaviour
       .GetComponent<BossVariables>().m_lookPoint.transform.position);
         }
         animator.SetFloat("LookWeight", ikWeight);
+
+        // Could this be used in ik to move the body to the correct
+        // place when legs are applying Ik?
+        //animator.MatchTarget(AvatarTarget.Body);
     }
 
 }

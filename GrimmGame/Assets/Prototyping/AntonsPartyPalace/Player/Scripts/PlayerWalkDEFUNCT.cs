@@ -10,8 +10,8 @@ using UnityEngine;
 
 // Note that this can be moved to the player update if so desired without any issues.
 
-
-public class PlayerWalk : StateMachineBehaviour
+// DEFUNCT MOVEMENT NEEDS TO OCCUR IN FIXED.
+public class PlayerWalkDEFUNCT : StateMachineBehaviour
 {
     // So I don't have to create a new vector all the time?
     private Vector3 m_movement;
@@ -38,7 +38,7 @@ public class PlayerWalk : StateMachineBehaviour
             // Slightly different data is used but the math is the same in either case.
             // If locked on you rotate towards your target when you move resulting in 
             // circling the target.
-            if (Camera.main.GetComponent<CameraRotation>().m_lockOn)
+            if (EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_lockon)
             {
                 Vector3 bossdirection = movementstats.m_target.transform.position - player.transform.position;
                 bossdirection = bossdirection.normalized;

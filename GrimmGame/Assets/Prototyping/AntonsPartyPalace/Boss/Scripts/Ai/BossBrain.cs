@@ -97,16 +97,24 @@ public class BossBrain : MonoBehaviour
             // the predefined funciton list.
             // Sets the desired range here.
         }
+        // Diagnostic mode disables boss so that you can
+        // test weighting.
         if (!m_diagnosticMode)
         {
+            // Rotates the boss
+            // Should probably be changed to "Can rotate" 
+            // and will be set/unset in the animator.
             if (!m_animator.GetBool("Ai/IsAttacking"))
             {
                 RotateBoss(directionToMove);
             }
+            // Boss will do it's current behavior that is has chosen above or
+            // continue its current behavior.
             if (m_revengeValue < m_bossPhaseList[m_currentPhase].m_threshold)
             {
                 DoThing(directionToMove);
             }
+            // If the boss gets mad 
             else
             {
                 m_revengeValue = -m_bossPhaseList[m_currentPhase].m_threshold;
@@ -128,21 +136,18 @@ public class BossBrain : MonoBehaviour
             case SteeringBehaviours.WANDER_BEHAVIOUR: // Wander
                 if (Wander())
                 {
-                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
             case SteeringBehaviours.DODGE_BEHAVIOUR: // Dodge
                 if (Dodge())
                 {
-                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
             case SteeringBehaviours.ATTACK_BEHAVIOUR: // Attack
                 if (Attack(a_directionToMove))
                 {
-                    Debug.Log(m_actionQue[0].GetBehaviourType);
                     m_actionQue.RemoveAt(0);
                 }
                 break;
@@ -196,13 +201,13 @@ public class BossBrain : MonoBehaviour
 
     // Returns true if facing is acceptable
     // Called by the attack
-    private bool CorrectFacing()
+    private bool CorrectFacing(Vector3 a_direction)
     {
-        // Probs a dot product.
-        // If within certain angle start attack.
+        float dot = Vector3.Dot(a_direction.normalized, this.transform.forward.normalized);
 
-        
-        if(true)
+        // Need to add a variable to check if within range to launch attack and if not rotate?
+        // Or does the rotation happen in the before?
+        if (dot > 0.8f)
         {
             return true;
         }
@@ -287,9 +292,17 @@ public class BossBrain : MonoBehaviour
 
     private bool Attack(Vector3 a_directionToMove)
     {
+        // Am I in range to launch attack?
         if (CalculateDistance(a_directionToMove))
         {
-            if (CorrectFacing() && !m_continue)
+            // So you're at the correct distance
+            // Stop your movement.
+            m_animator.SetFloat("Movement/Z", 0);
+            m_animator.SetFloat("Movement/X", 0);
+
+
+            // So launch attack if facing correct direction
+            if (!m_continue && CorrectFacing(a_directionToMove)) 
             {
                 //m_animator.SetBool("Ai/IsAttacking", true);
                 m_animator.SetInteger("Ai/Attack", 1/*m_currentaction.attackanimation*/);
@@ -299,15 +312,15 @@ public class BossBrain : MonoBehaviour
             else
             {
                 // If attack variants would need to check what ones to go down somewhere
-
-                if (m_animator.GetBool("Ai/IsAttacking"))
-                {
-                    return false;
-                }
-                else
+                // Or do internal logic on state machine.
+                if (!m_animator.GetBool("Ai/IsAttacking") && m_continue)
                 {
                     ResetState();
                     return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
@@ -335,7 +348,7 @@ public class BossBrain : MonoBehaviour
         }
         if(CalculateDistance(a_directionToMove))
         {
-            m_animator.SetFloat("ForwardMultiplyer", 1);
+            m_animator.SetFloat("AnimationSpeedMultiplyer", 1);
             ResetState();
             return true;
         }
@@ -346,7 +359,8 @@ public class BossBrain : MonoBehaviour
             m_animator.SetFloat("Movement/X", a_directionToMove.x);
             m_animator.SetInteger("Ai/Attack", 0);
             m_animator.SetBool("Ai/IsPursuing", true);
-            m_animator.SetFloat("ForwardMultiplyer", 2);
+            // Should always get the animation speed multiplyer
+            m_animator.SetFloat("AnimationSpeedMultiplyer", 2);
 
 
 
@@ -359,9 +373,12 @@ public class BossBrain : MonoBehaviour
         }
     }
 
-    // Dodge away then attack.
+    // This needs to be either predefined phase by phase.
+    // Ideally you would want to put only a defensive action in here
+    // As the boss will choose the best attack after the dodge.
     private void CounterAttack(Vector3 a_directionToMove)
     {
+        ResetState();
         m_actionQue.Clear();
         m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDodge(a_directionToMove.normalized));
         m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAtack(GetDistanceToPlayer(a_directionToMove)));
@@ -376,8 +393,7 @@ public class BossBrain : MonoBehaviour
     // emptied this will be called.
     private void ResetState()
     {
-
-        // Current attack will be removed.
+        m_animator.SetFloat("AnimationSpeedMultiplyer", 1);
         m_continue = false;
         m_timeOut = 0;
     }

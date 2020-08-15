@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
         bool attack = false;
         bool roll = false;
 
+        // These can stay here for the time being.
+        // Buffering only needs to occur for button presses.
         float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
 
         float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
@@ -71,20 +73,29 @@ public class Player : MonoBehaviour
         //    roll = true;
         //}
 
+        // Input Buffer happens here
+        // instead of the below.
+
+        BufferInput input = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
+
         // Is idealling going to be done by input buffer.
-        if (XCI.GetButton(XboxButton.A))
-        {
-            attack = true;
-        }
+        //if (XCI.GetButton(XboxButton.A))
+        //{
+        //    attack = true;
+        //}
 
-        if (XCI.GetButton(XboxButton.B))
-        {
-            roll = true;
-        }
+        //if (XCI.GetButton(XboxButton.B))
+        //{
+        //    roll = true;
+        //}
 
-        UpdateAnimations(axisX, axisY, attack, roll);
+
+
+
+
+        UpdateAnimations(axisX, axisY, input);
         // Rotate towards target if locked on
-        if(Camera.main.GetComponent<CameraRotation>().m_lockOn)
+        if(this.GetComponent<PlayerMovementVariables>().m_lockon)
         {
             LockOnLook();
         }
@@ -110,22 +121,22 @@ public class Player : MonoBehaviour
     // Send inputs to animator.
     // Has a few rules to check if player has stamina but that may need
     // to be moved to the input buffer on request.
-    void UpdateAnimations(float a_x, float a_y, bool a_attack, bool a_roll)
+    void UpdateAnimations(float a_x, float a_y, BufferInput a_input)
     {
         // x axis
         m_animator.SetFloat("Input/X", a_x);
         // y axis
         m_animator.SetFloat("Input/Z", a_y);
         // If attack pressed and enough stamina.
-        if (a_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_attackStaminaDrain))
+        if (a_input.m_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_attackStaminaDrain))
         {
-            m_animator.SetBool("Input/Attack", a_attack);
+            m_animator.SetBool("Input/Attack", true);
         }
         else
         {
             m_animator.SetBool("Input/Attack", false);
         }
-        if (a_roll && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_rollStaminaDrain) && !m_animator.GetBool("Output/IsRolling"))
+        if (a_input.m_dash && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_rollStaminaDrain) && !m_animator.GetBool("Output/IsRolling"))
         {
             m_animator.SetBool("Input/Roll", true);
         }
@@ -151,7 +162,7 @@ public class Player : MonoBehaviour
             Vector3 cameraPosition = (cameraz + camerax);
 
             // If not locked on we want to rotate the player
-            if (!Camera.main.GetComponent<CameraRotation>().m_lockOn)
+            if (!this.GetComponent<PlayerMovementVariables>().m_lockon)
             {
                 FreeLook(a_axisX, a_axisY);
             }
@@ -256,6 +267,7 @@ public class Player : MonoBehaviour
         bossdirection.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
+        Debug.Log("Lockon");
     }    
 
     // Character rotates towards direction they're moving.
@@ -267,5 +279,6 @@ public class Player : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
+        Debug.Log("FreeLook");
     }
 }
