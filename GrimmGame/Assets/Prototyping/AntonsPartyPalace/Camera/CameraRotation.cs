@@ -31,6 +31,21 @@ public class CameraRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!m_player.GetComponent<PlayerMovementVariables>().m_lockon)
+        {
+            m_camList[0].Priority = 2;
+            m_camList[1].Priority = 1;
+            m_selectedCamera = 0;
+        }
+        else
+        {
+            m_camList[0].Priority = 1;
+            m_camList[1].Priority = 2;
+            m_selectedCamera = 1;
+        }
+
+
+
         //float x = 0, y = 0;
 
         // This could be done a LOT better
@@ -52,60 +67,46 @@ public class CameraRotation : MonoBehaviour
         //        //Debug.Log("LockOn");
         //        m_selectedCamera = 1;
         //    }
-        if (XCI.GetButtonDown(XboxButton.RightStick))
-        {
-            if (m_player.GetComponent<PlayerMovementVariables>().m_lockon)
-            {
-                m_player.GetComponent<PlayerMovementVariables>().m_lockon = false;
-                m_camList[0].Priority = 2;
-                m_camList[1].Priority = 1;
-                m_selectedCamera = 0;
-            }
-            else
-            {
-                m_player.GetComponent<PlayerMovementVariables>().m_lockon = true;
-                m_camList[0].Priority = 1;
-                m_camList[1].Priority = 2;
-                m_selectedCamera = 1;
-            }
 
 
-            // Switching camera system
-            //if(m_freeCamera.Priority == 2)
-            //{
-            //    m_freeCamera.Priority = 3;
-            //    m_lockOnCamera.Priority = 2;
-            //}
-            //else
-            //{
-            //    m_freeCamera.Priority = 2;
-            //    m_lockOnCamera.Priority = 3;
-            //}
-        }
+
+
+        // Switching camera system
+        //if(m_freeCamera.Priority == 2)
+        //{
+        //    m_freeCamera.Priority = 3;
+        //    m_lockOnCamera.Priority = 2;
+        //}
+        //else
+        //{
+        //    m_freeCamera.Priority = 2;
+        //    m_lockOnCamera.Priority = 3;
+        //}
+
 
         // Ruleset for free cam
 
-        {
-            // To be replaced by xbox axis which we only need to read data on x and y out.
-            //if (Input.GetKey(KeyCode.Q))
-            //{
-            //    x++;
-            //}
-            //if (Input.GetKey(KeyCode.E))
-            //{
-            //    x--;
-            //}
 
-            //if (Input.GetKey(KeyCode.R))
-            //{
-            //    y++;
-            //}
-            //if (Input.GetKey(KeyCode.T))
-            //{
-            //    y--;
-            //}
+        // To be replaced by xbox axis which we only need to read data on x and y out.
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    x++;
+        //}
+        //if (Input.GetKey(KeyCode.E))
+        //{
+        //    x--;
+        //}
 
-            float axisX = XCI.GetAxis(XboxAxis.RightStickX);
+        //if (Input.GetKey(KeyCode.R))
+        //{
+        //    y++;
+        //}
+        //if (Input.GetKey(KeyCode.T))
+        //{
+        //    y--;
+        //}
+
+        float axisX = XCI.GetAxis(XboxAxis.RightStickX);
 
             float axisY = XCI.GetAxis(XboxAxis.RightStickY);
 
@@ -152,4 +153,4 @@ public class CameraRotation : MonoBehaviour
             //}
         }
     }
-}
+

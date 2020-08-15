@@ -10,10 +10,13 @@ using XboxCtrlrInput;
 // It needs to detect input
 // Inturpret input(eg Was button held or pressed by checking last frame)?
 // Decide when input should be discarded or overwritten(Has the buffer time expired or another input received.)
-// Send out input(Will send out the inputs to the player which will 
+// Send out input(Will send out the inputs to the player which will act on)
 
+// This should probably be one of those serialized classes.
+// It really shouldn't be added as
 
-public class BasicBuffer : MonoBehaviour
+[Serializable]
+public class BasicBuffer
 {
     // This is output if no input.
     private BufferInput m_blankBuffer = new BufferInput();
@@ -22,33 +25,49 @@ public class BasicBuffer : MonoBehaviour
     private BufferInput m_storedBuffer;
     // If no input received for this time
     // will change any trues to falses.
-    [Range(0,50)]
+    [Range(0, 50)]
     public int m_framesToRetainFor = 20;
     // How long to hold the dodge button 
     // before run.
-    [Range(0,20)]
-    public float m_heldframesBeforeRun = 15;
-    
+    [Range(0, 50)]
+    public float m_heldframesBeforeRun = 40;
+
     private int m_framesSinceLastInput = 0;
 
     private Buttons m_buttonInfo = new Buttons();
 
- 
+    // Badly named variable that gets gets set true
+    // after running has drained all stamina.
+    // Meant so that you have to repress the button.
+    [HideInInspector]
+    public bool m_staminaDrained = false;
+
     public struct Buttons
     {
+
+        // A BUTTON
+
         // Was button was pressed this frame
         public bool m_aButton;
         // Value goes up everytime above is true
         // set to 0 if false.
         public int m_aheldFor;
+        // Only occurs when held for is returned to 0.
+        public bool m_aReleased;
         // In cases of multiple inputs at the same time
         // which should take priority
         public int m_aButtonPriority;
+
+
+        // B BUTTON
+
         // Was button was pressed this frame
         public bool m_bButton;
         // Value goes up everytime above is true
         // set to 0 if false.
         public int m_bHeldFor;
+        // Only occurs when held for is returned to 0.
+        public bool m_bReleased;
         // In cases of multiple inputs at the same time
         // which should take priority
         public int m_bButtonPriority;
@@ -62,21 +81,13 @@ public class BasicBuffer : MonoBehaviour
         m_blankBuffer.m_run = false;
         m_blankBuffer.m_dash = false;
         m_buttonInfo.m_aButton = false;
+        m_buttonInfo.m_aReleased = false;
         m_buttonInfo.m_aheldFor = 0;
         m_buttonInfo.m_bButton = false;
+        m_buttonInfo.m_bReleased = false;
         m_buttonInfo.m_bHeldFor = 0;
         m_framesSinceLastInput = 0;
-}
-
-
-    // This probably doesn't need to be an update
-    // Since it will occur every frame.
-    void Update()
-    {
-        
     }
-
-
 
     public BufferInput GetBufferInput()
     {
@@ -89,7 +100,7 @@ public class BasicBuffer : MonoBehaviour
     // Any extra buttons go here.
     private void CheckInput()
     {
-        
+
         m_buttonInfo.m_aButton = false;
         m_buttonInfo.m_bButton = false;
         m_buttonInfo.m_inputReceived = false;
@@ -102,7 +113,15 @@ public class BasicBuffer : MonoBehaviour
         else
         {
             m_buttonInfo.m_aButton = false;
-            m_buttonInfo.m_aheldFor = 0;
+            if (m_buttonInfo.m_aheldFor > 0)
+            {
+                m_buttonInfo.m_aReleased = true;
+                m_buttonInfo.m_aheldFor = 0;
+            }
+            else
+            {
+                m_buttonInfo.m_aReleased = false;
+            }
         }
         if (XCI.GetButton(XboxButton.B))
         {
@@ -113,7 +132,15 @@ public class BasicBuffer : MonoBehaviour
         else
         {
             m_buttonInfo.m_bButton = false;
-            m_buttonInfo.m_bHeldFor = 0;
+            if (m_buttonInfo.m_bHeldFor > 0)
+            {
+                m_buttonInfo.m_bReleased = true;
+                m_buttonInfo.m_bHeldFor = 0;
+            }
+            else
+            {
+                m_buttonInfo.m_bReleased = false;
+            }
         }
     }
 
@@ -123,17 +150,14 @@ public class BasicBuffer : MonoBehaviour
     private BufferInput InterpretInput()
     {
         // Firstly check if any input at all
+        // To do the logic for held buttons
         if (m_buttonInfo.m_inputReceived)
         {
             if (m_buttonInfo.m_aButton)
             {
                 // Need to check a condition here that will prevent it 
                 // sending input in twice if it has been received
-                if(m_buttonInfo.m_aheldFor > 1)
-                {
-                    return m_blankBuffer;
-                }
-                else
+                if (m_buttonInfo.m_aheldFor <= 1)       
                 {
                     m_storedBuffer.m_attack = true;
                     m_storedBuffer.m_run = false;
@@ -145,42 +169,43 @@ public class BasicBuffer : MonoBehaviour
             }
             if (m_buttonInfo.m_bButton)
             {
-                if (m_buttonInfo.m_bHeldFor > m_heldframesBeforeRun)
+                if (m_buttonInfo.m_bHeldFor > m_heldframesBeforeRun && !m_staminaDrained)
                 {
                     m_storedBuffer.m_attack = false;
                     m_storedBuffer.m_run = true;
                     m_storedBuffer.m_dash = false;
                     m_storedBuffer.m_dataConsumed = false;
                     m_framesSinceLastInput = 0;
-                    return m_storedBuffer;
-                }
-                if (m_buttonInfo.m_bHeldFor > m_heldframesBeforeRun || m_storedBuffer.m_dataConsumed)
-                {
-                    return m_blankBuffer;
-                }
-                else
-                {
-                    m_storedBuffer.m_attack = false;
-                    m_storedBuffer.m_run = false;
-                    m_storedBuffer.m_dash = true;
-                    m_storedBuffer.m_dataConsumed = false;
-                    m_framesSinceLastInput = 0;
+                    // Running stamina drain will need to occur here.
                     return m_storedBuffer;
                 }
             }
-            // Well technically it wont make it here 
-            Debug.Log("Something went wrong in the Interpret Buffer function in the basic" +
-                "buffer");
+            m_framesSinceLastInput++;
             return m_blankBuffer;
-
         }
+        // Second check if any buttons were released
+        // last frame and theframes since last input
+        // is greater than 0. Might have issues with dodging
+        // after running. Oh my god it actually works.
+        else if (m_buttonInfo.m_bReleased && m_framesSinceLastInput > 0 && !m_staminaDrained)
+        {
+            {
+                m_storedBuffer.m_attack = false;
+                m_storedBuffer.m_run = false;
+                m_storedBuffer.m_dash = true;
+                m_storedBuffer.m_dataConsumed = false;
+                m_framesSinceLastInput = 0;
+                return m_storedBuffer;
+            }
+        }
+        else
         // If input not received then need to check
         // last input received and see if it has exceeded time limit
         // or been "consumed" already.
-        else
         {
+            m_staminaDrained = false;
             m_framesSinceLastInput++;
-            if(m_framesSinceLastInput > m_framesToRetainFor || m_storedBuffer.m_dataConsumed)
+            if (m_storedBuffer.m_dataConsumed || m_framesSinceLastInput > m_framesToRetainFor)
             {
                 return m_blankBuffer;
             }
@@ -191,13 +216,17 @@ public class BasicBuffer : MonoBehaviour
         }
     }
 
+    // When the animator receives an input
+    // it 'consumes' the input until 
+    // a new one is received.
     public void ConsumeInput()
     {
         m_storedBuffer.m_dataConsumed = true;
     }
 
-
 }
+
+
 // These are the outs.
 // The input buffer will make the decisions 
 // about what to do with the input and output
@@ -207,9 +236,5 @@ public struct BufferInput
     public bool m_attack;
     public bool m_run;
     public bool m_dash;
-    // I think I can make this simpler by
-    // setting the m_attack on the stored buffer
-    // to 0 when consumed data is called by the state
-    // machine.
     public bool m_dataConsumed;
 }

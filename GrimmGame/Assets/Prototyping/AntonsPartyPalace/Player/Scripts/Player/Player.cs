@@ -32,18 +32,23 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        float x = 0;
-        float y = 0;
-        bool attack = false;
-        bool roll = false;
-
         // These can stay here for the time being.
         // Buffering only needs to occur for button presses.
         float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
 
         float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
 
-
+        if (XCI.GetButtonDown(XboxButton.RightStick))
+        {
+            if (this.GetComponent<PlayerMovementVariables>().m_lockon)
+            {
+                this.GetComponent<PlayerMovementVariables>().m_lockon = false;
+            }
+            else
+            {
+                this.GetComponent<PlayerMovementVariables>().m_lockon = true;
+            }
+        }
         //// Keyboard controls
         //if (Input.GetKey(KeyCode.W))
         //{
@@ -78,22 +83,15 @@ public class Player : MonoBehaviour
 
         BufferInput input = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
 
-        // Is idealling going to be done by input buffer.
-        //if (XCI.GetButton(XboxButton.A))
-        //{
-        //    attack = true;
-        //}
-
-        //if (XCI.GetButton(XboxButton.B))
-        //{
-        //    roll = true;
-        //}
 
 
+        // Probs should skip this under certain circumstances.
+        // Eg cutscnese pause menus ect.
+        if (!m_animator.GetBool("Input/Stop"))
+        {
+            UpdateAnimations(axisX, axisY, input);
+        }
 
-
-
-        UpdateAnimations(axisX, axisY, input);
         // Rotate towards target if locked on
         if(this.GetComponent<PlayerMovementVariables>().m_lockon)
         {
@@ -114,7 +112,7 @@ public class Player : MonoBehaviour
         // Least important. Rotation occurs here for movement.
         else if (m_animator.GetBool("Output/CanMove"))
         {
-            Movement(axisX, axisY);
+            Movement(axisX, axisY, input.m_run);
         }
     }
 
@@ -123,6 +121,9 @@ public class Player : MonoBehaviour
     // to be moved to the input buffer on request.
     void UpdateAnimations(float a_x, float a_y, BufferInput a_input)
     {
+        // I need a way to consume data without actually going in
+
+
         // x axis
         m_animator.SetFloat("Input/X", a_x);
         // y axis
@@ -148,7 +149,7 @@ public class Player : MonoBehaviour
 
 
     // Walking/Running with rotation towards movement direciton.
-    private void Movement(float a_axisX, float a_axisY)
+    private void Movement(float a_axisX, float a_axisY, bool a_running)
     {
         PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
 
@@ -162,7 +163,7 @@ public class Player : MonoBehaviour
             Vector3 cameraPosition = (cameraz + camerax);
 
             // If not locked on we want to rotate the player
-            if (!this.GetComponent<PlayerMovementVariables>().m_lockon)
+            if (!movementstats.m_lockon)
             {
                 FreeLook(a_axisX, a_axisY);
             }
@@ -187,9 +188,32 @@ public class Player : MonoBehaviour
                 }
 
             }
-            
 
-            Vector3 m_movement = new Vector3(cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
+
+            float speed;
+            // Need to work some shenanigans here for speed
+            // I would need some nice ramps and some velocity 
+            // retention when rotating and that should all be 
+            // worked out and then applied to these values below.
+            if(a_running && !movementstats.m_inputBuffer.m_staminaDrained)
+            {
+                if (EntityStats.Instance.GetStaminaOfEntity("Player") > 0)
+                {
+                    EntityStats.Instance.DeminishStaminaOffEntity("Player", movementstats.m_runStaminaDrain);
+                    speed = movementstats.m_runSpeed;
+                }
+                else
+                {
+                    movementstats.m_inputBuffer.m_staminaDrained = true;
+                    speed = movementstats.m_walkSpeed;
+                }
+            }
+            else
+            {
+                speed = movementstats.m_walkSpeed;
+            }
+
+            Vector3 m_movement = new Vector3(cameraPosition.x * speed * Time.deltaTime, 0, cameraPosition.z * speed * Time.deltaTime);
 
             //Debug.Log(m_movement);
             this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
@@ -279,6 +303,5 @@ public class Player : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
-        Debug.Log("FreeLook");
     }
 }

@@ -21,21 +21,23 @@ public class PlayerMovementVariables : MonoBehaviour
     public GameObject m_target;
     // Just a quick way to get to the sword.
     // For visuals and particles.
-    public Collider m_swordHitBox;
+    private Collider m_swordHitBox;
     // Consistent attack hitbox. 
     // If entity is inside this it will trigger OnHitEffects including damage.
-    public Collider m_attackHitBox;
+    private Collider m_attackHitBox;
     // Stamina drain on attack. Should be consistent.
     public int m_attackStaminaDrain = 20;
     // Roll Stamina drain
     public int m_rollStaminaDrain = 25;
+
+    public int m_runStaminaDrain = 2;
     // Roll damage multiplier value.
     [Range(0,1)]
     public float m_rollDamagemultiplier = 0.80f;
     // Damage per attack. Should be consistent.
     public int m_attackDamage = 10;
 
-    public GameObject m_lookPoint;
+    private GameObject m_lookPoint;
     // Only used to decide if the player can be hit. Basicaly god mode.
     // Unable to be hit if IFrames true;
     // Modified by an animation event.
@@ -44,4 +46,33 @@ public class PlayerMovementVariables : MonoBehaviour
     public bool m_lockon = false;
 
     public BasicBuffer m_inputBuffer;
+
+
+
+    private void Start()
+    {
+        // This is better to be set with in game logic but I'll
+        // cover that again when I go over the camera.
+        m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
+        m_lookPoint = GameObject.Find("LookPointPlayer");
+        m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
+        m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
+    }
+
+    // Getters
+    public Collider GetAttackHitBox()
+    {
+        return m_attackHitBox;
+    }
+
+    public Collider GetSwordHitBox()
+    {
+        return m_swordHitBox;
+    }
+
+    public GameObject GetLookPoint()
+    {
+        return m_lookPoint;
+    }
+
 }
