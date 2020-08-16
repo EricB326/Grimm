@@ -234,7 +234,7 @@ Material:
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
     - _TrunkStiffness: 0.5
-    - _Turbulence: 0.9
+    - _Turbulence: 0.27
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
