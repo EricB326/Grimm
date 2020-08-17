@@ -29,12 +29,13 @@ public class EntityStats : MonoBehaviour
         public string name;                                          // This modifies the 'Element #' within the inspector view. Used to make things a bit more readable.
         public GameObject entityObject;                              // This is here in case it is ever needed. I have my doubts at this point in time.
         public float health;                                         // The health, or hit points, of the entity.
+        public int lives;                                            // 
         public float stamina;                                        // The maximum stamina the entity has.
         public float mass;                                           // The mass of the entity;
-        public float inputBuffer;                                    // The maximum stamina the entity has.
+        public float inputBuffer;                                    // 
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
         public float speedOfHealthRegain;                            // How fast the entity will regain their stamina after a period of time.
-        public float speedOfStaminaRegain;                           // How fast the entity will regain their stamina after a period of time.
+        public float speedOfStaminaRegain;                           // 
         [HideInInspector] public float maxHealth;                    // Maximum amount of health the entity has.
         [HideInInspector] public float maxStamina;                   // Maximum amount of stamina the entity has.
         [HideInInspector] public float timeSinceLastStaminaDeminish; // The amount of time since the entity last lost stamina.
@@ -112,7 +113,46 @@ public class EntityStats : MonoBehaviour
         {
             RestoreAllStats();
         }
-        //RestoreAllStats();
+
+        for (int i = 0; i < entityList.Count; i++)
+        {
+            if (entityList[i].health <= 0)
+            {
+                HandleZeroHealthEntity(i);
+            }
+        }
+    }
+
+    private void HandleZeroHealthEntity(int _entityIndex)
+    {
+        if (entityList[_entityIndex].lives <= 0)
+        {
+            if (entityList[_entityIndex].name == "Player")
+            {
+                // GameOverLose();
+            }
+            else
+            {
+                // GameOverWin();
+
+                // Individual maps for Albedo, Normal, Roughness, Metallic, Emissive
+                // Strength for: Normal, Metallic, Roughness, Emissive
+                // Colours for: Emissive
+
+                // Shader to handle transparency
+            }
+        }
+        else
+        {
+            if (entityList[_entityIndex].name == "Player")
+            {
+                // PhaseReset();
+            }
+            else
+            {
+                // NextPhase();
+            }
+        }
     }
 
     /* @brief Handles replenishing the entities stamina based on set conditions on if they are able to replenish as well as
@@ -203,12 +243,39 @@ public class EntityStats : MonoBehaviour
         // Return the stamina of the entity at the index found within the entity list.
         return entityList[DoesEntityExist(_entityName)].stamina;
     }
+    
+    public void SetStaminaOfEntity(string _entityName, float _newStamina)
+    {
+        int entityIndex = DoesEntityExist(_entityName);
+
+        newData = entityList[entityIndex];
+
+        newData.maxStamina = _newStamina;
+
+        entityList[entityIndex] = newData;
+    }
+
+    public float GetMaxStaminaOfEntity(string _entityName)
+    {
+        return entityList[DoesEntityExist(_entityName)].maxStamina;
+    }
+
+    public void SetMaxStaminaOfEntity(string _entityName, float _newMaxStamina)
+    {
+        int entityIndex = DoesEntityExist(_entityName);
+
+        newData = entityList[entityIndex];
+
+        newData.maxStamina = _newMaxStamina;
+
+        entityList[entityIndex] = newData;
+    }
 
     public float GetMassOfEntity(string _entityName)
     {
         return entityList[DoesEntityExist(_entityName)].stamina;
     }
-
+    
     public float GetBufferOfPlayer()
     {
         return entityList[DoesEntityExist("Player")].inputBuffer;

@@ -8,16 +8,17 @@ using UnityEngine;
 
 public enum SteeringBehaviours
 {
-    SEEK_BEHAVIOUR,
-    DODGE_BEHAVIOUR,
-    WANDER_BEHAVIOUR,
-    ATTACK_BEHAVIOUR
+    PASSIVE,
+    DEFENSIVE,
+    AGGRESSIVE,
+    SEEK
 }
 
 [Serializable]
 public class BossActions
 {
     [SerializeField] private string attackName;
+    [SerializeField] private float actionTimeLimit;
     [SerializeField] private int animationNumber;
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackRange;
