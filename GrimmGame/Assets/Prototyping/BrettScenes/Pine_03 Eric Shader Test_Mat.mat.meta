@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: dedd42a05a2b9de40a2453df3041f241
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+=======
+guid: 0213b2c71cf1edb46ade4259f05ce58f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+>>>>>>> Brett
   userData: 
   assetBundleName: 
   assetBundleVariant: 
