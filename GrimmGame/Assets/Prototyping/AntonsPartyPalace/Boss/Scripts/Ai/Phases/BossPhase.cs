@@ -80,7 +80,7 @@ public class BossPhase
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-            if (t.GetBehaviourType == SteeringBehaviours.ATTACK_BEHAVIOUR)
+            if (t.GetBehaviourType == SteeringBehaviours.AGGRESSIVE)
             {       // from 10 to 0     Dam val     Range from 020             0 or neg * 5
                 // Distance to player, damage, coolness factor(set by designer) timeused
 
@@ -125,7 +125,7 @@ public class BossPhase
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-            if (t.GetBehaviourType == SteeringBehaviours.SEEK_BEHAVIOUR)
+            if (t.GetBehaviourType == SteeringBehaviours.SEEK)
             {
                 // from 10 to 0       Range from 020    0 or neg * 5
                 // optimal distance, coolness factor, timeused
@@ -147,7 +147,7 @@ public class BossPhase
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-            if (t.GetBehaviourType == SteeringBehaviours.DODGE_BEHAVIOUR)
+            if (t.GetBehaviourType == SteeringBehaviours.DEFENSIVE)
             {
                 //          10 to  0                                        range 0 20      0 or neg * 5
                 // player direction relative to the forward of the boss, coolness factor, timeused. 
@@ -171,7 +171,7 @@ public class BossPhase
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-            if (t.GetBehaviourType == SteeringBehaviours.WANDER_BEHAVIOUR)
+            if (t.GetBehaviourType == SteeringBehaviours.PASSIVE)
             {
                 
                 output = t;

@@ -11586,7 +11586,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].behaviourType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11611,12 +11611,12 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].attackRange
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[2].behaviourType
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
@@ -11631,7 +11631,7 @@ PrefabInstance:
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].behaviourType
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}

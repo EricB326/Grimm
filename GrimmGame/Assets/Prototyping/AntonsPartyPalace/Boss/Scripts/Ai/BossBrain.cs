@@ -107,25 +107,25 @@ public class BossBrain : MonoBehaviour
         if(m_actionQue.Count != 0)
         switch (m_actionQue[0].GetBehaviourType)
         {
-            case SteeringBehaviours.WANDER_BEHAVIOUR: // Passive
+            case SteeringBehaviours.PASSIVE: // Passive
                 if (Passive(a_directionToMove))
                 {
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case SteeringBehaviours.DODGE_BEHAVIOUR: // Defensive
+            case SteeringBehaviours.DEFENSIVE: // Defensive
                 if (Defensive(a_directionToMove))
                 {
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case SteeringBehaviours.ATTACK_BEHAVIOUR: // Aggressive
+            case SteeringBehaviours.AGGRESSIVE: // Aggressive
                 if (Aggresive(a_directionToMove))
                 {
                     m_actionQue.RemoveAt(0);
                 }
                 break;
-            case SteeringBehaviours.SEEK_BEHAVIOUR: // Seek
+            case SteeringBehaviours.SEEK: // Seek
                 if (Seek(a_directionToMove))
                 {
                     m_actionQue.RemoveAt(0);
@@ -154,7 +154,6 @@ public class BossBrain : MonoBehaviour
 
         // This isn't correct?... or at best kinda dodgy/can be done a different way.
         float largestDistance = Mathf.Max(Mathf.Abs(a_direction.x), Mathf.Abs(a_direction.z));
-
         if (largestDistance <= m_desiredRange)
         {
             return true;
@@ -175,11 +174,11 @@ public class BossBrain : MonoBehaviour
     // Called by the attack
     private bool CorrectFacing(Vector3 a_direction)
     {
-        float dot = Vector3.Dot(a_direction.normalized, this.transform.forward.normalized);
+        float dot = Vector3.Dot(a_direction.normalized, this.transform.forward);
 
         // Need to add a variable to check if within range to launch attack and if not rotate?
         // Or does the rotation happen in the before?
-        if (dot > 0.8f)
+        if (dot > 0.9f)
         {
             return true;
         }
@@ -273,7 +272,7 @@ public class BossBrain : MonoBehaviour
     private bool Aggresive(Vector3 a_directionToMove)
     {
         // Am I in range to launch attack?
-        if (CalculateDistance(a_directionToMove)|| m_continue)
+        if (CalculateDistance(a_directionToMove))
         {
             // So you're at the correct distance
             // Stop your movement.
@@ -365,24 +364,24 @@ public class BossBrain : MonoBehaviour
             {
                 switch (behavior)
                 {
-                    case SteeringBehaviours.ATTACK_BEHAVIOUR:
+                    case SteeringBehaviours.AGGRESSIVE:
                         {
                             m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAggresiveAction(GetDistanceToPlayer(a_directionToMove)));
                             break;
                         }
-                    case SteeringBehaviours.DODGE_BEHAVIOUR:
+                    case SteeringBehaviours.DEFENSIVE:
                         {
                             m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDefensiveAction(a_directionToMove.normalized));
                             break;
                         }
-                    case SteeringBehaviours.WANDER_BEHAVIOUR:
+                    case SteeringBehaviours.PASSIVE:
                         {
                             // Not correct right now.
                             // Need to have an evaluate wander.
                             m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAggresiveAction(GetDistanceToPlayer(a_directionToMove)));
                             break;
                         }
-                    case SteeringBehaviours.SEEK_BEHAVIOUR:
+                    case SteeringBehaviours.SEEK:
                         {
                             // Need a better way to evaluate seek range
                             m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove)));
@@ -499,7 +498,7 @@ public class BossBrain : MonoBehaviour
             // If not we add an ability to it that does.
             foreach (BossActions action in m_actionQue)
             {
-                if (action.GetBehaviourType != SteeringBehaviours.SEEK_BEHAVIOUR)
+                if (action.GetBehaviourType != SteeringBehaviours.SEEK)
                 {
                     m_desiredRange = action.AttackRange;
                 }
