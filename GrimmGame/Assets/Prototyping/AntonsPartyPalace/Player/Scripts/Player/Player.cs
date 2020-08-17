@@ -84,11 +84,11 @@ public class Player : MonoBehaviour
         // Input Buffer happens here
         // instead of the below.
 
-        Vector3 direction = new Vector3(1, 0, 0);
         
+        // 12*
+        // Need to fix the angle
 
-        float thing = Vector3.Angle(-transform.up, direction);
-        Debug.Log(thing);
+        
 
 
         BufferInput input = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
