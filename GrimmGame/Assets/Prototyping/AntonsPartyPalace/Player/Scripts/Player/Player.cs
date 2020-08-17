@@ -25,21 +25,52 @@ public class Player : MonoBehaviour
     private float m_rollMultipliyer;
 
     private Vector3 m_vel;
+
+    private BufferInput m_currentFrame;
     private void Start()
     {
         m_animator = this.GetComponent<Animator>();
     }
 
 
-    void FixedUpdate()
+    // Movement occurs in this update.
+    private void FixedUpdate()
     {
-        // These can stay here for the time being.
-        // Buffering only needs to occur for button presses.
+        float axisZ = m_animator.GetFloat("Input/Z");
+        float axisX = m_animator.GetFloat("Input/X");
+        if (GetComponent<PlayerMovementVariables>().m_lockon)
+        {
+            LockOnLook();
+        }
+        else if (m_animator.GetBool("Output/CanMove"))
+        { 
+            FreeLook(axisZ, axisX);
+        }
+
+        // Can only occur when currently rolling
+        if (m_animator.GetBool("Output/IsRolling"))
+        {
+            Rolling();
+        }
+        // Least important. Rotation occurs here for movement.
+        else if (m_animator.GetBool("Output/CanMove"))
+        {
+            Movement(m_currentFrame.m_run);
+        }
+
+    }
+
+
+
+    // Camera and input detection occurs here.
+    // Every frame
+    void Update()
+    {
         float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
 
         float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
 
-        
+
 
         if (XCI.GetButtonDown(XboxButton.RightStick))
         {
@@ -52,6 +83,16 @@ public class Player : MonoBehaviour
                 this.GetComponent<PlayerMovementVariables>().m_lockon = true;
             }
         }
+
+
+        m_currentFrame = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
+
+
+        if (!m_animator.GetBool("Input/Stop"))
+        {
+            UpdateAnimations(axisX, axisY, m_currentFrame);
+        }
+
         //// Keyboard controls
         //if (Input.GetKey(KeyCode.W))
         //{
@@ -84,46 +125,24 @@ public class Player : MonoBehaviour
         // Input Buffer happens here
         // instead of the below.
 
-        
+
         // 12*
         // Need to fix the angle
 
-        
-
-
-        BufferInput input = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
-
-
-
-        // Probs should skip this under certain circumstances.
-        // Eg cutscnese pause menus ect.
-        if (!m_animator.GetBool("Input/Stop"))
-        {
-            UpdateAnimations(axisX, axisY, input);
-        }
-
-        // Rotate towards target if locked on
-        if(this.GetComponent<PlayerMovementVariables>().m_lockon)
-        {
-            LockOnLook();
-        }
-
-        // Oh god this is an if else loop that is cancer. Why did I do this?
-        // Needs to occur only if the player presses the input and is not currently rolling
         if (m_animator.GetBool("Input/Roll") && !m_animator.GetBool("Output/IsRolling"))
         {
             StartRoll(axisX, axisY);
         }
-        // Can only occur when currently rolling
-        else if (m_animator.GetBool("Output/IsRolling"))
-        {
-            Rolling();
-        }
-        // Least important. Rotation occurs here for movement.
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            Movement(axisX, axisY, input.m_run);
-        }
+
+
+
+
+        // Rotate towards target if locked on
+       
+
+
+
+
     }
 
     // Send inputs to animator.
@@ -159,24 +178,23 @@ public class Player : MonoBehaviour
 
 
     // Walking/Running with rotation towards movement direciton.
-    private void Movement(float a_axisX, float a_axisY, bool a_running)
+    private void Movement(bool a_running)
     {
         PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
+        float a_axisX = m_animator.GetFloat("Input/X");
+        float a_axisZ = m_animator.GetFloat("Input/Z");
 
         // This if check may be redundant.
         // Only way into this state is for input is received.
-        if (a_axisX != 0 || a_axisY != 0)
+        if (a_axisX != 0 || a_axisZ != 0)
         {
             // Direction for the player to move towards based on camera.
             Vector3 camerax = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
-            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisY);
+            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
             Vector3 cameraPosition = (cameraz + camerax);
 
             // If not locked on we want to rotate the player
-            if (!movementstats.m_lockon)
-            {
-                FreeLook(a_axisX, a_axisY);
-            }
+           
 
 
             // Adjust movement direction by angle below 
@@ -251,7 +269,7 @@ public class Player : MonoBehaviour
             // This should always be passed in.
             Vector3 toAnim = this.transform.worldToLocalMatrix * m_movement;
             toAnim = toAnim.normalized;
-            float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisY));
+            float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
             m_animator.SetFloat("Movement/X", toAnim.x * scale);
             m_animator.SetFloat("Movement/Z", toAnim.z * scale);
         }
@@ -322,13 +340,16 @@ public class Player : MonoBehaviour
     }    
 
     // Character rotates towards direction they're moving.
-    private void FreeLook(float a_axisX, float a_axisY)
+    private void FreeLook(float axisZ, float axisX)
     {
-        Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * a_axisX);
-        Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * a_axisY);
-        Vector3 cameraPosition = (cameraz + camerax);
+        if (axisZ != 0 || axisX != 0)
+        {
+            Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * axisX);
+            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * axisZ);
+            Vector3 cameraPosition = (cameraz + camerax);
 
-        Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
+            Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
+        }
     }
 }

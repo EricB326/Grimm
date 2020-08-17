@@ -24,6 +24,11 @@ public class SetDataPlayer : StateMachineBehaviour
                     animator.SetBool("Output/CanMove", true);
                     break;
                 }
+            case PlayerDataEnums.OUTPUT_ISATTACKING:
+                {
+                    animator.SetBool("Output/IsAttacking", true);
+                    break;
+                }
             default:
                 {
                     Debug.Log("VALUE " + m_data.ToString() + " NOT SET TO BE SET AS OF YET. IT'S ANTON'S FAULT.");
@@ -51,6 +56,11 @@ public class SetDataPlayer : StateMachineBehaviour
             case PlayerDataEnums.OUTPUT_CANMOVE:
                 {
                     animator.SetBool("Output/CanMove", false);
+                    break;
+                }
+            case PlayerDataEnums.OUTPUT_ISATTACKING:
+                {
+                    animator.SetBool("Output/IsAttacking", false);
                     break;
                 }
             default:

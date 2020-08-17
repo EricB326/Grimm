@@ -61,7 +61,7 @@ public class BossPhase
             return EvaluateAggresiveAction(a_distanceToTarget);
         }
         else if(currentStam > m_defensiveStaminaThreshold)
-        {
+        {   
             return EvaluateDefensiveAction(m_targetDirection);
         }
         else

@@ -251,7 +251,7 @@ public class BossBrain : MonoBehaviour
         else
         {
             // Check if time to exit wander state. 
-            if (m_timeOut < Time.time)
+            if (m_timeOut > Time.time)
             {
                 // Remove old information.
                 ResetState();
