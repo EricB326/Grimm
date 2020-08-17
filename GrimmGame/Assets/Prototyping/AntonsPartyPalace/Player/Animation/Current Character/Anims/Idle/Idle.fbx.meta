@@ -71,7 +71,7 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 1
       mirror: 0
-      bodyMask: 01000000010000000000000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
       transformMask: []
@@ -131,11 +131,11 @@ ModelImporter:
     - boneName: Hip_R
       humanName: RightUpperLeg
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -60, y: -30, z: -90}
+        max: {x: 60, y: 30, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Knee_R
       humanName: RightLowerLeg
       limit:
@@ -147,11 +147,11 @@ ModelImporter:
     - boneName: Ankle_R
       humanName: RightFoot
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -30, z: -20}
+        max: {x: 0, y: 30, z: 20}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Toes_R
       humanName: RightToes
       limit:
@@ -163,27 +163,27 @@ ModelImporter:
     - boneName: Spine1_M
       humanName: Spine
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -50, y: -40, z: -40}
+        max: {x: 50, y: 40, z: 40}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Spine1Part2_M
       humanName: Chest
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -40, y: -40, z: -50}
+        max: {x: 40, y: 40, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Chest_M
       humanName: UpperChest
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -30, y: -20, z: -20}
+        max: {x: 30, y: 20, z: 20}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Shoulder_R
       humanName: RightShoulder
       limit:
@@ -267,11 +267,11 @@ ModelImporter:
     - boneName: Hip_L
       humanName: LeftUpperLeg
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -60, y: -30, z: -90}
+        max: {x: 60, y: 30, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Knee_L
       humanName: LeftLowerLeg
       limit:
@@ -283,11 +283,11 @@ ModelImporter:
     - boneName: Ankle_L
       humanName: LeftFoot
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -30, z: -20}
+        max: {x: 0, y: 30, z: 20}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Toes_L
       humanName: LeftToes
       limit:
@@ -796,7 +796,7 @@ ModelImporter:
     - name: ThumbFinger3_L
       parentName: ThumbFinger2_L
       position: {x: 0.025343796, y: 7.384371e-16, z: 9.05942e-16}
-      rotation: {x: -0.007830787, y: 0.019658385, z: 0.061823126, w: 0.99786276}
+      rotation: {x: -0.007830788, y: 0.019658385, z: 0.06182313, w: 0.99786276}
       scale: {x: 0.9999995, y: 1.0000001, z: 0.9999995}
     - name: Scapula_R
       parentName: Chest_M
@@ -885,7 +885,7 @@ ModelImporter:
     - name: IndexFinger2_R
       parentName: IndexFinger1_R
       position: {x: -0.026154134, y: -2.842171e-16, z: 1.2789769e-15}
-      rotation: {x: -0.002778992, y: -0.0331929, z: 0.010128101, w: 0.99939376}
+      rotation: {x: -0.0027789923, y: -0.0331929, z: 0.010128102, w: 0.99939376}
       scale: {x: 0.99999833, y: 0.99999905, z: 0.9999991}
     - name: IndexFinger3_R
       parentName: IndexFinger2_R
@@ -895,12 +895,12 @@ ModelImporter:
     - name: MiddleFinger1_R
       parentName: Wrist_R
       position: {x: -0.093615994, y: -2.842171e-16, z: 3.0198067e-16}
-      rotation: {x: 0.008413372, y: -0.074885376, z: 0.003106686, w: 0.9971518}
+      rotation: {x: 0.008413373, y: -0.074885376, z: 0.0031066863, w: 0.9971518}
       scale: {x: 1.0000004, y: 1, z: 0.99999994}
     - name: MiddleFinger2_R
       parentName: MiddleFinger1_R
       position: {x: -0.029564258, y: -1.4210854e-16, z: 4.2632563e-16}
-      rotation: {x: 0.10480447, y: -0.03002816, z: -0.0030473708, w: 0.9940347}
+      rotation: {x: 0.10480448, y: -0.03002816, z: -0.003047371, w: 0.9940347}
       scale: {x: 1.0000017, y: 1, z: 1}
     - name: MiddleFinger3_R
       parentName: MiddleFinger2_R
@@ -1985,7 +1985,7 @@ ModelImporter:
     - name: FKOffsetThumbFinger3_L
       parentName: FKXThumbFinger2_L
       position: {x: 0.025343796, y: 7.105427e-16, z: 8.5265126e-16}
-      rotation: {x: -0.0078308135, y: 0.019658348, z: 0.061823204, w: 0.99786276}
+      rotation: {x: -0.007830814, y: 0.019658348, z: 0.061823208, w: 0.99786276}
       scale: {x: 1, y: 1, z: 1}
     - name: SDKFKThumbFinger3_L
       parentName: FKOffsetThumbFinger3_L
@@ -2385,7 +2385,7 @@ ModelImporter:
     - name: FKOffsetThumbFinger3_R
       parentName: FKXThumbFinger2_R
       position: {x: -0.025343796, y: -8.5265126e-16, z: -5.684342e-16}
-      rotation: {x: -0.0078308135, y: 0.019658348, z: 0.061823204, w: 0.99786276}
+      rotation: {x: -0.007830814, y: 0.019658348, z: 0.061823208, w: 0.99786276}
       scale: {x: 1, y: 1, z: 1}
     - name: SDKFKThumbFinger3_R
       parentName: FKOffsetThumbFinger3_R

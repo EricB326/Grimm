@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 // What specific behaviors will the boss have this phase
 // Attacks revenge value and specific behaviors on a 
@@ -24,6 +25,7 @@ public class BossPhase
     public int m_threshold;
     // The list of phase attacks?
     // How long boss wanders.
+    // Should be change
     public float m_wanderTime;
 
     public List<BossActions> m_bossActions;
@@ -35,12 +37,45 @@ public class BossPhase
     // Great for testing.
     public float m_timeBetweenPreDefinedAndRandom;
     public List<int> m_preDefinedActions;
+    public List<SteeringBehaviours> m_counterMoves;
+    [HideInInspector]
     public float m_storedTime;
+
+    public float m_staminaThisPhase;
+    // Used to asses if should attack, defend or 
+    [SerializeField]
+    [Range(0, 100)]
+    private float m_aggresiveStaminaThreshold = 75.0f;
+    [SerializeField]
+    [Range(0,100)]
+    private float m_defensiveStaminaThreshold = 50.0f;
+
+
+
+    // Boss checks to see what it's stamina is at.
+    public BossActions EvaluateSelf(float a_distanceToTarget, Vector3 m_targetDirection)
+    {
+        float currentStam = EntityStats.Instance.GetStaminaOfEntity("Boss");
+        if (currentStam > m_aggresiveStaminaThreshold)
+        {
+            return EvaluateAggresiveAction(a_distanceToTarget);
+        }
+        else if(currentStam > m_defensiveStaminaThreshold)
+        {
+            return EvaluateDefensiveAction(m_targetDirection);
+        }
+        else
+        {
+            return EvaluatePassiveAction();
+        }
+    }
+
+
 
     // Needs to know if the attack is launchable.
     // Attacks that need to be launched from a larger 
     // distance will be weighted
-    public BossActions EvaluateAtack(float a_distanceToPlayer)
+    public BossActions EvaluateAggresiveAction(float a_distanceToTarget)
     {
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
@@ -61,13 +96,36 @@ public class BossPhase
         return output;
     }
 
-    // Seeks are evaluated on. 
-    public BossActions EvaluateSeek(float a_distanceToPlayer, float m_desiredRange)
+    // Seeks to desired range. Since seeks don't require a range this probably works.
+    //public BossActions EvaluateSeek(float a_distanceToTarget, float m_desiredRange)
+    //{
+    //    BossActions output = null;
+    //    foreach (BossActions t in m_bossActions)
+    //    {
+    //        if(t.GetBehaviourType == SteeringBehaviours.SEEK_BEHAVIOUR)
+    //        {
+    //            // from 10 to 0       Range from 020    0 or neg * 5
+    //            // optimal distance, coolness factor, timeused
+    //            // Weighing happens here
+    //            // If desirability is greater than previous replace.
+    //            // bossaction
+    //            // Only here to test
+    //            output = t;
+    //            break;
+    //        }
+    //        // Adjust the weighing values of the list
+    //    }
+    //    return output;
+    //}
+
+    // Seek to desired target.
+    // Think point to point movement.
+    public BossActions EvaluateSeek(float a_distanceToTarget)
     {
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
         {
-            if(t.GetBehaviourType == SteeringBehaviours.SEEK_BEHAVIOUR)
+            if (t.GetBehaviourType == SteeringBehaviours.SEEK_BEHAVIOUR)
             {
                 // from 10 to 0       Range from 020    0 or neg * 5
                 // optimal distance, coolness factor, timeused
@@ -84,7 +142,7 @@ public class BossPhase
     }
     // Dodge away from the player.
     // Requries their direction
-    public BossActions EvaluateDodge(Vector3 m_playerDirection)
+    public BossActions EvaluateDefensiveAction(Vector3 m_targetDirection)
     {
         BossActions output = null;
         foreach (BossActions t in m_bossActions)
@@ -104,5 +162,25 @@ public class BossPhase
         }
         return output;
     }
+
+    // So these will recover full stamina when 1 action
+    // occurs. A last ditch effort or a good way to slow the boss down
+    // If applying pressure.
+    public BossActions EvaluatePassiveAction()
+    {
+        BossActions output = null;
+        foreach (BossActions t in m_bossActions)
+        {
+            if (t.GetBehaviourType == SteeringBehaviours.WANDER_BEHAVIOUR)
+            {
+                
+                output = t;
+                break;
+            }
+            // Adjust the weighing values of the list
+        }
+        return output;
+    }
+
 
 }

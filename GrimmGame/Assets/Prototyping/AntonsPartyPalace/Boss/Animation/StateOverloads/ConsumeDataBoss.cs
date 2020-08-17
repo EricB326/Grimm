@@ -15,9 +15,9 @@ public class ConsumeDataBoss : StateMachineBehaviour
         {
             switch (clear)
             {
-                case BossDataEnums.AI_ATTACK:
+                case BossDataEnums.AI_ACTION:
                     {
-                        animator.SetInteger("Ai/Attack", 0);
+                        animator.SetInteger("Ai/Action", 0);
                         break;
                     }
                 case BossDataEnums.AI_PHASE:
@@ -62,9 +62,9 @@ public class ConsumeDataBoss : StateMachineBehaviour
         {
             switch (clear)
             {
-                case BossDataEnums.AI_ATTACK:
+                case BossDataEnums.AI_ACTION:
                     {
-                        //animator.SetInteger("Ai/Attack", 0);
+                        //animator.SetInteger("Ai/Action", 0);
                         break;
                     }
                 case BossDataEnums.AI_PHASE:

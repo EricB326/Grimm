@@ -39,23 +39,23 @@ public class BossLookDemo : StateMachineBehaviour
         float dot = Vector3.Dot(target.normalized, thispos.normalized);
         if (dot > 0.5f)
         {
-            ikWeight += 0.05f;
+            ikWeight += 0.02f;
             if (ikWeight > 1)
             {
                 ikWeight = 1;
             }
-            animator.SetLookAtWeight(ikWeight);
+            animator.SetLookAtWeight(ikWeight, 0.55f, 0.8f, 1.0f);
             // This should be target
             animator.SetLookAtPosition(lookpoint.transform.position);
         }
         else
         {
-            ikWeight -= 0.1f;
+            ikWeight -= 0.05f;
             if (ikWeight < 0)
             {
                 ikWeight = 0;
             }
-            animator.SetLookAtWeight(ikWeight);
+            animator.SetLookAtWeight(ikWeight, 0.55f, 0.8f, 1.0f);
             animator.SetLookAtPosition(lookpoint.transform.position);
         }
         animator.SetFloat("Ai/LookWeight", ikWeight);

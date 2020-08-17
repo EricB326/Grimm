@@ -48,7 +48,6 @@ public class PlayerMovementVariables : MonoBehaviour
     public BasicBuffer m_inputBuffer;
 
 
-
     private void Start()
     {
         // This is better to be set with in game logic but I'll

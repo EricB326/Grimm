@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     private float m_rollMultipliyer;
 
+    private Vector3 m_vel;
     private void Start()
     {
         m_animator = this.GetComponent<Animator>();
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour
         float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
 
         float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
+
+        
 
         if (XCI.GetButtonDown(XboxButton.RightStick))
         {
@@ -80,6 +83,13 @@ public class Player : MonoBehaviour
 
         // Input Buffer happens here
         // instead of the below.
+
+        Vector3 direction = new Vector3(1, 0, 0);
+        
+
+        float thing = Vector3.Angle(-transform.up, direction);
+        Debug.Log(thing);
+
 
         BufferInput input = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
 
@@ -205,6 +215,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     movementstats.m_inputBuffer.m_staminaDrained = true;
+                    movementstats.m_inputBuffer.ConsumeInput();
                     speed = movementstats.m_walkSpeed;
                 }
             }
@@ -212,11 +223,28 @@ public class Player : MonoBehaviour
             {
                 speed = movementstats.m_walkSpeed;
             }
-
+            // I need to check if the character has gone from walk to run
+            // and pass in a higher movement value depending on.
             Vector3 m_movement = new Vector3(cameraPosition.x * speed * Time.deltaTime, 0, cameraPosition.z * speed * Time.deltaTime);
 
+            // All right but should be doing a raycast forward and back.
+            // if it doesn't hit anything after x it goes down.
+            // if no contact slide until normal is 0.
+            // 
+
+            //Ray front = new Ray(this.transform.position, );
+            //Debug.DrawRay(this.transform.position, );
+
+
+
+            GameObject lifter = GetComponent<IkFootVariables>().m_lifter;
+            Vector3 pos = new Vector3(lifter.transform.position.x, lifter.transform.position.y + 0.4f, lifter.transform.position.z);
+
+            Vector3 lerp = Vector3.Lerp(this.transform.position, pos, 0.5f);
+
+
             //Debug.Log(m_movement);
-            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
+            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement /*+ lerp*/);
             //player.transform.position = player.transform.position + m_movement;
             // What to pass to the animator.
             // Used for blend trees.
@@ -291,7 +319,6 @@ public class Player : MonoBehaviour
         bossdirection.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
-        Debug.Log("Lockon");
     }    
 
     // Character rotates towards direction they're moving.

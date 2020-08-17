@@ -26,6 +26,16 @@ public class SetDataBoss : StateMachineBehaviour
                     animator.SetBool("Ai/IsAttacking", true);
                     break;
                 }
+            case BossDataEnums.AI_ISROTATING:
+                {
+                    animator.SetBool("Ai/CanRotate", true);
+                    break;
+                }
+            case BossDataEnums.AI_ISINACTION:
+                {
+                    animator.SetBool("Ai/PlayingAction", true);
+                    break;
+                }
             default:
                 {
                     Debug.Log("VALUE " + m_data.ToString() + " NOT SET TO BE SET AS OF YET. IT'S ANTON'S FAULT.");
@@ -57,6 +67,16 @@ public class SetDataBoss : StateMachineBehaviour
             case BossDataEnums.AI_ISATTACKING:
                 {
                     animator.SetBool("Ai/IsAttacking", false);
+                    break;
+                }
+            case BossDataEnums.AI_ISROTATING:
+                {
+                    animator.SetBool("Ai/CanRotate", false);
+                    break;
+                }
+            case BossDataEnums.AI_ISINACTION:
+                {
+                    animator.SetBool("Ai/PlayingAction", false);
                     break;
                 }
             default:

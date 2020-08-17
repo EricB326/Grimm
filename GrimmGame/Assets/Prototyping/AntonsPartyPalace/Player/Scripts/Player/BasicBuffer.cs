@@ -14,6 +14,19 @@ using XboxCtrlrInput;
 
 // This should probably be one of those serialized classes.
 // It really shouldn't be added as
+// These are the outs.
+// The input buffer will make the decisions 
+// about what to do with the input and output
+// values to be used by the player.
+public struct BufferInput
+{
+    public bool m_attack;
+    public bool m_run;
+    public bool m_dash;
+    public bool m_dataConsumed;
+}
+
+
 
 [Serializable]
 public class BasicBuffer
@@ -204,8 +217,8 @@ public class BasicBuffer
         // or been "consumed" already.
         {
             m_staminaDrained = false;
-            m_framesSinceLastInput++;
-            if (m_storedBuffer.m_dataConsumed || m_framesSinceLastInput > m_framesToRetainFor)
+            m_framesSinceLastInput++;           // I should seperate button inputs and any inputs not to be carried over go here.         
+            if (m_storedBuffer.m_dataConsumed || m_framesSinceLastInput > m_framesToRetainFor || m_storedBuffer.m_run)
             {
                 return m_blankBuffer;
             }
@@ -227,14 +240,3 @@ public class BasicBuffer
 }
 
 
-// These are the outs.
-// The input buffer will make the decisions 
-// about what to do with the input and output
-// values to be used by the player.
-public struct BufferInput
-{
-    public bool m_attack;
-    public bool m_run;
-    public bool m_dash;
-    public bool m_dataConsumed;
-}

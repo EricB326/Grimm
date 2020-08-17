@@ -167,12 +167,17 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
                     currentProperty = selectedProperty;
 
                     DrawField("m_name", true);
+                    DrawField("m_aggresiveStaminaThreshold", true);
+                    DrawField("m_defensiveStaminaThreshold", true);
                     DrawField("m_increase", true);
                     DrawField("m_decrease", true);
                     DrawField("m_threshold", true);
                     DrawField("m_wanderTime", true);
                     DrawField("m_timeBetweenPreDefinedAndRandom", true);
                     DrawField("m_preDefinedActions", true);
+                    DrawField("m_counterMoves", true);
+                    
+
 
                     EditorGUILayout.BeginHorizontal("box");
 

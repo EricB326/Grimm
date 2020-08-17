@@ -123,368 +123,368 @@ ModelImporter:
     - boneName: Boss_Rig:Jnt_Leg_High_L
       humanName: LeftUpperLeg
       limit:
-        min: {x: -40, y: -20, z: -90}
-        max: {x: 40, y: 60, z: 45}
+        min: {x: -60, y: -60, z: -90}
+        max: {x: 60, y: 60, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Leg_High_R
       humanName: RightUpperLeg
       limit:
-        min: {x: -40, y: -20, z: -90}
-        max: {x: 40, y: 60, z: 45}
+        min: {x: -60, y: -60, z: -90}
+        max: {x: 60, y: 60, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Leg_Mid_L
       humanName: LeftLowerLeg
       limit:
-        min: {x: -50, y: 0, z: 0}
-        max: {x: 50, y: 0, z: 70}
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Leg_Mid_R
       humanName: RightLowerLeg
       limit:
-        min: {x: -50, y: 0, z: 0}
-        max: {x: 50, y: 0, z: 70}
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Foot_L
       humanName: LeftFoot
       limit:
-        min: {x: 0, y: 0, z: -50}
-        max: {x: 0, y: 180, z: 50}
+        min: {x: 0, y: -30, z: -50}
+        max: {x: 0, y: 30, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Foot_R
       humanName: RightFoot
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -30, z: -50}
+        max: {x: 0, y: 30, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Spine_01
       humanName: Spine
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Neck_02
       humanName: Neck
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Head
       humanName: Head
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Clav_L
       humanName: LeftShoulder
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -15, z: -15}
+        max: {x: 0, y: 15, z: 30}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Clav_R
       humanName: RightShoulder
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -15, z: -15}
+        max: {x: 0, y: 15, z: 30}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Sholder_L
       humanName: LeftUpperArm
       limit:
-        min: {x: -90, y: -100, z: -45}
+        min: {x: -90, y: -100, z: -60}
         max: {x: 90, y: 100, z: 100}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Sholder_R
       humanName: RightUpperArm
       limit:
-        min: {x: -90, y: -100, z: -45}
+        min: {x: -90, y: -100, z: -60}
         max: {x: 90, y: 100, z: 100}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Elbow_L
       humanName: LeftLowerArm
       limit:
-        min: {x: -90, y: 0, z: -70}
-        max: {x: 90, y: 0, z: 70}
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Elbow_R
       humanName: RightLowerArm
       limit:
-        min: {x: -90, y: 0, z: -70}
-        max: {x: 90, y: 0, z: 70}
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Wrist_L
       humanName: LeftHand
       limit:
         min: {x: 0, y: -40, z: -80}
-        max: {x: 0, y: 40, z: 65}
+        max: {x: 0, y: 40, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Wrist_R
       humanName: RightHand
       limit:
         min: {x: 0, y: -40, z: -80}
-        max: {x: 0, y: 40, z: 65}
+        max: {x: 0, y: 40, z: 80}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Mtoe01_L
       humanName: LeftToes
       limit:
-        min: {x: 0, y: 0, z: -10}
-        max: {x: 0, y: 0, z: 10}
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Mtoe01_R
       humanName: RightToes
       limit:
-        min: {x: 0, y: 0, z: -10}
-        max: {x: 0, y: 0, z: 10}
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_Head1
       humanName: Jaw
       limit:
-        min: {x: 0, y: -10, z: -10.485436}
-        max: {x: 0, y: 10, z: 17.475723}
+        min: {x: 0, y: -10, z: -10}
+        max: {x: 0, y: 10, z: 10}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 1
+        modified: 0
     - boneName: Boss_Rig:Jnt_thumb01_L
       humanName: Left Thumb Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -25, z: -20}
+        max: {x: 0, y: 25, z: 20}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_thumb02_L
       humanName: Left Thumb Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_index01_L
       humanName: Left Index Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_index02_L
       humanName: Left Index Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_middle01_L
       humanName: Left Middle Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -7.5, z: -50}
+        max: {x: 0, y: 7.5, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_middle02_L
       humanName: Left Middle Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_ring01_L
       humanName: Left Ring Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -7.5, z: -50}
+        max: {x: 0, y: 7.5, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_ring02_L
       humanName: Left Ring Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_pinky01_L
       humanName: Left Little Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_pinky02_L
       humanName: Left Little Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_thumb01_R
       humanName: Right Thumb Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -25, z: -20}
+        max: {x: 0, y: 25, z: 20}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_thumb02_R
       humanName: Right Thumb Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_thumb03_R
       humanName: Right Thumb Distal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_index01_R
       humanName: Right Index Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_index02_R
       humanName: Right Index Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_index03_R
       humanName: Right Index Distal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_middle01_R
       humanName: Right Middle Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -7.5, z: -50}
+        max: {x: 0, y: 7.5, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_middle02_R
       humanName: Right Middle Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_middle03_R
       humanName: Right Middle Distal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_ring01_R
       humanName: Right Ring Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -7.5, z: -50}
+        max: {x: 0, y: 7.5, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_ring02_R
       humanName: Right Ring Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_ring03_R
       humanName: Right Ring Distal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_pinky01_R
       humanName: Right Little Proximal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_pinky02_R
       humanName: Right Little Intermediate
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_pinky03_R
       humanName: Right Little Distal
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
     - boneName: Boss_Rig:Jnt_Spine_02
       humanName: Chest
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
@@ -627,7 +627,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_driver_Btoe02_R
       parentName: Boss_Rig:Jnt_driver_Btoe01_R
       position: {x: -0.006375, y: -0.0025688969, z: 0.062618785}
-      rotation: {x: 0.119649254, y: 0.74100107, z: -0.13716756, w: -0.6463642}
+      rotation: {x: 0.11964924, y: 0.74100107, z: -0.13716754, w: -0.6463642}
       scale: {x: 1.0000017, y: 1.0000032, z: 1.000001}
     - name: Boss_Rig:Jnt_driver_Mtoe01_R
       parentName: Boss_Rig:Jnt_driver_Foot_R
@@ -727,7 +727,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_Leg_Mid_R
       parentName: Boss_Rig:Jnt_Leg_High_R
       position: {x: 0.5898193, y: -0.0000005967206, z: -0.0033686575}
-      rotation: {x: -0.00064395356, y: -0.5256729, z: 0.0039937785, w: 0.85067725}
+      rotation: {x: -0.0006439535, y: -0.5256729, z: 0.003993778, w: 0.85067725}
       scale: {x: 0.99999976, y: 1.0000002, z: 0.9999999}
     - name: Boss_Rig:Jnt_Leg_Low_R
       parentName: Boss_Rig:Jnt_Leg_Mid_R
@@ -873,7 +873,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_Elbow_R
       parentName: Boss_Rig:Jnt_Sholder_R
       position: {x: 0.45133635, y: 3.694822e-15, z: 3.1974422e-16}
-      rotation: {x: -0.13680607, y: 0.023997584, z: -0.006074114, w: 0.9902885}
+      rotation: {x: -0.13680609, y: 0.023997584, z: -0.0060741142, w: 0.9902885}
       scale: {x: 1.0000008, y: 1.0000024, z: 1.0000029}
     - name: Boss_Rig:Jnt_Wrist_R
       parentName: Boss_Rig:Jnt_Elbow_R
@@ -920,7 +920,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_pinky02_R
       parentName: Boss_Rig:Jnt_pinky01_R
       position: {x: 0.026256565, y: 8.881784e-16, z: 2.1316282e-16}
-      rotation: {x: -0.016969888, y: 0.024968114, z: 0.020957526, w: 0.99932456}
+      rotation: {x: -0.016969886, y: 0.024968114, z: 0.020957524, w: 0.99932456}
       scale: {x: 0.99999964, y: 1.0000012, z: 1.0000017}
     - name: Boss_Rig:Jnt_pinky03_R
       parentName: Boss_Rig:Jnt_pinky02_R
