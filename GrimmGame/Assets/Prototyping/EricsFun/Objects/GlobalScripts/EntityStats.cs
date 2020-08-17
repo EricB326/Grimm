@@ -243,12 +243,39 @@ public class EntityStats : MonoBehaviour
         // Return the stamina of the entity at the index found within the entity list.
         return entityList[DoesEntityExist(_entityName)].stamina;
     }
+    
+    public void SetStaminaOfEntity(string _entityName, float _newStamina)
+    {
+        int entityIndex = DoesEntityExist(_entityName);
+
+        newData = entityList[entityIndex];
+
+        newData.maxStamina = _newStamina;
+
+        entityList[entityIndex] = newData;
+    }
+
+    public float GetMaxStaminaOfEntity(string _entityName)
+    {
+        return entityList[DoesEntityExist(_entityName)].maxStamina;
+    }
+
+    public void SetMaxStaminaOfEntity(string _entityName, float _newMaxStamina)
+    {
+        int entityIndex = DoesEntityExist(_entityName);
+
+        newData = entityList[entityIndex];
+
+        newData.maxStamina = _newMaxStamina;
+
+        entityList[entityIndex] = newData;
+    }
 
     public float GetMassOfEntity(string _entityName)
     {
         return entityList[DoesEntityExist(_entityName)].stamina;
     }
-
+    
     public float GetBufferOfPlayer()
     {
         return entityList[DoesEntityExist("Player")].inputBuffer;
