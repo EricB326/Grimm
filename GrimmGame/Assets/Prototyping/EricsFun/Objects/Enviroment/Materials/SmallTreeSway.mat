@@ -122,7 +122,7 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
     - _AlbedoMapStrength: 1
-    - _AlphaClip: 0.2
+    - _AlphaClip: 0.087
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
     - _AlphaCutoffPostpass: 0.5

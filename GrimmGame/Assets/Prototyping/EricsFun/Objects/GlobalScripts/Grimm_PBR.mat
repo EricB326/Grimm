@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grimm_PBR
-  m_Shader: {fileID: -6465566751694194690, guid: 1ee98fb51eab7fd43a1aa70c612efc2a,
+  m_Shader: {fileID: -6465566751694194690, guid: 1661376fd064e854c86d81b1648c9aae,
     type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap:
     MotionVector: User
     RenderType: TransparentCutout
@@ -24,8 +24,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AOMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 136e34b5fc3222442b08fb1bef55a2b8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
@@ -40,14 +48,40 @@ Material:
         m_Texture: {fileID: 2800000, guid: dd1ad706663683546b665fd5b0286bbd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Roughness:
         m_Texture: {fileID: 2800000, guid: 58a4a6310bd23844bae88d82f7916059, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RoughnessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_2C369F02_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7ac6c03f2865d524aa20a86697dfca99, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecShiftMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TransmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AORemapMax: 1
+    - _AORemapMin: 0
     - _AlbedoColourBlend: 1
+    - _AlphaClipThreshold: 0.2
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
+    - _AlphaCutoffPostpass: 0.5
+    - _AlphaCutoffPrepass: 0.9
+    - _AlphaCutoffShadows: 0.5
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
@@ -63,7 +97,15 @@ Material:
     - _ReceivesSSR: 1
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
+    - _RoughnessMax: 1
+    - _RoughnessMin: 0
     - _RoughnessStrength: 1
+    - _SecRoughnessStrength: 0.8
+    - _SecSpecMultipler: 0.5
+    - _SecSpecShift: -0.125
+    - _SpecMultiplier: 0.5
+    - _SpecShift: 0.125
+    - _SpecShiftIntensity: 1
     - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefDepth: 0
@@ -76,19 +118,26 @@ Material:
     - _StencilWriteMaskGBuffer: 51
     - _StencilWriteMaskMV: 176
     - _SurfaceType: 0
+    - _TransmissionRimIntensity: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
     - _UseEmissive: 0
-    - _UseShadowThreshold: 0
+    - _UseLightmapUV: 0
+    - _UseShadowThreshold: 1
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
+    - _AlbedoColour: {r: 0.06603771, g: 0.01401744, b: 0.01401744, a: 0}
     - _AlbedoTint: {r: 0.5283019, g: 0.08721964, b: 0.08721964, a: 0}
     - _DoubleSidedConstants: {r: -1, g: -1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveTint: {r: 1, g: 1, b: 1, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _SpecColour: {r: 0.1509434, g: 0.03203988, b: 0.03203988, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _TransmissionColour: {r: 0.0754717, g: 0.01388395, b: 0.01388395, a: 1}
+    - _uvBaseMask: {r: 1, g: 0, b: 0, a: 0}
+    - _uvBaseST: {r: 1, g: 1, b: 0, a: 0}
