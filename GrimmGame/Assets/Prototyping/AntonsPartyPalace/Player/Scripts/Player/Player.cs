@@ -10,13 +10,24 @@ using XboxCtrlrInput;
 // Wasd controls passed to animator.
 // Now supports xboxinput.
 
-[RequireComponent(typeof(PlayerMovementVariables))]
-[RequireComponent(typeof(AnimationEventsPlayer))]
+//[RequireComponent(typeof(PlayerMovementVariables))]
+//[RequireComponent(typeof(AnimationEventsPlayer))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
-    private Animator m_animator;
+    [Header("Drag from scene")]
+    public Animator m_animator;
+    // Camera follow point
+    public GameObject m_lookPoint;
+    // Used in the player walk till access to entity list.
+    public GameObject m_target;
+    // Just a quick way to get to the sword.
+    // For visuals and particles.
+    public Collider m_swordHitBox;
+    // Consistent attack hitbox. 
+    // If entity is inside this it will trigger OnHitEffects including damage.
+    public Collider m_attackHitBox;
 
     private float turnSmoothVelocity;
          
@@ -24,12 +35,55 @@ public class Player : MonoBehaviour
 
     private float m_rollMultipliyer;
 
-    private Vector3 m_vel;
-
     private BufferInput m_currentFrame;
+
+    // Multiplied by direction stick input. -1 to 1 on both axis
+    public float m_walkSpeed = 5;
+    // Speed will increase to this value.
+    public float m_runSpeed = 7;
+    // Roll speed. Ideally should accelerate to this speed rather rapidly.
+    public float m_rollSpeed = 12;
+    [Range(0, 1)]
+    public float m_rotationTime;
+
+
+
+    // Stamina drain on attack. Should be consistent.
+    public int m_attackStaminaDrain = 20;
+    // Roll Stamina drain
+    public int m_rollStaminaDrain = 25;
+
+    public int m_runStaminaDrain = 2;
+    // Roll damage multiplier value.
+    [Range(0, 1)]
+    public float m_rollDamagemultiplier = 0.80f;
+    // Damage per attack. Should be consistent.
+    public int m_attackDamage = 10;
+    
+
+    // Only used to decide if the player can be hit. Basicaly god mode.
+    // Unable to be hit if IFrames true;
+    // Modified by an animation event.
+    public bool m_InvinceFrames = false;
+
+    public bool m_lockon = false;
+
+    public BasicBuffer m_inputBuffer;
+
+
+
+
+
+
+
+
     private void Start()
-    {
-        m_animator = this.GetComponent<Animator>();
+    {       
+        // This is better to be set with in game logic but I'll
+        // cover that again when I go over the camera.
+        m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
+        //m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
+        //m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
     }
 
 
@@ -38,9 +92,9 @@ public class Player : MonoBehaviour
     {
         float axisZ = m_animator.GetFloat("Input/Z");
         float axisX = m_animator.GetFloat("Input/X");
-        if (GetComponent<PlayerMovementVariables>().m_lockon)
+        if (m_lockon)
         {
-            LockOnLook();
+            LockOnLook(axisZ, axisX);
         }
         else if (m_animator.GetBool("Output/CanMove"))
         { 
@@ -74,18 +128,18 @@ public class Player : MonoBehaviour
 
         if (XCI.GetButtonDown(XboxButton.RightStick))
         {
-            if (this.GetComponent<PlayerMovementVariables>().m_lockon)
+            if (this.m_lockon)
             {
-                this.GetComponent<PlayerMovementVariables>().m_lockon = false;
+                this.m_lockon = false;
             }
             else
             {
-                this.GetComponent<PlayerMovementVariables>().m_lockon = true;
+                this.m_lockon = true;
             }
         }
 
 
-        m_currentFrame = this.GetComponent<PlayerMovementVariables>().m_inputBuffer.GetBufferInput();
+        m_currentFrame = m_inputBuffer.GetBufferInput();
 
 
         if (!m_animator.GetBool("Input/Stop"))
@@ -158,7 +212,7 @@ public class Player : MonoBehaviour
         // y axis
         m_animator.SetFloat("Input/Z", a_y);
         // If attack pressed and enough stamina.
-        if (a_input.m_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_attackStaminaDrain))
+        if (a_input.m_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStaminaDrain))
         {
             m_animator.SetBool("Input/Attack", true);
         }
@@ -166,7 +220,7 @@ public class Player : MonoBehaviour
         {
             m_animator.SetBool("Input/Attack", false);
         }
-        if (a_input.m_dash && EntityStats.Instance.CanEntityMoveOccur("Player", this.GetComponent<PlayerMovementVariables>().m_rollStaminaDrain) && !m_animator.GetBool("Output/IsRolling"))
+        if (a_input.m_dash && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_rollStaminaDrain) && !m_animator.GetBool("Output/IsRolling"))
         {
             m_animator.SetBool("Input/Roll", true);
         }
@@ -180,7 +234,6 @@ public class Player : MonoBehaviour
     // Walking/Running with rotation towards movement direciton.
     private void Movement(bool a_running)
     {
-        PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
         float a_axisX = m_animator.GetFloat("Input/X");
         float a_axisZ = m_animator.GetFloat("Input/Z");
 
@@ -223,23 +276,23 @@ public class Player : MonoBehaviour
             // I would need some nice ramps and some velocity 
             // retention when rotating and that should all be 
             // worked out and then applied to these values below.
-            if(a_running && !movementstats.m_inputBuffer.m_staminaDrained)
+            if(a_running && !this.m_inputBuffer.m_staminaDrained)
             {
                 if (EntityStats.Instance.GetStaminaOfEntity("Player") > 0)
                 {
-                    EntityStats.Instance.DeminishStaminaOffEntity("Player", movementstats.m_runStaminaDrain);
-                    speed = movementstats.m_runSpeed;
+                    EntityStats.Instance.DeminishStaminaOffEntity("Player", this.m_runStaminaDrain);
+                    speed = this.m_runSpeed;
                 }
                 else
                 {
-                    movementstats.m_inputBuffer.m_staminaDrained = true;
-                    movementstats.m_inputBuffer.ConsumeInput();
-                    speed = movementstats.m_walkSpeed;
+                    this.m_inputBuffer.m_staminaDrained = true;
+                    this.m_inputBuffer.ConsumeInput();
+                    speed = this.m_walkSpeed;
                 }
             }
             else
             {
-                speed = movementstats.m_walkSpeed;
+                speed = this.m_walkSpeed;
             }
             // I need to check if the character has gone from walk to run
             // and pass in a higher movement value depending on.
@@ -321,22 +374,37 @@ public class Player : MonoBehaviour
     // While player is rolling this funciton is called.
     private void Rolling()
     {
-        PlayerMovementVariables movementstats = this.GetComponent<PlayerMovementVariables>();
-        Vector3 m_movement = new Vector3((m_storedRollDirection.x * movementstats.m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * movementstats.m_rollSpeed) * Time.deltaTime);
+        Vector3 m_movement = new Vector3((m_storedRollDirection.x * m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * m_rollSpeed) * Time.deltaTime * m_animator.speed);
         this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
     }
 
     // Character rotates towards target when locked on.
     // Occurs seperate from move.
-    private void LockOnLook()
+    private void LockOnLook(float axisZ, float axisX)
     {
-        Vector3 bossdirection = this.GetComponent<PlayerMovementVariables>().m_target.transform.position - this.transform.position;
-        bossdirection = bossdirection.normalized;
-        // To make sure player doesn't up or down. Only facing.
-        // Take not that head will need the y.
-        bossdirection.y = 0;
-        Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
+        if (!m_currentFrame.m_run)
+        {
+            Vector3 bossdirection = this.m_target.transform.position - this.transform.position;
+            bossdirection = bossdirection.normalized;
+
+            // To make sure player doesn't up or down. Only facing.
+            // Take not that head will need the y.
+            bossdirection.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
+            
+        }
+        else
+        {
+            Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * axisX);
+            Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * axisZ);
+            Vector3 cameraPosition = (cameraz + camerax);
+
+            Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
+
+            m_animator.gameObject.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
+        }
     }    
 
     // Character rotates towards direction they're moving.
@@ -349,7 +417,27 @@ public class Player : MonoBehaviour
             Vector3 cameraPosition = (cameraz + camerax);
 
             Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.GetComponent<PlayerMovementVariables>().m_rotationTime);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
+            // Need to adjust the rotation.
+            //m_animator.gameObject.transform.rotation;
         }
     }
+
+
+    // Getters
+    public Collider GetAttackHitBox()
+    {
+        return m_attackHitBox;
+    }
+
+    public Collider GetSwordHitBox()
+    {
+        return m_swordHitBox;
+    }
+
+    public GameObject GetLookPoint()
+    {
+        return m_lookPoint;
+    }
+
 }

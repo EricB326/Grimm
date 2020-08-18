@@ -85,7 +85,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5598846
+      - time: 0.49872252
         functionName: DeavtivateHitBox
         data: 
         objectReferenceParameter: {instanceID: 0}

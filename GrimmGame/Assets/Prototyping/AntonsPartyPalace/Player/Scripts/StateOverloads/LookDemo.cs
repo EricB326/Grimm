@@ -36,7 +36,7 @@ public class LookDemo : StateMachineBehaviour
         // Direction isn't really needed.
         Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position 
             - animator.gameObject.transform.position;
-        if (animator.gameObject.GetComponent<PlayerMovementVariables>().m_lockon)
+        if (animator.gameObject.GetComponentInParent<Player>().m_lockon)
         {
             ikWeight += 0.05f;
             if (ikWeight > 1)

@@ -20,7 +20,7 @@ public class SwordCollision : MonoBehaviour
         if (other.tag != "Boss" || other.tag != "Ground")
         {
             // OnHitEffects - Gets the information from whatever it made contact with to paly sounds and particles.
-            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().GetSwordHitBox().enabled = false;
+            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().GetSwordHitBox().enabled = false;
             // Need a sword contact with world.
             // Will have issues if the ground is not tagged.
         }
