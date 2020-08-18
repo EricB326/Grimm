@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Animations;
 using XboxCtrlrInput;
@@ -246,8 +247,8 @@ public class Player : MonoBehaviour
             Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
             Vector3 cameraPosition = (cameraz + camerax);
 
-            // If not locked on we want to rotate the player
-           
+            // Directon based on camera position
+            Vector3 movement = new Vector3(cameraPosition.x, 0, cameraPosition.z);
 
 
             // Adjust movement direction by angle below 
@@ -258,7 +259,6 @@ public class Player : MonoBehaviour
             // If conatct position in direciton heading higher pos movement
             // If conatct position in direciton heading lower neg movement
             RaycastHit hit1;
-            Debug.DrawLine(transform.position, transform.up);
             if (Physics.Raycast(transform.position, -transform.up, out hit1, 2)) // Cast down
             {
                 //Debug.Log(hit1.point);
@@ -294,10 +294,30 @@ public class Player : MonoBehaviour
             {
                 speed = this.m_walkSpeed;
             }
+
+            // Modifiying movement based on normal or below terrain
+            Ray Raycast = new Ray(this.transform.position, -this.transform.up);
+            RaycastHit info;
+            // The raycast shoudl go down only till it hits the lifter.
+            // Any more and it should be ignored and the lifter should be dealing with it.
+            if(Physics.Raycast(Raycast, out info))
+            {
+                float angle = Vector3.Angle(info.normal, transform.up);
+                Debug.Log(angle);
+                movement = Quaternion.Euler(angle, 0f, 0f) * movement;
+                //Debug.DrawRay(this.transform.position, movement);
+
+                // Shoud modify 
+
+            }
+
             // I need to check if the character has gone from walk to run
             // and pass in a higher movement value depending on.
-            Vector3 m_movement = new Vector3(cameraPosition.x * speed * Time.deltaTime, 0, cameraPosition.z * speed * Time.deltaTime);
 
+            // direction to move in. Only x and z values.
+
+
+            // * speed * Time.deltaTime
             // All right but should be doing a raycast forward and back.
             // if it doesn't hit anything after x it goes down.
             // if no contact slide until normal is 0.
@@ -313,14 +333,14 @@ public class Player : MonoBehaviour
 
             Vector3 lerp = Vector3.Lerp(this.transform.position, pos, 0.5f);
 
-
+            movement = movement * speed * Time.deltaTime;
             //Debug.Log(m_movement);
-            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement /*+ lerp*/);
+            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + movement /*+ lerp*/);
             //player.transform.position = player.transform.position + m_movement;
             // What to pass to the animator.
             // Used for blend trees.
             // This should always be passed in.
-            Vector3 toAnim = this.transform.worldToLocalMatrix * m_movement;
+            Vector3 toAnim = this.transform.worldToLocalMatrix * movement;
             toAnim = toAnim.normalized;
             float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
             m_animator.SetFloat("Movement/X", toAnim.x * scale);

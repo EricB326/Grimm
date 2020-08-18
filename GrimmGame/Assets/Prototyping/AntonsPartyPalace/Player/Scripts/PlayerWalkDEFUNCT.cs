@@ -59,7 +59,7 @@ public class PlayerWalkDEFUNCT : StateMachineBehaviour
             m_movement = new Vector3(m_cameraPosition.x * movementstats.m_walkSpeed * Time.deltaTime, 0, m_cameraPosition.z * movementstats.m_walkSpeed * Time.deltaTime);
 
             //Debug.Log(m_movement);
-            Debug.DrawRay(player.transform.position, m_movement);
+            //Debug.DrawRay(player.transform.position, m_movement);
             player.GetComponent<Rigidbody>().MovePosition(player.transform.position + m_movement);
             //player.transform.position = player.transform.position + m_movement;
             // What to pass to the animator.

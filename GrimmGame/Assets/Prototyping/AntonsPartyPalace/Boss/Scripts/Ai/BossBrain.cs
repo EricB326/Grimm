@@ -70,8 +70,10 @@ public class BossBrain : MonoBehaviour
     private void Update()
     {
         // This is a bad name - Really it is both distance and direction.
+        // THis currently does not work. Players location is different now with
+        // the new setup
         Vector3 directionToMove = m_target.transform.position - transform.position;
-
+        Debug.DrawRay(this.transform.position, directionToMove);
         // Adds actions to que if needed.
         CheckQue(directionToMove);
        
@@ -142,7 +144,7 @@ public class BossBrain : MonoBehaviour
     private void RotateBoss(Vector3 a_direction)
     {
         a_direction.y = 0;
-        a_direction.x = 0;
+        //a_direction.x = 0;
         Quaternion targetRotation = Quaternion.LookRotation(a_direction);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
     }
