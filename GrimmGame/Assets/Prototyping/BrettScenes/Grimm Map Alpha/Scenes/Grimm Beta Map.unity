@@ -165,6 +165,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 463700698}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &78465459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1275897496041448109, guid: 1d37a3623b03b4447837f05bc8427f5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1252751520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &81664381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 420116830276005484, guid: 24a8d1c2425456d49ba067a587b86658,
+    type: 3}
+  m_PrefabInstance: {fileID: 109380996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &109380996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,6 +184,81 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 388155507165099020, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 4708545eea4bcd84ca362c87506b573c, type: 3}
+    - target: {fileID: 3356226737884222760, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_lookPoint
+      value: 
+      objectReference: {fileID: 1038205673}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[1].m_name
+      value: Eric
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[1].m_aggresiveStaminaThreshold
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[1].m_defensiveStaminaThreshold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[0].behaviourType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_bossActions.Array.data[1].behaviourType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_threshold
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_wanderTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226737884222763, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_bossPhaseList.Array.data[0].m_timeBetweenPreDefinedAndRandom
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356226739141767676, guid: 24a8d1c2425456d49ba067a587b86658,
+        type: 3}
+      propertyPath: m_Name
+      value: LookPointBoss
+      objectReference: {fileID: 0}
     - target: {fileID: 6751559370182339429, guid: 24a8d1c2425456d49ba067a587b86658,
         type: 3}
       propertyPath: m_Name
@@ -1207,82 +1294,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 355826998}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &399904249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: 0
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  sunSize:
-    m_OverrideState: 0
-    m_Value: 0.04
-    min: 0
-    max: 1
-  sunSizeConvergence:
-    m_OverrideState: 0
-    m_Value: 5
-    min: 1
-    max: 10
-  atmosphereThickness:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 5
-  skyTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  groundColor:
-    m_OverrideState: 0
-    m_Value: {r: 0.369, g: 0.349, b: 0.341, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  enableSunDisk:
-    m_OverrideState: 0
-    m_Value: 1
 --- !u!1001 &404387476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1364,6 +1375,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 109380996}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &433097249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433097241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb1e97576418aa4e84a79d7353d9b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_castDown: 0
+  m_castUp: 0
+  m_offsetUp: 0
+  m_offsetDown: 0
+  m_leftFoot: {fileID: 81664381}
+  m_rightFoot: {fileID: 1131937983}
+  m_lifter: {fileID: 0}
 --- !u!1001 &463700698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1498,6 +1528,31 @@ Transform:
 --- !u!1 &565387151 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7169485598030299146, guid: 1d37a3623b03b4447837f05bc8427f5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1252751520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &565387159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565387151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb1e97576418aa4e84a79d7353d9b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_castDown: 0
+  m_castUp: 0
+  m_offsetUp: 0
+  m_offsetDown: 0
+  m_leftFoot: {fileID: 567045320}
+  m_rightFoot: {fileID: 78465459}
+  m_lifter: {fileID: 0}
+--- !u!1 &567045320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1943923681729332233, guid: 1d37a3623b03b4447837f05bc8427f5b,
     type: 3}
   m_PrefabInstance: {fileID: 1252751520}
   m_PrefabAsset: {fileID: 0}
@@ -2671,6 +2726,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f351021b82a36489e25d3a90543332, type: 3}
+--- !u!114 &924449541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  sunSize:
+    m_OverrideState: 0
+    m_Value: 0.04
+    min: 0
+    max: 1
+  sunSizeConvergence:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 1
+    max: 10
+  atmosphereThickness:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+  skyTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  groundColor:
+    m_OverrideState: 0
+    m_Value: {r: 0.369, g: 0.349, b: 0.341, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  enableSunDisk:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!1001 &926767371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2778,7 +2909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 2e6402b85fc08934aafe779c27b5eed1, type: 2}
   m_StaticLightingSkyUniqueID: 2
-  m_SkySettings: {fileID: 399904249}
+  m_SkySettings: {fileID: 924449541}
   m_SkySettingsFromProfile: {fileID: -8934563823256147829, guid: 2e6402b85fc08934aafe779c27b5eed1,
     type: 2}
 --- !u!114 &944864355
@@ -3029,6 +3160,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5d9f8b2235214642aaf03318250eeb8, type: 3}
+--- !u!4 &1038205673 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2235907140797041651, guid: 24a8d1c2425456d49ba067a587b86658,
+    type: 3}
+  m_PrefabInstance: {fileID: 109380996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1046237871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3304,6 +3441,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 727317810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1131937983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 618373065599656194, guid: 24a8d1c2425456d49ba067a587b86658,
+    type: 3}
+  m_PrefabInstance: {fileID: 109380996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1142064806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5768761875749065112, guid: 620aff4711366c148822acc91d6b386b,
@@ -3527,6 +3670,16 @@ PrefabInstance:
       propertyPath: m_target
       value: 
       objectReference: {fileID: 433097241}
+    - target: {fileID: 2107762161809017373, guid: 1d37a3623b03b4447837f05bc8427f5b,
+        type: 3}
+      propertyPath: m_runSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107762161926760239, guid: 1d37a3623b03b4447837f05bc8427f5b,
+        type: 3}
+      propertyPath: m_Name
+      value: LookPointPlayer
+      objectReference: {fileID: 0}
     - target: {fileID: 6135161575771140633, guid: 1d37a3623b03b4447837f05bc8427f5b,
         type: 3}
       propertyPath: m_LocalPosition.x
