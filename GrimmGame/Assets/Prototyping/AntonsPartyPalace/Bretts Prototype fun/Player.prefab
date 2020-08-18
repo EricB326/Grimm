@@ -11743,7 +11743,7 @@ MonoBehaviour:
   m_InvinceFrames: 0
   m_lockon: 0
   m_inputBuffer:
-    m_framesToRetainFor: 20
+    m_framesToRetainFor: 50
     m_heldframesBeforeRun: 40
     m_staminaDrained: 0
 --- !u!114 &4857884527118548493
