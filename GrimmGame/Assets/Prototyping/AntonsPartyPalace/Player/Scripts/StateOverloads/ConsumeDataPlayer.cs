@@ -17,13 +17,13 @@ public class ConsumeDataPlayer : StateMachineBehaviour
                 case PlayerDataEnums.INPUT_ATTACK:
                     {
                         animator.SetBool("Input/Attack", false);
-                        animator.gameObject.GetComponent<PlayerMovementVariables>().m_inputBuffer.ConsumeInput();
+                        animator.gameObject.GetComponentInParent<Player>().m_inputBuffer.ConsumeInput();
                         break;
                     }
                 case PlayerDataEnums.INPUT_ROLL:
                     {
                         animator.SetBool("Input/Roll", false);
-                        animator.gameObject.GetComponent<PlayerMovementVariables>().m_inputBuffer.ConsumeInput();
+                        animator.gameObject.GetComponentInParent<Player>().m_inputBuffer.ConsumeInput();
                         break;
                     }
                 case PlayerDataEnums.INPUT_DAMAGE:

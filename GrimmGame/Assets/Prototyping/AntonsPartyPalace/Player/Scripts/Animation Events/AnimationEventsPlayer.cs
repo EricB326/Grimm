@@ -11,19 +11,19 @@ public class AnimationEventsPlayer : MonoBehaviour
 {
    
     // Activates hitboxes on player model to cause damage
-    public void ActivateHitBox(int a_colliderNumber)
+    public void ActivateHitBox()
     {
         //Debug.Log(a_colliderNumber);
-        PlayerMovementVariables player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>();
+        Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         player.GetAttackHitBox().enabled = true;
         player.GetSwordHitBox().enabled = true;
         EntityStats.Instance.DeminishStaminaOffEntity("Player", player.m_attackStaminaDrain);
     }
     // Disables hitboxes on player model to no longer cause damage
     // Occurs when hitting boss or swing near end.
-    public void DeavtivateHitBox(int a_colliderNumber)
+    public void DeavtivateHitBox()
     {
-        PlayerMovementVariables player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>();
+        Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         player.GetAttackHitBox().enabled = false;
         player.GetSwordHitBox().enabled = false;
     }
@@ -32,11 +32,11 @@ public class AnimationEventsPlayer : MonoBehaviour
     // May have visual/sound issues depending how they are handled.
     public void IFramesOn()
     {
-        PlayerMovementVariables player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>();
-        if (EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_InvinceFrames == false)
+        Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        if (player.m_InvinceFrames == false)
         {
-            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_InvinceFrames = true;
-            EntityStats.Instance.DeminishStaminaOffEntity("Player", GetComponent<PlayerMovementVariables>().m_rollStaminaDrain);
+            player.m_InvinceFrames = true;
+            EntityStats.Instance.DeminishStaminaOffEntity("Player", player.m_rollStaminaDrain);
             // And visual effects.
         }
     }
@@ -45,7 +45,18 @@ public class AnimationEventsPlayer : MonoBehaviour
     // May have visual/sound issues depending how they are handled.
     public void IFramesOff()
     {
-        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_InvinceFrames = false;
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_InvinceFrames = false;
+    }
+
+
+    // Deactivates every animation event
+    // when leaving animation states.
+    // A nice safety if off events aren't reached.
+    public void Deactivate()
+    {
+        
+        DeavtivateHitBox();
+        IFramesOff();
     }
 
 }

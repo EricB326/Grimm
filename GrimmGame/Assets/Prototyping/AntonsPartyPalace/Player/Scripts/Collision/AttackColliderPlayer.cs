@@ -27,8 +27,8 @@ public class AttackColliderPlayer : MonoBehaviour
         if(other.tag == "Boss")
         {
             Debug.Log("Hit Boss");
-            EntityStats.Instance.DeminishHealthOffEntity("Boss", EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_attackDamage);
-            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<AnimationEventsPlayer>().DeavtivateHitBox(0);
+            EntityStats.Instance.DeminishHealthOffEntity("Boss", EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_attackDamage);
+            EntityStats.Instance.GetObjectOfEntity("Player").GetComponentInChildren<AnimationEventsPlayer>().DeavtivateHitBox();
             
             // Should be inside an on hit event.
             EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().IncreaseRevengeValue(); // Needs to 

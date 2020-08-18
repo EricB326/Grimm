@@ -32,7 +32,7 @@ public class FootDemo : StateMachineBehaviour
     // OnStateIK is called right after Animator.OnAnimatorIK()
     override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        IkFootVariables feet = animator.gameObject.GetComponent<IkFootVariables>();
+        IkFootVariables feet = animator.gameObject.GetComponentInParent<IkFootVariables>();
         float maxDistanceDown = feet.m_castDown;
         float maxDistanceUp = feet.m_castUp;
 

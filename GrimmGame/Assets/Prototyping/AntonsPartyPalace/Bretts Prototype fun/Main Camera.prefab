@@ -915,7 +915,6 @@ MonoBehaviour:
   m_camList:
   - {fileID: 6873312431019435570}
   - {fileID: 6318394109021035205}
-  m_lockOn: 0
 --- !u!1 &6873312430677690037
 GameObject:
   m_ObjectHideFlags: 0

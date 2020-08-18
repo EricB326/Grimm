@@ -141,6 +141,8 @@ public class BossBrain : MonoBehaviour
     // Can probably be moved into a state overload.
     private void RotateBoss(Vector3 a_direction)
     {
+        a_direction.y = 0;
+        a_direction.x = 0;
         Quaternion targetRotation = Quaternion.LookRotation(a_direction);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
     }
@@ -251,7 +253,7 @@ public class BossBrain : MonoBehaviour
         else
         {
             // Check if time to exit wander state. 
-            if (m_timeOut < Time.time)
+            if (m_timeOut > Time.time)
             {
                 // Remove old information.
                 ResetState();
