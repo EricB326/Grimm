@@ -21,6 +21,7 @@ public class BossBrain : MonoBehaviour
     // Passed out of the animator and here for debugging.
     // This is set in the boss Phase.
     public float m_desiredRange = 0;
+    public float m_desiredRangeMin = 0;
     // What the current phase of the boss is.
     // Either this lives in the animator or out here.
     //public int m_phase;
@@ -64,7 +65,7 @@ public class BossBrain : MonoBehaviour
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_timeOut = 0;
-        m_diagnosticMode = false;
+        m_diagnosticMode = true;
     }
 
     private void Update()
@@ -73,7 +74,6 @@ public class BossBrain : MonoBehaviour
         // THis currently does not work. Players location is different now with
         // the new setup
         Vector3 directionToMove = m_target.transform.position - transform.position;
-        Debug.DrawRay(this.transform.position, directionToMove);
         // Adds actions to que if needed.
         CheckQue(directionToMove);
        

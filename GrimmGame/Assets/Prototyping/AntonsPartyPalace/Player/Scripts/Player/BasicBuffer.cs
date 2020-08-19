@@ -200,7 +200,7 @@ public class BasicBuffer
         // last frame and theframes since last input
         // is greater than 0. Might have issues with dodging
         // after running. Oh my god it actually works.
-        else if (m_buttonInfo.m_bReleased && m_framesSinceLastInput > 0 && !m_staminaDrained)
+        else if (m_buttonInfo.m_bReleased && m_framesSinceLastInput > 0 && !m_staminaDrained || m_buttonInfo.m_bHeldFor > m_heldframesBeforeRun)
         {
             {
                 m_storedBuffer.m_attack = false;

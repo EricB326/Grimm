@@ -108,7 +108,7 @@ public class CameraRotation : MonoBehaviour
 
         float axisX = XCI.GetAxis(XboxAxis.RightStickX);
 
-            float axisY = XCI.GetAxis(XboxAxis.RightStickY);
+        float axisY = XCI.GetAxis(XboxAxis.RightStickY);
 
 
 

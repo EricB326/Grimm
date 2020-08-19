@@ -607,7 +607,7 @@ BlendTree:
     m_Motion: {fileID: 1827226128182048838, guid: 0612400ab0d09df4881d84ec8760bae4,
       type: 3}
     m_Threshold: -8
-    m_Position: {x: 0, y: 0.5}
+    m_Position: {x: 0, y: 0.2}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Input/VerticalVelocity
@@ -616,7 +616,7 @@ BlendTree:
     m_Motion: {fileID: 1827226128182048838, guid: 0612400ab0d09df4881d84ec8760bae4,
       type: 3}
     m_Threshold: -5
-    m_Position: {x: 0, y: -0.5}
+    m_Position: {x: 0, y: -0.2}
     m_TimeScale: -1
     m_CycleOffset: 0
     m_DirectBlendParameter: Input/VerticalVelocity
@@ -1652,6 +1652,12 @@ AnimatorController:
   m_Name: Player Anim Controller
   serializedVersion: 5
   m_AnimatorParameters:
+  - m_Name: MovementSpeedMult
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   - m_Name: AnyState/Damage
     m_Type: 3
     m_DefaultFloat: 0

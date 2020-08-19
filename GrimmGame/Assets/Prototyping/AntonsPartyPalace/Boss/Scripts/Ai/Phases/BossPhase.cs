@@ -81,8 +81,10 @@ public class BossPhase
         foreach (BossActions t in m_bossActions)
         {
             if (t.GetBehaviourType == SteeringBehaviours.AGGRESSIVE)
-            {       // from 10 to 0     Dam val     Range from 020             0 or neg * 5
+            {       // from 10 to 0            Range from 0-20             0 or neg * 5  +  roll 2 random 0 - 6
                 // Distance to player, damage, coolness factor(set by designer) timeused
+                
+                // more ways to be effect weighing.
 
                 // Weighing happens here
                 // If desirability is greater than previous replace.
