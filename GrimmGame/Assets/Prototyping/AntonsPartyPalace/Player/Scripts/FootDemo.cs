@@ -115,7 +115,7 @@ public class FootDemo : StateMachineBehaviour
         Vector3 lifterPos = feet.m_leftFoot.transform.position - feet.m_rightFoot.transform.position;
         lifterPos = feet.m_rightFoot.transform.position + lifterPos * 0.5f;
 
-        feet.m_lifter.transform.position = lifterPos;
+        //feet.m_lifter.transform.position = lifterPos;
 
 
 

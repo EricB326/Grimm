@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     [Range(0, 1)]
     public float m_rotationTime;
 
-
+    private GameObject m_lifter;
 
     // Stamina drain on attack. Should be consistent.
     public int m_attackStaminaDrain = 20;
@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
         m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
         //m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
         //m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
+        m_lifter = new GameObject();
     }
 
 
@@ -188,6 +189,66 @@ public class Player : MonoBehaviour
         {
             StartRoll(axisX, axisY);
         }
+
+        // Testing moving player to location
+        Vector3 rayOffset = new Vector3(0, 1, 0);
+        Vector3 raise = new Vector3(0,0,0); 
+        // Fwd ray
+        Ray FwdRay = new Ray(this.transform.position + (this.transform.forward * 1f) + rayOffset, -this.transform.up);
+        RaycastHit fwdHit = new RaycastHit();
+        // Bck ray
+        Ray BckRay = new Ray(this.transform.position + (-this.transform.forward * 1f) + rayOffset, -this.transform.up);
+        RaycastHit bckHit = new RaycastHit();
+        float maxDistance = 1;
+
+        if (Physics.Raycast(FwdRay, out fwdHit, maxDistance) && Physics.Raycast(BckRay, out bckHit, maxDistance))
+        {
+            // Positions of hits
+            Vector3 fwd = fwdHit.point;
+            Vector3 bck = bckHit.point;
+
+            //Debug.Log(bck);
+            //Debug.Log(fwd);
+
+            Vector3 direction = fwd - bck;
+            Debug.DrawRay(this.transform.position,direction);
+            // Middle point.
+            m_lifter.transform.position = bck + direction * 0.5f;
+
+            // Current position - the desired position on the y should be
+            // the 
+
+            float y = this.transform.position.y - (m_lifter.transform.position.y + 0.7f);
+            Debug.Log(y);
+            
+
+
+            if (y >= 0.65 && y <= 0.75)
+            {
+                y = 0;
+            }
+            if(y != 0)
+            {
+                y = Mathf.Lerp(this.transform.position.y, m_lifter.transform.position.y + 0.7f, 0.1f);
+                raise.y = y;
+            }
+
+            //Debug.Log(direction);
+            //float angle = Vector3.Angle(direction.normalized, transform.forward);
+            //movement = Quaternion.Euler(angle, 0f, 0f) * movement;
+            //float newY =  Mathf.Lerp(this.transform.position.y, m_lifter.transform.position.y, 0.1f);
+
+            //float bounce = Mathf.Lerp(this.transform.position.y , m_lifter.transform.position.y, 0.1f);
+            //offset = new Vector3(0, bounce, 0);
+            //Debug.DrawRay(this.transform.position + new Vector3(0,0.5f,0), direction);
+        Vector3 newPos = this.transform.position;
+
+        newPos.y = y;
+
+        this.GetComponent<Rigidbody>().MovePosition(newPos);
+        }
+
+
 
 
 
@@ -346,29 +407,39 @@ public class Player : MonoBehaviour
             // Offset should be set in insepctor range of 0.5f to 2f.
             Vector3 rayOffset = new Vector3(0, 1, 0);
             // Fwd ray
-            Ray FwdRay = new Ray(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
+            Ray FwdRay = new Ray(this.transform.position + (this.transform.forward * 1f) + rayOffset, -this.transform.up);
             RaycastHit fwdHit = new RaycastHit();
             // Bck ray
-            Ray BckRay = new Ray(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
+            Ray BckRay = new Ray(this.transform.position + -(this.transform.forward * 1f) + rayOffset, -this.transform.up);
             RaycastHit bckHit = new RaycastHit();
             float maxDistance = 2;
 
-            Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
-            Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
+            //Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
+            //Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
 
             // get a direction of the 2 points and use that to work out an angle of movement.
             // at the same time measure a point between the 2 and lerp the player towards
             // that point on the y axis.
-            if (Physics.Raycast(FwdRay, out fwdHit, maxDistance) && Physics.Raycast(FwdRay, out bckHit, maxDistance))
+            Vector3 offset;
+            if (Physics.Raycast(FwdRay, out fwdHit, maxDistance) && Physics.Raycast(BckRay, out bckHit, maxDistance))
             {
                 // Positions of hits
                 Vector3 fwd = fwdHit.point;
                 Vector3 bck = bckHit.point;
 
+                //Debug.Log(bck);
+                //Debug.Log(fwd);
 
-                //float angle = Vector3.Angle(info.normal, transform.up);
-                //Debug.Log(angle);
-                //movement = Quaternion.Euler(angle, 0f, 0f) * movement;
+                Vector3 direction = fwd - bck;
+                m_lifter.transform.position = bck + direction * 0.5f;
+                //Debug.Log(direction);
+                float angle = Vector3.Angle(direction.normalized,transform.forward);
+                movement = Quaternion.Euler(angle, 0f, 0f) * movement;
+
+
+                //float bounce = Mathf.Lerp(this.transform.position.y , m_lifter.transform.position.y, 0.1f);
+                //offset = new Vector3(0, bounce, 0);
+                //Debug.DrawRay(this.transform.position + new Vector3(0,0.5f,0), direction);
             }
             // Raycast down and get the normal of the position underneath and
             // use that for rotation adjustment / body placement if
@@ -382,8 +453,9 @@ public class Player : MonoBehaviour
                     float angle = Vector3.Angle(info.normal, transform.up);
                     //Debug.Log(angle);
                     movement = Quaternion.Euler(angle, 0f, 0f) * movement;
-
+                    Debug.Log("Down");
                 }
+                
             }
 
             //Vector3 lifterPos = feet.m_leftFoot.transform.position - feet.m_rightFoot.transform.position;
@@ -419,7 +491,7 @@ public class Player : MonoBehaviour
 
             movement = movement * m_animator.GetFloat("MovementSpeedMult") * Time.deltaTime;
             //Debug.Log(m_movement);                                      // + lerp from lifter.
-            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + movement);
+            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + movement/* + offset*/);
             //player.transform.position = player.transform.position + m_movement;
             // What to pass to the animator.
             // Used for blend trees.
