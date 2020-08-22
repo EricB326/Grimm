@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scots Pine Small
+  m_Name: Scots Pine Large
   m_Shader: {fileID: -6465566751694194690, guid: 421deb19d1850d748b21f89c856dcbd6,
     type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DOUBLESIDED_ON
@@ -230,8 +230,8 @@ Material:
     - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
-    - _TrunkStiffness: 0.8
-    - _Turbulence: 1
+    - _TrunkStiffness: 0.85
+    - _Turbulence: 1.85
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
