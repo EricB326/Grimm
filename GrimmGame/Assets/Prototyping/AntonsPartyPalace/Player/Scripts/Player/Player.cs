@@ -114,6 +114,17 @@ public class Player : MonoBehaviour
         }
 
 
+
+        if (m_lockon)
+        {
+            LockOnLook(axisZ, axisX);
+        }
+        else if (m_animator.GetBool("Output/CanMove"))
+        {
+            FreeLook(axisZ, axisX);
+        }
+
+
     }
 
 
@@ -252,15 +263,6 @@ public class Player : MonoBehaviour
 
 
 
-
-        if (m_lockon)
-        {
-            LockOnLook(axisY, axisX);
-        }
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            FreeLook(axisY, axisX);
-        }
 
     }
 
@@ -404,59 +406,62 @@ public class Player : MonoBehaviour
             m_animator.SetFloat("MovementSpeedMult", Mathf.Lerp(currentSpeed, desiredSpeed * input, acceleration));
 
 
-            // Offset should be set in insepctor range of 0.5f to 2f.
-            Vector3 rayOffset = new Vector3(0, 1, 0);
-            // Fwd ray
-            Ray FwdRay = new Ray(this.transform.position + (this.transform.forward * 1f) + rayOffset, -this.transform.up);
-            RaycastHit fwdHit = new RaycastHit();
-            // Bck ray
-            Ray BckRay = new Ray(this.transform.position + -(this.transform.forward * 1f) + rayOffset, -this.transform.up);
-            RaycastHit bckHit = new RaycastHit();
-            float maxDistance = 2;
 
-            //Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
-            //Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
+            // RAYCAST FORWARD AND BACK TO ADJUST THE PLAYERS Y POSITION
 
-            // get a direction of the 2 points and use that to work out an angle of movement.
-            // at the same time measure a point between the 2 and lerp the player towards
-            // that point on the y axis.
-            Vector3 offset;
-            if (Physics.Raycast(FwdRay, out fwdHit, maxDistance) && Physics.Raycast(BckRay, out bckHit, maxDistance))
-            {
-                // Positions of hits
-                Vector3 fwd = fwdHit.point;
-                Vector3 bck = bckHit.point;
+            //// Offset should be set in insepctor range of 0.5f to 2f.
+            //Vector3 rayOffset = new Vector3(0, 1, 0);
+            //// Fwd ray
+            //Ray FwdRay = new Ray(this.transform.position + (this.transform.forward * 1f) + rayOffset, -this.transform.up);
+            //RaycastHit fwdHit = new RaycastHit();
+            //// Bck ray
+            //Ray BckRay = new Ray(this.transform.position + -(this.transform.forward * 1f) + rayOffset, -this.transform.up);
+            //RaycastHit bckHit = new RaycastHit();
+            //float maxDistance = 2;
 
-                //Debug.Log(bck);
-                //Debug.Log(fwd);
+            ////Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
+            ////Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
 
-                Vector3 direction = fwd - bck;
-                m_lifter.transform.position = bck + direction * 0.5f;
-                //Debug.Log(direction);
-                float angle = Vector3.Angle(direction.normalized,transform.forward);
-                movement = Quaternion.Euler(angle, 0f, 0f) * movement;
+            //// get a direction of the 2 points and use that to work out an angle of movement.
+            //// at the same time measure a point between the 2 and lerp the player towards
+            //// that point on the y axis.
+            //Vector3 offset;
+            //if (Physics.Raycast(FwdRay, out fwdHit, maxDistance) && Physics.Raycast(BckRay, out bckHit, maxDistance))
+            //{
+            //    // Positions of hits
+            //    Vector3 fwd = fwdHit.point;
+            //    Vector3 bck = bckHit.point;
+
+            //    //Debug.Log(bck);
+            //    //Debug.Log(fwd);
+
+            //    Vector3 direction = fwd - bck;
+            //    m_lifter.transform.position = bck + direction * 0.5f;
+            //    //Debug.Log(direction);
+            //    float angle = Vector3.Angle(direction.normalized,transform.forward);
+            //    movement = Quaternion.Euler(angle, 0f, 0f) * movement;
 
 
-                //float bounce = Mathf.Lerp(this.transform.position.y , m_lifter.transform.position.y, 0.1f);
-                //offset = new Vector3(0, bounce, 0);
-                //Debug.DrawRay(this.transform.position + new Vector3(0,0.5f,0), direction);
-            }
-            // Raycast down and get the normal of the position underneath and
-            // use that for rotation adjustment / body placement if
-            // no contact with either above. Should be okay unless floating in air.
-            else
-            {
-                Ray Raycast = new Ray(this.transform.position, -this.transform.up);
-                RaycastHit info;
-                if (Physics.Raycast(Raycast, out info))
-                {
-                    float angle = Vector3.Angle(info.normal, transform.up);
-                    //Debug.Log(angle);
-                    movement = Quaternion.Euler(angle, 0f, 0f) * movement;
-                    Debug.Log("Down");
-                }
+            //    //float bounce = Mathf.Lerp(this.transform.position.y , m_lifter.transform.position.y, 0.1f);
+            //    //offset = new Vector3(0, bounce, 0);
+            //    //Debug.DrawRay(this.transform.position + new Vector3(0,0.5f,0), direction);
+            //}
+            //// Raycast down and get the normal of the position underneath and
+            //// use that for rotation adjustment / body placement if
+            //// no contact with either above. Should be okay unless floating in air.
+            //else
+            //{
+            //    Ray Raycast = new Ray(this.transform.position, -this.transform.up);
+            //    RaycastHit info;
+            //    if (Physics.Raycast(Raycast, out info))
+            //    {
+            //        float angle = Vector3.Angle(info.normal, transform.up);
+            //        //Debug.Log(angle);
+            //        movement = Quaternion.Euler(angle, 0f, 0f) * movement;
+            //        Debug.Log("Down");
+            //    }
                 
-            }
+            //}
 
             //Vector3 lifterPos = feet.m_leftFoot.transform.position - feet.m_rightFoot.transform.position;
             //lifterPos = feet.m_rightFoot.transform.position + lifterPos * 0.5f;

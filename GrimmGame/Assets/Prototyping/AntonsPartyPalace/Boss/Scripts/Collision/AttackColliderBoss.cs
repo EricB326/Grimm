@@ -17,14 +17,14 @@ public class AttackColliderBoss : MonoBehaviour
 
 
     // I just wanted to try this out.
-    IEnumerator SlowDown(Player playermovementVar)
+    IEnumerator SlowDown(Player player)
     {
-        playermovementVar.gameObject.GetComponent<Animator>().speed = timescaleSlowDownOnIFrames;
+        player.m_animator.speed = timescaleSlowDownOnIFrames;
         EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().speed = timescaleSlowDownOnIFrames;
         yield return new WaitForSecondsRealtime(m_hangTime);
 
-        for(; playermovementVar.gameObject.GetComponent<Animator>().speed < 1.0f; 
-            playermovementVar.gameObject.GetComponent<Animator>().speed +=0.1f)
+        for(; player.m_animator.speed < 1.0f;
+            player.m_animator.speed +=0.1f)
         {
             EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().speed += 0.1f;
             yield return new WaitForSecondsRealtime(m_hangTime / 8);
@@ -42,20 +42,18 @@ public class AttackColliderBoss : MonoBehaviour
         if(other.tag == m_tagToLookFor)
         {
             // Confirm if in a touchable state
-            GameObject player = other.gameObject; // So we can do damage
-            Animator playerAnimator = player.GetComponentInChildren<Animator>(); // So we can animate result
-            Player playermovementVar = player.GetComponent<Player>();
+            Player player = other.GetComponent<Player>();
             // Need to check if player is not in Iframes. If so skip.
-            if (!playermovementVar.m_InvinceFrames)
+            if (!player.m_InvinceFrames)
             {
                 // Get damage from attack list. Needs to be neatened up a fair bit.
                 float damageToDo = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_actionQue[hitboxToDeactivate].AttackDamage;
                 // Check if currently rolling. If so reduce damage by multiplyer.
 
                 // If not do full damage.
-                if (playerAnimator.GetBool("Output/IsRolling"))
+                if (player.m_animator.GetBool("Output/IsRolling"))
                 {
-                    damageToDo *= playermovementVar.m_rollDamagemultiplier;
+                    damageToDo *= player.m_rollDamagemultiplier;
                 }
                 EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
                 EntityStats.Instance.DeminishHealthOffEntity("Player", damageToDo);
@@ -65,7 +63,7 @@ public class AttackColliderBoss : MonoBehaviour
             else
             {
                 EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
-                StartCoroutine(SlowDown(playermovementVar));
+                StartCoroutine(SlowDown(player));
             }
         }
     }

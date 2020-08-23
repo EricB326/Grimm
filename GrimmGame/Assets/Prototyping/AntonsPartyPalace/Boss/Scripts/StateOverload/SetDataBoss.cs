@@ -31,7 +31,7 @@ public class SetDataBoss : StateMachineBehaviour
                     animator.SetBool("Ai/CanRotate", true);
                     break;
                 }
-            case BossDataEnums.AI_ISINACTION:
+            case BossDataEnums.AI_PLAYINGACTION:
                 {
                     animator.SetBool("Ai/PlayingAction", true);
                     break;
@@ -74,7 +74,7 @@ public class SetDataBoss : StateMachineBehaviour
                     animator.SetBool("Ai/CanRotate", false);
                     break;
                 }
-            case BossDataEnums.AI_ISINACTION:
+            case BossDataEnums.AI_PLAYINGACTION:
                 {
                     animator.SetBool("Ai/PlayingAction", false);
                     break;

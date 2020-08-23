@@ -78,6 +78,7 @@ public class BossPhase
     public BossActions EvaluateAggresiveAction(float a_distanceToTarget)
     {
         BossActions output = null;
+        Debug.Log("New attack");
         foreach (BossActions t in m_bossActions)
         {
             if (t.GetBehaviourType == SteeringBehaviours.AGGRESSIVE)
@@ -125,6 +126,7 @@ public class BossPhase
     public BossActions EvaluateSeek(float a_distanceToTarget)
     {
         BossActions output = null;
+        Debug.Log("New seek");
         foreach (BossActions t in m_bossActions)
         {
             if (t.GetBehaviourType == SteeringBehaviours.SEEK)
