@@ -11,12 +11,11 @@ public class FootDemo : StateMachineBehaviour
         float maxDistanceDown = feet.m_castDown;
         float maxDistanceUp = feet.m_castUp;
 
-        Vector3 LifterPosL;
-        Vector3 LifterPosR;
 
+        float leftFootWeight = animator.GetFloat("Ik/LeftFoot");
+        float rightFootWeight = animator.GetFloat("Ik/RightFoot");
 
-        // In the case of the raycast starting inside of something 
-        // we offset the second cast by the amount travelled almost.
+        // Left foot
         Vector3 downOffsetCast = new Vector3(feet.m_leftFoot.transform.position.x,
             feet.m_leftFoot.transform.position.y + maxDistanceUp, feet.m_leftFoot.transform.position.z);
 
@@ -28,7 +27,12 @@ public class FootDemo : StateMachineBehaviour
         {
             Vector3 pos = new Vector3(info.point.x, info.point.y + feet.m_offsetUp, info.point.z);
             // If we hit something above out foots position move foot.
-            animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
+            leftFootWeight += 0.05f;
+            if (leftFootWeight > 1)
+            {
+                leftFootWeight = 1;
+            }
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, pos);
         }
         // Down                                             //
@@ -36,8 +40,12 @@ public class FootDemo : StateMachineBehaviour
         {
             Vector3 pos = new Vector3(info.point.x, info.point.y + feet.m_offsetDown, info.point.z);
             // If we hit something above out foots position move foot.
-            animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
-            //animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
+            leftFootWeight += 0.05f;
+            if (leftFootWeight > 1)
+            {
+                leftFootWeight = 1;
+            }
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, pos);
             //float rotationX = Vector3.Angle(info.normal, animator.transform.up);
             //Debug.Log(rotationX);
@@ -46,10 +54,15 @@ public class FootDemo : StateMachineBehaviour
         }
         else
         {
-            animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 0);
+            leftFootWeight -= 0.5f;
+            if (leftFootWeight < 0)
+            {
+                leftFootWeight = 0;
+            }
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 0);
         }
-
+        animator.SetFloat("Ik/LeftFoot", leftFootWeight);
 
         downOffsetCast = new Vector3(feet.m_rightFoot.transform.position.x,
            feet.m_rightFoot.transform.position.y + maxDistanceUp, feet.m_rightFoot.transform.position.z);
@@ -63,36 +76,42 @@ public class FootDemo : StateMachineBehaviour
             //Debug.Log("Contact");
             Vector3 pos = new Vector3(info.point.x, info.point.y + 0.2f, info.point.z);
             // If we hit something above out foots position move foot.
-            animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
-            //animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
+            rightFootWeight += 0.05f;
+
+            if(rightFootWeight > 1)
+            {
+                rightFootWeight = 1;
+            }
+            animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
             animator.SetIKPosition(AvatarIKGoal.RightFoot, pos);
-            float rotationX = Vector3.Angle(info.normal, animator.transform.up);
             //animator.SetIKRotation(AvatarIKGoal.RightFoot, quaternion.Euler(rotationX, 0, 0));
+
+
         }
         else if (Physics.Raycast(raycastDown, out info, maxDistanceDown + maxDistanceUp))
         {
             Vector3 pos = new Vector3(info.point.x, info.point.y + 0.1f, info.point.z);
-            // If we hit something above out foots position move foot.
-            animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
+            rightFootWeight += 0.05f;
+            if (rightFootWeight > 1)
+            {
+                rightFootWeight = 1;
+            }
+
+            animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
             animator.SetIKPosition(AvatarIKGoal.RightFoot, pos);
         }
         else
         {
+            rightFootWeight -= 0.5f;
+            if (rightFootWeight < 0)
+            {
+                rightFootWeight = 0;
+            }
 
-            // Should be a gradual reduction
-            animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 0);
+            animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 0);
         }
-
-        // Should set bumper position to here.
-
-
-        Vector3 lifterPos = feet.m_leftFoot.transform.position - feet.m_rightFoot.transform.position;
-        lifterPos = feet.m_rightFoot.transform.position + lifterPos * 0.5f;
-
-        //feet.m_lifter.transform.position = lifterPos;
-
-
+        animator.SetFloat("Ik/RightFoot", rightFootWeight);
 
     }
 }
