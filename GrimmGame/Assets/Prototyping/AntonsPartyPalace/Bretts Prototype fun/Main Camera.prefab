@@ -104,8 +104,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948107381090909861}
-  m_LocalRotation: {x: -0.052270718, y: -0.2806928, z: 0.03117952, w: 0.957866}
-  m_LocalPosition: {x: 2.4733515, y: 0.2692371, z: 1.5059867}
+  m_LocalRotation: {x: -0.052270718, y: -0.28069273, z: 0.03117951, w: 0.957866}
+  m_LocalPosition: {x: 5.4532356, y: 0.61412644, z: 3.5753956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8434664015576606343}
@@ -293,11 +293,11 @@ MonoBehaviour:
   m_BindingMode: 3
   m_SplineCurvature: 0
   m_Orbits:
+  - m_Height: 2
+    m_Radius: 4.5
   - m_Height: 1
     m_Radius: 4.5
   - m_Height: 0
-    m_Radius: 4.5
-  - m_Height: -1
     m_Radius: 4.5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 5
-    m_Time: 0.2
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -931,7 +931,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6873312430677690037}
   m_LocalRotation: {x: -0.060880348, y: 0.6723454, z: -0.05564306, w: 0.7356285}
-  m_LocalPosition: {x: -3.3443518, y: -0.3148634, z: 0.44351125}
+  m_LocalPosition: {x: -0.36446762, y: 0.030025959, z: 2.5129201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6873312430646266694}
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_BindingMode: 5
   m_SplineCurvature: 0
   m_Orbits:
-  - m_Height: 1
+  - m_Height: 2
     m_Radius: 4.5
   - m_Height: 0
     m_Radius: 4.5
@@ -1641,7 +1641,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
+  m_HorizontalDamping: 1
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
-  m_BiasY: 0
+  m_BiasY: -0.40000004
   m_CenterOnActivate: 0
 --- !u!1 &8224652406794022658
 GameObject:
@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
+  m_HorizontalDamping: 1
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
+  m_HorizontalDamping: 1
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
