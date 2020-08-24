@@ -39,10 +39,13 @@ public class Player : MonoBehaviour
     private BufferInput m_currentFrame;
 
     // Multiplied by direction stick input. -1 to 1 on both axis
+    [HideInInspector]
     public float m_walkSpeed = 5;
     // Speed will increase to this value.
+    [HideInInspector]
     public float m_runSpeed = 7;
     // Roll speed. Ideally should accelerate to this speed rather rapidly.
+    [HideInInspector]
     public float m_rollSpeed = 12;
     [Range(0, 1)]
     public float m_rotationTime;
@@ -114,17 +117,6 @@ public class Player : MonoBehaviour
         else if (m_animator.GetBool("Output/CanMove"))
         {
             Movement(m_currentFrame.m_run);
-        }
-
-
-
-        if (m_lockon)
-        {
-            LockOnLook(axisZ, axisX);
-        }
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            FreeLook(axisZ, axisX);
         }
 
 
@@ -204,6 +196,16 @@ public class Player : MonoBehaviour
             StartRoll(axisX, axisY);
         }
 
+
+        if (m_lockon)
+        {
+            LockOnLook(axisY, axisX);
+        }
+        else if (m_animator.GetBool("Output/CanMove"))
+        {
+            FreeLook(axisY, axisX);
+        }
+
     }
 
     // Send inputs to animator.
@@ -235,6 +237,11 @@ public class Player : MonoBehaviour
         {
             m_animator.SetBool("Input/Roll", false);
         }
+
+
+
+
+
     }
 
 
@@ -396,7 +403,8 @@ public class Player : MonoBehaviour
 
             movement = movement * m_animator.GetFloat("MovementSpeedMult") * Time.deltaTime;
             //Debug.Log(m_movement);                                      // + lerp from lifter.
-            this.GetComponent<Rigidbody>().MovePosition(this.transform.position + movement/* + offset*/);
+            // Without root motion
+            //this.GetComponent<Rigidbody>().MovePosition(this.transform.position + movement/* + offset*/);
             //player.transform.position = player.transform.position + m_movement;
             // What to pass to the animator.
             // Used for blend trees.
@@ -443,40 +451,39 @@ public class Player : MonoBehaviour
         // Stores direction wanting to move reletive to camera.
         // if no input back by default.
         // then do the rolling function
-        Vector3 toAnim;
+        //Vector3 toAnim;
 
-        // Need to check if any input at all.
-        // If not the direction to move is always back
-        if (a_axisX == 0 && a_axisZ == 0)
-        {
-            a_axisZ = -1;
-            m_storedRollDirection = transform.forward * a_axisZ;
-            a_axisZ = -1;
-        }
-        else
-        {
-            Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
-            Vector3 movementZ = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
-            Vector3 cameraPosition = (movementZ + movementX);
-            //Relative to the direction player is facing.
-            m_storedRollDirection = cameraPosition;
-        }
-        toAnim = this.transform.worldToLocalMatrix * m_storedRollDirection.normalized;
+        //// Need to check if any input at all.
+        //// If not the direction to move is always back
+        //if (a_axisX == 0 && a_axisZ == 0)
+        //{
+        //    a_axisZ = -1;
+        //    m_storedRollDirection = transform.forward * a_axisZ;
+        //    a_axisZ = -1;
+        //}
+        //else
+        //{
+        //    Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
+        //    Vector3 movementZ = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
+        //    Vector3 cameraPosition = (movementZ + movementX);
+        //    //Relative to the direction player is facing.
+        //    m_storedRollDirection = cameraPosition;
+        //}
+        //toAnim = this.transform.worldToLocalMatrix * m_storedRollDirection.normalized;
 
-        toAnim = toAnim.normalized;
+        //toAnim = toAnim.normalized;
 
-        float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
-        m_animator.SetFloat("Movement/X", toAnim.x * scale);
-        m_animator.SetFloat("Movement/Z", toAnim.z * scale);
+        //float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
+        //m_animator.SetFloat("Movement/X", toAnim.x * scale);
+        //m_animator.SetFloat("Movement/Z", toAnim.z * scale);
         // Scale to be applied when rolling.
         // m_rollMultipliyer = Mathf.Lerp(0, 1, 0.1f);
-        // Should not need to be called here as we check the input above 
-        // Rolling();
     }
 
     // While player is rolling this funciton is called.
     private void Rolling()
     {
+        // Removed due to root motion
         Vector3 m_movement = new Vector3((m_storedRollDirection.x * m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * m_rollSpeed) * Time.deltaTime * m_animator.speed);
         this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
     }
