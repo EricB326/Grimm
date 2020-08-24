@@ -69,7 +69,7 @@ public class BossBrain : MonoBehaviour
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_timeOut = 0;
-        m_diagnosticMode = false;
+        m_diagnosticMode = true;
     }
 
     private void Update()

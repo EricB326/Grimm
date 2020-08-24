@@ -727,16 +727,6 @@ ModelImporter:
       position: {x: 0.0079696765, y: -0.018251002, z: 0.21577251}
       rotation: {x: -0.000000014435496, y: 0.038951144, z: -0.00000010710207, w: 0.9992411}
       scale: {x: 1, y: 1.0000004, z: 1}
-    - name: Boss_Rig:Jnt_Rtoe01_L
-      parentName: Boss_Rig:Jnt_Mtoe01_L
-      position: {x: 0.08943593, y: 0.0014137492, z: -0.0074762986}
-      rotation: {x: -0.0000000037252894, y: 0.26408064, z: -0.00000010356596, w: 0.96450067}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Boss_Rig:Jnt_Rtoe02_L
-      parentName: Boss_Rig:Jnt_Rtoe01_L
-      position: {x: 0.0026718485, y: -0.019770524, z: 0.12671234}
-      rotation: {x: -0, y: -0.003419396, z: 0.0000000433065, w: 0.9999942}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
     - name: Boss_Rig:Jnt_Ltoe01_L
       parentName: Boss_Rig:Jnt_Mtoe01_L
       position: {x: -0.08152993, y: -0.0033239832, z: 0.006587112}
@@ -747,6 +737,16 @@ ModelImporter:
       position: {x: 0.00552728, y: -0.014830621, z: 0.14036447}
       rotation: {x: 0.00000012665984, y: 0.07592587, z: -0.000000033527606, w: 0.9971135}
       scale: {x: 0.9999995, y: 1.0000002, z: 1.0000005}
+    - name: Boss_Rig:Jnt_Rtoe01_L
+      parentName: Boss_Rig:Jnt_Mtoe01_L
+      position: {x: 0.08943593, y: 0.0014137492, z: -0.0074762986}
+      rotation: {x: -0.0000000037252894, y: 0.26408064, z: -0.00000010356596, w: 0.96450067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_Rtoe02_L
+      parentName: Boss_Rig:Jnt_Rtoe01_L
+      position: {x: 0.0026718485, y: -0.019770524, z: 0.12671234}
+      rotation: {x: -0, y: -0.003419396, z: 0.0000000433065, w: 0.9999942}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
     - name: Boss_Rig:Jnt_Leg_High_R
       parentName: Boss_Rig:Jnt_Hip
       position: {x: 0.13582863, y: -0.10893926, z: 0.019693261}
@@ -787,6 +787,16 @@ ModelImporter:
       position: {x: -0.007977564, y: 0.018128969, z: -0.21547362}
       rotation: {x: -0.00000006891787, y: 0.03895118, z: 0.000000022235326, w: 0.9992411}
       scale: {x: 1, y: 1.0000007, z: 1.0000001}
+    - name: Boss_Rig:Jnt_Ltoe01_R
+      parentName: Boss_Rig:Jnt_Mtoe01_R
+      position: {x: -0.08933482, y: -0.0016410254, z: 0.00893797}
+      rotation: {x: -0.00000002048909, y: 0.22811079, z: 0.00000004393949, w: 0.9736352}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_Ltoe02_R
+      parentName: Boss_Rig:Jnt_Ltoe01_R
+      position: {x: -0.0026714935, y: 0.01977053, z: -0.12671188}
+      rotation: {x: 0.000000052154057, y: -0.0034193802, z: 0.000000046798952, w: 0.99999416}
+      scale: {x: 1, y: 1.0000014, z: 1.000001}
     - name: Boss_Rig:Jnt_Rtoe01_R1
       parentName: Boss_Rig:Jnt_Mtoe01_R
       position: {x: 0.0814266, y: 0.0032988146, z: -0.007360847}
@@ -797,16 +807,6 @@ ModelImporter:
       position: {x: -0.0055272826, y: 0.014830658, z: -0.14036448}
       rotation: {x: -0.000000037252903, y: 0.0759258, z: -0.00000004284084, w: 0.9971135}
       scale: {x: 1.0000005, y: 1.0000033, z: 1.0000024}
-    - name: Boss_Rig:Jnt_Ltoe01_R
-      parentName: Boss_Rig:Jnt_Mtoe01_R
-      position: {x: -0.08933482, y: -0.0016410254, z: 0.00893797}
-      rotation: {x: -0.000000020489088, y: 0.22811078, z: 0.000000043939487, w: 0.97363514}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Boss_Rig:Jnt_Ltoe02_R
-      parentName: Boss_Rig:Jnt_Ltoe01_R
-      position: {x: -0.0026714935, y: 0.01977053, z: -0.12671188}
-      rotation: {x: 0.000000052154057, y: -0.0034193802, z: 0.000000046798952, w: 0.99999416}
-      scale: {x: 1, y: 1.0000014, z: 1.000001}
     - name: Boss_Rig:Jnt_Spine_01
       parentName: Boss_Rig:Jnt_Hip
       position: {x: -0.0028231675, y: 0.3057179, z: -0.0040693292}
@@ -821,7 +821,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_Clav_L
       parentName: Boss_Rig:Jnt_Spine_02
       position: {x: -0.07748619, y: 0.0202551, z: 0.26107737}
-      rotation: {x: -0.0042099175, y: 0.15704247, z: 0.039131537, w: 0.9868074}
+      rotation: {x: -0.0042099166, y: 0.15704247, z: 0.03913153, w: 0.9868074}
       scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: Boss_Rig:Jnt_Sholder_L
       parentName: Boss_Rig:Jnt_Clav_L
@@ -841,7 +841,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_index01_L
       parentName: Boss_Rig:Jnt_Wrist_L
       position: {x: -0.2560304, y: 0.008068225, z: 0.06520133}
-      rotation: {x: 0.07766279, y: 0.04392186, z: 0.044948626, w: 0.99499696}
+      rotation: {x: 0.0776628, y: 0.04392186, z: 0.044948634, w: 0.99499696}
       scale: {x: 1.0000002, y: 1.0000002, z: 1.0000007}
     - name: Boss_Rig:Jnt_index02_L
       parentName: Boss_Rig:Jnt_index01_L
