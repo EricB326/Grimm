@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: facbc8cbef5e75940be1722453bc7ce7
+guid: 5b91b147bbbbb0146a1ce273ceb7830f
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: -5026146456859915738
-    second: Player_Idle_And_Avatar
+      74: -8164173446588539326
+    second: Player_Walk_Right_Root
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player_Idle_And_Avatar
-      takeName: Prefab
+      name: Player_Walk_Right_Root
+      takeName: Walk_Right
       internalID: 0
-      firstFrame: 1
-      lastFrame: 59
+      firstFrame: 42
+      lastFrame: 62
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -101,7 +101,7 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -118,7 +118,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: facbc8cbef5e75940be1722453bc7ce7,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

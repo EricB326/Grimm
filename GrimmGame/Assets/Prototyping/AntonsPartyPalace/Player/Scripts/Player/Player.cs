@@ -120,6 +120,16 @@ public class Player : MonoBehaviour
         }
 
 
+        if (m_lockon)
+        {
+            LockOnLook(axisZ, axisX);
+        }
+        else if (m_animator.GetBool("Output/CanMove"))
+        {
+            FreeLook(axisZ, axisX);
+        }
+
+
     }
 
 
@@ -130,7 +140,7 @@ public class Player : MonoBehaviour
     {
         float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
 
-        float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
+        float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
 
 
 
@@ -146,65 +156,20 @@ public class Player : MonoBehaviour
             }
         }
 
-
         m_currentFrame = m_inputBuffer.GetBufferInput();
 
 
         if (!m_animator.GetBool("Input/Stop"))
         {
-            UpdateAnimations(axisX, axisY, m_currentFrame);
+            UpdateAnimations(axisX, axisZ, m_currentFrame);
         }
 
-        //// Keyboard controls
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    y++;
-        //}
-        //if(Input.GetKey(KeyCode.S))
-        //{
-        //    y--;
-        //}
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    x--;
-        //}
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    x++;
-        //}
-
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    attack = true;
-        //    //Debug.Log("attack");
-        //}
-
-        //if(Input.GetKey(KeyCode.LeftShift))
-        //{
-        //    roll = true;
-        //}
-
-        // Input Buffer happens here
-        // instead of the below.
-
-
-        // 12*
-        // Need to fix the angle
 
         if (m_animator.GetBool("Input/Roll") && !m_animator.GetBool("Output/IsRolling"))
         {
-            StartRoll(axisX, axisY);
+            StartRoll(axisX, axisZ);
         }
 
-
-        if (m_lockon)
-        {
-            LockOnLook(axisY, axisX);
-        }
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            FreeLook(axisY, axisX);
-        }
 
     }
 
@@ -329,7 +294,6 @@ public class Player : MonoBehaviour
             }
 
             //Debug.Log("Current: " + currentNorm);
-            // The speed needs to b
             // Stored so it can be used in the roll                                                     0.1f is base
             m_animator.SetFloat("MovementSpeedMult", Mathf.Lerp(currentSpeed, desiredSpeed * input, acceleration));
 
@@ -388,6 +352,7 @@ public class Player : MonoBehaviour
             //    Debug.DrawRay(this.transform.position, movement);
             //}
 
+            // Rotation based on cast down normal.
             {
                 // Works as intended.
                 Ray Raycast = new Ray(this.transform.position, -this.transform.up);
@@ -405,18 +370,24 @@ public class Player : MonoBehaviour
             //Debug.Log(m_movement);                                      // + lerp from lifter.
             // Without root motion
             //this.GetComponent<Rigidbody>().MovePosition(this.transform.position + movement/* + offset*/);
-            //player.transform.position = player.transform.position + m_movement;
             // What to pass to the animator.
             // Used for blend trees.
             // This should always be passed in.
             Vector3 toAnim = this.transform.worldToLocalMatrix * movement;
                 toAnim = toAnim.normalized;
-            if (!a_running)
+            if (!a_running && m_lockon)
             {
                 // reduce the input values to the animator if not running
                 toAnim.x = Mathf.Clamp(toAnim.x, -0.5f, 0.5f);
                 toAnim.z = Mathf.Clamp(toAnim.z, -0.5f, 0.5f);
+            } else if(!a_running)
+            {
+                toAnim.x = Mathf.Clamp(toAnim.x, -0.8f, 0.8f);
+                toAnim.z = Mathf.Clamp(toAnim.z, -0.8f, 0.8f);
             }
+            // If running values are 1.
+
+
             // Lerp towards the target acceleration                 // This value to be modified by speed
             float animX = Mathf.Lerp(m_animator.GetFloat("Movement/X"), toAnim.x, 0.2f);
             float animZ = Mathf.Lerp(m_animator.GetFloat("Movement/Z"), toAnim.z, 0.2f);
@@ -453,25 +424,29 @@ public class Player : MonoBehaviour
         // then do the rolling function
         //Vector3 toAnim;
 
-        //// Need to check if any input at all.
-        //// If not the direction to move is always back
-        //if (a_axisX == 0 && a_axisZ == 0)
-        //{
-        //    a_axisZ = -1;
-        //    m_storedRollDirection = transform.forward * a_axisZ;
-        //    a_axisZ = -1;
-        //}
-        //else
-        //{
-        //    Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
-        //    Vector3 movementZ = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
-        //    Vector3 cameraPosition = (movementZ + movementX);
-        //    //Relative to the direction player is facing.
-        //    m_storedRollDirection = cameraPosition;
-        //}
-        //toAnim = this.transform.worldToLocalMatrix * m_storedRollDirection.normalized;
+        // Need to check if any input at all.
+        // If not the direction to move is always back
+        if (a_axisX == 0 && a_axisZ == 0)
+        {
+            a_axisZ = -1;
 
-        //toAnim = toAnim.normalized;
+            Vector3 movementX = (new Vector3(this.transform.right.x, 0, this.transform.right.z) * a_axisX);
+            Vector3 movementZ = (new Vector3(this.transform.forward.x, 0, this.transform.forward.z) * a_axisZ);
+
+
+            Vector3 cameraPosition = (movementZ + movementX);
+            m_storedRollDirection = cameraPosition;
+        }
+        else
+        {
+            Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
+            Vector3 movementZ = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
+            Vector3 cameraPosition = (movementZ + movementX);
+            //Relative to the direction player is facing.
+            // Stored for rotation.
+            m_storedRollDirection = cameraPosition;
+        }
+        m_storedRollDirection.y = 0;
 
         //float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
         //m_animator.SetFloat("Movement/X", toAnim.x * scale);
@@ -484,8 +459,14 @@ public class Player : MonoBehaviour
     private void Rolling()
     {
         // Removed due to root motion
-        Vector3 m_movement = new Vector3((m_storedRollDirection.x * m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * m_rollSpeed) * Time.deltaTime * m_animator.speed);
-        this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
+        //Vector3 m_movement = new Vector3((m_storedRollDirection.x * m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * m_rollSpeed) * Time.deltaTime * m_animator.speed);
+        //this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
+
+
+        Quaternion targetRotation = Quaternion.LookRotation(m_storedRollDirection);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.5f);
+
+
     }
 
     // Character rotates towards target when locked on.
@@ -502,7 +483,7 @@ public class Player : MonoBehaviour
             bossdirection.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
-            
+
         }
         else
         {
@@ -513,7 +494,7 @@ public class Player : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
 
-            m_animator.gameObject.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
+            //m_animator.gameObject.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
         }
     }    
 

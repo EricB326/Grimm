@@ -1237,7 +1237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1884609841826722815
 Transform:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ Rigidbody:
   m_Mass: 999
   m_Drag: 0
   m_AngularDrag: 20
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 80
@@ -1335,6 +1335,7 @@ MonoBehaviour:
   - {fileID: 6871875535348696484}
   - {fileID: 6871875536904459719}
   m_lookPoint: {fileID: 7983177591421247866}
+  m_facingPosition: {fileID: 0}
 --- !u!114 &6871875535852797858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,7 +1355,7 @@ MonoBehaviour:
   m_target: {fileID: 0}
   m_moveTarget: {fileID: 0}
   m_bossPhaseList:
-  - m_name: Phase 1
+  - m_name: Old
     m_healthAtStart: 0
     m_increase: 2
     m_decrease: 3
@@ -1385,7 +1386,7 @@ MonoBehaviour:
       collidersToModify: 
     - attackName: Attack 1
       actionTimeLimit: 0
-      animationNumber: 1
+      animationNumber: 2
       attackDamage: 15
       attackRange: 2
       attackWeight: 0
@@ -1444,7 +1445,6 @@ MonoBehaviour:
   m_offsetDown: 0.1
   m_leftFoot: {fileID: 8366269753738757349}
   m_rightFoot: {fileID: 8744476506284002187}
-  m_lifter: {fileID: 0}
 --- !u!1 &3377202621503798204
 GameObject:
   m_ObjectHideFlags: 0

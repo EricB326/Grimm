@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: bf9de1b7a2c8cd7488b9415490131da7
+guid: 52e37534b3c9cc24cbed58a85af029e8
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 4841321095270777947
-    second: Player_Roll_Root
+      74: 590029054382176139
+    second: Player_Walk_Back_Root
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player_Roll_Root
-      takeName: Roll_Root
+      name: Player_Walk_Back_Root
+      takeName: Walk_Back
       internalID: 0
-      firstFrame: 2
-      lastFrame: 32
+      firstFrame: 63
+      lastFrame: 83
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

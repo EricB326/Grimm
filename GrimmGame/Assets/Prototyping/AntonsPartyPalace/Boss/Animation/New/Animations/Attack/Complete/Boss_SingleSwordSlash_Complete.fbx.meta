@@ -18,17 +18,11 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: Boss_Rig:Root
-    rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'Boss_Rig:Jnt_Leg_Low_L'
-      : rotation error = 28.039339 deg\n\t'Boss_Rig:Jnt_Leg_Low_R' : rotation error
-      = 78.529854 deg\n"
+    rigImportErrors: "Invalid copied Avatar Rig Configuration:\n\tNo human bone found.
+      Ensure both rig type match\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Boss_SingleSwordSlash_Complete' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation DOF
-      on avatar to improve retargeting quality.\n\t'Boss_Rig:Jnt_Leg_Low_L' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -82,383 +76,7 @@ ModelImporter:
   copyAvatar: 1
   humanDescription:
     serializedVersion: 3
-    human:
-    - boneName: Boss_Rig:Jnt_Hip
-      humanName: Hips
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Leg_High_L
-      humanName: LeftUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Leg_High_R
-      humanName: RightUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Leg_Mid_L
-      humanName: LeftLowerLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Leg_Mid_R
-      humanName: RightLowerLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Foot_L
-      humanName: LeftFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Foot_R
-      humanName: RightFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Spine_01
-      humanName: Spine
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Neck_02
-      humanName: Neck
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Head
-      humanName: Head
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Clav_L
-      humanName: LeftShoulder
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Clav_R
-      humanName: RightShoulder
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Sholder_L
-      humanName: LeftUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Sholder_R
-      humanName: RightUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Elbow_L
-      humanName: LeftLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Elbow_R
-      humanName: RightLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Wrist_L
-      humanName: LeftHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Wrist_R
-      humanName: RightHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Mtoe01_L
-      humanName: LeftToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Mtoe01_R
-      humanName: RightToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Head1
-      humanName: Jaw
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_thumb01_L
-      humanName: Left Thumb Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_thumb02_L
-      humanName: Left Thumb Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_index01_L
-      humanName: Left Index Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_index02_L
-      humanName: Left Index Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_middle01_L
-      humanName: Left Middle Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_middle02_L
-      humanName: Left Middle Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_ring01_L
-      humanName: Left Ring Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_ring02_L
-      humanName: Left Ring Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_pinky01_L
-      humanName: Left Little Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_pinky02_L
-      humanName: Left Little Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_thumb01_R
-      humanName: Right Thumb Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_thumb02_R
-      humanName: Right Thumb Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_thumb03_R
-      humanName: Right Thumb Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_index01_R
-      humanName: Right Index Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_index02_R
-      humanName: Right Index Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_index03_R
-      humanName: Right Index Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_middle01_R
-      humanName: Right Middle Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_middle02_R
-      humanName: Right Middle Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_middle03_R
-      humanName: Right Middle Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_ring01_R
-      humanName: Right Ring Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_ring02_R
-      humanName: Right Ring Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_ring03_R
-      humanName: Right Ring Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_pinky01_R
-      humanName: Right Little Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_pinky02_R
-      humanName: Right Little Intermediate
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_pinky03_R
-      humanName: Right Little Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Boss_Rig:Jnt_Spine_02
-      humanName: Chest
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
+    human: []
     skeleton:
     - name: Boss_Combo_SwordClaw_01(Clone)
       parentName: 
@@ -670,16 +288,6 @@ ModelImporter:
       position: {x: 0.0079696765, y: -0.018251002, z: 0.21577251}
       rotation: {x: -0.000000014435496, y: 0.038951144, z: -0.00000010710207, w: 0.9992411}
       scale: {x: 1, y: 1.0000004, z: 1}
-    - name: Boss_Rig:Jnt_Rtoe01_L
-      parentName: Boss_Rig:Jnt_Mtoe01_L
-      position: {x: 0.08943593, y: 0.0014137492, z: -0.0074762986}
-      rotation: {x: -0.0000000037252894, y: 0.26408064, z: -0.00000010356596, w: 0.96450067}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Boss_Rig:Jnt_Rtoe02_L
-      parentName: Boss_Rig:Jnt_Rtoe01_L
-      position: {x: 0.0026718485, y: -0.019770524, z: 0.12671234}
-      rotation: {x: -0, y: -0.003419396, z: 0.0000000433065, w: 0.9999942}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
     - name: Boss_Rig:Jnt_Ltoe01_L
       parentName: Boss_Rig:Jnt_Mtoe01_L
       position: {x: -0.08152993, y: -0.0033239832, z: 0.006587112}
@@ -690,6 +298,16 @@ ModelImporter:
       position: {x: 0.00552728, y: -0.014830621, z: 0.14036447}
       rotation: {x: 0.00000012665984, y: 0.07592587, z: -0.000000033527606, w: 0.9971135}
       scale: {x: 0.9999995, y: 1.0000002, z: 1.0000005}
+    - name: Boss_Rig:Jnt_Rtoe01_L
+      parentName: Boss_Rig:Jnt_Mtoe01_L
+      position: {x: 0.08943593, y: 0.0014137492, z: -0.0074762986}
+      rotation: {x: -0.0000000037252894, y: 0.26408064, z: -0.00000010356596, w: 0.96450067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_Rtoe02_L
+      parentName: Boss_Rig:Jnt_Rtoe01_L
+      position: {x: 0.0026718485, y: -0.019770524, z: 0.12671234}
+      rotation: {x: -0, y: -0.003419396, z: 0.0000000433065, w: 0.9999942}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
     - name: Boss_Rig:Jnt_Leg_High_R
       parentName: Boss_Rig:Jnt_Hip
       position: {x: 0.13582863, y: -0.10893926, z: 0.019693261}
@@ -730,6 +348,16 @@ ModelImporter:
       position: {x: -0.007977564, y: 0.018128969, z: -0.21547362}
       rotation: {x: -0.00000006891787, y: 0.03895118, z: 0.000000022235326, w: 0.9992411}
       scale: {x: 1, y: 1.0000007, z: 1.0000001}
+    - name: Boss_Rig:Jnt_Ltoe01_R
+      parentName: Boss_Rig:Jnt_Mtoe01_R
+      position: {x: -0.08933482, y: -0.0016410254, z: 0.00893797}
+      rotation: {x: -0.00000002048909, y: 0.22811079, z: 0.00000004393949, w: 0.9736352}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_Ltoe02_R
+      parentName: Boss_Rig:Jnt_Ltoe01_R
+      position: {x: -0.0026714935, y: 0.01977053, z: -0.12671188}
+      rotation: {x: 0.000000052154057, y: -0.0034193802, z: 0.000000046798952, w: 0.99999416}
+      scale: {x: 1, y: 1.0000014, z: 1.000001}
     - name: Boss_Rig:Jnt_Rtoe01_R1
       parentName: Boss_Rig:Jnt_Mtoe01_R
       position: {x: 0.0814266, y: 0.0032988146, z: -0.007360847}
@@ -740,16 +368,6 @@ ModelImporter:
       position: {x: -0.0055272826, y: 0.014830658, z: -0.14036448}
       rotation: {x: -0.000000037252903, y: 0.0759258, z: -0.00000004284084, w: 0.9971135}
       scale: {x: 1.0000005, y: 1.0000033, z: 1.0000024}
-    - name: Boss_Rig:Jnt_Ltoe01_R
-      parentName: Boss_Rig:Jnt_Mtoe01_R
-      position: {x: -0.08933482, y: -0.0016410254, z: 0.00893797}
-      rotation: {x: -0.000000020489088, y: 0.22811078, z: 0.000000043939487, w: 0.97363514}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Boss_Rig:Jnt_Ltoe02_R
-      parentName: Boss_Rig:Jnt_Ltoe01_R
-      position: {x: -0.0026714935, y: 0.01977053, z: -0.12671188}
-      rotation: {x: 0.000000052154057, y: -0.0034193802, z: 0.000000046798952, w: 0.99999416}
-      scale: {x: 1, y: 1.0000014, z: 1.000001}
     - name: Boss_Rig:Jnt_Spine_01
       parentName: Boss_Rig:Jnt_Hip
       position: {x: -0.0028231675, y: 0.3057179, z: -0.0040693292}
@@ -764,7 +382,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_Clav_L
       parentName: Boss_Rig:Jnt_Spine_02
       position: {x: -0.07748619, y: 0.0202551, z: 0.26107737}
-      rotation: {x: -0.0042099175, y: 0.15704247, z: 0.039131537, w: 0.9868074}
+      rotation: {x: -0.0042099166, y: 0.15704247, z: 0.03913153, w: 0.9868074}
       scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: Boss_Rig:Jnt_Sholder_L
       parentName: Boss_Rig:Jnt_Clav_L
@@ -784,7 +402,7 @@ ModelImporter:
     - name: Boss_Rig:Jnt_index01_L
       parentName: Boss_Rig:Jnt_Wrist_L
       position: {x: -0.2560304, y: 0.008068225, z: 0.06520133}
-      rotation: {x: 0.07766279, y: 0.04392186, z: 0.044948626, w: 0.99499696}
+      rotation: {x: 0.0776628, y: 0.04392186, z: 0.044948634, w: 0.99499696}
       scale: {x: 1.0000002, y: 1.0000002, z: 1.0000007}
     - name: Boss_Rig:Jnt_index02_L
       parentName: Boss_Rig:Jnt_index01_L
@@ -975,7 +593,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 65f8151037438b14eb29a657114910d0,
     type: 3}
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
