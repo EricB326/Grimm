@@ -20,22 +20,25 @@ ModelImporter:
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'HipPart2_L'
-      : rotation error = 39.187138 deg\n"
+      rotation in copied configuration does not match rotation in animation file:\n\t'HipPart1_L'
+      : rotation error = 39.187145 deg\n\t'HipPart2_L' : rotation error = 39.187138
+      deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'Hip_R' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'HipPart2_R' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'Scapula_R'
+      improve retargeting quality.\n\t'HipPart1_R' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'HipPart2_R' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'NeckPart1_M'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'NeckPart2_M'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Scapula_R'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ShoulderPart2_R'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ElbowPart1_R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Wrist_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ElbowPart2_R'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Scapula_L'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ShoulderPart2_L'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ElbowPart1_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Wrist_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Hip_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'ElbowPart2_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'HipPart1_L'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'HipPart2_L'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
@@ -66,7 +69,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 1

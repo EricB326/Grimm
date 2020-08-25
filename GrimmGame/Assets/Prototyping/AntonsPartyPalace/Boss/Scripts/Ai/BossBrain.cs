@@ -14,6 +14,10 @@ public class BossBrain : MonoBehaviour
 
     [Range(0, 1)]
     public float m_rotationSpeed;
+    // To be passed in by animation event
+    // functions.
+    private float m_actionRotationSpeed = 0;
+
     [Header("DEBUG. VALUES PASSED IN BY ANIMATOR")]
     // Used to check if can.
     public bool m_diagnosticMode = false;
@@ -21,6 +25,7 @@ public class BossBrain : MonoBehaviour
     // Passed out of the animator and here for debugging.
     // This is set in the boss Phase.
     public float m_desiredRange = 0;
+    public float m_desiredRangeMin = 0;
     // What the current phase of the boss is.
     // Either this lives in the animator or out here.
     //public int m_phase;
@@ -64,14 +69,15 @@ public class BossBrain : MonoBehaviour
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_timeOut = 0;
-        m_diagnosticMode = false;
+        m_diagnosticMode = true;
     }
 
     private void Update()
     {
         // This is a bad name - Really it is both distance and direction.
+        // THis currently does not work. Players location is different now with
+        // the new setup
         Vector3 directionToMove = m_target.transform.position - transform.position;
-
         // Adds actions to que if needed.
         CheckQue(directionToMove);
        
@@ -81,10 +87,20 @@ public class BossBrain : MonoBehaviour
             // Rotates the boss
             // Should probably be changed to "Can rotate" 
             // and will be set/unset in the animator.
-            if (!m_animator.GetBool("Ai/PlayingAction"))
+            if (!m_animator.GetBool("Ai/PlayingAction") || m_animator.GetBool("Ai/CanRotate"))
             {
+                if (!m_animator.GetBool("Ai/CanRotate"))
+                {
+                    // Default rotation speed
+                   RotateBoss(directionToMove);
+
+                }
+                else
+                {
+                    // Rotation from actions.
+                    RotateBossInAction(directionToMove);
+                }
                 // Should be a part of actions.
-                RotateBoss(directionToMove);
             }
             // Boss will do it's current behavior that is has chosen above or
             // continue its current behavior.
@@ -141,9 +157,25 @@ public class BossBrain : MonoBehaviour
     // Can probably be moved into a state overload.
     private void RotateBoss(Vector3 a_direction)
     {
+        a_direction.y = 0;
+        //a_direction.x = 0;
         Quaternion targetRotation = Quaternion.LookRotation(a_direction);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_rotationSpeed);
     }
+
+    // While the boss is in action this rotation will be called
+    // when animation function triggers.
+    private void RotateBossInAction(Vector3 a_direction)
+    {
+        a_direction.y = 0;
+        //a_direction.x = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(a_direction);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, m_actionRotationSpeed);
+    }
+
+
+
+
     // Returns true if within range
     private bool CalculateDistance(Vector3 a_direction)
     {
@@ -251,7 +283,7 @@ public class BossBrain : MonoBehaviour
         else
         {
             // Check if time to exit wander state. 
-            if (m_timeOut < Time.time)
+            if (m_timeOut > Time.time)
             {
                 // Remove old information.
                 ResetState();
@@ -271,8 +303,9 @@ public class BossBrain : MonoBehaviour
 
     private bool Aggresive(Vector3 a_directionToMove)
     {
-        // Am I in range to launch attack?
-        if (CalculateDistance(a_directionToMove))
+        // Am I in range to launch attack or am I already
+        // attacking?
+        if (CalculateDistance(a_directionToMove) || m_continue)
         {
             // So you're at the correct distance
             // Stop your movement.
@@ -283,7 +316,7 @@ public class BossBrain : MonoBehaviour
             // So launch attack if facing correct direction
             if (!m_continue && CorrectFacing(a_directionToMove)) 
             {
-                m_animator.SetInteger("Ai/Action", 1/*m_currentaction.attackanimation*/);
+                m_animator.SetInteger("Ai/Action", m_actionQue[0].GetAnimNum);
                 m_continue = true;
                 return false;
             }
@@ -510,6 +543,8 @@ public class BossBrain : MonoBehaviour
         }
     }
 
+    // Stops the boss from animating and view his 
+    // current state.
     private bool DiagnosticMode(Vector3 a_directionToMove)
     {
         if(m_diagnosticMode)
@@ -524,5 +559,13 @@ public class BossBrain : MonoBehaviour
             return false;
         }
     }
+
+    // For setting action rotation speed outside of class.
+    // Mostly by animation events.
+    public void SetActionRotationSpeed(float a_rotationSpeed)
+    {
+        m_actionRotationSpeed = a_rotationSpeed;
+    }
+
 
 }

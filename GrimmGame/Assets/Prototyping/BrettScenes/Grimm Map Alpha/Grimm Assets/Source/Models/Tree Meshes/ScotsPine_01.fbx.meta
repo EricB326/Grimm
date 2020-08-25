@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ScotsPine_Mat
-    second: {fileID: 2100000, guid: 39a06821d0d65564698dc1a2c3919144, type: 2}
+    second: {fileID: 2100000, guid: adff7b77e5608364eabb01ad74c2929d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

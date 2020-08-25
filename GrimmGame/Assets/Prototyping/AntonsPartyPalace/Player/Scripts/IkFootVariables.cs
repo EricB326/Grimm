@@ -16,11 +16,9 @@ public class IkFootVariables : MonoBehaviour
 
     public GameObject m_leftFoot;
     public GameObject m_rightFoot;
-    public GameObject m_lifter;
 
     private void Start()
     {
-        m_lifter = new GameObject();
-        m_lifter.name = "Lifter " + gameObject.name;
+
     }
 }

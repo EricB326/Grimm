@@ -19,19 +19,19 @@ public class CameraRotation : MonoBehaviour
                                       // Defaults to false.
 
     // Player houses the lockon variable.
-    private GameObject m_player;
+    private Player m_player;
     private GameObject m_target;
 
     private void Start()
     {
-        m_player = EntityStats.Instance.GetObjectOfEntity("Player");
+        m_player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (!m_player.GetComponent<PlayerMovementVariables>().m_lockon)
+        if (!m_player.m_lockon)
         {
             m_camList[0].Priority = 2;
             m_camList[1].Priority = 1;
@@ -108,7 +108,7 @@ public class CameraRotation : MonoBehaviour
 
         float axisX = XCI.GetAxis(XboxAxis.RightStickX);
 
-            float axisY = XCI.GetAxis(XboxAxis.RightStickY);
+        float axisY = XCI.GetAxis(XboxAxis.RightStickY);
 
 
 

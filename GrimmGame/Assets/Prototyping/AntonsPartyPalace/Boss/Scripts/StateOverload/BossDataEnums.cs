@@ -13,5 +13,5 @@ public enum BossDataEnums
    MOVEMENT_X,
    MOVEMENT_Z,
    AI_ISROTATING,
-   AI_ISINACTION
+   AI_PLAYINGACTION
 }

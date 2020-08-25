@@ -10,6 +10,10 @@ public class BossVariables : MonoBehaviour
 
     public List<Collider> m_weaponColliders;
     public Transform m_lookPoint;
+    public GameObject m_facingPosition;
+
+    public Collider m_hitbox;
+
     //public Collider m_sword;
     //public Collider m_claw;
 

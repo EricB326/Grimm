@@ -32,7 +32,7 @@ public class BossLookDemo : StateMachineBehaviour
     // OnStateIK is called right after Animator.OnAnimatorIK()
     override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameObject lookpoint = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().GetLookPoint();
+        GameObject lookpoint = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().GetLookPoint();
         float ikWeight = animator.GetFloat("Ai/LookWeight");
         Vector3 target = animator.gameObject.GetComponent<BossBrain>().m_target.transform.position - animator.gameObject.transform.position;
         Vector3 thispos = animator.gameObject.transform.forward;

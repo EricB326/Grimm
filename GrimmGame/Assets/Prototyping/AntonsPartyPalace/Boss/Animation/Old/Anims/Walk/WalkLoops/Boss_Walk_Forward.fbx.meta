@@ -1,0 +1,1013 @@
+fileFormatVersion: 2
+guid: 43f0a9428d0faec478690c8855db5cf9
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      74: -5437882685221217279
+    second: OLDBoss_Walk_Forward
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: Boss_Rig:Root
+    rigImportErrors: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
+      rotation in copied configuration does not match rotation in animation file:\n\t'Boss_Rig:Jnt_Leg_Low_L'
+      : rotation error = 22.823475 deg\n\t'Boss_Rig:Jnt_Leg_Low_R' : rotation error
+      = 12.985296 deg\n"
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Boss_Walk_Forward' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Boss_Rig:Jnt_Spine_01' has translation animation
+      that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_L' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: OLDBoss_Walk_Forward
+      takeName: Boss_Walk_Forward
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Boss_Rig:Jnt_Hip
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Leg_High_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Leg_High_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Leg_Mid_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Leg_Mid_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Foot_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Foot_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Spine_01
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Neck_02
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Clav_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Clav_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Sholder_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Sholder_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Elbow_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Elbow_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Wrist_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Wrist_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Mtoe01_L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Mtoe01_R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Head1
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_thumb01_L
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_thumb02_L
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_index01_L
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_index02_L
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_middle01_L
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_middle02_L
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_ring01_L
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_ring02_L
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_pinky01_L
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_pinky02_L
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_thumb01_R
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_thumb02_R
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_thumb03_R
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_index01_R
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_index02_R
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_index03_R
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_middle01_R
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_middle02_R
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_middle03_R
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_ring01_R
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_ring02_R
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_ring03_R
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_pinky01_R
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_pinky02_R
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_pinky03_R
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boss_Rig:Jnt_Spine_02
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Boss_Idle_Avatar(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Boss_Blockout
+      parentName: Boss_Idle_Avatar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Root
+      parentName: Boss_Idle_Avatar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_Hip
+      parentName: Boss_Rig:Root
+      position: {x: -0.0040187556, y: 1.2627686, z: -0.0041924417}
+      rotation: {x: 0.06380521, y: 0.00038714113, z: -0.0060550757, w: 0.99794394}
+      scale: {x: 1, y: 0.99999964, z: 0.99999964}
+    - name: Boss_Rig:Jnt_driver_Leg_High_L
+      parentName: Boss_Rig:Jnt_Hip
+      position: {x: -0.10241897, y: -0.08630843, z: 0.0151481945}
+      rotation: {x: -0.17941403, y: 0.17967854, z: 0.6128009, w: 0.74833244}
+      scale: {x: 1.0000012, y: 1.0000011, z: 1.0000004}
+    - name: Boss_Rig:Jnt_driver_Leg_Mid_L
+      parentName: Boss_Rig:Jnt_driver_Leg_High_L
+      position: {x: -0.5898211, y: 7.105427e-17, z: 0.0033682387}
+      rotation: {x: -0, y: -0.54117435, z: -0.000000111758695, w: 0.84091043}
+      scale: {x: 1.0000015, y: 1.0000014, z: 1.0000002}
+    - name: Boss_Rig:Jnt_driver_Leg_Low_L
+      parentName: Boss_Rig:Jnt_driver_Leg_Mid_L
+      position: {x: -0.40262607, y: 7.105427e-17, z: 0.014640536}
+      rotation: {x: 0.000000014901159, y: 0.48801205, z: 0.000000042840835, w: 0.8728369}
+      scale: {x: 1.0000007, y: 1.0000007, z: 0.99999934}
+    - name: Boss_Rig:ankle_ikHandle_offset_L
+      parentName: Boss_Rig:Jnt_driver_Leg_Low_L
+      position: {x: -0.26743117, y: -0.000000004836927, z: 0.0000000039401145}
+      rotation: {x: 0.21565185, y: -0.18844354, z: 0.042766947, w: 0.9571595}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:ankle_ikHandle_L
+      parentName: Boss_Rig:ankle_ikHandle_offset_L
+      position: {x: 0.26743117, y: 0.0000000048369273, z: -0.000000003940115}
+      rotation: {x: 0.08965778, y: -0.09242469, z: -0.623505, w: 0.7711425}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_driver_Foot_L
+      parentName: Boss_Rig:Jnt_driver_Leg_Low_L
+      position: {x: -0.26743117, y: -7.105427e-17, z: -2.4868996e-16}
+      rotation: {x: -0, y: -0, z: -0.0000000037252903, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 0.99999946}
+    - name: Boss_Rig:hock_ikHandle_L
+      parentName: Boss_Rig:Jnt_driver_Foot_L
+      position: {x: -7.105427e-17, y: 6.3948843e-16, z: -2.1316282e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_driver_Btoe01_L
+      parentName: Boss_Rig:Jnt_driver_Foot_L
+      position: {x: -0.0317373, y: -0.016273629, z: -0.10781388}
+      rotation: {x: 0.22852269, y: -0.20437053, z: -0.5962662, w: 0.74194115}
+      scale: {x: 0.9999999, y: 1.0000005, z: 0.99999964}
+    - name: Boss_Rig:Jnt_driver_Btoe02_L
+      parentName: Boss_Rig:Jnt_driver_Btoe01_L
+      position: {x: 0.006374372, y: 0.0025686964, z: -0.062619515}
+      rotation: {x: -0.11964938, y: -0.7410009, z: 0.13716765, w: 0.64636433}
+      scale: {x: 1.0000012, y: 0.9999996, z: 1.0000005}
+    - name: Boss_Rig:Jnt_driver_Ltoe01_L
+      parentName: Boss_Rig:Jnt_driver_Foot_L
+      position: {x: -0.09740921, y: 0.081852466, z: 0.08570336}
+      rotation: {x: -0.108783945, y: -0.3277638, z: -0.62045383, w: 0.7041123}
+      scale: {x: 0.99999976, y: 0.9999989, z: 1.0000001}
+    - name: Boss_Rig:Jnt_driver_Ltoe02_L
+      parentName: Boss_Rig:Jnt_driver_Ltoe01_L
+      position: {x: 0.004251754, y: -0.01140817, z: 0.10797267}
+      rotation: {x: -0.000000096857526, y: 0.07592569, z: -0.000000085681656, w: 0.99711347}
+      scale: {x: 0.99999964, y: 1.0000001, z: 1.0000004}
+    - name: Boss_Rig:Jnt_driver_Mtoe01_L
+      parentName: Boss_Rig:Jnt_driver_Foot_L
+      position: {x: -0.08520018, y: 0.021609012, z: 0.09924667}
+      rotation: {x: 0.0042824047, y: -0.19613792, z: -0.62990373, w: 0.7514871}
+      scale: {x: 0.9999983, y: 0.9999982, z: 1.0000004}
+    - name: Boss_Rig:Jnt_driver_Mtoe02_L
+      parentName: Boss_Rig:Jnt_driver_Mtoe01_L
+      position: {x: 0.0061364113, y: -0.013945346, z: 0.16574882}
+      rotation: {x: -0.0000000016298143, y: 0.0389512, z: 0.0000001277658, w: 0.9992412}
+      scale: {x: 0.99999976, y: 1.0000002, z: 0.9999999}
+    - name: Boss_Rig:Jnt_driver_Rtoe01_L
+      parentName: Boss_Rig:Jnt_driver_Foot_L
+      position: {x: -0.07304371, y: -0.04495859, z: 0.11310782}
+      rotation: {x: 0.14785728, y: -0.019544536, z: -0.6123194, w: 0.7764156}
+      scale: {x: 0.99999833, y: 0.9999984, z: 1.0000004}
+    - name: Boss_Rig:Jnt_driver_Rtoe02_L
+      parentName: Boss_Rig:Jnt_driver_Rtoe01_L
+      position: {x: 0.002055268, y: -0.015208093, z: 0.09747103}
+      rotation: {x: -0.00000006705522, y: -0.0034193103, z: -0.000000087078654, w: 0.9999942}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1}
+    - name: Boss_Rig:Jnt_driver_Leg_High_R
+      parentName: Boss_Rig:Jnt_Hip
+      position: {x: 0.10448357, y: -0.08379944, z: 0.015148662}
+      rotation: {x: 0.75784105, y: -0.60194576, z: 0.1802811, w: 0.1756048}
+      scale: {x: 1.0000006, y: 1.0000017, z: 1.0000011}
+    - name: Boss_Rig:Jnt_driver_Leg_Mid_R
+      parentName: Boss_Rig:Jnt_driver_Leg_High_R
+      position: {x: 0.5898193, y: -0.0000005967206, z: -0.0033686575}
+      rotation: {x: -0.000000029802319, y: -0.539416, z: -0.000000029802319, w: 0.84203947}
+      scale: {x: 1.0000015, y: 1.0000019, z: 1.0000026}
+    - name: Boss_Rig:Jnt_driver_Leg_Low_R
+      parentName: Boss_Rig:Jnt_driver_Leg_Mid_R
+      position: {x: 0.4026261, y: 0.0000009751905, z: -0.01464061}
+      rotation: {x: 0.000000022351742, y: 0.48607033, z: 0.000000059604645, w: 0.8739197}
+      scale: {x: 1.0000004, y: 1.0000013, z: 1.000002}
+    - name: Boss_Rig:ankle_ikHandle_offset_R
+      parentName: Boss_Rig:Jnt_driver_Leg_Low_R
+      position: {x: 0.2674309, y: -0.00000011178398, z: -0.00000012758274}
+      rotation: {x: 0.24980187, y: 0.017517434, z: 0.028623052, w: 0.9677153}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:ankle_ikHandle_R
+      parentName: Boss_Rig:ankle_ikHandle_offset_R
+      position: {x: -0.2674309, y: 0.00000011178398, z: 0.00000012758274}
+      rotation: {x: 0.7711426, y: -0.6235049, z: 0.092423916, w: -0.0896584}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_driver_Foot_R
+      parentName: Boss_Rig:Jnt_driver_Leg_Low_R
+      position: {x: 0.2674309, y: -0.00000009295095, z: -0.0000001285442}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 0.99999994, y: 0.9999996, z: 0.9999998}
+    - name: Boss_Rig:hock_ikHandle_R
+      parentName: Boss_Rig:Jnt_driver_Foot_R
+      position: {x: 1.7763568e-17, y: -7.105427e-17, z: 3.5527136e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Rig:Jnt_driver_Btoe01_R
+      parentName: Boss_Rig:Jnt_driver_Foot_R
+      position: {x: 0.031737242, y: 0.016272934, z: 0.10781431}
+      rotation: {x: 0.22852263, y: -0.20437054, z: -0.5962663, w: 0.74194115}
+      scale: {x: 0.99999976, y: 1.0000026, z: 1.0000026}
+    - name: Boss_Rig:Jnt_driver_Btoe02_R
+      parentName: Boss_Rig:Jnt_driver_Btoe01_R
+      position: {x: -0.006375, y: -0.0025688969, z: 0.062618785}
+      rotation: {x: 0.119649254, y: 0.74100107, z: -0.13716756, w: -0.6463642}
+      scale: {x: 1.0000017, y: 1.0000032, z: 1.000001}
+    - name: Boss_Rig:Jnt_driver_Mtoe01_R
+      parentName: Boss_Rig:Jnt_driver_Foot_R
+      position: {x: 0.08520011, y: -0.021609148, z: -0.09924661}
+      rotation: {x: 0.0042824866, y: -0.1961379, z: -0.62990373, w: 0.7514871}
+      scale: {x: 0.9999969, y: 0.99999917, z: 0.99999756}
+    - name: Boss_Rig:Jnt_driver_Mtoe02_R
+      parentName: Boss_Rig:Jnt_driver_Mtoe01_R
+      position: {x: -0.0061365864, y: 0.013945399, z: -0.16574897}
+      rotation: {x: -0.0000000372529, y: 0.038951125, z: 0.000000081839964, w: 0.9992411}
+      scale: {x: 1.0000005, y: 1.0000019, z: 1.0000021}
+    - name: Boss_Rig:Jnt_driver_Rtoe01_R
+      parentName: Boss_Rig:Jnt_driver_Foot_R
+      position: {x: 0.07304371, y: 0.04495831, z: -0.113107726}
+      rotation: {x: 0.14785737, y: -0.019544506, z: -0.6123196, w: 0.7764155}
+      scale: {x: 0.99999774, y: 1.0000001, z: 0.9999988}
+    - name: Boss_Rig:Jnt_driver_Rtoe02_R
+      parentName: Boss_Rig:Jnt_driver_Rtoe01_R
+      position: {x: -0.0020549952, y: 0.0152081, z: -0.09747067}
+      rotation: {x: 0.0000000074505797, y: -0.0034193764, z: -0.000000076368444, w: 0.9999942}
+      scale: {x: 1, y: 1.0000017, z: 1.0000017}
+    - name: Boss_Rig:Jnt_driver_Rtoe01_R1
+      parentName: Boss_Rig:Jnt_driver_Foot_R
+      position: {x: 0.09740917, y: -0.081852674, z: -0.085703306}
+      rotation: {x: -0.10878396, y: -0.3277637, z: -0.6204539, w: 0.70411223}
+      scale: {x: 0.999998, y: 1, z: 0.9999988}
+    - name: Boss_Rig:Jnt_driver_Rtoe02_R 1
+      parentName: Boss_Rig:Jnt_driver_Rtoe01_R1
+      position: {x: -0.004251756, y: 0.0114082, z: -0.107972674}
+      rotation: {x: 0.00000002235174, y: 0.07592561, z: -0.00000009313224, w: 0.99711347}
+      scale: {x: 1.0000005, y: 1.000003, z: 1.000002}
+    - name: Boss_Rig:Jnt_Leg_High_L
+      parentName: Boss_Rig:Jnt_Hip
+      position: {x: -0.10241897, y: -0.08630843, z: 0.0151481945}
+      rotation: {x: -0.12917742, y: 0.11341885, z: 0.6503003, w: 0.73997223}
+      scale: {x: 1.0000013, y: 1.000001, z: 1}
+    - name: Boss_Rig:Jnt_Leg_Mid_L
+      parentName: Boss_Rig:Jnt_Leg_High_L
+      position: {x: -0.5898211, y: 7.105427e-17, z: 0.0033682387}
+      rotation: {x: -0.00060516596, y: -0.52738696, z: 0.003766179, w: 0.8496167}
+      scale: {x: 1.0000002, y: 0.9999997, z: 0.9999992}
+    - name: Boss_Rig:Jnt_Leg_Low_L
+      parentName: Boss_Rig:Jnt_Leg_Mid_L
+      position: {x: -0.40262607, y: 7.105427e-17, z: 0.014640536}
+      rotation: {x: 0.011081487, y: 0.48797703, z: -0.0039133504, w: 0.8727774}
+      scale: {x: 1.000001, y: 1.0000005, z: 0.9999997}
+    - name: Boss_Rig:Jnt_Foot_L
+      parentName: Boss_Rig:Jnt_Leg_Low_L
+      position: {x: -0.26743117, y: -7.105427e-17, z: -2.4868996e-16}
+      rotation: {x: -0.02188371, y: 0.056900494, z: -0.053168423, w: 0.99672294}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000006}
+    - name: Boss_Rig:Jnt_Btoe01_L
+      parentName: Boss_Rig:Jnt_Foot_L
+      position: {x: -0.03173715, y: -0.016273618, z: -0.10781391}
+      rotation: {x: 0.22852264, y: -0.20437051, z: -0.59626627, w: 0.74194115}
+      scale: {x: 1.0000001, y: 1.0000005, z: 0.99999964}
+    - name: Boss_Rig:Jnt_Btoe02_L
+      parentName: Boss_Rig:Jnt_Btoe01_L
+      position: {x: 0.006374372, y: 0.0025686964, z: -0.062619515}
+      rotation: {x: -0.11964933, y: -0.741001, z: 0.13716762, w: 0.6463642}
+      scale: {x: 1.0000021, y: 1.0000002, z: 1.0000027}
+    - name: Boss_Rig:Jnt_Ltoe01_L
+      parentName: Boss_Rig:Jnt_Foot_L
+      position: {x: -0.09740916, y: 0.08185245, z: 0.08570331}
+      rotation: {x: -0.10878403, y: -0.32776374, z: -0.62045383, w: 0.70411223}
+      scale: {x: 1.0000002, y: 0.9999996, z: 0.9999999}
+    - name: Boss_Rig:Jnt_Ltoe02_L
+      parentName: Boss_Rig:Jnt_Ltoe01_L
+      position: {x: 0.004251754, y: -0.01140817, z: 0.10797267}
+      rotation: {x: 0.000000007450579, y: 0.07592569, z: -0.000000024214382, w: 0.9971135}
+      scale: {x: 0.99999946, y: 1.0000004, z: 1.0000005}
+    - name: Boss_Rig:Jnt_Mtoe01_L
+      parentName: Boss_Rig:Jnt_Foot_L
+      position: {x: -0.08520018, y: 0.021609012, z: 0.09924667}
+      rotation: {x: 0.004282444, y: -0.19613796, z: -0.6299037, w: 0.7514872}
+      scale: {x: 0.9999991, y: 0.9999993, z: 1.0000004}
+    - name: Boss_Rig:Jnt_Mtoe02_L
+      parentName: Boss_Rig:Jnt_Mtoe01_L
+      position: {x: 0.0061364123, y: -0.0139452955, z: 0.16574879}
+      rotation: {x: -0.000000045634806, y: 0.038951173, z: 0.000000044878107, w: 0.9992411}
+      scale: {x: 1.0000002, y: 1.0000004, z: 0.9999998}
+    - name: Boss_Rig:Jnt_Rtoe01_L
+      parentName: Boss_Rig:Jnt_Foot_L
+      position: {x: -0.07304367, y: -0.0449586, z: 0.11310777}
+      rotation: {x: 0.14785723, y: -0.01954444, z: -0.61231947, w: 0.7764156}
+      scale: {x: 0.9999992, y: 0.99999934, z: 1.0000005}
+    - name: Boss_Rig:Jnt_Rtoe02_L
+      parentName: Boss_Rig:Jnt_Rtoe01_L
+      position: {x: 0.002055268, y: -0.015208093, z: 0.09747103}
+      rotation: {x: -0.00000002235174, y: -0.003419395, z: 0.000000062631436, w: 0.9999942}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000011}
+    - name: Boss_Rig:Jnt_Leg_High_R
+      parentName: Boss_Rig:Jnt_Hip
+      position: {x: 0.10448357, y: -0.08379944, z: 0.015148662}
+      rotation: {x: 0.74913377, y: -0.6399597, z: 0.117550224, w: 0.124226205}
+      scale: {x: 1.0000013, y: 1.0000012, z: 1.0000021}
+    - name: Boss_Rig:Jnt_Leg_Mid_R
+      parentName: Boss_Rig:Jnt_Leg_High_R
+      position: {x: 0.5898193, y: -0.0000005967206, z: -0.0033686575}
+      rotation: {x: -0.00064395356, y: -0.5256729, z: 0.0039937785, w: 0.85067725}
+      scale: {x: 0.99999976, y: 1.0000002, z: 0.9999999}
+    - name: Boss_Rig:Jnt_Leg_Low_R
+      parentName: Boss_Rig:Jnt_Leg_Mid_R
+      position: {x: 0.4026261, y: 0.0000009751905, z: -0.01464061}
+      rotation: {x: 0.007728629, y: 0.48605528, z: -0.0015606582, w: 0.87389255}
+      scale: {x: 1, y: 0.99999994, z: 1.0000013}
+    - name: Boss_Rig:Jnt_Foot_R
+      parentName: Boss_Rig:Jnt_Leg_Low_R
+      position: {x: 0.2674309, y: -0.00000009295095, z: -0.0000001285442}
+      rotation: {x: -0.0010787877, y: 0.06717282, z: -0.038897417, w: 0.9969823}
+      scale: {x: 1, y: 0.99999994, z: 1.0000004}
+    - name: Boss_Rig:Jnt_Btoe01_R
+      parentName: Boss_Rig:Jnt_Foot_R
+      position: {x: 0.030375173, y: 0.016017033, z: 0.10764607}
+      rotation: {x: 0.2285226, y: -0.20437044, z: -0.5962663, w: 0.74194115}
+      scale: {x: 0.9999995, y: 1.0000029, z: 1.0000024}
+    - name: Boss_Rig:Jnt_Btoe02_R
+      parentName: Boss_Rig:Jnt_Btoe01_R
+      position: {x: -0.0059621804, y: -0.0026414152, z: 0.06037416}
+      rotation: {x: 0.11964926, y: 0.741001, z: -0.13716759, w: -0.6463642}
+      scale: {x: 1.0000008, y: 1.000001, z: 1.0000002}
+    - name: Boss_Rig:Jnt_Ltoe01_R
+      parentName: Boss_Rig:Jnt_Foot_R
+      position: {x: 0.075321734, y: 0.04388802, z: -0.1120004}
+      rotation: {x: 0.14785726, y: -0.019544471, z: -0.61231947, w: 0.7764156}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.9999993}
+    - name: Boss_Rig:Jnt_Ltoe02_R
+      parentName: Boss_Rig:Jnt_Ltoe01_R
+      position: {x: -0.0018143974, y: 0.0129700955, z: -0.10239391}
+      rotation: {x: 0.000000059604638, y: -0.003419342, z: 0.000000009313225, w: 0.9999942}
+      scale: {x: 0.9999997, y: 1.0000013, z: 1.0000007}
+    - name: Boss_Rig:Jnt_Mtoe01_R
+      parentName: Boss_Rig:Jnt_Foot_R
+      position: {x: 0.08520011, y: -0.021609148, z: -0.09924661}
+      rotation: {x: 0.004282457, y: -0.1961379, z: -0.62990373, w: 0.7514871}
+      scale: {x: 0.99999976, y: 1.0000017, z: 1.0000002}
+    - name: Boss_Rig:Jnt_Mtoe02_R
+      parentName: Boss_Rig:Jnt_Mtoe01_R
+      position: {x: -0.0062084273, y: 0.014309317, z: -0.16742699}
+      rotation: {x: 0.000000015599657, y: 0.03895124, z: 0.00000007654309, w: 0.9992411}
+      scale: {x: 1.0000006, y: 1.0000004, z: 0.99999917}
+    - name: Boss_Rig:Jnt_Rtoe01_R1
+      parentName: Boss_Rig:Jnt_Foot_R
+      position: {x: 0.096848756, y: -0.08239617, z: -0.08590965}
+      rotation: {x: -0.10878389, y: -0.32776374, z: -0.6204539, w: 0.70411223}
+      scale: {x: 1.0000004, y: 1.000001, z: 1}
+    - name: Boss_Rig:Jnt_Rtoe02_R
+      parentName: Boss_Rig:Jnt_Rtoe01_R1
+      position: {x: -0.004081112, y: 0.0127711175, z: -0.10659892}
+      rotation: {x: -0.0000000074505797, y: 0.075925626, z: 0.0000000745058, w: 0.99711347}
+      scale: {x: 1.0000007, y: 1.0000014, z: 1.0000011}
+    - name: Boss_Rig:Jnt_Spine_01
+      parentName: Boss_Rig:Jnt_Hip
+      position: {x: 3.7747583e-17, y: 0.22590491, z: 0.06546211}
+      rotation: {x: -0.09423534, y: -0.0009950228, z: 0.0015692947, w: 0.99554825}
+      scale: {x: 0.99999994, y: 1.0000004, z: 0.9999999}
+    - name: Boss_Rig:Jnt_Spine_02
+      parentName: Boss_Rig:Jnt_Spine_01
+      position: {x: -0, y: 0.20069061, z: 7.105427e-16}
+      rotation: {x: -0.000000037252903, y: 0.00000001094304, z: 0.000000011896191,
+        w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.9999998}
+    - name: Boss_Rig:Jnt_Clav_L
+      parentName: Boss_Rig:Jnt_Spine_02
+      position: {x: -0.059604757, y: 0.015580847, z: 0.20082876}
+      rotation: {x: -0.0014424685, y: 0.16058947, z: 0.036129586, w: 0.98635876}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Boss_Rig:Jnt_Sholder_L
+      parentName: Boss_Rig:Jnt_Clav_L
+      position: {x: -0.22333883, y: 0.035007562, z: -0.16451925}
+      rotation: {x: 0.16641013, y: -0.16242994, z: 0.015624343, w: 0.97246087}
+      scale: {x: 1.0000005, y: 0.9999999, z: 1.0000006}
+    - name: Boss_Rig:Jnt_Elbow_L
+      parentName: Boss_Rig:Jnt_Sholder_L
+      position: {x: -0.45118797, y: 2.2737367e-15, z: 0.01154813}
+      rotation: {x: -0.0024315268, y: 0.031360507, z: -0.012547445, w: 0.9994265}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
+    - name: Boss_Rig:Jnt_Wrist_L
+      parentName: Boss_Rig:Jnt_Elbow_L
+      position: {x: -0.3062133, y: 0.001624458, z: 2.1316282e-16}
+      rotation: {x: 0.000000009621947, y: 0.000000044703487, z: 0.0146045135, w: 0.99989337}
+      scale: {x: 1.0000004, y: 1.000001, z: 1.0000001}
+    - name: Boss_Rig:Jnt_index01_L
+      parentName: Boss_Rig:Jnt_Wrist_L
+      position: {x: -0.19694649, y: 0.006206327, z: 0.050154865}
+      rotation: {x: 0.077662796, y: 0.04392194, z: 0.044948913, w: 0.994997}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1.0000001}
+    - name: Boss_Rig:Jnt_index02_L
+      parentName: Boss_Rig:Jnt_index01_L
+      position: {x: -0.16571327, y: 0.024167875, z: 0.00020971581}
+      rotation: {x: -0.030223869, y: -0.00023248789, z: 0.41848096, w: 0.90772253}
+      scale: {x: 1.0000005, y: 1.0000006, z: 0.9999999}
+    - name: Boss_Rig:Jnt_middle01_L
+      parentName: Boss_Rig:Jnt_Wrist_L
+      position: {x: -0.19771694, y: 0.006759835, z: -0.010615817}
+      rotation: {x: -0.040404905, y: -0.025802722, z: 0.108200714, w: 0.99297243}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000005}
+    - name: Boss_Rig:Jnt_middle02_L
+      parentName: Boss_Rig:Jnt_middle01_L
+      position: {x: -0.19846201, y: 0.028141197, z: -0.000935835}
+      rotation: {x: -0.002322126, y: -0.012782961, z: 0.28636822, w: 0.9580316}
+      scale: {x: 1.0000004, y: 1.0000011, z: 1.0000002}
+    - name: Boss_Rig:Jnt_pinky01_L
+      parentName: Boss_Rig:Jnt_Wrist_L
+      position: {x: -0.17956756, y: -0.0310441, z: -0.087538615}
+      rotation: {x: -0.30815804, y: -0.064230956, z: 0.10539949, w: 0.9432942}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000005}
+    - name: Boss_Rig:Jnt_pinky02_L
+      parentName: Boss_Rig:Jnt_pinky01_L
+      position: {x: -0.13564016, y: 0.030635906, z: 0.002954877}
+      rotation: {x: -0.01807117, y: 0.02317589, z: 0.13182065, w: 0.99083793}
+      scale: {x: 1.0000002, y: 1.000001, z: 1.0000002}
+    - name: Boss_Rig:Jnt_ring01_L
+      parentName: Boss_Rig:Jnt_Wrist_L
+      position: {x: -0.1853281, y: -0.0022528297, z: -0.053369064}
+      rotation: {x: -0.15099664, y: -0.07658521, z: 0.079349786, w: 0.9823637}
+      scale: {x: 1, y: 1.0000004, z: 1.0000002}
+    - name: Boss_Rig:Jnt_ring02_L
+      parentName: Boss_Rig:Jnt_ring01_L
+      position: {x: -0.19519418, y: 0.022248212, z: -0.001857078}
+      rotation: {x: -0.072645865, y: 0.018572858, z: 0.30109578, w: 0.95064133}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Boss_Rig:Jnt_thumb01_L
+      parentName: Boss_Rig:Jnt_Wrist_L
+      position: {x: -0.109141804, y: -0.025532026, z: 0.07787645}
+      rotation: {x: 0.29573303, y: 0.3230146, z: -0.14015691, w: 0.88800883}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000005}
+    - name: Boss_Rig:Jnt_thumb02_L
+      parentName: Boss_Rig:Jnt_thumb01_L
+      position: {x: -0.115132675, y: 0.0024534932, z: 0.0010624632}
+      rotation: {x: 0.1303898, y: -0.09854218, z: 0.40983674, w: 0.8973972}
+      scale: {x: 1.0000006, y: 1.0000012, z: 1.0000006}
+    - name: Boss_Rig:Jnt_Clav_R
+      parentName: Boss_Rig:Jnt_Spine_02
+      position: {x: 0.05931528, y: 0.016645709, z: 0.20082852}
+      rotation: {x: 0.9866431, y: -0.027275087, z: 0.1605975, w: -0.000000041072287}
+      scale: {x: 0.99999994, y: 1.000003, z: 1.0000033}
+    - name: Boss_Rig:Jnt_Sholder_R
+      parentName: Boss_Rig:Jnt_Clav_R
+      position: {x: 0.22333841, y: -0.035013895, z: 0.16451879}
+      rotation: {x: 0.05936413, y: -0.15156862, z: 0.0012510732, w: 0.98666173}
+      scale: {x: 0.9999989, y: 1.0000007, z: 0.99999917}
+    - name: Boss_Rig:Jnt_Elbow_R
+      parentName: Boss_Rig:Jnt_Sholder_R
+      position: {x: 0.45133635, y: 3.694822e-15, z: 3.1974422e-16}
+      rotation: {x: -0.13680607, y: 0.023997584, z: -0.006074114, w: 0.9902885}
+      scale: {x: 1.0000008, y: 1.0000024, z: 1.0000029}
+    - name: Boss_Rig:Jnt_Wrist_R
+      parentName: Boss_Rig:Jnt_Elbow_R
+      position: {x: 0.30670333, y: -7.105427e-16, z: 0}
+      rotation: {x: -0.048733372, y: 0.043500524, z: 0.06621965, w: 0.9956645}
+      scale: {x: 0.99999964, y: 1.000002, z: 1.0000005}
+    - name: Boss_Rig:Jnt_index01_R
+      parentName: Boss_Rig:Jnt_Wrist_R
+      position: {x: 0.15784006, y: 0.0012682854, z: -0.036439195}
+      rotation: {x: -0.064835265, y: 0.0630946, z: 0.05283095, w: 0.9944971}
+      scale: {x: 1.0000004, y: 1.0000021, z: 1.0000015}
+    - name: Boss_Rig:Jnt_index02_R
+      parentName: Boss_Rig:Jnt_index01_R
+      position: {x: 0.05046768, y: 2.1316282e-16, z: -1.4210854e-16}
+      rotation: {x: 0.01806151, y: -0.01289318, z: 0.037136026, w: 0.9990638}
+      scale: {x: 0.9999994, y: 1.0000026, z: 1.000001}
+    - name: Boss_Rig:Jnt_index03_R
+      parentName: Boss_Rig:Jnt_index02_R
+      position: {x: 0.038452774, y: -9.237055e-16, z: 1.4210854e-16}
+      rotation: {x: 0.0000000018626451, y: 0.000000014901161, z: 0.0000000026775524,
+        w: 1}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1.000001}
+    - name: Boss_Rig:Jnt_middle01_R
+      parentName: Boss_Rig:Jnt_Wrist_R
+      position: {x: 0.16655058, y: 5.684342e-16, z: 1.4210854e-16}
+      rotation: {x: -0.015709458, y: 0.01858777, z: 0.07390091, w: 0.9969686}
+      scale: {x: 0.99999994, y: 1.0000017, z: 1.0000013}
+    - name: Boss_Rig:Jnt_middle02_R
+      parentName: Boss_Rig:Jnt_middle01_R
+      position: {x: 0.047733944, y: -2.842171e-16, z: 0}
+      rotation: {x: -0.012200983, y: 0.0173379, z: 0.014464983, w: 0.9996706}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000006}
+    - name: Boss_Rig:Jnt_middle03_R
+      parentName: Boss_Rig:Jnt_middle02_R
+      position: {x: 0.053703155, y: 3.5527135e-16, z: -4.2632563e-16}
+      rotation: {x: 0.000000027008355, y: -0.000000029802322, z: -0.000000044397893,
+        w: 1}
+      scale: {x: 1, y: 1, z: 0.9999994}
+    - name: Boss_Rig:Jnt_pinky01_R
+      parentName: Boss_Rig:Jnt_Wrist_R
+      position: {x: 0.15844679, y: 0.012884575, z: 0.07289355}
+      rotation: {x: 0.07202007, y: -0.060101505, z: 0.054868545, w: 0.9940777}
+      scale: {x: 0.9999999, y: 1.0000023, z: 1.0000017}
+    - name: Boss_Rig:Jnt_pinky02_R
+      parentName: Boss_Rig:Jnt_pinky01_R
+      position: {x: 0.026256565, y: 8.881784e-16, z: 2.1316282e-16}
+      rotation: {x: -0.016969888, y: 0.024968114, z: 0.020957526, w: 0.99932456}
+      scale: {x: 0.99999964, y: 1.0000012, z: 1.0000017}
+    - name: Boss_Rig:Jnt_pinky03_R
+      parentName: Boss_Rig:Jnt_pinky02_R
+      position: {x: 0.028008036, y: -1.4210854e-15, z: -3.5527135e-16}
+      rotation: {x: -0.0000000018626447, y: 0.000000007450579, z: 0.0000000494765,
+        w: 1}
+      scale: {x: 0.9999995, y: 1.0000001, z: 1}
+    - name: Boss_Rig:Jnt_ring01_R
+      parentName: Boss_Rig:Jnt_Wrist_R
+      position: {x: 0.16978396, y: 0.0073821824, z: 0.039352767}
+      rotation: {x: 0.037371885, y: -0.03658693, z: 0.07343527, w: 0.99592775}
+      scale: {x: 1, y: 1.0000021, z: 1.0000018}
+    - name: Boss_Rig:Jnt_ring02_R
+      parentName: Boss_Rig:Jnt_ring01_R
+      position: {x: 0.03424375, y: -2.842171e-16, z: 6.3948843e-16}
+      rotation: {x: -0.0053259195, y: 0.0057193753, z: 0.039992977, w: 0.9991694}
+      scale: {x: 0.9999991, y: 1.0000014, z: 1.0000008}
+    - name: Boss_Rig:Jnt_ring03_R
+      parentName: Boss_Rig:Jnt_ring02_R
+      position: {x: 0.03936794, y: 5.684342e-16, z: -2.842171e-16}
+      rotation: {x: 0.000000009313225, y: 0.000000029802319, z: -0.000000010786606,
+        w: 1}
+      scale: {x: 1.0000006, y: 1.0000008, z: 1.0000008}
+    - name: Boss_Rig:Jnt_Sword
+      parentName: Boss_Rig:Jnt_Wrist_R
+      position: {x: 0.124903984, y: 0.046064425, z: 0.01590735}
+      rotation: {x: -0.7264903, y: 0.6802815, z: -0.09638505, w: -0.011786934}
+      scale: {x: 1.0000014, y: 1.0000011, z: 1.0000014}
+    - name: Boss_Rig:Jnt_thumb01_R
+      parentName: Boss_Rig:Jnt_Wrist_R
+      position: {x: 0.049569238, y: 0.0047913687, z: -0.03713279}
+      rotation: {x: 0.5538601, y: 0.31353143, z: -0.058227435, w: 0.7691207}
+      scale: {x: 0.99999917, y: 0.9999983, z: 1.0000024}
+    - name: Boss_Rig:Jnt_thumb02_R
+      parentName: Boss_Rig:Jnt_thumb01_R
+      position: {x: 0.07674755, y: 4.973799e-16, z: 9.947598e-16}
+      rotation: {x: 0.060399868, y: 0.012688453, z: 0.031527955, w: 0.9975956}
+      scale: {x: 1.0000002, y: 1.0000019, z: 1.0000014}
+    - name: Boss_Rig:Jnt_thumb03_R
+      parentName: Boss_Rig:Jnt_thumb02_R
+      position: {x: 0.040328186, y: -2.1316282e-16, z: 1.4210854e-16}
+      rotation: {x: 0.000000029802319, y: -0.000000014901159, z: -0.00000007869675,
+        w: 1}
+      scale: {x: 0.99999964, y: 0.99999976, z: 1.0000006}
+    - name: Boss_Rig:Jnt_Neck_01
+      parentName: Boss_Rig:Jnt_Spine_02
+      position: {x: -0.005559063, y: 0.10043638, z: 0.069238156}
+      rotation: {x: -0.70585823, y: 0.6995463, z: 0.07909059, w: 0.07838335}
+      scale: {x: 1.0000012, y: 1.0000013, z: 1.0000018}
+    - name: Boss_Rig:Jnt_Neck_02
+      parentName: Boss_Rig:Jnt_Neck_01
+      position: {x: -0.120979525, y: 0, z: 0}
+      rotation: {x: -0.000000029802315, y: 0.16044693, z: 0.000000029802315, w: -0.98704445}
+      scale: {x: 1.000001, y: 1.0000011, z: 1.0000017}
+    - name: Boss_Rig:Jnt_Head
+      parentName: Boss_Rig:Jnt_Neck_02
+      position: {x: -0.13150038, y: 7.105427e-17, z: -4.2632563e-16}
+      rotation: {x: -0.000000059604645, y: -0, z: -0, w: 1}
+      scale: {x: 0.9999993, y: 0.9999998, z: 0.99999934}
+    - name: Boss_Rig:Jnt_Head1
+      parentName: Boss_Rig:Jnt_Head
+      position: {x: -0.0028617652, y: -1.7319479e-16, z: -0.0654023}
+      rotation: {x: 0.000000017457792, y: 0.7071068, z: 0.000000012344531, w: -0.70710677}
+      scale: {x: 1.0000019, y: 1.0000019, z: 1.0000005}
+    - name: Boss_Rig:Sword_01
+      parentName: Boss_Idle_Avatar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: Boss_Rig:Root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4708545eea4bcd84ca362c87506b573c,
+    type: 3}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

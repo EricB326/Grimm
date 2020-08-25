@@ -4,29 +4,6 @@ using UnityEngine;
 
 public class LookDemo : StateMachineBehaviour
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
 
     // OnStateIK is called right after Animator.OnAnimatorIK()
     override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -36,7 +13,7 @@ public class LookDemo : StateMachineBehaviour
         // Direction isn't really needed.
         Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position 
             - animator.gameObject.transform.position;
-        if (animator.gameObject.GetComponent<PlayerMovementVariables>().m_lockon)
+        if (animator.gameObject.GetComponentInParent<Player>().m_lockon)
         {
             ikWeight += 0.05f;
             if (ikWeight > 1)
@@ -45,8 +22,8 @@ public class LookDemo : StateMachineBehaviour
             }
             animator.SetLookAtWeight(ikWeight, 0.55f, 0.8f, 1.0f);
             // This should be target
-            Vector3 targetPos = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_lookPoint.transform.position;
-            targetPos.y -= 1f;
+            Vector3 targetPos = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_facingPosition.transform.position;
+            //targetPos.y -= 1f;
             animator.SetLookAtPosition(targetPos);
         }
         else
@@ -57,8 +34,8 @@ public class LookDemo : StateMachineBehaviour
                 ikWeight = 0;
             }
             animator.SetLookAtWeight(ikWeight, 0.55f, 0.8f, 1.0f);
-            Vector3 targetPos = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_lookPoint.transform.position;
-            targetPos.y = 1;
+            Vector3 targetPos = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_facingPosition.transform.position;
+            //targetPos.y += 1;
             animator.SetLookAtPosition(targetPos);
         }
         animator.SetFloat("LookWeight", ikWeight);

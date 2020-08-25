@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList: []
   paintType: 0
-  brushSize: 1
+  brushSize: 12.39
   minBrushSize: 0.1
   maxBrushSize: 20
   paintDeltaDistance: 0.4
