@@ -53,16 +53,16 @@ public class Player : MonoBehaviour
     private GameObject m_lifter;
 
     // Stamina drain on attack. Should be consistent.
-    public int m_attackStaminaDrain = 20;
+    public float m_attackStaminaDrain = 20;
     // Roll Stamina drain
-    public int m_rollStaminaDrain = 25;
+    public float m_rollStaminaDrain = 25;
 
-    public int m_runStaminaDrain = 2;
+    public float m_runStaminaDrain = 2;
     // Roll damage multiplier value.
     [Range(0, 1)]
     public float m_rollDamagemultiplier = 0.80f;
     // Damage per attack. Should be consistent.
-    public int m_attackDamage = 10;
+    public float m_attackDamage = 10;
     
 
     // Only used to decide if the player can be hit. Basicaly god mode.

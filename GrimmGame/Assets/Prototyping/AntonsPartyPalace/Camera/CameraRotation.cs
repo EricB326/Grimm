@@ -112,45 +112,48 @@ public class CameraRotation : MonoBehaviour
 
 
 
-            if (axisX != 0)
-            {
-                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = axisX;
-            }
-            else if (axisY != 0)
-            {
-                m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = axisY;
-            }
-            else // have to make sure nothing is passed through
-            {
-                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
-                m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = 0;
-            }
-
-            // Get the direction from the player to the boss.
-
-
-            // Most of the below is redundant.
-            // Cinemachine will do all this for us but leaving in case.
-            //    if (x != 0)
-            //{
-            //    localMultiplyerX = localMultiplyerX + increment;
-            //    if(localMultiplyerX > m_rotationMax)
-            //    {
-            //        localMultiplyerX = m_rotationMax;
-            //    }
-            //    freelook.m_XAxis.m_InputAxisValue = x * localMultiplyerX;
-            //}
-            //else if (y != 0)
-            //{
-            //    freelook.m_YAxis.m_InputAxisValue = y + localMultiplyerY;
-            //}
-            //else
-            //{
-            //    localMultiplyerX = 1;
-            //    localMultiplyerY = 1;
-            //    freelook.m_XAxis.m_InputAxisValue = 0;
-            //    freelook.m_YAxis.m_InputAxisValue = 0;
-            //}
+        if (axisX != 0)
+        {
+            m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = axisX;
         }
+        else
+        {
+            m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
+        }
+        if(axisY != 0)
+        {
+            m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = axisY;
+        }
+        else
+        {
+            m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = 0;
+        }
+
+        // Get the direction from the player to the boss.
+
+
+        // Most of the below is redundant.
+        // Cinemachine will do all this for us but leaving in case.
+        //    if (x != 0)
+        //{
+        //    localMultiplyerX = localMultiplyerX + increment;
+        //    if(localMultiplyerX > m_rotationMax)
+        //    {
+        //        localMultiplyerX = m_rotationMax;
+        //    }
+        //    freelook.m_XAxis.m_InputAxisValue = x * localMultiplyerX;
+        //}
+        //else if (y != 0)
+        //{
+        //    freelook.m_YAxis.m_InputAxisValue = y + localMultiplyerY;
+        //}
+        //else
+        //{
+        //    localMultiplyerX = 1;
+        //    localMultiplyerY = 1;
+        //    freelook.m_XAxis.m_InputAxisValue = 0;
+        //    freelook.m_YAxis.m_InputAxisValue = 0;
+        //}
+    }
     }
 
