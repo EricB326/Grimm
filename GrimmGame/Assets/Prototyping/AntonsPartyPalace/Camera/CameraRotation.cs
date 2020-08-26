@@ -112,45 +112,69 @@ public class CameraRotation : MonoBehaviour
 
 
 
+        if (!m_player.m_lockon)
+        {
             if (axisX != 0)
             {
                 m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = axisX;
             }
-            else if (axisY != 0)
+            else
+            {
+                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
+            }
+            if (axisY != 0)
             {
                 m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = axisY;
             }
-            else // have to make sure nothing is passed through
+            else
             {
-                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
                 m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = 0;
             }
+        }
+        else
+        {
+            // Player position
+            Vector3 followPos = m_camList[1].Follow.position;
+            // Boss position
+            Vector3 lookAtPos = m_camList[1].LookAt.position;
 
-            // Get the direction from the player to the boss.
+            Vector3 direction = followPos - lookAtPos;
+
+            float radius =  m_camList[1].m_Orbits[1].m_Radius;
+            Debug.Log(radius);
+            // We only need the direction not the y.
+            direction.y = 0;
+            Vector3 raycastStart = m_player.transform.position;
+            raycastStart.y = 0;
+            Debug.DrawRay(raycastStart, direction.normalized * radius);
+        }
 
 
-            // Most of the below is redundant.
-            // Cinemachine will do all this for us but leaving in case.
-            //    if (x != 0)
-            //{
-            //    localMultiplyerX = localMultiplyerX + increment;
-            //    if(localMultiplyerX > m_rotationMax)
-            //    {
-            //        localMultiplyerX = m_rotationMax;
-            //    }
-            //    freelook.m_XAxis.m_InputAxisValue = x * localMultiplyerX;
-            //}
-            //else if (y != 0)
-            //{
-            //    freelook.m_YAxis.m_InputAxisValue = y + localMultiplyerY;
-            //}
-            //else
-            //{
-            //    localMultiplyerX = 1;
-            //    localMultiplyerY = 1;
-            //    freelook.m_XAxis.m_InputAxisValue = 0;
-            //    freelook.m_YAxis.m_InputAxisValue = 0;
-            //}
+        // Get the direction from the player to the boss.
+
+
+        // Most of the below is redundant.
+        // Cinemachine will do all this for us but leaving in case.
+        //    if (x != 0)
+        //{
+        //    localMultiplyerX = localMultiplyerX + increment;
+        //    if(localMultiplyerX > m_rotationMax)
+        //    {
+        //        localMultiplyerX = m_rotationMax;
+        //    }
+        //    freelook.m_XAxis.m_InputAxisValue = x * localMultiplyerX;
+        //}
+        //else if (y != 0)
+        //{
+        //    freelook.m_YAxis.m_InputAxisValue = y + localMultiplyerY;
+        //}
+        //else
+        //{
+        //    localMultiplyerX = 1;
+        //    localMultiplyerY = 1;
+        //    freelook.m_XAxis.m_InputAxisValue = 0;
+        //    freelook.m_YAxis.m_InputAxisValue = 0;
+        //}
         }
     }
 

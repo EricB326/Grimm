@@ -1115,7 +1115,7 @@ AnimatorStateMachine:
   - {fileID: 8609225798184266436}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 130, z: 0}
-  m_ExitPosition: {x: 780, y: 130, z: 0}
+  m_ExitPosition: {x: 800, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 410, y: 0, z: 0}
   m_DefaultState: {fileID: 7662322631285216934}
 --- !u!1101 &-2293437795229764006
@@ -2014,7 +2014,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ending Animation
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3120079876874941600}
@@ -2128,7 +2128,7 @@ AnimatorStateMachine:
     m_Position: {x: 90, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2681044092188391822}
-    m_Position: {x: 360, y: -240, z: 0}
+    m_Position: {x: 350, y: -140, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -88687367910479901}
@@ -2144,7 +2144,7 @@ AnimatorStateMachine:
     m_Position: {x: 360, y: 200, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 3367709112308843854}
-    m_Position: {x: -170, y: -110, z: 0}
+    m_Position: {x: 20, y: -280, z: 0}
   m_AnyStateTransitions:
   - {fileID: 2284819778746358325}
   - {fileID: -6222850732618418149}
@@ -2279,7 +2279,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack Animation
-  m_Speed: 2.2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -520540612215479713}
@@ -2331,7 +2331,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ending Animation
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5582009026277787762}
@@ -2798,7 +2798,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack Animation
-  m_Speed: 2.2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3645445692381776376}

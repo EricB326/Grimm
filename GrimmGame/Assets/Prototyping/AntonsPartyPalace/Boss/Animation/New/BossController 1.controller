@@ -48,7 +48,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 0.4361326
   m_TransitionOffset: 0
   m_ExitTime: 1
   m_HasExitTime: 1
@@ -835,7 +835,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75e921a7f911f96409fd47e44a8c3b5f, type: 3}
   m_Name: 
@@ -1034,7 +1034,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 0.34863263
   m_TransitionOffset: 0
   m_ExitTime: 1
   m_HasExitTime: 1
@@ -1298,9 +1298,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 0.33680633
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 0.945171
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -1373,7 +1373,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BossAction/SideHopL
+  m_Name: BossAction/DashLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1389,7 +1389,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 9114735899237064122, guid: 5c9049c706860f54d8df8dd21e682d3c,
+  m_Motion: {fileID: -7494674971326777238, guid: 2c4fc58adb756b647afbeb40729858d8,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -1665,7 +1665,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BossAction/SideHopR
+  m_Name: BossAction/DashRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1681,7 +1681,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -4096255089928558631, guid: c60f4a5ee660bdf449cd5b7a2eef7bfe,
+  m_Motion: {fileID: -256485565653624892, guid: 9e7b993e90cee484682e32ee3730515e,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75e921a7f911f96409fd47e44a8c3b5f, type: 3}
   m_Name: 
