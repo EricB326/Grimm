@@ -8,7 +8,7 @@ public class LookDemo : StateMachineBehaviour
     // OnStateIK is called right after Animator.OnAnimatorIK()
     override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float ikWeight = animator.GetFloat("LookWeight");
+        float ikWeight = animator.GetFloat("Ik/LookWeight");
         // Probably better for lock on and not running.
         // Direction isn't really needed.
         Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position 
@@ -38,7 +38,7 @@ public class LookDemo : StateMachineBehaviour
             //targetPos.y += 1;
             animator.SetLookAtPosition(targetPos);
         }
-        animator.SetFloat("LookWeight", ikWeight);
+        animator.SetFloat("Ik/LookWeight", ikWeight);
 
         // Could this be used in ik to move the body to the correct
         // place when legs are applying Ik?

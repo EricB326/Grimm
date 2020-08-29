@@ -141,12 +141,20 @@ public class CameraRotation : MonoBehaviour
             Vector3 direction = followPos - lookAtPos;
 
             float radius =  m_camList[1].m_Orbits[1].m_Radius;
-            Debug.Log(radius);
+            //Debug.Log(radius);
             // We only need the direction not the y.
             direction.y = 0;
             Vector3 raycastStart = m_player.transform.position;
             raycastStart.y = 0;
             Debug.DrawRay(raycastStart, direction.normalized * radius);
+
+            // Check the cameras current angle vs the angle provided by the direciton.
+            // Need to adjust the x value based on the -180 to 180 values.
+
+
+            // Add that
+
+
         }
 
 

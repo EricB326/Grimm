@@ -50,6 +50,7 @@ public class BossBrain : MonoBehaviour
     // Will one day become a enums.
     public List<BossActions> m_actionQue = new List<BossActions>();
 
+
     // When a state requires 2 steps.
     private bool m_continue = false;
     // If behaviors require a timer.

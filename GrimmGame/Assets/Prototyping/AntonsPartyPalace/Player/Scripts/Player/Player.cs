@@ -428,6 +428,8 @@ public class Player : MonoBehaviour
         // If not the direction to move is always back
         if (a_axisX == 0 && a_axisZ == 0)
         {
+            // Backstep
+            m_animator.SetFloat("Input/RollOrStep", -1);
             a_axisZ = -1;
 
             Vector3 movementX = (new Vector3(this.transform.right.x, 0, this.transform.right.z) * a_axisX);
@@ -439,6 +441,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            // Roll
+            m_animator.SetFloat("Input/RollOrStep", 1);
             Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
             Vector3 movementZ = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
             Vector3 cameraPosition = (movementZ + movementX);
@@ -461,11 +465,13 @@ public class Player : MonoBehaviour
         // Removed due to root motion
         //Vector3 m_movement = new Vector3((m_storedRollDirection.x * m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * m_rollSpeed) * Time.deltaTime * m_animator.speed);
         //this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
-
-
-        Quaternion targetRotation = Quaternion.LookRotation(m_storedRollDirection);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.5f);
-
+        // Check if rolling or not.
+        if (m_animator.GetFloat("Input/RollOrStep") > 0)
+        {
+            // Rotate in direction rolling in.
+            Quaternion targetRotation = Quaternion.LookRotation(m_storedRollDirection);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.5f);
+        }
 
     }
 
