@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class StaminaBarController : MonoBehaviour
 {
-   [SerializeField] private Image sliderBarImage;
-   [SerializeField] private Image staminaBarImage;
+   [SerializeField] private Image backgroundBarImage;
+   [SerializeField] private Image foregroundBarImage;
    [SerializeField] private float sliderBarDeplenishSpeed;
    [SerializeField] private float sliderBarDeplenishTimer;
    private float sliderTimer;
@@ -15,7 +15,7 @@ public class StaminaBarController : MonoBehaviour
     private void Start()
     {
         SetBarPercentage(EntityStats.Instance.GetNormalisedStaminaOfEntity("Player"));
-        sliderBarImage.fillAmount = staminaBarImage.fillAmount;
+        backgroundBarImage.fillAmount = foregroundBarImage.fillAmount;
         
         EntityStats.Instance.onStaminaTaken += EntityStats_OnStaminaTaken;
         EntityStats.Instance.onStaminaReplenish += EntityStats_OnStaminaReplenish;
@@ -26,10 +26,10 @@ public class StaminaBarController : MonoBehaviour
         sliderTimer -= Time.deltaTime;
         if (sliderTimer < 0f)
         {
-            if (staminaBarImage.fillAmount < sliderBarImage.fillAmount)
-                sliderBarImage.fillAmount -= sliderBarDeplenishSpeed * Time.deltaTime;
+            if (foregroundBarImage.fillAmount < backgroundBarImage.fillAmount)
+                backgroundBarImage.fillAmount -= sliderBarDeplenishSpeed * Time.deltaTime;
             else
-                sliderBarImage.fillAmount = staminaBarImage.fillAmount;
+                backgroundBarImage.fillAmount = foregroundBarImage.fillAmount;
 
 
         }
@@ -49,6 +49,6 @@ public class StaminaBarController : MonoBehaviour
 
     private void SetBarPercentage(float _healthNormalized)
     {
-        staminaBarImage.fillAmount = _healthNormalized;
+        foregroundBarImage.fillAmount = _healthNormalized;
     }
 }

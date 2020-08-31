@@ -10,8 +10,8 @@ public class HealthBarController : MonoBehaviour
     private struct healthBarData
     {
         public string name;
-        public Image sliderBarImage;
-        public Image healthBarImage;
+        public Image backgroundBarImage;
+        public Image foregroundBarImage;
         public float sliderBarDeplenishSpeed;
         public float sliderBarDeplenishTimer;
         [HideInInspector] public float sliderTimer;
@@ -32,7 +32,7 @@ public class HealthBarController : MonoBehaviour
         foreach (healthBarData thisHealthBar in healthBarList)
         {
             SetBarPercentage(thisHealthBar, EntityStats.Instance.GetNormalisedHealthOfEntity(thisHealthBar.name));
-            thisHealthBar.sliderBarImage.fillAmount = thisHealthBar.healthBarImage.fillAmount;
+            thisHealthBar.backgroundBarImage.fillAmount = thisHealthBar.foregroundBarImage.fillAmount;
         }
 
         EntityStats.Instance.onDamageTaken += EntityStats_OnDamage;
@@ -49,11 +49,11 @@ public class HealthBarController : MonoBehaviour
 
             if (healthBarList[i].sliderTimer < 0f)
             {
-                if (healthBarList[i].healthBarImage.fillAmount < healthBarList[i].sliderBarImage.fillAmount)
-                    healthBarList[i].sliderBarImage.fillAmount -= healthBarList[i].sliderBarDeplenishSpeed * Time.deltaTime;
+                if (healthBarList[i].foregroundBarImage.fillAmount < healthBarList[i].backgroundBarImage.fillAmount)
+                    healthBarList[i].backgroundBarImage.fillAmount -= healthBarList[i].sliderBarDeplenishSpeed * Time.deltaTime;
             }
-            else if (healthBarList[i].healthBarImage.fillAmount > healthBarList[i].sliderBarImage.fillAmount)
-                healthBarList[i].sliderBarImage.fillAmount = healthBarList[i].healthBarImage.fillAmount; ;
+            else if (healthBarList[i].foregroundBarImage.fillAmount > healthBarList[i].backgroundBarImage.fillAmount)
+                healthBarList[i].backgroundBarImage.fillAmount = healthBarList[i].foregroundBarImage.fillAmount; ;
         }
     }
 
@@ -62,7 +62,7 @@ public class HealthBarController : MonoBehaviour
         for (int i = 0; i < healthBarList.Count; i++)
         {
             // If the health bar's current value is not equal to the new value, then the bar should update.
-            if (healthBarList[i].healthBarImage.fillAmount != EntityStats.Instance.GetNormalisedHealthOfEntity(healthBarList[i].name))
+            if (healthBarList[i].foregroundBarImage.fillAmount != EntityStats.Instance.GetNormalisedHealthOfEntity(healthBarList[i].name))
             {
                 holdingData = healthBarList[i];
                 holdingData.sliderTimer = holdingData.sliderBarDeplenishTimer;
@@ -86,6 +86,6 @@ public class HealthBarController : MonoBehaviour
 
     private void SetBarPercentage(healthBarData _healthBar, float _healthNormalized)
     {
-        _healthBar.healthBarImage.fillAmount = _healthNormalized;
+        _healthBar.foregroundBarImage.fillAmount = _healthNormalized;
     }
 }
