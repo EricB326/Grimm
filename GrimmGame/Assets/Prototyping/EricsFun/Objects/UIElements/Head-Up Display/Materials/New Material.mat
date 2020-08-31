@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlurMaterial
+  m_Name: New Material
   m_Shader: {fileID: -6465566751694194690, guid: e8452bd31f9a540409995d2311812bac,
     type: 3}
   m_ShaderKeywords: _DOUBLESIDED_ON
@@ -18,8 +18,8 @@ Material:
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
-  - MOTIONVECTORS
   - TransparentBackface
+  - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -126,10 +126,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
     - _BlendMode: 0
-    - _BlueEdgeSharp: 11.86
-    - _BlueEffect: 0.0028
-    - _BlueStrength: 0.00321
-    - _BlurOpacity: 10
+    - _BlueStrength: 0.004
     - _CoatMask: 0
     - _CullMode: 0
     - _CullModeForward: 0
@@ -241,8 +238,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _BlueDirection: {r: 0, g: 1, b: 0, a: 0}
-    - _BlurTint: {r: 1, g: 1, b: 1, a: 1}
+    - _BlurTint: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

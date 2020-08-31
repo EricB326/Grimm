@@ -93,43 +93,44 @@ public class Player : MonoBehaviour
     // Movement occurs in this update.
     private void FixedUpdate()
     {
-
-        // May need to move camera to occur everyFrame instead
-        // to remove jittering from physics
-        float axisZ = m_animator.GetFloat("Input/Z");
-        float axisX = m_animator.GetFloat("Input/X");
-        //if (m_lockon)
-        //{
-        //    LockOnLook(axisZ, axisX);
-        //}
-        //else if (m_animator.GetBool("Output/CanMove"))
-        //{
-        //    FreeLook(axisZ, axisX);
-        //}
-
-        // Can only occur when currently rolling
-
-        if (m_animator.GetBool("Output/IsRolling"))
+        if (!PauseMenuController.isPaused)
         {
-            Rolling();
-        }
-        // Least important. Rotation occurs here for movement.
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            Movement(m_currentFrame.m_run);
-        }
+            // May need to move camera to occur everyFrame instead
+            // to remove jittering from physics
+            float axisZ = m_animator.GetFloat("Input/Z");
+            float axisX = m_animator.GetFloat("Input/X");
+            //if (m_lockon)
+            //{
+            //    LockOnLook(axisZ, axisX);
+            //}
+            //else if (m_animator.GetBool("Output/CanMove"))
+            //{
+            //    FreeLook(axisZ, axisX);
+            //}
+
+            // Can only occur when currently rolling
+
+            if (m_animator.GetBool("Output/IsRolling"))
+            {
+                Rolling();
+            }
+            // Least important. Rotation occurs here for movement.
+            else if (m_animator.GetBool("Output/CanMove"))
+            {
+                Movement(m_currentFrame.m_run);
+            }
 
 
-        if (m_lockon)
-        {
-            LockOnLook(axisZ, axisX);
-        }
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            FreeLook(axisZ, axisX);
-        }
+            if (m_lockon)
+            {
+                LockOnLook(axisZ, axisX);
+            }
+            else if (m_animator.GetBool("Output/CanMove"))
+            {
+                FreeLook(axisZ, axisX);
+            }
 
-
+        }
     }
 
 
@@ -138,39 +139,41 @@ public class Player : MonoBehaviour
     // Every frame
     void Update()
     {
-        float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
-
-        float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
-
-
-
-        if (XCI.GetButtonDown(XboxButton.RightStick))
+        if (!PauseMenuController.isPaused)
         {
-            if (this.m_lockon)
+            float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
+
+            float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
+
+
+
+            if (XCI.GetButtonDown(XboxButton.RightStick))
             {
-                this.m_lockon = false;
+                if (this.m_lockon)
+                {
+                    this.m_lockon = false;
+                }
+                else
+                {
+                    this.m_lockon = true;
+                }
             }
-            else
+
+            m_currentFrame = m_inputBuffer.GetBufferInput();
+
+
+            if (!m_animator.GetBool("Input/Stop"))
             {
-                this.m_lockon = true;
+                UpdateAnimations(axisX, axisZ, m_currentFrame);
             }
+
+
+            if (m_animator.GetBool("Input/Roll") && !m_animator.GetBool("Output/IsRolling"))
+            {
+                StartRoll(axisX, axisZ);
+            }
+
         }
-
-        m_currentFrame = m_inputBuffer.GetBufferInput();
-
-
-        if (!m_animator.GetBool("Input/Stop"))
-        {
-            UpdateAnimations(axisX, axisZ, m_currentFrame);
-        }
-
-
-        if (m_animator.GetBool("Input/Roll") && !m_animator.GetBool("Output/IsRolling"))
-        {
-            StartRoll(axisX, axisZ);
-        }
-
-
     }
 
     // Send inputs to animator.
