@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.VFX;
 
 // Boss Colliders
 // 1. Sword
@@ -13,13 +14,6 @@ using UnityEngine;
 
 public class AnimationEventsBoss : MonoBehaviour
 {
-    [Header("Particle List")]
-    public List<ParticleSystem> m_particles;
-
-
-
-
-
     public void ActivateHitBox(int a_colliderNumber)
     {
        GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
@@ -53,16 +47,20 @@ public class AnimationEventsBoss : MonoBehaviour
         this.gameObject.GetComponent<Animator>().SetBool("Ai/CanRotate", false);
     }
     
-    // Istantiates the particle effect at the point
-    public void TriggerDustParticle(int a_colliderPos)
+    // Istantiates the particle effect at the point?
+    // Probably better to just play a particle on a collider
+    // Which will include sounds?
+    public void FootDownLeft()
     {
-        // Play the particle on that collider
+        // Play particle and sound effect on foot.
+        this.gameObject.GetComponent<BossVariables>().m_weaponColliders[3].gameObject.GetComponent<VisualEffect>().Play();
     }
 
-    // Destroys the particle?
-    public void TriggerParticleEffectOff(int a_colliderNumber)
+
+    public void FootDownRight()
     {
-        // 
+        // Play particle and sound effect on foot.
+        this.gameObject.GetComponent<BossVariables>().m_weaponColliders[2].gameObject.GetComponent<VisualEffect>().Play();
     }
 
 

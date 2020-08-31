@@ -120,10 +120,14 @@ public class BossActions
             switch (attackEffectList[i])
             {
                 case HitEffectsEnum.KNOCKBACK_WEAK:
-                    OnHitEffects.Instance.ResolveKnockbackWeak(_target, _collisionPoint);
+                    {
+                        OnHitEffects.Instance.ResolveKnockbackWeak(_target, _collisionPoint);
+                    }
                     break;
                 case HitEffectsEnum.KNOCKBACK_STRONG:
-                    OnHitEffects.Instance.ResolveKnockbackStrong(_target);
+                    {
+                        OnHitEffects.Instance.ResolveKnockbackStrong(_target);
+                    }
                     break;
                 default:
                     break;

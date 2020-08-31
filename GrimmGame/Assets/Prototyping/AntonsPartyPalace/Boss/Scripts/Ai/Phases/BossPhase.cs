@@ -55,22 +55,33 @@ public class BossPhase
     // Boss checks to see what it's stamina is at.
     public BossActions EvaluateSelf(float a_distanceToTarget, Vector3 m_targetDirection)
     {
-        float currentStam = EntityStats.Instance.GetStaminaOfEntity("Boss");
-        if (currentStam > m_aggresiveStaminaThreshold)
-        {
+       // Might need to be removed
+       // Boss should only need to act agressivly
+
+        // Did i do a dodge last action?
+        // if yes choose attack and seek towards player
+        // if no choose either an attack or dodge.
+
+
+        //float currentStam = EntityStats.Instance.GetStaminaOfEntity("Boss");
+        //if (currentStam > m_aggresiveStaminaThreshold)
+        //{
             return EvaluateAggresiveAction(a_distanceToTarget);
-        }
-        else if(currentStam > m_defensiveStaminaThreshold)
-        {   
-            return EvaluateDefensiveAction(m_targetDirection);
-        }
-        else
-        {
-            return EvaluatePassiveAction();
-        }
+        //}
+        //else if(currentStam > m_defensiveStaminaThreshold)
+        //{   
+        //    return EvaluateDefensiveAction(m_targetDirection);
+        //}
+        //else
+        //{
+        //    return EvaluatePassiveAction();
+        //}
+        
     }
 
-
+    // Before attack needs to evaluate if it should evaluate 
+    // whether it should do an action that would result in no change
+    // and launch the attack straight after.
 
     // Needs to know if the attack is launchable.
     // Attacks that need to be launched from a larger 

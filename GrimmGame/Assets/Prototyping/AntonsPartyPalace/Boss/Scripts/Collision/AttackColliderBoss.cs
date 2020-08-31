@@ -55,6 +55,7 @@ public class AttackColliderBoss : MonoBehaviour
                 {
                     damageToDo *= player.m_rollDamagemultiplier;
                 }
+                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_actionQue[0].ResolveOnHitEffects(player.gameObject, Vector3.zero);
                 EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
                 EntityStats.Instance.DeminishHealthOffEntity("Player", damageToDo);
                 // Trigger on hit effects in the animation controller.
