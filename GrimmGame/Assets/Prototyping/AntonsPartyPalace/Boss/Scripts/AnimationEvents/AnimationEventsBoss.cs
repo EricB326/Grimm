@@ -56,7 +56,7 @@ public class AnimationEventsBoss : MonoBehaviour
     // Istantiates the particle effect at the point
     public void TriggerDustParticle(int a_colliderPos)
     {
-        m_particles[0].Play();
+        // Play the particle on that collider
     }
 
     // Destroys the particle?
