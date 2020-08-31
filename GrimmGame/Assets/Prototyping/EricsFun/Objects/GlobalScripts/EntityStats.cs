@@ -63,6 +63,8 @@ public class EntityStats : MonoBehaviour
     public event EventHandler onStaminaTaken;
     public event EventHandler onHealthReplenish;
     public event EventHandler onStaminaReplenish;
+    public event EventHandler onPlayerLifeLost;
+    public event EventHandler onBossPhaseChange;
 
     private entityData newData;
 
@@ -92,9 +94,13 @@ public class EntityStats : MonoBehaviour
             newData.maxHealth = entityList[i].health;
             newData.maxStamina = entityList[i].stamina;
 
+            if (entityList[i].name == "Boss")
+            {
+                newData.lives = entityList[i].entityObject.GetComponent<BossBrain>().m_bossPhaseList.Count;
+            }
+
             entityList[i] = newData;
         }
-
     }
 
     /* @brief Get the instance of the static singleton.
@@ -125,7 +131,31 @@ public class EntityStats : MonoBehaviour
 
     private void HandleZeroHealthEntity(int _entityIndex)
     {
-        if (entityList[_entityIndex].lives <= 0)
+        newData = entityList[_entityIndex];
+        newData.lives--;
+        newData.health = newData.maxHealth;
+        entityList[_entityIndex] = newData;
+
+        if (entityList[_entityIndex].lives > 0)
+        {
+            if (entityList[_entityIndex].name == "Player")
+            {
+                if (onPlayerLifeLost != null)
+                    onPlayerLifeLost(this, EventArgs.Empty);
+
+                // PhaseReset();
+            }
+            else
+            {
+                if (onBossPhaseChange != null)
+                    onBossPhaseChange(this, EventArgs.Empty);
+
+                // NextPhase();
+
+                entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
+            }
+        }
+        else
         {
             if (entityList[_entityIndex].name == "Player")
             {
@@ -133,6 +163,13 @@ public class EntityStats : MonoBehaviour
             }
             else
             {
+                Debug.Log("Winner");
+
+                // Remove the final phase indicator.
+                if (onBossPhaseChange != null)
+                    onBossPhaseChange(this, EventArgs.Empty);
+                entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
+
                 // GameOverWin();
 
                 // Individual maps for Albedo, Normal, Roughness, Metallic, Emissive
@@ -141,17 +178,9 @@ public class EntityStats : MonoBehaviour
 
                 // Shader to handle transparency
             }
-        }
-        else
-        {
-            if (entityList[_entityIndex].name == "Player")
-            {
-                // PhaseReset();
-            }
-            else
-            {
-                // NextPhase();
-            }
+
+            newData.lives = 0;
+            entityList[_entityIndex] = newData;
         }
     }
 
