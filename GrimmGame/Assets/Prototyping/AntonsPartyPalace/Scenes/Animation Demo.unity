@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3735228, g: 0.9716981, b: 0.01375042, a: 1}
+  m_Color: {r: 0.6886792, g: 0.15917599, b: 0.15917587, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.72365606, b: 0.8789363, a: 1}
+  m_Color: {r: 0.9433962, g: 0.3960484, b: 0.44114065, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5227,7 +5227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.53511035, b: 0.53511035, a: 1}
+  m_Color: {r: 0.1981132, g: 0.06493806, b: 0.04392132, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7396,7 +7396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.972549, g: 0.19607842, b: 0.20409285, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8235,7 +8235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1586203842
 Transform:
   m_ObjectHideFlags: 0
@@ -10660,18 +10660,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7539974906295304812}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2072709665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072709657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dce1587e324fe04dbcf9374fc25da8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2103751850
 GameObject:
   m_ObjectHideFlags: 0
@@ -11453,26 +11441,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRooted
       objectReference: {fileID: 0}
-    - target: {fileID: 7686849411019882746, guid: 940c6d57687584f49b1ed76427899f99,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686849411019882746, guid: 940c6d57687584f49b1ed76427899f99,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686849411019882746, guid: 940c6d57687584f49b1ed76427899f99,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686849411019882746, guid: 940c6d57687584f49b1ed76427899f99,
-        type: 3}
-      propertyPath: m_Mass
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7686849411019882747, guid: 940c6d57687584f49b1ed76427899f99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11481,7 +11449,7 @@ PrefabInstance:
     - target: {fileID: 7686849411019882747, guid: 940c6d57687584f49b1ed76427899f99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.127
+      value: 0.031
       objectReference: {fileID: 0}
     - target: {fileID: 7686849411019882747, guid: 940c6d57687584f49b1ed76427899f99,
         type: 3}

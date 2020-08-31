@@ -47,18 +47,22 @@ MonoBehaviour:
   - name: Player
     entityObject: {fileID: 0}
     health: 100
+    lives: 0
     stamina: 100
+    mass: 0
     inputBuffer: 0
-    timeBeforeStaminaRegain: 2
+    timeBeforeStaminaRegain: 1
     speedOfHealthRegain: 0.5
-    speedOfStaminaRegain: 2
+    speedOfStaminaRegain: 0.3
     maxHealth: 0
     maxStamina: 0
     timeSinceLastStaminaDeminish: 0
   - name: Boss
     entityObject: {fileID: 0}
     health: 100
-    stamina: 5
+    lives: 0
+    stamina: 100
+    mass: 0
     inputBuffer: 0
     timeBeforeStaminaRegain: 3
     speedOfHealthRegain: 0.5
