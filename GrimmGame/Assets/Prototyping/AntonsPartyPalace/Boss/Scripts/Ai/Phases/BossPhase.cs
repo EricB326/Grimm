@@ -156,45 +156,45 @@ public class BossPhase
     }
     // Dodge away from the player.
     // Requries their direction
-    public BossActions EvaluateDefensiveAction(Vector3 m_targetDirection)
-    {
-        BossActions output = null;
-        foreach (BossActions t in m_bossActions)
-        {
-            if (t.GetBehaviourType == SteeringBehaviours.DEFENSIVE)
-            {
-                //          10 to  0                                        range 0 20      0 or neg * 5
-                // player direction relative to the forward of the boss, coolness factor, timeused. 
-                // Weighing happens here
-                // If desirability is greater than previous replace.
-                // bossaction
-                // Only here to test
-                output = t;
-                break;
-            }
-            // Adjust the weighing values of the list
-        }
-        return output;
-    }
+    //public BossActions EvaluateDefensiveAction(Vector3 m_targetDirection)
+    //{
+    //    BossActions output = null;
+    //    foreach (BossActions t in m_bossActions)
+    //    {
+    //        if (t.GetBehaviourType == SteeringBehaviours.DEFENSIVE)
+    //        {
+    //            //          10 to  0                                        range 0 20      0 or neg * 5
+    //            // player direction relative to the forward of the boss, coolness factor, timeused. 
+    //            // Weighing happens here
+    //            // If desirability is greater than previous replace.
+    //            // bossaction
+    //            // Only here to test
+    //            output = t;
+    //            break;
+    //        }
+    //        // Adjust the weighing values of the list
+    //    }
+    //    return output;
+    //}
 
     // So these will recover full stamina when 1 action
     // occurs. A last ditch effort or a good way to slow the boss down
     // If applying pressure.
-    public BossActions EvaluatePassiveAction()
-    {
-        BossActions output = null;
-        foreach (BossActions t in m_bossActions)
-        {
-            if (t.GetBehaviourType == SteeringBehaviours.PASSIVE)
-            {
+    //public BossActions EvaluatePassiveAction()
+    //{
+    //    BossActions output = null;
+    //    foreach (BossActions t in m_bossActions)
+    //    {
+    //        if (t.GetBehaviourType == SteeringBehaviours.PASSIVE)
+    //        {
                 
-                output = t;
-                break;
-            }
-            // Adjust the weighing values of the list
-        }
-        return output;
-    }
+    //            output = t;
+    //            break;
+    //        }
+    //        // Adjust the weighing values of the list
+    //    }
+    //    return output;
+    //}
 
 
 }

@@ -124,18 +124,18 @@ public class BossBrain : MonoBehaviour
         if(m_actionQue.Count != 0)
         switch (m_actionQue[0].GetBehaviourType)
         {
-            case SteeringBehaviours.PASSIVE: // Passive
-                if (Passive(a_directionToMove))
-                {
-                    m_actionQue.RemoveAt(0);
-                }
-                break;
-            case SteeringBehaviours.DEFENSIVE: // Defensive
-                if (Defensive(a_directionToMove))
-                {
-                    m_actionQue.RemoveAt(0);
-                }
-                break;
+            //case SteeringBehaviours.PASSIVE: // Passive
+            //    if (Passive(a_directionToMove))
+            //    {
+            //        m_actionQue.RemoveAt(0);
+            //    }
+            //    break;
+            //case SteeringBehaviours.DEFENSIVE: // Defensive
+            //    if (Defensive(a_directionToMove))
+            //    {
+            //        m_actionQue.RemoveAt(0);
+            //    }
+            //    break;
             case SteeringBehaviours.AGGRESSIVE: // Aggressive
                 if (Aggresive(a_directionToMove))
                 {
@@ -403,18 +403,18 @@ public class BossBrain : MonoBehaviour
                             m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAggresiveAction(GetDistanceToPlayer(a_directionToMove)));
                             break;
                         }
-                    case SteeringBehaviours.DEFENSIVE:
-                        {
-                            m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDefensiveAction(a_directionToMove.normalized));
-                            break;
-                        }
-                    case SteeringBehaviours.PASSIVE:
-                        {
-                            // Not correct right now.
-                            // Need to have an evaluate wander.
-                            m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAggresiveAction(GetDistanceToPlayer(a_directionToMove)));
-                            break;
-                        }
+                    //case SteeringBehaviours.DEFENSIVE:
+                    //    {
+                    //        m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDefensiveAction(a_directionToMove.normalized));
+                    //        break;
+                    //    }
+                    //case SteeringBehaviours.PASSIVE:
+                    //    {
+                    //        // Not correct right now.
+                    //        // Need to have an evaluate wander.
+                    //        m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAggresiveAction(GetDistanceToPlayer(a_directionToMove)));
+                    //        break;
+                    //    }
                     case SteeringBehaviours.SEEK:
                         {
                             // Need a better way to evaluate seek range
@@ -427,7 +427,7 @@ public class BossBrain : MonoBehaviour
         else
         {
             // Should probably be passed in by 
-            m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDefensiveAction(a_directionToMove.normalized));
+            //m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateDefensiveAction(a_directionToMove.normalized));
             m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateAggresiveAction(GetDistanceToPlayer(a_directionToMove)));
             Debug.Log("Counter attack has no specific actions. Defaults to dodge and attack.");
         }
