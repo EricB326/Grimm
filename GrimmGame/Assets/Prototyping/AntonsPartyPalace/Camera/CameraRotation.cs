@@ -1,7 +1,9 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.XR.WSA;
 using XboxCtrlrInput;
 
 
@@ -45,112 +47,67 @@ public class CameraRotation : MonoBehaviour
         }
 
 
-
-        //float x = 0, y = 0;
-
-        // This could be done a LOT better
-        //if (Input.GetKeyDown(KeyCode.Tab))
-        //{
-        //    if (m_lockOn)
-        //    {
-        //        m_lockOn = false;
-        //        m_camList[0].Priority = 2;
-        //        m_camList[1].Priority = 1;
-        //        //Debug.Log("Lockoff");
-        //        m_selectedCamera = 0;
-        //    }
-        //    else
-        //    {
-        //        m_lockOn = true;
-        //        m_camList[0].Priority = 1;
-        //        m_camList[1].Priority = 2;
-        //        //Debug.Log("LockOn");
-        //        m_selectedCamera = 1;
-        //    }
-
-
-
-
-        // Switching camera system
-        //if(m_freeCamera.Priority == 2)
-        //{
-        //    m_freeCamera.Priority = 3;
-        //    m_lockOnCamera.Priority = 2;
-        //}
-        //else
-        //{
-        //    m_freeCamera.Priority = 2;
-        //    m_lockOnCamera.Priority = 3;
-        //}
-
-
-        // Ruleset for free cam
-
-
-        // To be replaced by xbox axis which we only need to read data on x and y out.
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    x++;
-        //}
-        //if (Input.GetKey(KeyCode.E))
-        //{
-        //    x--;
-        //}
-
-        //if (Input.GetKey(KeyCode.R))
-        //{
-        //    y++;
-        //}
-        //if (Input.GetKey(KeyCode.T))
-        //{
-        //    y--;
-        //}
-
         float axisX = XCI.GetAxis(XboxAxis.RightStickX);
 
         float axisY = XCI.GetAxis(XboxAxis.RightStickY);
 
 
 
+        if (!m_player.m_lockon)
+        {
             if (axisX != 0)
             {
                 m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = axisX;
             }
-            else if (axisY != 0)
+            else
+            {
+                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
+            }
+            if (axisY != 0)
             {
                 m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = axisY;
             }
-            else // have to make sure nothing is passed through
+            else
             {
-                m_camList[m_selectedCamera].m_XAxis.m_InputAxisValue = 0;
                 m_camList[m_selectedCamera].m_YAxis.m_InputAxisValue = 0;
             }
+        }
 
-            // Get the direction from the player to the boss.
+
+    }
 
 
-            // Most of the below is redundant.
-            // Cinemachine will do all this for us but leaving in case.
-            //    if (x != 0)
-            //{
-            //    localMultiplyerX = localMultiplyerX + increment;
-            //    if(localMultiplyerX > m_rotationMax)
-            //    {
-            //        localMultiplyerX = m_rotationMax;
-            //    }
-            //    freelook.m_XAxis.m_InputAxisValue = x * localMultiplyerX;
-            //}
-            //else if (y != 0)
-            //{
-            //    freelook.m_YAxis.m_InputAxisValue = y + localMultiplyerY;
-            //}
-            //else
-            //{
-            //    localMultiplyerX = 1;
-            //    localMultiplyerY = 1;
-            //    freelook.m_XAxis.m_InputAxisValue = 0;
-            //    freelook.m_YAxis.m_InputAxisValue = 0;
-            //}
+
+
+
+
+
+    private void FixedUpdate()
+    {
+        if (m_player.m_lockon)
+        {
+            // Player position
+            Vector3 followPos = m_camList[1].Follow.position;
+            // Boss position
+            Vector3 lookAtPos = m_camList[1].LookAt.position;
+
+            Vector3 direction = followPos - lookAtPos;
+
+            float radius = m_camList[1].m_Orbits[1].m_Radius;
+            //Debug.Log(radius);
+            // We only need the direction not the y.
+            direction.y = 0;
+            Vector3 raycastStart = m_player.transform.position;
+            raycastStart.y = 0;
+            Vector3 playerFwd = transform.forward;
+            playerFwd.y = 0;
+
+            Debug.DrawRay(m_player.transform.position, direction.normalized * radius);
+
+                                                            // Very important do not touch
+            m_camList[m_selectedCamera].m_XAxis.Value = (180 / 3.14159f) * Mathf.Atan2(-direction.x, -direction.z);
+           
         }
     }
+}
 

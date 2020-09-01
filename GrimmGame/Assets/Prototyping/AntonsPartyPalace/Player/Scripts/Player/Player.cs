@@ -53,16 +53,16 @@ public class Player : MonoBehaviour
     private GameObject m_lifter;
 
     // Stamina drain on attack. Should be consistent.
-    public int m_attackStaminaDrain = 20;
+    public float m_attackStaminaDrain = 20;
     // Roll Stamina drain
-    public int m_rollStaminaDrain = 25;
+    public float m_rollStaminaDrain = 25;
 
-    public int m_runStaminaDrain = 2;
+    public float m_runStaminaDrain = 2;
     // Roll damage multiplier value.
     [Range(0, 1)]
     public float m_rollDamagemultiplier = 0.80f;
     // Damage per attack. Should be consistent.
-    public int m_attackDamage = 10;
+    public float m_attackDamage = 10;
     
 
     // Only used to decide if the player can be hit. Basicaly god mode.
@@ -93,43 +93,44 @@ public class Player : MonoBehaviour
     // Movement occurs in this update.
     private void FixedUpdate()
     {
-
-        // May need to move camera to occur everyFrame instead
-        // to remove jittering from physics
-        float axisZ = m_animator.GetFloat("Input/Z");
-        float axisX = m_animator.GetFloat("Input/X");
-        //if (m_lockon)
-        //{
-        //    LockOnLook(axisZ, axisX);
-        //}
-        //else if (m_animator.GetBool("Output/CanMove"))
-        //{
-        //    FreeLook(axisZ, axisX);
-        //}
-
-        // Can only occur when currently rolling
-
-        if (m_animator.GetBool("Output/IsRolling"))
+        if (!PauseMenuController.isPaused)
         {
-            Rolling();
-        }
-        // Least important. Rotation occurs here for movement.
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            Movement(m_currentFrame.m_run);
-        }
+            // May need to move camera to occur everyFrame instead
+            // to remove jittering from physics
+            float axisZ = m_animator.GetFloat("Input/Z");
+            float axisX = m_animator.GetFloat("Input/X");
+            //if (m_lockon)
+            //{
+            //    LockOnLook(axisZ, axisX);
+            //}
+            //else if (m_animator.GetBool("Output/CanMove"))
+            //{
+            //    FreeLook(axisZ, axisX);
+            //}
+
+            // Can only occur when currently rolling
+
+            if (m_animator.GetBool("Output/IsRolling"))
+            {
+                Rolling();
+            }
+            // Least important. Rotation occurs here for movement.
+            else if (m_animator.GetBool("Output/CanMove"))
+            {
+                Movement(m_currentFrame.m_run);
+            }
 
 
-        if (m_lockon)
-        {
-            LockOnLook(axisZ, axisX);
-        }
-        else if (m_animator.GetBool("Output/CanMove"))
-        {
-            FreeLook(axisZ, axisX);
-        }
+            if (m_lockon)
+            {
+                LockOnLook(axisZ, axisX);
+            }
+            else if (m_animator.GetBool("Output/CanMove"))
+            {
+                FreeLook(axisZ, axisX);
+            }
 
-
+        }
     }
 
 
@@ -138,39 +139,41 @@ public class Player : MonoBehaviour
     // Every frame
     void Update()
     {
-        float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
-
-        float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
-
-
-
-        if (XCI.GetButtonDown(XboxButton.RightStick))
+        if (!PauseMenuController.isPaused)
         {
-            if (this.m_lockon)
+            float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
+
+            float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
+
+
+
+            if (XCI.GetButtonDown(XboxButton.RightStick))
             {
-                this.m_lockon = false;
+                if (this.m_lockon)
+                {
+                    this.m_lockon = false;
+                }
+                else
+                {
+                    this.m_lockon = true;
+                }
             }
-            else
+
+            m_currentFrame = m_inputBuffer.GetBufferInput();
+
+
+            if (!m_animator.GetBool("Input/Stop"))
             {
-                this.m_lockon = true;
+                UpdateAnimations(axisX, axisZ, m_currentFrame);
             }
+
+
+            if (m_animator.GetBool("Input/Roll") && !m_animator.GetBool("Output/IsRolling"))
+            {
+                StartRoll(axisX, axisZ);
+            }
+
         }
-
-        m_currentFrame = m_inputBuffer.GetBufferInput();
-
-
-        if (!m_animator.GetBool("Input/Stop"))
-        {
-            UpdateAnimations(axisX, axisZ, m_currentFrame);
-        }
-
-
-        if (m_animator.GetBool("Input/Roll") && !m_animator.GetBool("Output/IsRolling"))
-        {
-            StartRoll(axisX, axisZ);
-        }
-
-
     }
 
     // Send inputs to animator.
@@ -428,6 +431,8 @@ public class Player : MonoBehaviour
         // If not the direction to move is always back
         if (a_axisX == 0 && a_axisZ == 0)
         {
+            // Backstep
+            m_animator.SetFloat("Input/RollOrStep", -1);
             a_axisZ = -1;
 
             Vector3 movementX = (new Vector3(this.transform.right.x, 0, this.transform.right.z) * a_axisX);
@@ -439,6 +444,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            // Roll
+            m_animator.SetFloat("Input/RollOrStep", 1);
             Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
             Vector3 movementZ = (new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z) * a_axisZ);
             Vector3 cameraPosition = (movementZ + movementX);
@@ -461,11 +468,13 @@ public class Player : MonoBehaviour
         // Removed due to root motion
         //Vector3 m_movement = new Vector3((m_storedRollDirection.x * m_rollSpeed) * Time.deltaTime, 0, (m_storedRollDirection.z * m_rollSpeed) * Time.deltaTime * m_animator.speed);
         //this.GetComponent<Rigidbody>().MovePosition(this.transform.position + m_movement);
-
-
-        Quaternion targetRotation = Quaternion.LookRotation(m_storedRollDirection);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.5f);
-
+        // Check if rolling or not.
+        if (m_animator.GetFloat("Input/RollOrStep") > 0)
+        {
+            // Rotate in direction rolling in.
+            Quaternion targetRotation = Quaternion.LookRotation(m_storedRollDirection);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.5f);
+        }
 
     }
 

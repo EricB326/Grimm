@@ -12,6 +12,7 @@ public enum HitEffectsEnum
 {
     KNOCKBACK_WEAK,
     KNOCKBACK_STRONG,
+    KNOCKDOWN,
     PARTICLE_EFFECT
 }
 
@@ -48,31 +49,17 @@ public class OnHitEffects : MonoBehaviour
 
     public void ResolveKnockbackWeak(GameObject _effectedEntity, Vector3 _particlePosition)
     {
-        int index = LocateHitEffect(HitEffectsEnum.KNOCKBACK_WEAK);
-
-        float massOfEntity = EntityStats.Instance.GetHealthOfEntity(_effectedEntity.name);
-
-        Vector3 impact = Vector3.zero;
-        impact += hitEffectList[index].effectForce / massOfEntity;
-
-        if (impact.magnitude > 0.2f)
-            _effectedEntity.transform.Translate(impact * Time.deltaTime, Space.World);
-
-        impact = Vector3.Lerp(impact, Vector3.zero, Time.deltaTime);
-
-
-        if (hitEffectList[index].particlesToPlay.Count > 0)
-        {
-            for (int i = 0; i < hitEffectList[index].particlesToPlay.Count; i++)
-            {
-                PlayParticleAtPosition(hitEffectList[index].particlesToPlay[i], _particlePosition);
-            }
-        }
+        _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 1);
     }
 
     public void ResolveKnockbackStrong(GameObject _effectedEntity)
     {
         int index = LocateHitEffect(HitEffectsEnum.KNOCKBACK_STRONG);
+    }
+
+    public void ResolveKnockdown(GameObject _effectedEntity)
+    {
+        _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 2);
     }
 
     private void PlayParticleAtPosition(VisualEffect _particle, Vector3 _position)

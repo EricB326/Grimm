@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,18 +13,18 @@ MonoBehaviour:
   m_Name: Defualt
   m_EditorClassIdentifier: 
   prefabList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8506109392143851451, guid: 85d8fb2ee08334041a4613bd14d3da4a, type: 3}
+  - {fileID: 754616957381925582, guid: 369a48ef101ab88409212c35e9df3a64, type: 3}
+  - {fileID: 5407449392157834409, guid: 2c0a40870f70eed428720b77bebfb0fd, type: 3}
   paintType: 0
-  brushSize: 1
+  brushSize: 5.37
   minBrushSize: 0.1
   maxBrushSize: 20
-  paintDeltaDistance: 0.4
-  maxPaintDeltaDistance: 3
-  minPaintDeltaDistance: 0.1
-  prefabsPerStroke: 1
-  maxprefabsPerStroke: 20
+  paintDeltaDistance: 3
+  maxPaintDeltaDistance: 3.5
+  minPaintDeltaDistance: 1.5
+  prefabsPerStroke: 3
+  maxprefabsPerStroke: 5
   minprefabsPerStroke: 1
   spawnHeight: 10
   addRigidbodyToPaintedPrefab: 1
@@ -37,7 +38,7 @@ MonoBehaviour:
   maxRequiredSlope: 0
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
-  draggingAction: 0
+  draggingAction: 1
   rotationAxis: 0
   rotationSensitivity: 10
   parentingStyle: 0
@@ -47,8 +48,8 @@ MonoBehaviour:
   randomizeRotation: 0
   minXRotation: 0
   maxXRotation: 0
-  minYRotation: 0
-  maxYRotation: 0
+  minYRotation: 15
+  maxYRotation: 359
   minZRotation: 0
   maxZRotation: 0
   scaleType: 0
@@ -62,7 +63,7 @@ MonoBehaviour:
   minZScale: 1
   maxZScale: 1
   parentList: []
-  eraseBrushSize: 1
+  eraseBrushSize: 0.55
   minEraseBrushSize: 0.1
   maxEraseBrushSize: 20
   eraseType: 0
@@ -73,7 +74,7 @@ MonoBehaviour:
   requiredLayerMaskForErase: 0
   minRequiredSlopeForErase: 0
   maxRequiredSlopeForErase: 0
-  eraseDetection: 0
+  eraseDetection: 1
   paintBrushHotKey: 112
   paintBrushHoldKey: 1
   removeBrushHotKey: 306
