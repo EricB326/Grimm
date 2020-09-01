@@ -5,11 +5,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 public enum SteeringBehaviours
 {
-    PASSIVE,
-    DEFENSIVE,
     AGGRESSIVE,
     SEEK
 }
@@ -26,6 +25,7 @@ public class BossActions
     [SerializeField] private float lastTimeUsed;
     [SerializeField] private int numberOfUses;
     [SerializeField] private SteeringBehaviours behaviourType;
+    [SerializeField] private float destinationDistance;
     [SerializeField] private List<HitEffectsEnum> attackEffectList;
     [SerializeField] private List<BossWeaponColliderEnums> collidersToModify;
 
@@ -36,6 +36,7 @@ public class BossActions
     public int GetAnimNum
     {
         get { return animationNumber; }
+        
     }
 
     /* @brief Retrieve the attack damage of the attack within the list at the specified _attackIndex index.
@@ -112,28 +113,29 @@ public class BossActions
     {
         get { return attackName; }
     }
-
+    
+    public float GetDestinationDistance
+    {
+        get { return destinationDistance; }
+    }
+    
     public void ResolveOnHitEffects(GameObject _target, Vector3 _collisionPoint)
     {
-        for (int i = 0; i < attackEffectList.Count; i++)
-        {
-            switch (attackEffectList[i])
-            {
-                case HitEffectsEnum.KNOCKBACK_WEAK:
-                    {
-                        OnHitEffects.Instance.ResolveKnockbackWeak(_target, _collisionPoint);
-                    }
-                    break;
-                case HitEffectsEnum.KNOCKBACK_STRONG:
-                    {
-                        OnHitEffects.Instance.ResolveKnockbackStrong(_target);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+		for (int i = 0; i < attackEffectList.Count; i++)
+		{
+			switch (attackEffectList[i])
+			{
+				case HitEffectsEnum.KNOCKBACK_WEAK:
+					OnHitEffects.Instance.ResolveKnockbackWeak(_target, _collisionPoint);
+					break;
+				case HitEffectsEnum.KNOCKBACK_STRONG:
+					OnHitEffects.Instance.ResolveKnockbackStrong(_target);
+					break;
+				default:
+					break;
+			}
+		}
+	}
 
     /* @brief Checks to see if the index passed is valid or not.
      * @param Index being checked against.
