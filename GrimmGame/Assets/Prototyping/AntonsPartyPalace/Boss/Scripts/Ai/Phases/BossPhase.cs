@@ -24,9 +24,11 @@ public class BossPhase
     // Once this is hit a counter attack happens.
     public int m_threshold;
     // The list of phase attacks?
-    // How long boss wanders.
-    // Should be change
-    public float m_wanderTime;
+    // How long between bosses movment
+    // decisions. So by default boss will walk
+    // towards player and if this time is hit
+    // will roll 1 of the "seek behaviors"
+    public float m_timeBetweenMovementAction;
 
     public List<BossActions> m_bossActions;
 
@@ -49,7 +51,23 @@ public class BossPhase
     [SerializeField]
     [Range(0,100)]
     private float m_defensiveStaminaThreshold = 50.0f;
+    // For modifying next evaluation
+    private EvaluatedAction m_lastAttackAction = null;
+    private EvaluatedAction m_lastDodgeAction = null;
 
+
+
+
+
+    // Stores the evaluated actions and the actions themselves.
+    public class EvaluatedAction
+    {
+        // A reference to the aciton itself.
+        // Passed out on success.
+        public BossActions m_action;
+        // The evaluated score.
+        public float m_score;
+    }
 
 
     // Boss checks to see what it's stamina is at.
@@ -132,15 +150,36 @@ public class BossPhase
     //}
 
     // Seek to desired target.
-    // Think point to point movement.
-    public BossActions EvaluateSeek(float a_distanceToTarget)
+    // Think point to point movement with animations
+    public BossActions EvaluateSeek(float a_distanceToTarget, float m_desiredRange)
     {
+        // Chosen action
         BossActions output = null;
-        Debug.Log("New seek");
+        // Evaluation of each move - 1 to 1.
+        List<EvaluatedAction> m_evaluatedList = new List<EvaluatedAction>();
+
         foreach (BossActions t in m_bossActions)
         {
+            // Behaviors are seeks therefore we should be checking
+            // if they put the boss in a good position.
             if (t.GetBehaviourType == SteeringBehaviours.SEEK)
             {
+                // If the distance covered is beneficial or negligalble
+                // does the attack move close or further?
+                float distanceCovered = t.GetDestinationDistance;
+
+
+
+                // Now knowing how far the boss moves
+                // relative to the player if it moves them out of
+                // range don't do it otherwise do it
+
+                // If it is last used.
+                if (m_lastDodgeAction.m_action == t)
+                {
+                    
+                }
+            
                 // from 10 to 0       Range from 020    0 or neg * 5
                 // optimal distance, coolness factor, timeused
                 // Weighing happens here
@@ -150,7 +189,6 @@ public class BossPhase
                 output = t;
                 break;
             }
-            // Adjust the weighing values of the list
         }
         return output;
     }

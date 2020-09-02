@@ -70,7 +70,7 @@ public class BossBrain : MonoBehaviour
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_timeOut = 0;
-        m_diagnosticMode = true;
+        m_diagnosticMode = false;
     }
 
     private void Update()
@@ -260,6 +260,7 @@ public class BossBrain : MonoBehaviour
     // More like circle but shits okay
     // Need to seek avoid target for X seconds before 
     // action.
+    // DEFUNCT
     public bool Passive(Vector3 a_directionToMove)
     {
         // a_directionToMove
@@ -279,7 +280,7 @@ public class BossBrain : MonoBehaviour
             // Avoid getting another.
             m_continue = true;
             // Get a time to exit the wander state.
-            m_timeOut = Time.time + m_bossPhaseList[m_currentPhase].m_wanderTime;
+            m_timeOut = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
         }
         else
         {
@@ -384,9 +385,15 @@ public class BossBrain : MonoBehaviour
         }
     }
 
+
+
     // This needs to be either predefined phase by phase.
     // Ideally you would want to put only a defensive action in here
     // As the boss will choose the best attack after the dodge.
+
+    // OH GOD THIS IS DEFUNCT RIGHT NOW
+    // AND GOING TO BE THE 1ST THING TOUCHED
+    // WHEN I SAY IT'S GOOD TO GO
     private void CounterAttack(Vector3 a_directionToMove)
     {
         ResetState();
@@ -417,8 +424,8 @@ public class BossBrain : MonoBehaviour
                     //    }
                     case SteeringBehaviours.SEEK:
                         {
-                            // Need a better way to evaluate seek range
-                            m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove)));
+                            // Need a better way to evaluate seek range         // Might break as there is no desired range yet?
+                            m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove), m_desiredRange));
                             break;
                         }
                 }
@@ -455,7 +462,7 @@ public class BossBrain : MonoBehaviour
     // if no action after choose a random action.
     private void AddSeek(Vector3 a_directionToMove)
     {
-        m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove)));
+        m_actionQue.Insert(0, m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove), m_desiredRange));
         // Check if seeking to a task.
         if(m_actionQue[1] != null)
         {
@@ -567,6 +574,4 @@ public class BossBrain : MonoBehaviour
     {
         m_actionRotationSpeed = a_rotationSpeed;
     }
-
-
 }

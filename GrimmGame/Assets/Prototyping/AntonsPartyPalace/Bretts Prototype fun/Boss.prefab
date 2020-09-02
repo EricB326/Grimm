@@ -1417,6 +1417,8 @@ GameObject:
   - component: {fileID: 896785552851043422}
   - component: {fileID: 1536900677160782481}
   - component: {fileID: 1536900677160782480}
+  - component: {fileID: 559524147}
+  - component: {fileID: 559524148}
   m_Layer: 0
   m_Name: Boss_Rig:Jnt_Foot_R
   m_TagString: Untagged
@@ -1470,6 +1472,81 @@ MonoBehaviour:
   m_tagToLookFor: Player
   m_hangTime: 0
   timescaleSlowDownOnIFrames: 0
+--- !u!2083052967 &559524147
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698434326912238630}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 79830981292abe44385f3370b37ae8a8, type: 3}
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array: []
+    m_Vector2f:
+      m_Array: []
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 1, y: 0, z: 1}
+        m_Name: Dirt_Velocity_Max
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &559524148
+VFXRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698434326912238630}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &3810220195766502302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1804,8 @@ GameObject:
   - component: {fileID: 3326630065427881101}
   - component: {fileID: 1536900676059626221}
   - component: {fileID: 1536900676059626222}
+  - component: {fileID: 559539530}
+  - component: {fileID: 559539531}
   m_Layer: 0
   m_Name: Boss_Rig:Jnt_Foot_L
   m_TagString: Untagged
@@ -1780,6 +1859,81 @@ MonoBehaviour:
   m_tagToLookFor: Player
   m_hangTime: 0
   timescaleSlowDownOnIFrames: 0
+--- !u!2083052967 &559539530
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472940167506168648}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 79830981292abe44385f3370b37ae8a8, type: 3}
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array: []
+    m_Vector2f:
+      m_Array: []
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 1, y: 0, z: 1}
+        m_Name: Dirt_Velocity_Max
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &559539531
+VFXRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472940167506168648}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &4543266421170319386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,8 +3124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5fb92a3920dcd45bbc9e75019824fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particles:
-  - {fileID: 3388697641179785952, guid: 5546773516b96ac42aa2ca2e66a001b9, type: 3}
 --- !u!114 &1536900677087362484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3044,45 +3196,25 @@ MonoBehaviour:
       attackWeight: 0
       lastTimeUsed: 0
       numberOfUses: 0
-      behaviourType: 3
+      behaviourType: 1
+      destinationDistance: 0
       attackEffectList: 
       collidersToModify: 
-    - attackName: Passive
+    - attackName: Attack Chain 1
       actionTimeLimit: 0
-      animationNumber: 1
+      animationNumber: 2
       attackDamage: 15
-      attackRange: 5
+      attackRange: 4
       attackWeight: 0
       lastTimeUsed: 0
       numberOfUses: 0
       behaviourType: 0
-      attackEffectList: 
-      collidersToModify: 
-    - attackName: Attack 1
-      actionTimeLimit: 0
-      animationNumber: 2
-      attackDamage: 15
-      attackRange: 3
-      attackWeight: 0
-      lastTimeUsed: 0
-      numberOfUses: 0
-      behaviourType: 2
-      attackEffectList: 00000000
-      collidersToModify: 00000000
-    - attackName: Lunge
-      actionTimeLimit: 10
-      animationNumber: 1
-      attackDamage: 15
-      attackRange: 20
-      attackWeight: 10
-      lastTimeUsed: 0
-      numberOfUses: 0
-      behaviourType: 2
+      destinationDistance: 0
       attackEffectList: 00000000
       collidersToModify: 
     m_timeBetweenPreDefinedAndRandom: 50
     m_preDefinedActions: 03000000
-    m_counterMoves: 0100000002000000
+    m_counterMoves: 0100000000000000
     m_storedTime: 0
     m_staminaThisPhase: 0
     m_aggresiveStaminaThreshold: 75

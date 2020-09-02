@@ -17,7 +17,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: Player_:Group/Player_:Main/Player_:DeformationSystem/Player_:Root
+    motionNodeName: Player_:Main/Player_:DeformationSystem/Player_:Root
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 

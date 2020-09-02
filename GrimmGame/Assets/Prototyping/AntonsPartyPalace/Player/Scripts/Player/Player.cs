@@ -142,9 +142,7 @@ public class Player : MonoBehaviour
         if (!PauseMenuController.isPaused)
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
-
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
-
 
 
             if (XCI.GetButtonDown(XboxButton.RightStick))
@@ -182,8 +180,6 @@ public class Player : MonoBehaviour
     void UpdateAnimations(float a_x, float a_y, BufferInput a_input)
     {
         // I need a way to consume data without actually going in
-
-
         // x axis
         m_animator.SetFloat("Input/X", a_x);
         // y axis
@@ -205,11 +201,6 @@ public class Player : MonoBehaviour
         {
             m_animator.SetBool("Input/Roll", false);
         }
-
-
-
-
-
     }
 
 
@@ -444,6 +435,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            // Need to get the correct direction when rolling
             // Roll
             m_animator.SetFloat("Input/RollOrStep", 1);
             Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
@@ -455,11 +447,6 @@ public class Player : MonoBehaviour
         }
         m_storedRollDirection.y = 0;
 
-        //float scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
-        //m_animator.SetFloat("Movement/X", toAnim.x * scale);
-        //m_animator.SetFloat("Movement/Z", toAnim.z * scale);
-        // Scale to be applied when rolling.
-        // m_rollMultipliyer = Mathf.Lerp(0, 1, 0.1f);
     }
 
     // While player is rolling this funciton is called.

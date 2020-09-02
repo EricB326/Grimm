@@ -644,10 +644,19 @@ BlendTree:
     m_DirectBlendParameter: Input/VerticalVelocity
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 5599871095008294255, guid: 1701695c73494be4d8939ecc3e342756,
+    m_Motion: {fileID: -7181511086128657727, guid: 82d84e7d6f18c1f47a8931569d1e0486,
       type: 3}
     m_Threshold: 10
-    m_Position: {x: 0, y: 0.5}
+    m_Position: {x: 0, y: 0.8}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: MovementSpeedMult
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 4018436621915594871, guid: 7d0bac72f97861147ae65893aaca7c02,
+      type: 3}
+    m_Threshold: 28
+    m_Position: {x: 0, y: 0.3}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: MovementSpeedMult
@@ -655,7 +664,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -5026146456859915738, guid: facbc8cbef5e75940be1722453bc7ce7,
       type: 3}
-    m_Threshold: 28
+    m_Threshold: 46
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -664,7 +673,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 590029054382176139, guid: 52e37534b3c9cc24cbed58a85af029e8,
       type: 3}
-    m_Threshold: 46
+    m_Threshold: 64
     m_Position: {x: 0, y: -0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -673,7 +682,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 3181247434301863579, guid: 9aaec522d07629c40ada786b278d278f,
       type: 3}
-    m_Threshold: 64
+    m_Threshold: 82
     m_Position: {x: -0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -682,7 +691,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -8164173446588539326, guid: 5b91b147bbbbb0146a1ce273ceb7830f,
       type: 3}
-    m_Threshold: 82
+    m_Threshold: 100
     m_Position: {x: 0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -691,7 +700,7 @@ BlendTree:
   m_BlendParameter: Movement/X
   m_BlendParameterY: Movement/Z
   m_MinThreshold: -8
-  m_MaxThreshold: 82
+  m_MaxThreshold: 100
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 3

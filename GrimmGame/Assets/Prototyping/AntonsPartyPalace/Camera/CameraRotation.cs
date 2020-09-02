@@ -77,11 +77,6 @@ public class CameraRotation : MonoBehaviour
     }
 
 
-
-
-
-
-
     private void FixedUpdate()
     {
         if (m_player.m_lockon)
@@ -102,12 +97,9 @@ public class CameraRotation : MonoBehaviour
             Vector3 playerFwd = transform.forward;
             playerFwd.y = 0;
 
-            Debug.DrawRay(m_player.transform.position, direction.normalized * radius);
 
                                                             // Very important do not touch
             m_camList[m_selectedCamera].m_XAxis.Value = (180 / 3.14159f) * Mathf.Atan2(-direction.x, -direction.z);
-           
         }
     }
 }
-
