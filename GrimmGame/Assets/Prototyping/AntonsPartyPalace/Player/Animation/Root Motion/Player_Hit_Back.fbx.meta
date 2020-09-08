@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 9aaec522d07629c40ada786b278d278f
+guid: 1c6897fc348f3354686540a60a45e8d0
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 3181247434301863579
-    second: Player_Walk_Left_Root
+      74: 2523982293011531270
+    second: Player_Hit_Back_Root
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player_Walk_Left_Root
-      takeName: Walk_Left
+      name: Player_Hit_Back_Root
+      takeName: Hit_Back
       internalID: 0
-      firstFrame: 21
-      lastFrame: 41
+      firstFrame: 1
+      lastFrame: 13
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

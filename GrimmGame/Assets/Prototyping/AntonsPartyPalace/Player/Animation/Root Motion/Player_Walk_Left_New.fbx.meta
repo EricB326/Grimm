@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 52e37534b3c9cc24cbed58a85af029e8
+guid: 2bb1283566537064e9f659c326184bfa
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 590029054382176139
-    second: Player_Walk_Back_Root
+      74: -1206466936078169753
+    second: Player_Walk_Left_Root
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player_Walk_Back_Root
-      takeName: Walk_Back
+      name: Player_Walk_Left_Root
+      takeName: Walk_Left_New
       internalID: 0
-      firstFrame: 63
-      lastFrame: 83
+      firstFrame: 21
+      lastFrame: 41
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 63
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

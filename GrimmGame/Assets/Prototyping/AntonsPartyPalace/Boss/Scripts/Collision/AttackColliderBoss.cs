@@ -35,9 +35,6 @@ public class AttackColliderBoss : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-
-        int hitboxToDeactivate = 0;
-
         // Confirm it is an entity that can take damage
         if(other.tag == m_tagToLookFor)
         {
@@ -47,7 +44,7 @@ public class AttackColliderBoss : MonoBehaviour
             if (!player.m_InvinceFrames)
             {
                 // Get damage from attack list. Needs to be neatened up a fair bit.
-                float damageToDo = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_actionQue[hitboxToDeactivate].AttackDamage;
+                float damageToDo = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttack.AttackDamage;
                 // Check if currently rolling. If so reduce damage by multiplyer.
 
                 // If not do full damage.
@@ -55,15 +52,15 @@ public class AttackColliderBoss : MonoBehaviour
                 {
                     damageToDo *= player.m_rollDamagemultiplier;
                 }
-                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_actionQue[0].ResolveOnHitEffects(player.gameObject, Vector3.zero);
-                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
+                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttack.ResolveOnHitEffects(player.gameObject, Vector3.zero);
+                //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
                 EntityStats.Instance.DeminishHealthOffEntity("Player", damageToDo);
                 // Trigger on hit effects in the animation controller.
-                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().DecreaseRevengeValue();
+                //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().DecreaseRevengeValue(); // REVENGE VALUE REMOVED LOGIC DEFCUNT
             }
             else
             {
-                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
+                //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
                 StartCoroutine(SlowDown(player));
             }
         }

@@ -27,11 +27,6 @@ namespace XboxCtrlrInput
 			DontDestroyOnLoad(this.gameObject);
 		}
 
-		// Use this for initialization
-		void Start () 
-		{
-
-		}
 
 		public XciInputManagerClone InputManager
 		{

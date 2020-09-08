@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5b91b147bbbbb0146a1ce273ceb7830f
+guid: 0ed7739e52581f9468ddba75d4756f14
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: -8164173446588539326
-    second: Player_Walk_Right_Root
+      74: -5821521628176874248
+    second: Player_Hit_Left_Root
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player_Walk_Right_Root
-      takeName: Walk_Right
+      name: Player_Hit_Left_Root
+      takeName: Hit_Left
       internalID: 0
-      firstFrame: 42
-      lastFrame: 62
+      firstFrame: 14
+      lastFrame: 27
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 42
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

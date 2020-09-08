@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Rendering;
 
+// Sorry to sully your script Eric.
+// Script needs to be updated whenver "BossPhase" or "BossBrain" is edited otherwise breakage.
+
+
 public class BossBrainEditorWindow : ExtendedEditorWindow
 {
     private bool inBasePanel = true;
@@ -117,7 +121,10 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
                 DrawField("m_target", true);
                 DrawField("m_currentPhase", true);
                 DrawField("m_revengeValue", true);
-                DrawField("m_actionQue", true);
+                //DrawField("m_actionQue", true);
+                DrawField("m_baseActions", true);
+                DrawField("m_timeOut", true);
+           
             }
 
             EditorGUILayout.BeginHorizontal("box");
@@ -167,16 +174,14 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
                     currentProperty = selectedProperty;
 
                     DrawField("m_name", true);
-                    DrawField("m_aggresiveStaminaThreshold", true);
-                    DrawField("m_defensiveStaminaThreshold", true);
-                    DrawField("m_increase", true);
-                    DrawField("m_decrease", true);
-                    DrawField("m_threshold", true);
-                    DrawField("m_wanderTime", true);
-                    DrawField("m_timeBetweenPreDefinedAndRandom", true);
-                    DrawField("m_preDefinedActions", true);
-                    DrawField("m_counterMoves", true);
-                    
+                    //DrawField("m_increase", true);
+                    //DrawField("m_decrease", true);
+                    //DrawField("m_threshold", true);
+                    //DrawField("m_wanderTime", true);
+                    //DrawField("m_timeBetweenPreDefinedAndRandom", true);
+                    //DrawField("m_preDefinedActions", true);
+                    //DrawField("m_counterMoves", true);
+                    DrawField("m_timeBetweenMovementAction", true);
 
 
                     EditorGUILayout.BeginHorizontal("box");

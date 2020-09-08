@@ -8,11 +8,6 @@ public class XInputTestCS : MonoBehaviour
     GamePadState state;
     GamePadState prevState;
 
-    // Use this for initialization
-    void Start()
-    {
-        // No need to initialize anything for the plugin
-    }
 
     // Update is called once per frame
     void Update()
