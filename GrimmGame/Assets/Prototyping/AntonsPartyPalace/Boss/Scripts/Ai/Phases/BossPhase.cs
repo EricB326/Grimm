@@ -58,14 +58,19 @@ public class BossPhase
     private float m_lastNeutralAction = 0;
     public float m_timeBetweenNeutral = 5;
 
+    public int multiplyNegativeWeight = 50;
+
+
     // Stores the evaluated actions and the actions themselves.
-    public class EvaluatedAction
+    private class EvaluatedAction
     {
         // A reference to the aciton itself.
         // Passed out on success.
         public BossActions m_action;
         // The evaluated score.
         public float m_score;
+        public float m_rollMin;
+        public float m_rollMax;
     }
 
 
@@ -94,7 +99,7 @@ public class BossPhase
     //    //{
     //    //    return EvaluatePassiveAction();
     //    //}
-        
+
     //}
 
     // Before attack needs to evaluate if it should evaluate 
@@ -107,23 +112,117 @@ public class BossPhase
     public BossActions EvaluateAggresiveAction(float a_distanceToTarget)
     {
         BossActions output = null;
+        List<EvaluatedAction> actions = new List<EvaluatedAction>();
         foreach (BossActions t in m_bossActions)
         {
             if (t.GetBehaviourType == SteeringBehaviours.AGGRESSIVE)
             {       // from 10 to 0            Range from 0-20             0 or neg * 5  +  roll 2 random 0 - 6
+
+                EvaluatedAction z = new EvaluatedAction();
+                // Need to give values.
+                z.m_action = t;
+
+                float range = t.AttackRange;      // Higher value closter to the target range
+                //float distanceCovered = t.GetDestinationDistance; // How far the move travels.
+                float weight = t.AttackWeight;    // Flat value
+                float timesUsed = t.NumberOfUses; // Subtraction based on times used
+                float rangeThreshold = 2;                  // needs to be passed in by attack
+
+                z.m_score = 0;
+                // Range calc
+                if (range <= a_distanceToTarget + rangeThreshold && range >= a_distanceToTarget - rangeThreshold)
+                {
+                    z.m_score = 60;
+                }
+                else if (range <= a_distanceToTarget + (rangeThreshold * 2) &&
+                    range >= a_distanceToTarget - (rangeThreshold * 2))
+                {
+                    z.m_score = 30;
+                }
+                else
+                {
+                    z.m_score = 10;
+                }
+                // Weight
+                z.m_score += weight;
+                // Time used
+                z.m_score -= timesUsed * multiplyNegativeWeight;
+
+                if (z.m_score < 0)
+                {
+                    z.m_score = 0;
+                }
+                    
+
+                actions.Add(z);
+
                 // Distance to player, damage, coolness factor(set by designer) timeused
-                
+
                 // more ways to be effect weighing.
 
                 // Weighing happens here
                 // If desirability is greater than previous replace.
                 // bossaction
                 // Only here to test
-                output = t;
+                //output = t;
+                //break;
+            }
+            // Add all the evaluated values together
+        }
+        // Add up all scores
+        float total = 0;
+        foreach (EvaluatedAction t in actions)
+        {
+            total += t.m_score;
+        }
+        float norm = 1 / total;
+        float assaignedSoFar = 0;
+        // Apply normal value to every attack
+        // and set min and max roll
+        foreach (EvaluatedAction t in actions)
+        {
+            float normalizedScore = norm * t.m_score;
+            t.m_rollMin = assaignedSoFar;
+            t.m_rollMax = assaignedSoFar + normalizedScore + 0.01f; 
+            // Will this be okay? I dunno lol
+            assaignedSoFar = t.m_rollMax - 0.01f;
+        }
+
+
+        // roll and convert to 0 - 1.
+        // pass out action within range.
+        Debug.Log(assaignedSoFar);
+        float number = UnityEngine.Random.Range(0, assaignedSoFar);
+        //1 to 100
+        
+        //number = number / assaignedSoFar;
+        foreach (EvaluatedAction t in actions)
+        {
+            if( number <= t.m_rollMax &&  number >= t.m_rollMin )
+            {
+                output = t.m_action;
+                //t.m_action.LastTimeUsed++;
+                if(m_lastAttackAction != null)
+                {
+                    m_lastAttackAction.m_action.NumberOfUses--;
+                }
+                t.m_action.NumberOfUses++;
+                m_lastAttackAction = t;
                 break;
             }
-            // Adjust the weighing values of the list
         }
+
+        //Debug.Log(number);
+
+        // Adjust the weighing values of the list
+
+        // Needs an output other than null otherwise breakage.
+        if(output == null)
+        {
+            Debug.Log("Fuck");
+            Debug.Log(number);
+        }
+
         return output;
     }
 

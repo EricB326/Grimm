@@ -123,9 +123,9 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
                 DrawField("m_revengeValue", true);
                 //DrawField("m_actionQue", true);
                 DrawField("m_baseActions", true);
-                DrawField("m_timeOut", true);
-           
-            }
+                DrawField("m_timeOutSeek", true);
+                DrawField("m_timeOutAttack", true);
+        }
 
             EditorGUILayout.BeginHorizontal("box");
 

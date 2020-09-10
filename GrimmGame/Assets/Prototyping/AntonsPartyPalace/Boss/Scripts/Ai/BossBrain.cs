@@ -68,8 +68,9 @@ public class BossBrain : MonoBehaviour
 
     // If behaviors require a timer.
     [SerializeField]
-    private float m_timeOut = 0;
-
+    private float m_timeOutSeek = 0;
+    [SerializeField]
+    private float m_timeOutAttack = 0;
     // When ai makes is attacking(either by command or random)
     // It places the attack in here so it has all the info it needs
     // at that time.
@@ -83,9 +84,7 @@ public class BossBrain : MonoBehaviour
         m_currentPhase = 0;
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
-        m_timeOut = 0;
-        m_currentAttack = null;
-        m_currentSeek = null;
+        m_timeOutSeek = 0;
         m_diagnosticMode = false;
         m_chanceOfPreMove = m_PreMoveFloor;
     }
@@ -99,9 +98,9 @@ public class BossBrain : MonoBehaviour
         // Adds actions to que if needed.
         CheckQue(directionToMove);
 
-        // Diagnostic mode disables boss so that you can test weighting
-        if (!DiagnosticMode(directionToMove))
-        {
+            // Diagnostic mode disables boss so that you can test weighting
+            if (!DiagnosticMode(directionToMove))
+        { 
             // Rotates the boss
             // Should probably be changed to "Can rotate" 
             // and will be set/unset in the animator.
@@ -280,38 +279,39 @@ public class BossBrain : MonoBehaviour
     {
         if (!m_continue)
         {
-            // If aggresive but no action get action
-            if (m_currentAttack != null)
+            // If aggresive but no action get action and time out 
+            // Or launching attack (in case time breaks it.
+            if (m_currentAttack != null && m_timeOutAttack > Time.time)
             {
                 // If in action skip entirely
                 if (!m_animator.GetBool("Ai/PlayingAction"))
                 {
                     // Check if you're at the correct distance or should continue
-                    if (CalculateDistance(a_target) && CorrectFacing(a_target) || m_launchAttack)
+                    if (m_launchAttack || CalculateDistance(a_target) && CorrectFacing(a_target))
                     {
                         // Stop your movement. Mostly a safety.
                         m_animator.SetFloat("Movement/Z", 0);
                         m_animator.SetFloat("Movement/X", 0);
 
                         // Should I do an action before I attack or currenlty not in action
-                        if(Random.Range(0,100) < m_chanceOfPreMove && !m_launchAttack)
+                        if (Random.Range(0, 100) < m_chanceOfPreMove && !m_launchAttack)
                         {
                             BossActions t = m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_target), m_desiredRange);
-                            if(t != null)
+                            if (t != null)
                             {
                                 m_chanceOfPreMove = m_PreMoveFloor;
                                 m_animator.SetInteger("Ai/Action", t.GetAnimNum);
                                 m_launchAttack = true;
                                 return false;
                             }
-                            else
-                            {
-                                // Increase chance boss will do something before
-                                // an move.
-                                m_chanceOfPreMove += m_increasePerPremove;
-                            }
                         }
-                        // if it is null it should get here.
+                        else
+                        {
+                            // Increase chance boss will do something before
+                            // an move.
+                            m_chanceOfPreMove += m_increasePerPremove;
+                        }
+                        // if it is not launching an extra animation it should get here.
                         m_animator.SetInteger("Ai/Action", m_currentAttack.GetAnimNum);
                         m_continue = true;
                     }
@@ -319,7 +319,6 @@ public class BossBrain : MonoBehaviour
                     {
                         // If null or not within distance launch attack launch attack 
                         AddSeek();
-                        Debug.Log("AddSeek");
                     }
                 }
             }
@@ -331,21 +330,17 @@ public class BossBrain : MonoBehaviour
                 {
                     m_currentAttack = t;
                     m_desiredRange = t.AttackRange;
+                    m_launchAttack = false;
+                    m_continue = false;
                     Debug.Log("New attack");
-                }
-                else
-                {
-                    Debug.Log("EVALUATION ERROR AGGRESSIVE ACTION RETURN NULL");
+                    // Will try to launch attack for x time
+                    m_timeOutAttack = Time.time + 10;
+                    // Sometimes enters here unintentionally
                 }
             }
             return false;
-            // Has decided to do a seek
-            // Rotating towards player or decided to
-            // do an action before or after the attack.
-
-            // Attack is completed and a new action needs to be decided
-            // Phase change or wait while player is gettin up.
         }
+        // logic is wrong. Enters here when it shouldn't
         else if (!m_animator.GetBool("Ai/PlayingAction"))
         {
             // Should be hitting this whenever attacks are finished.
@@ -414,16 +409,14 @@ public class BossBrain : MonoBehaviour
         // Check if within range or currently playing action
         if (CalculateDistance(a_directionToMove) && !m_animator.GetBool("Ai/PlayingAction"))
         {
-            // If so remove from list
-            // with next action being attack.
             return true;
         }
 
         // Needs to check if it's time to do an action like dodge forward ect
-        if (m_timeOut < Time.time)
+        if (m_timeOutSeek < Time.time)
         {
             // Set time for next evaluation
-            m_timeOut = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
+            m_timeOutSeek = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
             // Evaluate action
             BossActions t = m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_directionToMove), m_desiredRange);
             // If action is returned instantly do action
@@ -641,7 +634,7 @@ public class BossBrain : MonoBehaviour
     {
         m_animator.SetFloat("AnimationSpeedMultiplyer", 1);
         m_continue = false;
-            m_timeOut = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
+        m_timeOutSeek = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
     }
 
     // Seeks should be generated only if unable 
@@ -672,7 +665,7 @@ public class BossBrain : MonoBehaviour
     {
         // Seems dumb. Mostly to replace the above.
         m_baseActions.Insert(0, SteeringBehaviours.SEEK);
-        m_timeOut = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
+        m_timeOutSeek = Time.time + m_bossPhaseList[m_currentPhase].m_timeBetweenMovementAction;
     }
 
     #region Revenge Value

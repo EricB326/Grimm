@@ -120,8 +120,8 @@ public class Player : MonoBehaviour
                 Movement(m_currentFrame.m_run);
             }
 
-
-            if (m_lockon)
+            // This is super dumb
+            if (m_lockon && axisZ != 0 || m_lockon && axisX != 0)
             {
                 LockOnLook(axisZ, axisX);
             }
@@ -435,7 +435,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // Need to get the correct direction when rolling
             // Roll
             m_animator.SetFloat("Input/RollOrStep", 1);
             Vector3 movementX = (new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z) * a_axisX);
@@ -444,6 +443,7 @@ public class Player : MonoBehaviour
             //Relative to the direction player is facing.
             // Stored for rotation.
             m_storedRollDirection = cameraPosition;
+            Debug.Log(m_storedRollDirection);
         }
         m_storedRollDirection.y = 0;
 
@@ -460,7 +460,7 @@ public class Player : MonoBehaviour
         {
             // Rotate in direction rolling in.
             Quaternion targetRotation = Quaternion.LookRotation(m_storedRollDirection);
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.5f);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.7f);
         }
 
     }
@@ -469,7 +469,11 @@ public class Player : MonoBehaviour
     // Occurs seperate from move.
     private void LockOnLook(float axisZ, float axisX)
     {
-        if (!m_currentFrame.m_run)
+        // If Player moving should look at boss(not camera)
+        // if player rolling or running should be rotating 
+        // in direction of the movement. Or should it be skipped entirely for roll?
+        //if(axisZ != 0 || axisX != 0 && !m_currentFrame.m_run && !m_animator.GetBool("Output/IsRolling"))
+        if (!m_currentFrame.m_run && !m_animator.GetBool("Output/IsRolling"))
         {
             Vector3 bossdirection = this.m_target.transform.position - this.transform.position;
             bossdirection = bossdirection.normalized;
@@ -481,7 +485,7 @@ public class Player : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, this.m_rotationTime);
 
         }
-        else
+        else if(m_currentFrame.m_run)
         {
             Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * axisX);
             Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * axisZ);
