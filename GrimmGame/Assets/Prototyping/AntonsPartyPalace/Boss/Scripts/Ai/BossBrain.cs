@@ -85,7 +85,7 @@ public class BossBrain : MonoBehaviour
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_timeOutSeek = 0;
-        m_diagnosticMode = false;
+        m_diagnosticMode = true;
         m_chanceOfPreMove = m_PreMoveFloor;
     }
 

@@ -10,10 +10,25 @@ using UnityEngine.Experimental.VFX;
 // 4 Foot Left
 
 
-// Animation events for the boss to call on attack.
+// Animation events for the boss to call during animations
 
 public class AnimationEventsBoss : MonoBehaviour
 {
+    // Don't forget you can store data in this class
+    // for on offs and safetys.
+    // For calls to the camera
+    CameraRotation m_cameraList;
+
+    
+
+
+    private void Start()
+    {
+        m_cameraList = Camera.main.GetComponent<CameraRotation>();
+    }
+
+
+
     public void ActivateHitBox(int a_colliderNumber)
     {
        GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
@@ -64,5 +79,19 @@ public class AnimationEventsBoss : MonoBehaviour
     }
 
 
+    // Need to do.
+    public void ShakeCameraOn(float a_value)
+    {
+        // Needs to call camera.
+        // Function should call something in the camera
+        // so the camera itself is in charge of applying 
+        // and removing effects.
+        //m_cameraList.m
+    }
+
+    public void ShakeCameraOff()
+    {
+
+    }
 
 }

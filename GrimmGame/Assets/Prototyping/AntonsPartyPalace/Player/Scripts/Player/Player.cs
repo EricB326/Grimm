@@ -74,10 +74,6 @@ public class Player : MonoBehaviour
 
     public BasicBuffer m_inputBuffer;
 
-    public float m_restingOffset = 0.8f;
-
-    public float m_lifterSpeed = 0.1f;
-
 
     private void Start()
     {       
@@ -86,7 +82,6 @@ public class Player : MonoBehaviour
         m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
         //m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
         //m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
-        m_lifter = new GameObject();
     }
 
 
@@ -305,10 +300,11 @@ public class Player : MonoBehaviour
             RaycastHit bckHit = new RaycastHit();
             float maxDistance = 2;
 
-            Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
-            Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
+            //Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
+            //Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
 
 
+            
 
 
 
@@ -443,7 +439,6 @@ public class Player : MonoBehaviour
             //Relative to the direction player is facing.
             // Stored for rotation.
             m_storedRollDirection = cameraPosition;
-            Debug.Log(m_storedRollDirection);
         }
         m_storedRollDirection.y = 0;
 

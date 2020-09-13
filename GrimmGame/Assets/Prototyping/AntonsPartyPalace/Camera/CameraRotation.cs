@@ -30,7 +30,7 @@ public class CameraRotation : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    // Input for camera is done here
     void Update()
     {
         if (!m_player.m_lockon)
@@ -76,7 +76,7 @@ public class CameraRotation : MonoBehaviour
 
     }
 
-
+    // Adjustments for camera are here.
     private void FixedUpdate()
     {
         if (m_player.m_lockon)
@@ -89,15 +89,7 @@ public class CameraRotation : MonoBehaviour
             Vector3 direction = followPos - lookAtPos;
 
             float radius = m_camList[1].m_Orbits[1].m_Radius;
-            //Debug.Log(radius);
-            // We only need the direction not the y.
-            direction.y = 0;
-            Vector3 raycastStart = m_player.transform.position;
-            raycastStart.y = 0;
-            Vector3 playerFwd = transform.forward;
-            playerFwd.y = 0;
-
-
+ 
                                                             // Very important do not touch
             m_camList[m_selectedCamera].m_XAxis.Value = (180 / 3.14159f) * Mathf.Atan2(-direction.x, -direction.z);
         }

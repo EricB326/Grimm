@@ -116,18 +116,17 @@ public class BossPhase
         foreach (BossActions t in m_bossActions)
         {
             if (t.GetBehaviourType == SteeringBehaviours.AGGRESSIVE)
-            {       // from 10 to 0            Range from 0-20             0 or neg * 5  +  roll 2 random 0 - 6
-
+            {       
                 EvaluatedAction z = new EvaluatedAction();
-                // Need to give values.
+                // Need to give values for evaluations
                 z.m_action = t;
 
                 float range = t.AttackRange;      // Higher value closter to the target range
                 //float distanceCovered = t.GetDestinationDistance; // How far the move travels.
                 float weight = t.AttackWeight;    // Flat value
                 float timesUsed = t.NumberOfUses; // Subtraction based on times used
-                float rangeThreshold = 2;                  // needs to be passed in by attack
-
+                float rangeThreshold = 2;         // needs to be passed in by attack
+                                                  // Did we want a random number added?
                 z.m_score = 0;
                 // Range calc
                 if (range <= a_distanceToTarget + rangeThreshold && range >= a_distanceToTarget - rangeThreshold)
@@ -191,7 +190,6 @@ public class BossPhase
 
         // roll and convert to 0 - 1.
         // pass out action within range.
-        Debug.Log(assaignedSoFar);
         float number = UnityEngine.Random.Range(0, assaignedSoFar);
         //1 to 100
         
@@ -219,8 +217,9 @@ public class BossPhase
         // Needs an output other than null otherwise breakage.
         if(output == null)
         {
-            Debug.Log("Fuck");
-            Debug.Log(number);
+            Debug.Log("Fuck ai is busted.");
+            Debug.Log("Random number was: " + number + " and " +
+                assaignedSoFar + " was the total assaigned values.");
         }
 
         return output;
