@@ -17,12 +17,15 @@ public class CameraRotation : MonoBehaviour
     //public CinemachineFreeLook m_freeCamera;
     //public CinemachineFreeLook m_lockOnCamera;
 
-    private int m_selectedCamera = 0; // 0 for free 1 for lock. 2> Different rules
+    public int m_selectedCamera = 0; // 0 for free 1 for lock. 2> Different rules
                                       // Defaults to false.
 
     // Player houses the lockon variable.
     private Player m_player;
     private GameObject m_target;
+    private bool m_recenter = false;
+
+    private float m_centerTarget;
 
     private void Start()
     {
@@ -81,17 +84,33 @@ public class CameraRotation : MonoBehaviour
     {
         if (m_player.m_lockon)
         {
+            m_recenter = false;
             // Player position
             Vector3 followPos = m_camList[1].Follow.position;
             // Boss position
             Vector3 lookAtPos = m_camList[1].LookAt.position;
 
             Vector3 direction = followPos - lookAtPos;
-
-            float radius = m_camList[1].m_Orbits[1].m_Radius;
- 
-                                                            // Very important do not touch
+                                                                // Very important do not touch
             m_camList[m_selectedCamera].m_XAxis.Value = (180 / 3.14159f) * Mathf.Atan2(-direction.x, -direction.z);
+        }
+        else if(m_recenter && m_selectedCamera == 0)
+        {
+            m_camList[m_selectedCamera].m_XAxis.Value = Mathf.Lerp(m_camList[m_selectedCamera].m_XAxis.Value, m_centerTarget, 0.15f);
+            if((int)m_camList[m_selectedCamera].m_XAxis.Value == (int)m_centerTarget)
+            {
+                m_recenter = false;
+            }
+        }
+    }
+
+    public void Recenter(Vector3 a_forward)
+    {
+        if (!m_recenter)
+        {
+            Debug.Log("Recenter");
+            m_centerTarget = (180 / 3.14159f) * Mathf.Atan2(a_forward.x, a_forward.z);
+            m_recenter = true;
         }
     }
 }

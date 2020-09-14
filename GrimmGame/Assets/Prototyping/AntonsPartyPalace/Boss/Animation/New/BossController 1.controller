@@ -298,6 +298,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: 9
+--- !u!114 &-6883298286960573475
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd87dfc4d05dba48aae859a556eb44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1107 &-6304920024643342973
 AnimatorStateMachine:
   serializedVersion: 5
@@ -325,6 +337,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours:
   - {fileID: 5031806955631928323}
+  - {fileID: -6883298286960573475}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
@@ -906,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e921a7f911f96409fd47e44a8c3b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 4
 --- !u!1107 &-355448050679285344
 AnimatorStateMachine:
   serializedVersion: 5
@@ -2051,7 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e921a7f911f96409fd47e44a8c3b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 4
 --- !u!1102 &7836892861008360594
 AnimatorState:
   serializedVersion: 5

@@ -38,8 +38,8 @@ ModelImporter:
       name: Player_Attack_01_Combo_02_CHEAT_Root
       takeName: Attack_01_Combo_02_CHEAT
       internalID: 0
-      firstFrame: 13
-      lastFrame: 60
+      firstFrame: 21
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -68,6 +68,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.5805085
         functionName: DeavtivateHitBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3214286
+        functionName: Rotation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

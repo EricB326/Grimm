@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
 
-
+            // Camera lockon
             if (XCI.GetButtonDown(XboxButton.RightStick))
             {
                 if (this.m_lockon)
@@ -148,7 +148,22 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    this.m_lockon = true;
+                    Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position - this.transform.position;
+
+                    //Ray toBoss = new Ray(this.transform.position + (this.transform.up / 2), this.transform.position + direciton);
+                    float lockOnRange = 20;
+                    
+                    float largestDistance = Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.z));
+                    if (lockOnRange > largestDistance)
+                    {
+                        Debug.Log(largestDistance);
+                        this.m_lockon = true;
+                    }
+                    else
+                    {
+                        Camera.main.GetComponent<CameraRotation>().Recenter(this.transform.forward);
+                    }
+                    // Raycast to target
                 }
             }
 
@@ -245,13 +260,14 @@ public class Player : MonoBehaviour
             // Desired speed modified by angle below as well as heading.
 
             float dotOfFwdhding = Vector3.Dot(this.transform.forward.normalized, movement.normalized);
-            if(dotOfFwdhding < -0.2f && !m_lockon && !a_running)
+            // If facing backwards rotate then move.
+            if (dotOfFwdhding < -0.2f && !m_lockon && !a_running)
             {
                 desiredSpeed = 0;
                 // stored speed value reduced to 0
                 m_animator.SetFloat("MovementSpeedMult", 0);
             }
-            
+
             // Get the current speed moving at
             float currentSpeed = m_animator.GetFloat("MovementSpeedMult");
             // Move it towards the target speed. Needs to be aware of input.    
@@ -290,15 +306,15 @@ public class Player : MonoBehaviour
 
             // RAYCAST FORWARD AND BACK TO ADJUST THE PLAYERS Y POSITION
 
-            // Offset should be set in insepctor range of 0.5f to 2f.
-            Vector3 rayOffset = new Vector3(0, 0.7f, 0);
-            // Fwd ray
-            Ray FwdRay = new Ray(this.transform.position + (this.transform.forward * 1f) + rayOffset, -this.transform.up);
-            RaycastHit fwdHit = new RaycastHit();
-            // Bck ray
-            Ray BckRay = new Ray(this.transform.position + -(this.transform.forward * 1f) + rayOffset, -this.transform.up);
-            RaycastHit bckHit = new RaycastHit();
-            float maxDistance = 2;
+            //// Offset should be set in insepctor range of 0.5f to 2f.
+            //Vector3 rayOffset = new Vector3(0, 0.7f, 0);
+            //// Fwd ray
+            //Ray FwdRay = new Ray(this.transform.position + (this.transform.forward * 1f) + rayOffset, -this.transform.up);
+            //RaycastHit fwdHit = new RaycastHit();
+            //// Bck ray
+            //Ray BckRay = new Ray(this.transform.position + -(this.transform.forward * 1f) + rayOffset, -this.transform.up);
+            //RaycastHit bckHit = new RaycastHit();
+            //float maxDistance = 2;
 
             //Debug.DrawRay(this.transform.position + this.transform.forward + rayOffset, -this.transform.up);
             //Debug.DrawRay(this.transform.position + -this.transform.forward + rayOffset, -this.transform.up);
@@ -343,17 +359,17 @@ public class Player : MonoBehaviour
             //}
 
             // Rotation based on cast down normal.
-            {
-                // Works as intended.
-                Ray Raycast = new Ray(this.transform.position, -this.transform.up);
-                RaycastHit info;
-                if (Physics.Raycast(Raycast, out info))
-                {
-                    float angle = Vector3.Angle(info.normal, transform.up);
-                    //Debug.Log(angle);
-                    movement = Quaternion.Euler(0f, 0f, angle) * movement;
-                }
-            }
+            //{
+            //    // Works as intended.
+            //    Ray Raycast = new Ray(this.transform.position, -this.transform.up);
+            //    RaycastHit info;
+            //    if (Physics.Raycast(Raycast, out info))
+            //    {
+            //        float angle = Vector3.Angle(info.normal, transform.up);
+            //        //Debug.Log(angle);
+            //        movement = Quaternion.Euler(0f, 0f, angle) * movement;
+            //    }
+            //}
 
 
             movement = movement * m_animator.GetFloat("MovementSpeedMult") * Time.deltaTime;
@@ -375,8 +391,8 @@ public class Player : MonoBehaviour
                 toAnim.x = Mathf.Clamp(toAnim.x, -0.8f, 0.8f);
                 toAnim.z = Mathf.Clamp(toAnim.z, -0.8f, 0.8f);
             }
-            // If running values are 1.
 
+            // If running values are 1.
 
             // Lerp towards the target acceleration                 // This value to be modified by speed
             float animX = Mathf.Lerp(m_animator.GetFloat("Movement/X"), toAnim.x, 0.2f);
@@ -391,11 +407,10 @@ public class Player : MonoBehaviour
                 scale = Mathf.Max(Mathf.Abs(a_axisX), Mathf.Abs(a_axisZ));
             }
 
-                                                        
+            // To animator                       
             m_animator.SetFloat("Movement/X", animX * scale);
             m_animator.SetFloat("Movement/Z", animZ * scale);
         }
-
         // No input case
         else
         {
@@ -441,6 +456,10 @@ public class Player : MonoBehaviour
             m_storedRollDirection = cameraPosition;
         }
         m_storedRollDirection.y = 0;
+
+        m_animator.SetFloat("Movement/X", 0);
+        m_animator.SetFloat("Movement/Z", 0);
+        m_animator.SetFloat("MovementSpeedMult", 0);
 
     }
 

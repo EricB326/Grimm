@@ -69,33 +69,31 @@ public class RootMotionMovementAdjustment : StateMachineBehaviour
         //            Vector3 direction2 = directDownhit.point - animator.gameObject.transform.position;
         //            if (direction2.y != 0)
         //            {
+        //                Vector3 norm = direction1 - direction2;
         //                //Debug.Log(direction.normalized);
-        //                float angle = (180 / 3.14159f) * Mathf.Atan(direction1.y - direction2.y);
+        //                float angle = Mathf.Acos(norm.y);
         //                // Almost right... maybe?
         //                // Need to get an angle
         //                posToMove = Quaternion.Euler(angle, 0, 0) * posToMove;
         //            }
         //        }
-                
-
         //    }
         //}
-        /*else */if (Physics.Raycast(directDown, out directDownhit, length + straightDownOffset.y))
-        {
-            Debug.Log("hit");
-            float angle = Vector3.Angle(Vector3.up, directDownhit.normal);
-            posToMove = Quaternion.Euler(angle, 0, 0) * posToMove;
-        }
-        else
+        //else if (Physics.Raycast(directDown, out directDownhit, length + straightDownOffset.y))
+        //{
+        //    Debug.Log("hit");
+        //    float angle = Vector3.Angle(Vector3.up, directDownhit.normal);
+        //    posToMove = Quaternion.Euler(angle, 0, 0) * posToMove;
+        //}
+
+        if (!Physics.Raycast(directDown, out directDownhit, length + straightDownOffset.y))
         {
             // Assumed not grounded
             posToMove.y = -0.2f;
         }
 
-
         // Neeed to remove gravity for this to work.        // Just a translate in the end
         animator.gameObject.transform.position = animator.gameObject.transform.position + posToMove;
-
     }
 
     // OnStateIK is called right after Animator.OnAnimatorIK()

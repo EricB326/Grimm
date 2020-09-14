@@ -46,7 +46,7 @@ public class BossBrain : MonoBehaviour
     // When was the last decision made.
 
     private int m_chanceOfPreMove;
-    public int m_PreMoveFloor = 40;
+    public int m_PreMoveFloor = 60;
     public int m_increasePerPremove = 30;
 
     public List<BossPhase> m_bossPhaseList = new List<BossPhase>();
@@ -85,7 +85,7 @@ public class BossBrain : MonoBehaviour
         m_animator = this.GetComponent<Animator>();
         m_target = EntityStats.Instance.GetObjectOfEntity("Player");
         m_timeOutSeek = 0;
-        m_diagnosticMode = true;
+        m_diagnosticMode = false;
         m_chanceOfPreMove = m_PreMoveFloor;
     }
 
@@ -292,9 +292,11 @@ public class BossBrain : MonoBehaviour
                         // Stop your movement. Mostly a safety.
                         m_animator.SetFloat("Movement/Z", 0);
                         m_animator.SetFloat("Movement/X", 0);
-
+                        int random = Random.Range(0, 100);
+                        //Debug.Log(random);
+                        Debug.Log(m_chanceOfPreMove);
                         // Should I do an action before I attack or currenlty not in action
-                        if (Random.Range(0, 100) < m_chanceOfPreMove && !m_launchAttack)
+                        if (random < m_chanceOfPreMove && !m_launchAttack)
                         {
                             BossActions t = m_bossPhaseList[m_currentPhase].EvaluateSeek(GetDistanceToPlayer(a_target), m_desiredRange);
                             if (t != null)
@@ -310,6 +312,10 @@ public class BossBrain : MonoBehaviour
                             // Increase chance boss will do something before
                             // an move.
                             m_chanceOfPreMove += m_increasePerPremove;
+                            if(m_chanceOfPreMove > 100)
+                            {
+                                m_chanceOfPreMove = 100;
+                            }
                         }
                         // if it is not launching an extra animation it should get here.
                         m_animator.SetInteger("Ai/Action", m_currentAttack.GetAnimNum);
@@ -332,7 +338,7 @@ public class BossBrain : MonoBehaviour
                     m_desiredRange = t.AttackRange;
                     m_launchAttack = false;
                     m_continue = false;
-                    Debug.Log("New attack");
+                    //Debug.Log("New attack");
                     // Will try to launch attack for x time
                     m_timeOutAttack = Time.time + 10;
                     // Sometimes enters here unintentionally
@@ -348,7 +354,7 @@ public class BossBrain : MonoBehaviour
             m_launchAttack = false;
             // Null so new attack needed. V dangerous.
             m_currentAttack = null;
-            Debug.Log("Attack Complete");
+            //Debug.Log("Attack Complete");
             return true;
         }
         else

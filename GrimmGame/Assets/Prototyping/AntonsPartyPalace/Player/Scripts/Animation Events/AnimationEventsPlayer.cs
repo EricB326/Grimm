@@ -54,11 +54,30 @@ public class AnimationEventsPlayer : MonoBehaviour
     // A nice safety if off events aren't reached.
     public void Deactivate()
     {
-        
         DeavtivateHitBox();
         IFramesOff();
     }
 
+    public void Rotation()
+    {
+        // RotateTowards movement destination while
+        // mid combo.
+        // eg attack 1 in 1 direciton and attack 2 in direction pointing in
+        Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        if (!player.m_lockon)
+        {
+            // Get the input out of the animator
+            float z = player.m_animator.GetFloat("Input/Z");
+            float x = player.m_animator.GetFloat("Input/X");
+            if (z != 0 && x != 0)
+            {
+                Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * x);
+                Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * z);
+                Vector3 cameraPosition = (cameraz + camerax);
+
+                Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, player.m_rollSpeed);
+            }
+        }
+    }
 }
-
-
