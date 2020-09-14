@@ -109,7 +109,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CoverBaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 5af05d805d74c974286984104e05ccd9, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc4add79f9d399946adb19ac71cf9ca7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CoverMaskA:
@@ -121,7 +121,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CoverNormalMap:
-        m_Texture: {fileID: 2800000, guid: 3905e92499e0b194587776e8f6cd4c75, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8e2aeb3b7327c64f9582b075271c462, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMap:
@@ -374,15 +374,15 @@ Material:
     - _CoverHeightMapMin: -3
     - _CoverHeightMapOffset: 0
     - _CoverMaskPower: 1
-    - _CoverMetallic: 1
-    - _CoverNormalBlendHardness: 0.94
-    - _CoverNormalScale: 1
-    - _CoverSmoothnessRemapMax: 1
+    - _CoverMetallic: 0
+    - _CoverNormalBlendHardness: 1
+    - _CoverNormalScale: 0.8
+    - _CoverSmoothnessRemapMax: 0.066
     - _CoverSmoothnessRemapMin: 0
     - _CoverUsePlanarUV: 1
-    - _Cover_Amount: 2
-    - _Cover_Amount_Grow_Speed: 3
-    - _Cover_Max_Angle: 18
+    - _Cover_Amount: 1.305
+    - _Cover_Amount_Grow_Speed: 2.76
+    - _Cover_Max_Angle: 13.2
     - _Cover_Min_Height: -10000
     - _Cover_Min_Height_Blending: 1
     - _CullMode: 2
@@ -668,7 +668,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CoverBaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _CoverTilingOffset: {r: 2, g: 2, b: 0, a: 0}
-    - _DetailTilingOffset: {r: 20, g: 20, b: 0, a: 0}
+    - _DetailTilingOffset: {r: 20, g: 20, b: 20, a: 20}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset0: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset1: {r: 0, g: 0, b: 0, a: 0}

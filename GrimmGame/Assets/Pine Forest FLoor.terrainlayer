@@ -8,7 +8,7 @@ TerrainLayer:
   m_PrefabAsset: {fileID: 0}
   m_Name: Pine Forest FLoor
   m_DiffuseTexture: {fileID: 2800000, guid: dc4add79f9d399946adb19ac71cf9ca7, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_NormalMapTexture: {fileID: 2800000, guid: b8e2aeb3b7327c64f9582b075271c462, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
