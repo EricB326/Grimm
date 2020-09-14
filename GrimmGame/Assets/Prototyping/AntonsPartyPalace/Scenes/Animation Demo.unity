@@ -3590,6 +3590,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &738506876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738506869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182fbd7b01afe1f4fa10c34c46fae675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 1
+  heightPadding: 0.5
+  heightCorrectionSpeed: 5
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
+  maxGroundAngle: 120
+  debugMode: 0
 --- !u!1 &741174894
 GameObject:
   m_ObjectHideFlags: 0
@@ -12346,6 +12366,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1536900677427235312}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8296172667870742456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172667870742449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182fbd7b01afe1f4fa10c34c46fae675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 1
+  heightPadding: 0.1
+  heightCorrectionSpeed: 5
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
+  maxGroundAngle: 120
+  debugMode: 0
 --- !u!54 &8296172667870742457
 Rigidbody:
   m_ObjectHideFlags: 0
