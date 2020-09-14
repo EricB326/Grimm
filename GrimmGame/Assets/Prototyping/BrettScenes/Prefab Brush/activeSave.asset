@@ -13,19 +13,22 @@ MonoBehaviour:
   m_Name: activeSave
   m_EditorClassIdentifier: 
   prefabList:
-  - {fileID: 8506109392143851451, guid: 85d8fb2ee08334041a4613bd14d3da4a, type: 3}
-  - {fileID: 754616957381925582, guid: 369a48ef101ab88409212c35e9df3a64, type: 3}
-  - {fileID: 5407449392157834409, guid: 2c0a40870f70eed428720b77bebfb0fd, type: 3}
+  - {fileID: 5001871497718003202, guid: 7a35ad4df6bb0404493e2f034e968eae, type: 3}
+  - {fileID: 7904806139297608414, guid: c29b094abdec2ef4584066ec9fcc9adf, type: 3}
+  - {fileID: 8632977291124583399, guid: 9ff96c23a39dbd84ba03d2b381dd8e57, type: 3}
+  - {fileID: 6610836305396197052, guid: 6b3546d09bf439c41ad23f17e6092814, type: 3}
+  - {fileID: 7243209615218423865, guid: 4bf5c9392e6410f4285e07b62126ba5f, type: 3}
+  - {fileID: 436777448057077585, guid: a9e367353bdc80842874b8462a935198, type: 3}
   paintType: 0
-  brushSize: 11.89
+  brushSize: 2.19
   minBrushSize: 0.1
   maxBrushSize: 20
-  paintDeltaDistance: 3
+  paintDeltaDistance: 0.5
   maxPaintDeltaDistance: 3.5
-  minPaintDeltaDistance: 1.5
+  minPaintDeltaDistance: 0.4
   prefabsPerStroke: 3
-  maxprefabsPerStroke: 5
-  minprefabsPerStroke: 1
+  maxprefabsPerStroke: 10
+  minprefabsPerStroke: 2
   spawnHeight: 10
   addRigidbodyToPaintedPrefab: 1
   physicsIterations: 100
@@ -34,8 +37,8 @@ MonoBehaviour:
   checkSlope: 0
   requiredTagMask: 0
   requiredLayerMask: 0
-  minRequiredSlope: 0
-  maxRequiredSlope: 0
+  minRequiredSlope: 15.302013
+  maxRequiredSlope: 54.161076
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
   draggingAction: 0
@@ -43,9 +46,9 @@ MonoBehaviour:
   rotationSensitivity: 10
   parentingStyle: 0
   parent: {fileID: 0}
-  rotateToMatchSurface: 0
+  rotateToMatchSurface: 1
   rotateSurfaceDirection: 0
-  randomizeRotation: 0
+  randomizeRotation: 1
   minXRotation: 0
   maxXRotation: 0
   minYRotation: 1
