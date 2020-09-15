@@ -294,9 +294,8 @@ public class BossPhase
         {
             while (reroll < 1)
             {
-                int chosen = UnityEngine.Random.Range(0, desired.Count);
 
-                BossActions t = desired[chosen];
+                BossActions t = ChooseSeekAction(desired);
 
                 // Reset the last actions used
                 if (m_lastSeekAction != null)
@@ -304,8 +303,7 @@ public class BossPhase
 
                     if (t == m_lastSeekAction)
                     {
-                        t.TimesUnused = 0;
-                        desired.Remove(t);
+                        t = ChooseSeekAction(desired);
                     }
                 }
                 else
@@ -321,9 +319,8 @@ public class BossPhase
         {
             while (reroll < 1)
             {
-                int chosen = UnityEngine.Random.Range(0, neutral.Count);
 
-                BossActions t = neutral[chosen];
+                BossActions t = ChooseSeekAction(neutral);
 
                 // Reset the last actions used
                 if (m_lastSeekAction != null)
@@ -331,8 +328,7 @@ public class BossPhase
 
                     if (t == m_lastSeekAction)
                     {
-                        t.TimesUnused = 0;
-                        neutral.Remove(t);
+                        t = ChooseSeekAction(neutral);
                     }
                 }
                 else
@@ -352,7 +348,6 @@ public class BossPhase
         // Used to stop moves occuring twice in a row.
         if(output != null)
         {
-            output.TimesUnused++;
             m_lastSeekAction = output;
         }
         else
@@ -402,6 +397,12 @@ public class BossPhase
     //    }
     //    return output;
     //}
+
+    public BossActions ChooseSeekAction(List<BossActions> actionList)
+    {
+        int chosen = UnityEngine.Random.Range(0, actionList.Count);
+        return actionList[chosen]; ;
+    }
 
     public float RangeMultiply(float inputRange, float height, float rangeCentre, float rangeDomain)
     {
