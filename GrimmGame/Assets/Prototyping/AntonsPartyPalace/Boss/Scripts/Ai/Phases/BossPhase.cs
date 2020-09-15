@@ -58,13 +58,13 @@ public class BossPhase
     private float m_lastNeutralAction = 0;
     public float m_timeBetweenNeutral = 5;
 
-    public int multiplyNegativeWeight = 50;
-
+    public float multiplyWeightWeight = 30;
+    private float multiplyWeight;
 
     // Stores the evaluated actions and the actions themselves.
     private class EvaluatedAction
     {
-        // A reference to the aciton itself.
+        // A reference to the action itself.
         // Passed out on success.
         public BossActions m_action;
         // The evaluated score.
@@ -111,6 +111,9 @@ public class BossPhase
     // distance will be weighted
     public BossActions EvaluateAggresiveAction(float a_distanceToTarget)
     {
+        //sets multiplyWeight
+        multiplyWeight = multiplyWeightWeight / m_bossActions.Count;
+
         BossActions output = null;
         List<EvaluatedAction> actions = new List<EvaluatedAction>();
         foreach (BossActions t in m_bossActions)
@@ -124,34 +127,16 @@ public class BossPhase
                 float range = t.AttackRange;      // Higher value closter to the target range
                 //float distanceCovered = t.GetDestinationDistance; // How far the move travels.
                 float weight = t.AttackWeight;    // Flat value
-                float timesUsed = t.NumberOfUses; // Subtraction based on times used
+                float timesUnused = t.TimesUnused; // Subtraction based on times used
                 float rangeThreshold = 2;         // needs to be passed in by attack
                                                   // Did we want a random number added?
-                z.m_score = 0;
-                // Range calc
-                if (range <= a_distanceToTarget + rangeThreshold && range >= a_distanceToTarget - rangeThreshold)
-                {
-                    z.m_score = 60;
-                }
-                else if (range <= a_distanceToTarget + (rangeThreshold * 2) &&
-                    range >= a_distanceToTarget - (rangeThreshold * 2))
-                {
-                    z.m_score = 30;
-                }
-                else
-                {
-                    z.m_score = 10;
-                }
-                // Weight
-                z.m_score += weight;
-                // Time used
-                z.m_score -= timesUsed * multiplyNegativeWeight;
 
-                if (z.m_score < 0)
-                {
-                    z.m_score = 0;
-                }
-                    
+                // Weight
+                z.m_score = weight;
+                // Time used
+                z.m_score += timesUnused * multiplyWeight;
+
+                z.m_score *= RangeMultiply(a_distanceToTarget, 0.3f, range, rangeThreshold);    
 
                 actions.Add(z);
 
@@ -196,17 +181,13 @@ public class BossPhase
         //number = number / assaignedSoFar;
         foreach (EvaluatedAction t in actions)
         {
-            if( number <= t.m_rollMax &&  number >= t.m_rollMin )
+            if( number >= t.m_rollMin && number <= t.m_rollMax)
             {
                 output = t.m_action;
-                //t.m_action.LastTimeUsed++;
-                if(m_lastAttackAction != null)
-                {
-                    m_lastAttackAction.m_action.NumberOfUses--;
-                }
-                t.m_action.NumberOfUses++;
-                m_lastAttackAction = t;
-                break;
+                t.m_action.TimesUnused = 0;
+            } else
+            {
+                t.m_action.TimesUnused++;
             }
         }
 
@@ -323,7 +304,7 @@ public class BossPhase
 
                     if (t == m_lastSeekAction)
                     {
-                        t.NumberOfUses = 0;
+                        t.TimesUnused = 0;
                         desired.Remove(t);
                     }
                 }
@@ -350,7 +331,7 @@ public class BossPhase
 
                     if (t == m_lastSeekAction)
                     {
-                        t.NumberOfUses = 0;
+                        t.TimesUnused = 0;
                         neutral.Remove(t);
                     }
                 }
@@ -371,7 +352,7 @@ public class BossPhase
         // Used to stop moves occuring twice in a row.
         if(output != null)
         {
-            output.NumberOfUses++;
+            output.TimesUnused++;
             m_lastSeekAction = output;
         }
         else
@@ -422,5 +403,9 @@ public class BossPhase
     //    return output;
     //}
 
-
+    public float RangeMultiply(float inputRange, float height, float rangeCentre, float rangeDomain)
+    {
+        float multiplier = (height * (float)Math.Pow(Math.E, (Math.Pow(inputRange-rangeCentre,2)/(2*Math.Pow(rangeDomain/2,2))))) + (1 - height);
+        return multiplier;
+    }
 }

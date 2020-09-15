@@ -23,7 +23,7 @@ public class BossActions
     [SerializeField] private float attackRange;
     [SerializeField] private float attackWeight;
     [SerializeField] private float lastTimeUsed;
-    [SerializeField] private int numberOfUses;
+    [SerializeField] private int timesUnused;
     [SerializeField] private SteeringBehaviours behaviourType;
     [SerializeField] private float destinationDistance;
     [SerializeField] private List<HitEffectsEnum> attackEffectList;
@@ -103,10 +103,10 @@ public class BossActions
         set { lastTimeUsed = value; }
     }
 
-    public int NumberOfUses
+    public int TimesUnused
     {
-        get { return numberOfUses; }
-        set { numberOfUses = value; }
+        get { return timesUnused; }
+        set { timesUnused = value; }
     }
 
     public string GetAttackName

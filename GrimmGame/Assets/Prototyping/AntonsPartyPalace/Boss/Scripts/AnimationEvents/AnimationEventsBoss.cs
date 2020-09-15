@@ -40,7 +40,7 @@ public class AnimationEventsBoss : MonoBehaviour
         boss.GetComponent<BossVariables>().m_weaponColliders[a_colliderNumber].enabled = true;
     }
 
-    public void DeavtivateHitBox(int a_colliderNumber)
+    public void DeactivateHitBox(int a_colliderNumber)
     {
         GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
         BossBrain brain = boss.GetComponent<BossBrain>();
