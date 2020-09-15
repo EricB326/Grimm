@@ -791,8 +791,8 @@ public class BossBrain : MonoBehaviour
         BossVariables bossVar = this.GetComponent<BossVariables>(); 
         bossVar.m_gate.m_colliderToEnable.isTrigger = true;
         this.transform.position = m_startPos;
-        bossVar.m_script.m_BossHealth.SetActive(false);
-        bossVar.m_script.m_BossCounters.SetActive(false);
+        bossVar.m_activationScript.m_BossHealth.SetActive(false);
+        bossVar.m_activationScript.m_BossCounters.SetActive(false);
         m_animator.SetFloat("Movement/Z", 0);
         m_animator.SetFloat("Movement/X", 0);
         m_animator.SetInteger("Ai/Action", 0);

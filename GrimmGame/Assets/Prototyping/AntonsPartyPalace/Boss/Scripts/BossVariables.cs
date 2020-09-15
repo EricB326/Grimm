@@ -24,7 +24,7 @@ public class BossVariables : MonoBehaviour
     //public Collider m_leftFoot;
     //public Collider m_rightFoot;
 
-    public QuickActivation m_script;
+    public QuickActivation m_activationScript;
     public GateActivater m_gate;
     private void Start()
     {

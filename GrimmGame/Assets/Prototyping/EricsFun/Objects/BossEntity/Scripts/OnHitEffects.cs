@@ -49,6 +49,7 @@ public class OnHitEffects : MonoBehaviour
 
     public void ResolveKnockbackWeak(GameObject _effectedEntity, Vector3 _particlePosition)
     {
+
         _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 1);
     }
 

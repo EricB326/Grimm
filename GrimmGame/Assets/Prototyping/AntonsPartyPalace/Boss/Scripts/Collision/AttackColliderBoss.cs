@@ -52,7 +52,14 @@ public class AttackColliderBoss : MonoBehaviour
                 {
                     damageToDo *= player.m_rollDamagemultiplier;
                 }
-                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttack.ResolveOnHitEffects(player.gameObject, Vector3.zero);
+
+                // Loop through all the colliders and get a direction to the closest activated collider
+                // Is there a chance the collider is turned off before this can be done?
+
+                Vector3 directionHitFrom = this.transform.position - other.gameObject.transform.position;
+
+
+                EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().m_currentAttack.ResolveOnHitEffects(player.gameObject, directionHitFrom.normalized);
                 //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<AnimationEventsBoss>().DeavtivateHitBox(hitboxToDeactivate);
                 EntityStats.Instance.DeminishHealthOffEntity("Player", damageToDo);
                 // Trigger on hit effects in the animation controller.
