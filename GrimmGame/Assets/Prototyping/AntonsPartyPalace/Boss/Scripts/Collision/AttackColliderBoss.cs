@@ -50,7 +50,10 @@ public class AttackColliderBoss : MonoBehaviour
                 // If not do full damage.
                 if (player.m_animator.GetBool("Output/IsRolling"))
                 {
-                    damageToDo *= player.m_rollDamagemultiplier;
+                    if(player.m_rollDamagemultiplier != 0)
+                    {
+                        damageToDo *= player.m_rollDamagemultiplier;
+                    }
                 }
 
                 // Loop through all the colliders and get a direction to the closest activated collider
