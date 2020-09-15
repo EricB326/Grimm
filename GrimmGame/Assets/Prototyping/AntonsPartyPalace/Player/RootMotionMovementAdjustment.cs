@@ -27,7 +27,6 @@ public class RootMotionMovementAdjustment : StateMachineBehaviour
     {
         SloopHandler mine = animator.gameObject.GetComponent<SloopHandler>();
         mine.CalculateForward();
-        mine.CalculateForward();
         mine.CalculateGroundAngle();
         mine.CheckGround();
         mine.ApplyGravity();

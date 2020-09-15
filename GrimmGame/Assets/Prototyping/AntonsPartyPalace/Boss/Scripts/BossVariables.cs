@@ -14,13 +14,18 @@ public class BossVariables : MonoBehaviour
 
     public Collider m_hitbox;
 
+
+    public SkinnedMeshRenderer m_model;
+    public SkinnedMeshRenderer m_swordModel;
+
     //public Collider m_sword;
     //public Collider m_claw;
 
     //public Collider m_leftFoot;
     //public Collider m_rightFoot;
 
-
+    public QuickActivation m_script;
+    public GateActivater m_gate;
     private void Start()
     {
         //m_sword.enabled = false;
@@ -34,6 +39,10 @@ public class BossVariables : MonoBehaviour
         }
     }
 
+    public void DisableBrain()
+    {
+        this.GetComponent<BossBrain>().enabled = false;
+    }
 
 
 }

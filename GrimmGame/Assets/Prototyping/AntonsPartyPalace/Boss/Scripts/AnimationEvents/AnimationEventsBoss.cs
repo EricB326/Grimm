@@ -94,4 +94,22 @@ public class AnimationEventsBoss : MonoBehaviour
 
     }
 
+    public void ResetPosition()
+    {
+        this.transform.position = this.GetComponent<BossBrain>().m_startPos;
+    }
+
+
+    public void EnableModel()
+    {
+        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_swordModel.enabled = true;
+        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model.enabled = true;
+    }
+
+    public void DisableModel()
+    {
+        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_swordModel.enabled = false;
+        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model.enabled = false;
+    }
+
 }

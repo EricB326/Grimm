@@ -135,7 +135,6 @@ public class EntityStats : MonoBehaviour
         newData.lives--;
         newData.health = newData.maxHealth;
         entityList[_entityIndex] = newData;
-
         if (entityList[_entityIndex].lives > 0)
         {
             if (entityList[_entityIndex].name == "Player")
@@ -159,6 +158,7 @@ public class EntityStats : MonoBehaviour
         {
             if (entityList[_entityIndex].name == "Player")
             {
+                EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
                 // GameOverLose();
             }
             else
@@ -222,7 +222,6 @@ public class EntityStats : MonoBehaviour
     public void RestoreAllStats()
     {
         shouldStatsRestore = true;
-
         if (onHealthReplenish != null)
             onHealthReplenish(this, EventArgs.Empty);
 
@@ -234,6 +233,7 @@ public class EntityStats : MonoBehaviour
 
     private void RestoreStatsOfEntity(int _entityIndex)
     {
+        
         newData = entityList[_entityIndex];
 
         if (entityList[_entityIndex].name != "Player")
@@ -369,7 +369,9 @@ public class EntityStats : MonoBehaviour
         // for the given entity at the index. Instead I had to assign an entire struct... Please modifiy this if there is a work around.
         newData.health -= _amountToDeminish;
         if (newData.health <= 0f)
+        {
             newData.health = 0f;
+        }
 
         entityList[entityIndex] = newData;
 

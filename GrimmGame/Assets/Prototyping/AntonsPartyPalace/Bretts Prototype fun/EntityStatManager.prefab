@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3871104991226535043}
   - component: {fileID: 3871104991226535040}
+  - component: {fileID: 3871104992033432739}
+  - component: {fileID: 3871104992033432742}
   m_Layer: 0
   m_Name: EntityStatManager
   m_TagString: Untagged
@@ -53,7 +55,7 @@ MonoBehaviour:
     inputBuffer: 0
     timeBeforeStaminaRegain: 1
     speedOfHealthRegain: 0.5
-    speedOfStaminaRegain: 0.3
+    speedOfStaminaRegain: 1
     maxHealth: 0
     maxStamina: 0
     timeSinceLastStaminaDeminish: 0
@@ -70,3 +72,38 @@ MonoBehaviour:
     maxHealth: 0
     maxStamina: 0
     timeSinceLastStaminaDeminish: 0
+--- !u!114 &3871104992033432739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871104991226535041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab06682283c2c894982658c1423d6e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  blurCamera: {fileID: 0}
+  blurMaterial: {fileID: 2100000, guid: 097353479241602459d0160b58378005, type: 2}
+--- !u!114 &3871104992033432742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871104991226535041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9037ad07fa938d44ba9f7f715312ebbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffectList:
+  - name: Hello
+    hitEffect: 0
+    effectForce: {x: 0, y: 0, z: 0}
+    animationsToPlay: {fileID: 0}
+    particlesToPlay:
+    - {fileID: 0}
+    soundsToPlay: []

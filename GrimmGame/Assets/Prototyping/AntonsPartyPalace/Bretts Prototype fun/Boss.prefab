@@ -1078,7 +1078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2923732324074631932}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -2.842171e-16, z: 0}
+  m_LocalPosition: {x: -0.477, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8403101829842637723}
@@ -3069,6 +3069,7 @@ GameObject:
   - component: {fileID: 1536900677087362484}
   - component: {fileID: 1536900677087362485}
   - component: {fileID: 1536900677087362486}
+  - component: {fileID: 8296172667870742457}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -3105,7 +3106,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 65f8151037438b14eb29a657114910d0, type: 3}
   m_Controller: {fileID: 9100000, guid: 11ea7791bcb9cb2428083914488e3db3, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3131,7 +3132,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7383024952987225665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecb1e97576418aa4e84a79d7353d9b0d, type: 3}
   m_Name: 
@@ -3174,37 +3175,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d46246b762e3514eb4fcd9feab2cd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rotationSpeed: 0.3
+  m_rotationSpeed: 0.25
   m_diagnosticMode: 0
   m_desiredRange: 0
   m_desiredRangeMin: 0
   m_target: {fileID: 0}
   m_moveTarget: {fileID: 0}
+  m_PreMoveFloor: 60
+  m_increasePerPremove: 30
   m_bossPhaseList:
   - m_name: Phase 1
     m_healthAtStart: 0
-    m_increase: 2
-    m_decrease: 3
-    m_threshold: 5
-    m_wanderTime: 3
+    m_timeBetweenMovementAction: 5
     m_bossActions:
-    - attackName: Seek
-      actionTimeLimit: 0
-      animationNumber: 1
-      attackDamage: 0
-      attackRange: 1
-      attackWeight: 0
-      lastTimeUsed: 0
-      numberOfUses: 0
-      behaviourType: 1
-      destinationDistance: 0
-      attackEffectList: 
-      collidersToModify: 
-    - attackName: Attack Chain 1
+    - attackName: Attack Chain
       actionTimeLimit: 0
       animationNumber: 2
       attackDamage: 15
-      attackRange: 4
+      attackRange: 5
       attackWeight: 0
       lastTimeUsed: 0
       numberOfUses: 0
@@ -3212,16 +3200,93 @@ MonoBehaviour:
       destinationDistance: 0
       attackEffectList: 00000000
       collidersToModify: 
-    m_timeBetweenPreDefinedAndRandom: 50
-    m_preDefinedActions: 03000000
-    m_counterMoves: 0100000000000000
+    - attackName: Lunge
+      actionTimeLimit: 0
+      animationNumber: 4
+      attackDamage: 30
+      attackRange: 12
+      attackWeight: 10
+      lastTimeUsed: 0
+      numberOfUses: 0
+      behaviourType: 0
+      destinationDistance: 0
+      attackEffectList: 00000000
+      collidersToModify: 
+    - attackName: Dash Left
+      actionTimeLimit: 0
+      animationNumber: 8
+      attackDamage: 0
+      attackRange: 0
+      attackWeight: 0
+      lastTimeUsed: 0
+      numberOfUses: 0
+      behaviourType: 1
+      destinationDistance: 0
+      attackEffectList: 
+      collidersToModify: 
+    - attackName: Dash Right
+      actionTimeLimit: 0
+      animationNumber: 9
+      attackDamage: 0
+      attackRange: 0
+      attackWeight: 0
+      lastTimeUsed: 0
+      numberOfUses: 0
+      behaviourType: 1
+      destinationDistance: 0
+      attackEffectList: 
+      collidersToModify: 
     m_storedTime: 0
-    m_staminaThisPhase: 0
-    m_aggresiveStaminaThreshold: 75
-    m_defensiveStaminaThreshold: 50
+    m_timeBetweenNeutral: 5
+    multiplyNegativeWeight: 50
   m_actionQue: []
+  m_baseActions: 
+  m_currentAttack:
+    attackName: 
+    actionTimeLimit: 0
+    animationNumber: 0
+    attackDamage: 0
+    attackRange: 0
+    attackWeight: 0
+    lastTimeUsed: 0
+    numberOfUses: 0
+    behaviourType: 0
+    destinationDistance: 0
+    attackEffectList: 
+    collidersToModify: 
+  m_currentSeek:
+    attackName: 
+    actionTimeLimit: 0
+    animationNumber: 0
+    attackDamage: 0
+    attackRange: 0
+    attackWeight: 0
+    lastTimeUsed: 0
+    numberOfUses: 0
+    behaviourType: 0
+    destinationDistance: 0
+    attackEffectList: 
+    collidersToModify: 
+  m_timeOutSeek: 0
+  m_timeOutAttack: 0
   m_currentPhase: 0
   m_revengeValue: 0
+--- !u!54 &8296172667870742457
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383024952987225665}
+  serializedVersion: 2
+  m_Mass: 999
+  m_Drag: 5
+  m_AngularDrag: 9999
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &7545919590980641719
 GameObject:
   m_ObjectHideFlags: 0

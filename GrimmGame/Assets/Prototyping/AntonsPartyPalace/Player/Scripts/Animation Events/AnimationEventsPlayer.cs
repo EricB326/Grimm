@@ -80,4 +80,22 @@ public class AnimationEventsPlayer : MonoBehaviour
             }
         }
     }
+
+    public void Respawn()
+    {
+        Player player = this.GetComponent<Player>();
+        if (player.m_respawnPos != null)
+        {
+            EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().BossReset();
+            player.m_lockon = false;
+            player.transform.position = player.m_respawnPos.transform.position;
+            player.transform.rotation = player.m_respawnPos.transform.rotation;
+        }
+        else
+        {
+            player.transform.position = player.m_startPos;
+        }
+    }
+
+
 }

@@ -74,6 +74,9 @@ public class Player : MonoBehaviour
 
     public BasicBuffer m_inputBuffer;
 
+    public GameObject m_respawnPos;
+    [HideInInspector]
+    public Vector3 m_startPos;
 
     private void Start()
     {       
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour
         m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
         //m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
         //m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
+        m_startPos = this.transform.position;
     }
 
 
@@ -134,6 +138,13 @@ public class Player : MonoBehaviour
     // Every frame
     void Update()
     {
+        //Debug.Log(EntityStats.Instance.GetHealthOfEntity("Player"));
+        //if (EntityStats.Instance.GetHealthOfEntity("Player") <= 0)
+        //{
+        //    EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
+        //}
+
+
         if (!PauseMenuController.isPaused)
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX);

@@ -30,6 +30,7 @@ public class CameraRotation : MonoBehaviour
     private void Start()
     {
         m_player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        m_camList[0].m_XAxis.Value = (180 / 3.14159f) * Mathf.Atan2(m_player.transform.forward.x, m_player.transform.forward.z);
     }
 
 

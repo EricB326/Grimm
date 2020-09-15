@@ -40,7 +40,7 @@ public class BossBrain : MonoBehaviour
     //public float m_revengeValue;
     // The actual target the boss is seeking towards.
     // Most likely the player at all times.
-    public GameObject m_target;
+    public Player m_target;
     // If the boss is trying to be defensive he will 
     public GameObject m_moveTarget;
     // When was the last decision made.
@@ -78,15 +78,24 @@ public class BossBrain : MonoBehaviour
     public int m_currentPhase;
 
     public int m_revengeValue = 0;
+    [HideInInspector]
+    public Vector3 m_startPos;
+
 
     private void Start()
     {
+        m_startPos = this.transform.position;
         m_currentPhase = 0;
         m_animator = this.GetComponent<Animator>();
-        m_target = EntityStats.Instance.GetObjectOfEntity("Player");
+        m_target = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         m_timeOutSeek = 0;
         m_diagnosticMode = false;
         m_chanceOfPreMove = m_PreMoveFloor;
+        this.enabled = false;
+
+        this.GetComponent<BossVariables>().m_swordModel.enabled = false;
+        this.GetComponent<BossVariables>().m_model.enabled = false;
+
     }
 
     private void Update()
@@ -294,7 +303,6 @@ public class BossBrain : MonoBehaviour
                         m_animator.SetFloat("Movement/X", 0);
                         int random = Random.Range(0, 100);
                         //Debug.Log(random);
-                        Debug.Log(m_chanceOfPreMove);
                         // Should I do an action before I attack or currenlty not in action
                         if (random < m_chanceOfPreMove && !m_launchAttack)
                         {
@@ -774,4 +782,22 @@ public class BossBrain : MonoBehaviour
     {
         m_actionRotationSpeed = a_rotationSpeed;
     }
+
+
+    public void BossReset()
+    {
+        float healthRecover = EntityStats.Instance.GetHealthOfEntity("Boss") - 100;
+        EntityStats.Instance.DeminishHealthOffEntity("Boss", healthRecover);
+        BossVariables bossVar = this.GetComponent<BossVariables>(); 
+        bossVar.m_gate.m_colliderToEnable.isTrigger = true;
+        this.transform.position = m_startPos;
+        bossVar.m_script.m_BossHealth.SetActive(false);
+        bossVar.m_script.m_BossCounters.SetActive(false);
+        m_animator.SetFloat("Movement/Z", 0);
+        m_animator.SetFloat("Movement/X", 0);
+        m_animator.SetInteger("Ai/Action", 0);
+        m_animator.SetInteger("CutScene", 2);
+        this.enabled = false;
+    }
+
 }
