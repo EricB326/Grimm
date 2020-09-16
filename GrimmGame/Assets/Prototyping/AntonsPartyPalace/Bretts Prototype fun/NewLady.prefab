@@ -2619,7 +2619,7 @@ MonoBehaviour:
   m_rotationTime: 0.8
   m_attackStaminaDrain: 20
   m_rollStaminaDrain: 25
-  m_runStaminaDrain: 1
+  m_runStaminaDrain: 0.7
   m_rollDamagemultiplier: 0.8
   m_attackDamage: 10
   m_InvinceFrames: 0
@@ -2628,6 +2628,8 @@ MonoBehaviour:
     m_framesToRetainFor: 40
     m_heldframesBeforeRun: 20
     m_staminaDrained: 0
+  m_respawnPos: {fileID: 0}
+  m_startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &7294782531508411356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16875,20 +16877,6 @@ Transform:
   m_Father: {fileID: 2325813297141788701}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7294782531909031954
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8865402116652761945}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.13
-  m_Height: 1.56
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.59}
 --- !u!1 &7416547468575983063
 GameObject:
   m_ObjectHideFlags: 0
@@ -19818,6 +19806,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.6799804, y: 0.16735028, z: 0.02164337}
     m_Extent: {x: 0.06967765, y: 0.0833406, z: 0.056996696}
   m_DirtyAABB: 0
+--- !u!136 &7294782531909031954
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865402116652761945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.13
+  m_Height: 1.56
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.59}
 --- !u!1 &9038166330568320417
 GameObject:
   m_ObjectHideFlags: 0
@@ -20226,21 +20228,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -81.977005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684460084258152699, guid: a208b545c8da9e940a5dc229ce857a83,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684460084258152699, guid: a208b545c8da9e940a5dc229ce857a83,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684460084258152699, guid: a208b545c8da9e940a5dc229ce857a83,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9018468095793049419, guid: a208b545c8da9e940a5dc229ce857a83,
         type: 3}

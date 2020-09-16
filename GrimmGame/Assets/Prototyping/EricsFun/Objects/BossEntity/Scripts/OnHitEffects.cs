@@ -49,8 +49,15 @@ public class OnHitEffects : MonoBehaviour
 
     public void ResolveKnockbackWeak(GameObject _effectedEntity, Vector3 _particlePosition)
     {
+        // Pass in the damage direcitons as well
+        // Note that particle position is currently checking 2 colliders against
+        // eachother to get the point of contact.
+
+
 
         _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 1);
+        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/X", 1);
+        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/Z", 1);
     }
 
     public void ResolveKnockbackStrong(GameObject _effectedEntity)

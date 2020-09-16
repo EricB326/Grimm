@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c71ce3e7dab04143a4e45fb0989e6a7
+guid: 716139a9545207348b379b82097a991c
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 2768075787365557344
+      74: -2913806219595467093
     second: Player_Hit_Forward_Root
   externalObjects: {}
   materials:
@@ -36,10 +36,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Player_Hit_Forward_Root
-      takeName: Knockback
+      takeName: Hit_Forward
       internalID: 0
-      firstFrame: 1
-      lastFrame: 13
+      firstFrame: 42
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

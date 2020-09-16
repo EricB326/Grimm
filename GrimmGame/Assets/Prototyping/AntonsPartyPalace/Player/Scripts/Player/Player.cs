@@ -159,6 +159,9 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    // Target aquizition needs to occur here.
+
+
                     Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position - this.transform.position;
 
                     //Ray toBoss = new Ray(this.transform.position + (this.transform.up / 2), this.transform.position + direciton);
