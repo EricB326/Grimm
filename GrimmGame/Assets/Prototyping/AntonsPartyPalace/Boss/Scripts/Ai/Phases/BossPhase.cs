@@ -127,6 +127,7 @@ public class BossPhase
                 float range = t.AttackRange;      // Higher value closter to the target range
                 //float distanceCovered = t.GetDestinationDistance; // How far the move travels.
                 float weight = t.AttackWeight;    // Flat value
+                if(weight < 10f) { weight = 10f; } //sets weight to 10 if input as less than 10
                 float timesUnused = t.TimesUnused; // Subtraction based on times used
                 float rangeThreshold = 2;         // needs to be passed in by attack
                                                   // Did we want a random number added?
@@ -136,7 +137,7 @@ public class BossPhase
                 // Time used
                 z.m_score += timesUnused * multiplyWeight;
 
-                z.m_score *= RangeMultiply(a_distanceToTarget, 0.3f, range, rangeThreshold);    
+                z.m_score *=  RangeMultiply(a_distanceToTarget, 0.3f, range, rangeThreshold);    
 
                 actions.Add(z);
 
@@ -406,7 +407,7 @@ public class BossPhase
 
     public float RangeMultiply(float inputRange, float height, float rangeCentre, float rangeDomain)
     {
-        float multiplier = (height * (float)Math.Pow(Math.E, (Math.Pow(inputRange-rangeCentre,2)/(2*Math.Pow(rangeDomain/2,2))))) + (1 - height);
+        float multiplier = Mathf.Clamp((height * (float)Math.Pow(Math.E, (Math.Pow(inputRange-rangeCentre,2)/(2*Math.Pow(rangeDomain/2,2))))) + (1 - height), 0.001f, 1f);
         return multiplier;
     }
 }
