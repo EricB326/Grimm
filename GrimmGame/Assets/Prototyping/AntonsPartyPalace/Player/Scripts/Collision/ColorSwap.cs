@@ -5,8 +5,8 @@ using UnityEngine.Experimental.VFX;
 
 
 
-// Use this 
-
+// Used for testing particles
+// Very old now and defunct
 
 public class ColorSwap : MonoBehaviour
 {
@@ -18,12 +18,12 @@ public class ColorSwap : MonoBehaviour
 
     public float m_delay;
     private float m_timeHit;
-    public VisualEffect m_visual;
+    //public VisualEffect m_visual;
 
     private void Start()
     {
         m_material = this.GetComponent<MeshRenderer>();
-        m_visual.Stop();
+       // m_visual.Stop();
 
     }
 
@@ -43,8 +43,8 @@ public class ColorSwap : MonoBehaviour
             m_material.material = m_hit;
             m_timeHit = Time.time + m_delay;
             EntityStats.Instance.DeminishHealthOffEntity("Boss", EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<PlayerMovementVariables>().m_attackDamage);
-            m_visual.transform.position = other.transform.position;
-            m_visual.Play();
+            //m_visual.transform.position = other.transform.position;
+            //m_visual.Play();
         }
     }
 }
