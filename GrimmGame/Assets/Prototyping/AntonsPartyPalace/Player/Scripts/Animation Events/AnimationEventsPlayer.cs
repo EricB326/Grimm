@@ -92,6 +92,9 @@ public class AnimationEventsPlayer : MonoBehaviour
         }
     }
 
+
+    // Player has lives.
+    // Mostly a placeholder.
     public void Respawn()
     {
         Player player = this.GetComponent<Player>();

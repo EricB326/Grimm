@@ -52,12 +52,12 @@ public class OnHitEffects : MonoBehaviour
         // Pass in the damage direcitons as well
         // Note that particle position is currently checking 2 colliders against
         // eachother to get the point of contact.
-
+        Vector3 worldPos = this.transform.localToWorldMatrix * _particlePosition;
 
 
         _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 1);
-        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/X", 1);
-        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/Z", 1);
+        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/X", worldPos.x);
+        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/Z", worldPos.z);
     }
 
     public void ResolveKnockbackStrong(GameObject _effectedEntity)
