@@ -113,9 +113,9 @@ public class BossBrain : MonoBehaviour
         // Adds actions to que if needed.
         CheckQue(directionToMove);
 
-            // Diagnostic mode disables boss so that you can test weighting
-            if (!DiagnosticMode(directionToMove))
-        { 
+        // Diagnostic mode disables boss so that you can test weighting
+        if (!DiagnosticMode(directionToMove))
+        {
             // Rotates the boss
             // Should probably be changed to "Can rotate" 
             // and will be set/unset in the animator.
@@ -147,8 +147,8 @@ public class BossBrain : MonoBehaviour
             //    CounterAttack(directionToMove);
             //}
         }
-
     }
+
     // Checks what actions it's doing.
     // Probably can be removed.
     // Boss should be checking if he should attack or not

@@ -13,7 +13,7 @@ public class AnimationEventsPlayer : MonoBehaviour
     // Activates hitboxes on player model to cause damage
     public void ActivateHitBox()
     {
-        //Debug.Log(a_colliderNumber);
+        //Debug.Log(a_colliderNumber);  
         Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         player.GetAttackHitBox().enabled = true;
         player.GetSwordHitBox().enabled = true;
