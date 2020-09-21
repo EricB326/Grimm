@@ -135,8 +135,11 @@ public class EntityStats : MonoBehaviour
         newData.lives--;
         newData.health = newData.maxHealth;
         entityList[_entityIndex] = newData;
+
+        // Still lives available.
         if (entityList[_entityIndex].lives > 0)
         {
+            // Handle player losing a life.
             if (entityList[_entityIndex].name == "Player")
             {
                 if (onPlayerLifeLost != null)
@@ -144,24 +147,24 @@ public class EntityStats : MonoBehaviour
 
                 // PhaseReset();
             }
-            else
+            else // Handle boss losing a life (phase).
             {
                 if (onBossPhaseChange != null)
                     onBossPhaseChange(this, EventArgs.Empty);
-
+                
                 // NextPhase();
 
                 entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
             }
         }
-        else
+        else // No lives available, end of game.
         {
-            if (entityList[_entityIndex].name == "Player")
+            if (entityList[_entityIndex].name == "Player") // Handle player losing final life.
             {
                 EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
                 // GameOverLose();
             }
-            else
+            else // Handle boss losing final life.
             {
                 Debug.Log("Winner");
 
@@ -171,12 +174,6 @@ public class EntityStats : MonoBehaviour
                 entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
 
                 // GameOverWin();
-
-                // Individual maps for Albedo, Normal, Roughness, Metallic, Emissive
-                // Strength for: Normal, Metallic, Roughness, Emissive
-                // Colours for: Emissive
-
-                // Shader to handle transparency
             }
 
             newData.lives = 0;
