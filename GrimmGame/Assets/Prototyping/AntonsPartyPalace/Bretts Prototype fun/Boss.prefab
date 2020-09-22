@@ -397,6 +397,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1481,6 +1482,8 @@ VisualEffect:
   m_GameObject: {fileID: 3698434326912238630}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 79830981292abe44385f3370b37ae8a8, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -1523,6 +1526,7 @@ VFXRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1868,6 +1872,8 @@ VisualEffect:
   m_GameObject: {fileID: 4472940167506168648}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 79830981292abe44385f3370b37ae8a8, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -1910,6 +1916,7 @@ VFXRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2777,6 +2784,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3070,6 +3078,7 @@ GameObject:
   - component: {fileID: 1536900677087362485}
   - component: {fileID: 1536900677087362486}
   - component: {fileID: 8296172667870742457}
+  - component: {fileID: 2942900339733420969}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -3163,6 +3172,10 @@ MonoBehaviour:
   m_lookPoint: {fileID: 1536900677533079222}
   m_facingPosition: {fileID: 3058148993760656387}
   m_hitbox: {fileID: 2012254809}
+  m_model: {fileID: 0}
+  m_swordModel: {fileID: 0}
+  m_activationScript: {fileID: 0}
+  m_gate: {fileID: 0}
 --- !u!114 &1536900677087362486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3195,7 +3208,7 @@ MonoBehaviour:
       attackRange: 5
       attackWeight: 0
       lastTimeUsed: 0
-      numberOfUses: 0
+      timesUnused: 0
       behaviourType: 0
       destinationDistance: 0
       attackEffectList: 00000000
@@ -3207,7 +3220,7 @@ MonoBehaviour:
       attackRange: 12
       attackWeight: 10
       lastTimeUsed: 0
-      numberOfUses: 0
+      timesUnused: 0
       behaviourType: 0
       destinationDistance: 0
       attackEffectList: 00000000
@@ -3219,7 +3232,7 @@ MonoBehaviour:
       attackRange: 0
       attackWeight: 0
       lastTimeUsed: 0
-      numberOfUses: 0
+      timesUnused: 0
       behaviourType: 1
       destinationDistance: 0
       attackEffectList: 
@@ -3231,14 +3244,14 @@ MonoBehaviour:
       attackRange: 0
       attackWeight: 0
       lastTimeUsed: 0
-      numberOfUses: 0
+      timesUnused: 0
       behaviourType: 1
       destinationDistance: 0
       attackEffectList: 
       collidersToModify: 
     m_storedTime: 0
     m_timeBetweenNeutral: 5
-    multiplyNegativeWeight: 50
+    multiplyWeightWeight: 30
   m_actionQue: []
   m_baseActions: 
   m_currentAttack:
@@ -3249,7 +3262,7 @@ MonoBehaviour:
     attackRange: 0
     attackWeight: 0
     lastTimeUsed: 0
-    numberOfUses: 0
+    timesUnused: 0
     behaviourType: 0
     destinationDistance: 0
     attackEffectList: 
@@ -3262,7 +3275,7 @@ MonoBehaviour:
     attackRange: 0
     attackWeight: 0
     lastTimeUsed: 0
-    numberOfUses: 0
+    timesUnused: 0
     behaviourType: 0
     destinationDistance: 0
     attackEffectList: 
@@ -3271,6 +3284,7 @@ MonoBehaviour:
   m_timeOutAttack: 0
   m_currentPhase: 0
   m_revengeValue: 0
+  m_startPos: {x: 0, y: 0, z: 0}
 --- !u!54 &8296172667870742457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3287,6 +3301,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2942900339733420969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383024952987225665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f928efcbb03b61644b83156e28ac8db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordEmitter: {fileID: 0}
+  clawEmitter: {fileID: 0}
+  headEmitter: {fileID: 0}
+  centreEmitter: {fileID: 0}
+  footEmitter: {fileID: 0}
+  ravenSwordAttack1: 
+  ravenClawAttack1: 
+  ravenHitConfirm: 
+  ravenFootstep1: 
 --- !u!1 &7545919590980641719
 GameObject:
   m_ObjectHideFlags: 0

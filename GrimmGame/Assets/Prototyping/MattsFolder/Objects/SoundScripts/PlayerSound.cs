@@ -35,7 +35,7 @@ public class PlayerSound : MonoBehaviour
 
     #region other variables
 
-    public int footstepMaterial;
+    private int footstepMaterial;
     private int swordSwingNumber;
     #endregion
 
@@ -56,17 +56,21 @@ public class PlayerSound : MonoBehaviour
             case "hit confirm":
                 FMODUnity.RuntimeManager.PlayOneShotAttached(playerHitConfirm, centreEmitter);
                 break;
+            case "roll":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(playerRoll, centreEmitter);
+                break;
             case "footstep":
-                int surfaceIndex = 0;
-                FMOD.Studio.EventInstance footsteps = FMODUnity.RuntimeManager.CreateInstance(playerFootstep);
-                footsteps.setParameterByName("surface", surfaceIndex);
-                footsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(footEmitter));
-                footsteps.start();
-                footsteps.release();
+                //int surfaceIndex = 0;
+                //FMOD.Studio.EventInstance footsteps = FMODUnity.RuntimeManager.CreateInstance(playerFootstep);
+                //footsteps.setParameterByName("surface", surfaceIndex);
+                //footsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(footEmitter));
+                //footsteps.start();
+                //footsteps.release();
+                FMODUnity.RuntimeManager.PlayOneShotAttached(playerFootstep, footEmitter);
                 break;
             default:
                 //throw error with class name and the action string
-                Debug.Log($"Unhandled input in RavenSound: {action}");
+                Debug.Log($"Unhandled input in PlayerSound: {action}");
                 break;
 
         }
