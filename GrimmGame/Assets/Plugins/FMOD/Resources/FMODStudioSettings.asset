@@ -368,7 +368,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: Assets/FMOD banks
+  sourceBankPath: C:\Users\User\Desktop\Abortions\Grimm\GrimmGame\Assets\FMOD banks
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 0
   BankLoadType: 0

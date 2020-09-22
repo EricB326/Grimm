@@ -92,19 +92,19 @@ public class CameraRotation : MonoBehaviour
 
             m_lookTarget = m_camList[m_selectedCamera].LookAt.gameObject;
 
-            // 2 max at largest distance. 5+ meters
-            // 0 min at min distance
-            // the movement needs to be modifed in world space based on facing.
-            // starts at 0.
-            float xChange = m_player.m_animator.GetFloat("Movement/X");
-            float zChange = m_player.m_animator.GetFloat("Movement/Z");
+            //// 2 max at largest distance. 5+ meters
+            //// 0 min at min distance
+            //// the movement needs to be modifed in world space based on facing.
+            //// starts at 0.
+            //float xChange = m_player.m_animator.GetFloat("Movement/X");
+            //float zChange = m_player.m_animator.GetFloat("Movement/Z");
 
-            xChange += m_target.GetComponent<Animator>().GetFloat("Movement/X");
-            zChange += m_target.GetComponent<Animator>().GetFloat("Movement/Z");
+            //xChange += m_target.GetComponent<Animator>().GetFloat("Movement/X");
+            //zChange += m_target.GetComponent<Animator>().GetFloat("Movement/Z");
 
 
 
-            m_lookTarget.transform.position = new Vector3((180 / 3.14159f) * Mathf.Atan2(xChange, zChange),0,0);
+            //m_lookTarget.transform.position = new Vector3((180 / 3.14159f) * Mathf.Atan2(xChange, zChange),0,0);
 
             //change = Vector3.ClampMagnitude((m_lookTarget.transform.position + change),1);
             // Vector3 offset = new Vector3(xChange, 0, 0);

@@ -93,7 +93,8 @@ MonoBehaviour:
   Path: event:/Player/hitconfirm
   guid: 567f8f2548e86843b34a723574dee6ce
   Banks:
-  - {fileID: 5322516767508062542}
+  - {fileID: -811876796785710515}
+  - {fileID: -1013724331195285912}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -157,7 +158,8 @@ MonoBehaviour:
   Path: event:/Raven/footstep
   guid: 895c0e184467b2419eaa4c5d61190af3
   Banks:
-  - {fileID: -1608822034799172857}
+  - {fileID: 20121289848526603}
+  - {fileID: -1743635421066594506}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -203,7 +205,8 @@ MonoBehaviour:
   Path: event:/Player/roll
   guid: 12176ea1f8fd0f40a15245c478d9b509
   Banks:
-  - {fileID: 5322516767508062542}
+  - {fileID: -811876796785710515}
+  - {fileID: -1013724331195285912}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -488,6 +491,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 78
+--- !u!114 &-2713803628324781290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/Master.strings.bank
+  Name: Master.strings
+  lastModified: 637363827120330987
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1036
+  Exists: 1
 --- !u!114 &-2676332794358751464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,6 +597,26 @@ MonoBehaviour:
   ID:
     data1: 0
     data2: 0
+  Exists: 1
+--- !u!114 &-1743635421066594506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/raven.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/raven.bank
+  Name: raven
+  lastModified: 637363827120330987
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 18400
   Exists: 1
 --- !u!114 &-1730334228744359029
 MonoBehaviour:
@@ -662,6 +705,46 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-1013724331195285912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/player.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/player.bank
+  Name: player
+  lastModified: 637363827120340954
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 50112
+  Exists: 1
+--- !u!114 &-811876796785710515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/player.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/player.bank
+  Name: player
+  lastModified: 637363827120340954
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 50112
+  Exists: 1
 --- !u!114 &-652722131043750082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +786,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-346763630072436977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/Master.bank
+  Name: Master
+  lastModified: 637363827120321002
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1012
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,10 +819,10 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -6839317566107334324}
-  - {fileID: -3922451398485349212}
-  - {fileID: 5322516767508062542}
-  - {fileID: -1608822034799172857}
+  - {fileID: -2713803628324781290}
+  - {fileID: -346763630072436977}
+  - {fileID: -1013724331195285912}
+  - {fileID: -1743635421066594506}
   EditorEvents:
   - {fileID: -7014958866718653689}
   - {fileID: 6501479581340604872}
@@ -728,11 +831,31 @@ MonoBehaviour:
   - {fileID: -7806111668913767102}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3922451398485349212}
+  - {fileID: -346763630072436977}
   StringsBanks:
-  - {fileID: -6839317566107334324}
-  stringsBankWriteTime: 637363768268620942
+  - {fileID: -2713803628324781290}
+  stringsBankWriteTime: 637363827120330987
   cacheVersion: 5
+--- !u!114 &20121289848526603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/raven.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/raven.bank
+  Name: raven
+  lastModified: 637363827120330987
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 18400
+  Exists: 1
 --- !u!114 &94111624593251773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,7 +1208,8 @@ MonoBehaviour:
   Path: event:/Raven/hitconfirm
   guid: 30121a2b6e247e45b2983ef7e735580b
   Banks:
-  - {fileID: -1608822034799172857}
+  - {fileID: 20121289848526603}
+  - {fileID: -1743635421066594506}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1112,6 +1236,26 @@ MonoBehaviour:
   ID:
     data1: 0
     data2: 0
+  Exists: 1
+--- !u!114 &3870588303853077994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/Master.strings.bank
+  Name: Master.strings
+  lastModified: 637363827120330987
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1036
   Exists: 1
 --- !u!114 &4203133380885390383
 MonoBehaviour:
@@ -1303,6 +1447,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 100
   Length: 0
+--- !u!114 &6228465326302623344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/Master.bank
+  Name: Master
+  lastModified: 637363827120321002
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1012
+  Exists: 1
 --- !u!114 &6236841595749763530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1529,8 @@ MonoBehaviour:
   Path: event:/Player/footstep
   guid: 1e15f68899396c448218b12f98ce24b9
   Banks:
-  - {fileID: 5322516767508062542}
+  - {fileID: -811876796785710515}
+  - {fileID: -1013724331195285912}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
