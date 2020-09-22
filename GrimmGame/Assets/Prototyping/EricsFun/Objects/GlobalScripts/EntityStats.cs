@@ -191,7 +191,7 @@ public class EntityStats : MonoBehaviour
 		switch (entityList[_entityIndex].lives)
 		{
             case 5:
-                TransitionManager.Instance.trans
+                //TransitionManager.Instance.trans
 
             default:
 				break;

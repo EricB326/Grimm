@@ -35,10 +35,10 @@ public class TransitionManager : MonoBehaviour
     }
 
 
-	public TransitionData SetTransitionData
-	{
-		get { return instance.transitionData; }
-	}
+	//public TransitionData SetTransitionData
+	//{
+	//	get { return instance.transitionData; }
+	//}
 
 
 
