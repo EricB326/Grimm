@@ -27,9 +27,12 @@ public class CameraRotation : MonoBehaviour
 
     private float m_centerTarget;
 
+    private GameObject m_lookTarget;
+
     private void Start()
     {
         m_player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
         m_camList[0].m_XAxis.Value = (180 / 3.14159f) * Mathf.Atan2(m_player.transform.forward.x, m_player.transform.forward.z);
     }
 
@@ -86,6 +89,28 @@ public class CameraRotation : MonoBehaviour
         if (m_player.m_lockon)
         {
             m_recenter = false;
+
+            m_lookTarget = m_camList[m_selectedCamera].LookAt.gameObject;
+
+            // 2 max at largest distance. 5+ meters
+            // 0 min at min distance
+            // the movement needs to be modifed in world space based on facing.
+            // starts at 0.
+            float xChange = m_player.m_animator.GetFloat("Movement/X");
+            float zChange = m_player.m_animator.GetFloat("Movement/Z");
+
+            xChange += m_target.GetComponent<Animator>().GetFloat("Movement/X");
+            zChange += m_target.GetComponent<Animator>().GetFloat("Movement/Z");
+
+
+
+            m_lookTarget.transform.position = new Vector3((180 / 3.14159f) * Mathf.Atan2(xChange, zChange),0,0);
+
+            //change = Vector3.ClampMagnitude((m_lookTarget.transform.position + change),1);
+            // Vector3 offset = new Vector3(xChange, 0, 0);
+            //m_lookTarget.transform.position = m_lookTarget.transform.position + change;
+
+
             // Player position
             Vector3 followPos = m_camList[1].Follow.position;
             // Boss position
