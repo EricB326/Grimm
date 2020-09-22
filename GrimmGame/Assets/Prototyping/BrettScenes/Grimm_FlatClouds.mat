@@ -33,30 +33,30 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _AroundSkyBias: 0.282
+    - _AroundSkyBias: 0.002
     - _BlendMode: 0
-    - _CloudSpeed1: 1.04
-    - _CloudSpeed2: 0.5
-    - _CloudSpeedMaster: 0.005
-    - _Coverage: 0.517
+    - _CloudSpeed1: 1
+    - _CloudSpeed2: 0.05
+    - _CloudSpeedMaster: 0.01
+    - _Coverage: 0.494
     - _CullMode: 0
     - _CullModeForward: 0
-    - _DepthFade: 1
+    - _DepthFade: 0.89
     - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 0
     - _DstBlend: 10
     - _EnableFogOnTransparent: 1
     - _LightingOffsetDist: 0
     - _NoiseTexScale1: 0.1
-    - _NoiseTexScale2: 0.1
+    - _NoiseTexScale2: 0.2
     - _NoiseTexScaleMaster: 0.05
     - _ReceivesSSR: 1
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
     - _RimLightStr: 1
-    - _SSSBoost: 0.84
-    - _SSSPow: 7.4
-    - _SSSRim: 0.599
+    - _SSSBoost: 0.948
+    - _SSSPow: 10.31
+    - _SSSRim: 0.729
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -82,7 +82,7 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 0
-    - __Softness: 0.4
+    - __Softness: 0.485
     m_Colors:
     - _DoubleSidedConstants: {r: -1, g: -1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
