@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Emergency script that on state exit gets called 
+// Unsure if from any state is called
+
 public class OffAnimationEvents : StateMachineBehaviour
 {
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
