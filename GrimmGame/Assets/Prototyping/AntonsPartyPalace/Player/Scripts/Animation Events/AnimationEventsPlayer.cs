@@ -13,7 +13,7 @@ public class AnimationEventsPlayer : MonoBehaviour
     // Activates hitboxes on player model to cause damage
     public void ActivateHitBox()
     {
-        //Debug.Log(a_colliderNumber);
+        //Debug.Log(a_colliderNumber);  
         Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         player.GetAttackHitBox().enabled = true;
         player.GetSwordHitBox().enabled = true;
@@ -30,7 +30,7 @@ public class AnimationEventsPlayer : MonoBehaviour
 
     // Bool to true and stamina drain
     // May have visual/sound issues depending how they are handled.
-    public void IFramesOn()
+    public void IFramesOnRoll()
     {
         Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         if (player.m_InvinceFrames == false)
@@ -40,6 +40,17 @@ public class AnimationEventsPlayer : MonoBehaviour
             // And visual effects.
         }
     }
+
+    public void IFramesOn()
+    {
+        Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        if (player.m_InvinceFrames == false)
+        {
+            player.m_InvinceFrames = true;
+            // And visual effects.
+        }
+    }
+
 
     // Bool to false.
     // May have visual/sound issues depending how they are handled.
@@ -81,6 +92,9 @@ public class AnimationEventsPlayer : MonoBehaviour
         }
     }
 
+
+    // Player has lives.
+    // Mostly a placeholder.
     public void Respawn()
     {
         Player player = this.GetComponent<Player>();

@@ -92,6 +92,7 @@ Material:
     - _DstBlend: 0
     - _EmissiveMap: 1
     - _EmissiveTintBlend: 1
+    - _EnableFogOnTransparent: 1
     - _MetallicStrength: 1
     - _NormalStrength: 1
     - _ReceivesSSR: 1
@@ -107,21 +108,22 @@ Material:
     - _SpecShift: 0.125
     - _SpecShiftIntensity: 1
     - _SrcBlend: 1
-    - _StencilRef: 2
-    - _StencilRefDepth: 0
-    - _StencilRefDistortionVec: 64
-    - _StencilRefGBuffer: 2
-    - _StencilRefMV: 128
-    - _StencilWriteMask: 3
-    - _StencilWriteMaskDepth: 48
-    - _StencilWriteMaskDistortionVec: 64
-    - _StencilWriteMaskGBuffer: 51
-    - _StencilWriteMaskMV: 176
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
     - _SurfaceType: 0
     - _TransmissionRimIntensity: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
+    - _TransparentZWrite: 0
     - _UseEmissive: 0
     - _UseLightmapUV: 0
     - _UseShadowThreshold: 1
@@ -141,3 +143,16 @@ Material:
     - _TransmissionColour: {r: 0.0754717, g: 0.01388395, b: 0.01388395, a: 1}
     - _uvBaseMask: {r: 1, g: 0, b: 0, a: 0}
     - _uvBaseST: {r: 1, g: 1, b: 0, a: 0}
+--- !u!114 &471021565605871891
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2

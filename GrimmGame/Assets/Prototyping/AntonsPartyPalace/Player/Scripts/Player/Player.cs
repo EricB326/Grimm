@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
 
     // Stamina drain on attack. Should be consistent.
     public float m_attackStaminaDrain = 20;
+    public float m_heavyStaminaDrain = 30;
+    // Could be removed 
+    public float m_rollAttackStaminaDrain = 20;
     // Roll Stamina drain
     public float m_rollStaminaDrain = 25;
 
@@ -225,6 +228,7 @@ public class Player : MonoBehaviour
         {
             m_animator.SetBool("Input/Roll", false);
         }
+        m_animator.SetBool("Input/Running", a_input.m_run);
     }
 
 

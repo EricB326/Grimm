@@ -26,7 +26,7 @@ public class OnHitEffects : MonoBehaviour
         public HitEffectsEnum hitEffect;
         public Vector3 effectForce;
         public GameObject animationsToPlay;   // Needs to be changed from GameObject.
-        public List<VisualEffect> particlesToPlay;
+        public List<ParticleSystem> particlesToPlay;
         public List<GameObject> soundsToPlay; // Needs to be changed from GameObject.
     }
 
@@ -52,12 +52,12 @@ public class OnHitEffects : MonoBehaviour
         // Pass in the damage direcitons as well
         // Note that particle position is currently checking 2 colliders against
         // eachother to get the point of contact.
-
+        Vector3 worldPos = this.transform.localToWorldMatrix * _particlePosition;
 
 
         _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 1);
-        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/X", 1);
-        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/Z", 1);
+        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/X", worldPos.x);
+        _effectedEntity.GetComponent<Animator>().SetFloat("HitDirection/Z", worldPos.z);
     }
 
     public void ResolveKnockbackStrong(GameObject _effectedEntity)
@@ -70,10 +70,11 @@ public class OnHitEffects : MonoBehaviour
         _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 2);
     }
 
-    private void PlayParticleAtPosition(VisualEffect _particle, Vector3 _position)
+    private void PlayParticleAtPosition(ParticleSystem _particle, Vector3 _position)
     {
-        _particle.SetVector3(Shader.PropertyToID("Position"), _position);
-        _particle.Play();
+        // Not avaialbe in vfx
+        //_particle.SetVector3(Shader.PropertyToID("Position"), _position);
+        //_particle.Play();
     }
 
     private int LocateHitEffect(HitEffectsEnum _desiredEffect)

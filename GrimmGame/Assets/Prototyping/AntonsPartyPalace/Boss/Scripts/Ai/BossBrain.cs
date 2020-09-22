@@ -113,9 +113,9 @@ public class BossBrain : MonoBehaviour
         // Adds actions to que if needed.
         CheckQue(directionToMove);
 
-            // Diagnostic mode disables boss so that you can test weighting
-            if (!DiagnosticMode(directionToMove))
-        { 
+        // Diagnostic mode disables boss so that you can test weighting
+        if (!DiagnosticMode(directionToMove))
+        {
             // Rotates the boss
             // Should probably be changed to "Can rotate" 
             // and will be set/unset in the animator.
@@ -147,8 +147,8 @@ public class BossBrain : MonoBehaviour
             //    CounterAttack(directionToMove);
             //}
         }
-
     }
+
     // Checks what actions it's doing.
     // Probably can be removed.
     // Boss should be checking if he should attack or not
@@ -290,6 +290,8 @@ public class BossBrain : MonoBehaviour
 
 
     // Used with base actions.
+    // Currently bugged and ai will forget his action sometimes
+    // while curretnly doing it.
     private bool Aggresive(Vector3 a_target)
     {
         if (!m_continue)
@@ -361,8 +363,9 @@ public class BossBrain : MonoBehaviour
             return false;
         }
         // logic is wrong. Enters here when it shouldn't
-        else if (!m_animator.GetBool("Ai/PlayingAction"))
+        else if (!m_animator.GetBool("Ai/PlayingAction") && m_animator.GetInteger("Ai/Action") == 0)
         {
+            Debug.Log("I am forget");
             // Should be hitting this whenever attacks are finished.
             m_continue = false;
             m_launchAttack = false;

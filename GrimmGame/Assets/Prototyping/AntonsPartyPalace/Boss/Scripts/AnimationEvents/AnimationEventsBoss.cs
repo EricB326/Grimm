@@ -67,15 +67,15 @@ public class AnimationEventsBoss : MonoBehaviour
     // Which will include sounds?
     public void FootDownLeft()
     {
-        // Play particle and sound effect on foot.
-        this.gameObject.GetComponent<BossVariables>().m_weaponColliders[3].gameObject.GetComponent<VisualEffect>().Play();
+        // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
+        //this.gameObject.GetComponent<BossVariables>().m_weaponColliders[3].gameObject.GetComponent<VisualEffect>().Play();
     }
 
 
     public void FootDownRight()
     {
-        // Play particle and sound effect on foot.
-        this.gameObject.GetComponent<BossVariables>().m_weaponColliders[2].gameObject.GetComponent<VisualEffect>().Play();
+        // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
+        //this.gameObject.GetComponent<BossVariables>().m_weaponColliders[2].gameObject.GetComponent<VisualEffect>().Play();
     }
 
 
