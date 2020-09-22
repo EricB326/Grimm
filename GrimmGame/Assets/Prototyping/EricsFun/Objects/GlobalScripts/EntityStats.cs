@@ -7,6 +7,7 @@
 //=========================================================//
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Xml;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -36,6 +37,7 @@ public class EntityStats : MonoBehaviour
         public float timeBeforeStaminaRegain;                        // The amount of time the player must of not used stamina before it beings to regain.
         public float speedOfHealthRegain;                            // How fast the entity will regain their stamina after a period of time.
         public float speedOfStaminaRegain;                           // 
+        [HideInInspector] public int maxLives;                       // 
         [HideInInspector] public float maxHealth;                    // Maximum amount of health the entity has.
         [HideInInspector] public float maxStamina;                   // Maximum amount of stamina the entity has.
         [HideInInspector] public float timeSinceLastStaminaDeminish; // The amount of time since the entity last lost stamina.
@@ -99,6 +101,8 @@ public class EntityStats : MonoBehaviour
                 newData.lives = entityList[i].entityObject.GetComponent<BossBrain>().m_bossPhaseList.Count;
             }
 
+            newData.maxLives = entityList[i].lives;
+
             entityList[i] = newData;
         }
     }
@@ -151,8 +155,9 @@ public class EntityStats : MonoBehaviour
             {
                 if (onBossPhaseChange != null)
                     onBossPhaseChange(this, EventArgs.Empty);
-                
-                // NextPhase();
+
+                //TransitionManager.Instance.PlayBossTransition(entityList[_entityIndex].maxLives - (entityList[_entityIndex].lives + 1));
+                NextPhase(_entityIndex);
 
                 entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
             }
@@ -180,6 +185,20 @@ public class EntityStats : MonoBehaviour
             entityList[_entityIndex] = newData;
         }
     }
+
+    private void NextPhase(int _entityIndex)
+    {
+		switch (entityList[_entityIndex].lives)
+		{
+            case 5:
+                TransitionManager.Instance.trans
+
+            default:
+				break;
+		}
+
+	}
+
 
     /* @brief Handles replenishing the entities stamina based on set conditions on if they are able to replenish as well as
      *        if they actually need to replenish.
