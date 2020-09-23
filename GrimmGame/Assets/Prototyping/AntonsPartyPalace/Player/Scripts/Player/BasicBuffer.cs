@@ -20,7 +20,8 @@ using XboxCtrlrInput;
 // values to be used by the player.
 public struct BufferInput
 {
-    public bool m_attack;
+    public bool m_lightAttack;
+    public bool m_heavyAttack;
     public bool m_run;
     public bool m_dash;
     public bool m_dataConsumed;
@@ -55,50 +56,81 @@ public class BasicBuffer
     [HideInInspector]
     public bool m_staminaDrained = false;
 
+    // Will need to be revisted in 
+    // and automated
     public struct Buttons
     {
 
-        // A BUTTON
+        // LIGHT ATTACK BUTTON
 
         // Was button was pressed this frame
-        public bool m_aButton;
+        public bool m_lightAttackButton;
         // Value goes up everytime above is true
         // set to 0 if false.
-        public int m_aheldFor;
+        public int m_lightAttackheldFor;
         // Only occurs when held for is returned to 0.
-        public bool m_aReleased;
+        public bool m_lightAttackReleased;
         // In cases of multiple inputs at the same time
         // which should take priority
-        public int m_aButtonPriority;
+        public int m_lightAttackButtonPriority;
 
-
-        // B BUTTON
+        // HEAVY ATTACK BUTTON
 
         // Was button was pressed this frame
-        public bool m_bButton;
+        public bool m_heavyAttackButton;
         // Value goes up everytime above is true
         // set to 0 if false.
-        public int m_bHeldFor;
+        public int m_heavyAttackheldFor;
         // Only occurs when held for is returned to 0.
-        public bool m_bReleased;
+        public bool m_heavyAttackReleased;
         // In cases of multiple inputs at the same time
         // which should take priority
-        public int m_bButtonPriority;
+        public int m_heavyAttackButtonPriority;
+
+
+        // ROLL/RUN BUTTON
+
+        // Was button was pressed this frame
+        public bool m_rollRunButton;
+        // Value goes up everytime above is true
+        // set to 0 if false.
+        public int m_rollRunHeldFor;
+        // Only occurs when held for is returned to 0.
+        public bool m_rollRunReleased;
+        // In cases of multiple inputs at the same time
+        // which should take priority
+        public int m_rollRunButtonPriority;
+
+
+
         // Internal value to check if input received this frame
         public bool m_inputReceived;
     }
 
     void Start()
     {
-        m_blankBuffer.m_attack = false;
+        // Output
+        m_blankBuffer.m_lightAttack = false;
+        m_blankBuffer.m_heavyAttack = false;
         m_blankBuffer.m_run = false;
         m_blankBuffer.m_dash = false;
-        m_buttonInfo.m_aButton = false;
-        m_buttonInfo.m_aReleased = false;
-        m_buttonInfo.m_aheldFor = 0;
-        m_buttonInfo.m_bButton = false;
-        m_buttonInfo.m_bReleased = false;
-        m_buttonInfo.m_bHeldFor = 0;
+        // Buttons
+        // May need a for loop
+        // if alt/optional controls
+        m_buttonInfo.m_lightAttackButton = false;
+        m_buttonInfo.m_lightAttackReleased = false;
+        m_buttonInfo.m_lightAttackheldFor = 0;
+
+        m_buttonInfo.m_heavyAttackButton = false;
+        m_buttonInfo.m_heavyAttackReleased = false;
+        m_buttonInfo.m_heavyAttackheldFor = 0;
+
+
+        m_buttonInfo.m_rollRunButton = false;
+        m_buttonInfo.m_rollRunReleased = false;
+        m_buttonInfo.m_rollRunHeldFor = 0;
+
+
         m_framesSinceLastInput = 0;
     }
 
@@ -111,50 +143,82 @@ public class BasicBuffer
     // Detects input and adjusts 
     // time held value accordingly.
     // Any extra buttons go here.
+
+    // If we do rebindable controls there
+    // would be a for loop here that checks these
+    // on each input. Alternatively a button press
+    // could fire an event that 
     private void CheckInput()
     {
 
-        m_buttonInfo.m_aButton = false;
-        m_buttonInfo.m_bButton = false;
+        m_buttonInfo.m_lightAttackButton = false;
+        m_buttonInfo.m_heavyAttackButton = false;
+        m_buttonInfo.m_rollRunButton = false;
         m_buttonInfo.m_inputReceived = false;
-        if (XCI.GetButton(XboxButton.A))
+        
+        if (XCI.GetButton(XboxButton.RightBumper))        // Should be a value read out from somewhere.
         {
-            m_buttonInfo.m_aButton = true;
+            m_buttonInfo.m_lightAttackButton = true;
             m_buttonInfo.m_inputReceived = true;
-            m_buttonInfo.m_aheldFor++;
+            m_buttonInfo.m_lightAttackheldFor++;
         }
         else
         {
-            m_buttonInfo.m_aButton = false;
-            if (m_buttonInfo.m_aheldFor > 0)
+            m_buttonInfo.m_lightAttackButton = false;
+            if (m_buttonInfo.m_lightAttackheldFor > 0)
             {
-                m_buttonInfo.m_aReleased = true;
-                m_buttonInfo.m_aheldFor = 0;
+                m_buttonInfo.m_lightAttackReleased = true;
+                m_buttonInfo.m_lightAttackheldFor = 0;
             }
             else
             {
-                m_buttonInfo.m_aReleased = false;
+                m_buttonInfo.m_lightAttackReleased = false;
             }
         }
-        if (XCI.GetButton(XboxButton.B))
+
+        if (XCI.GetButton(XboxButton.LeftBumper))        // Should be a value read out from somewhere.
         {
-            m_buttonInfo.m_bButton = true;
+            m_buttonInfo.m_heavyAttackButton = true;
             m_buttonInfo.m_inputReceived = true;
-            m_buttonInfo.m_bHeldFor++;
+            m_buttonInfo.m_heavyAttackheldFor++;
         }
         else
         {
-            m_buttonInfo.m_bButton = false;
-            if (m_buttonInfo.m_bHeldFor > 0)
+            m_buttonInfo.m_heavyAttackButton = false;
+            if (m_buttonInfo.m_heavyAttackheldFor > 0)
             {
-                m_buttonInfo.m_bReleased = true;
-                m_buttonInfo.m_bHeldFor = 0;
+                m_buttonInfo.m_heavyAttackReleased = true;
+                m_buttonInfo.m_heavyAttackheldFor = 0;
             }
             else
             {
-                m_buttonInfo.m_bReleased = false;
+                m_buttonInfo.m_heavyAttackReleased = false;
             }
         }
+
+
+        if (XCI.GetButton(XboxButton.B))                // Should be a value read out from somewhere.
+        {
+            m_buttonInfo.m_rollRunButton = true;
+            m_buttonInfo.m_inputReceived = true;
+            m_buttonInfo.m_rollRunHeldFor++;
+        }
+        else
+        {
+            m_buttonInfo.m_rollRunButton = false;
+            if (m_buttonInfo.m_rollRunHeldFor > 0)
+            {
+                m_buttonInfo.m_rollRunReleased = true;
+                m_buttonInfo.m_rollRunHeldFor = 0;
+            }
+            else
+            {
+                m_buttonInfo.m_rollRunReleased = false;
+            }
+        }
+
+
+
     }
 
 
@@ -166,13 +230,14 @@ public class BasicBuffer
         // To do the logic for held buttons
         if (m_buttonInfo.m_inputReceived)
         {
-            if (m_buttonInfo.m_aButton)
+            if (m_buttonInfo.m_lightAttackButton)
             {
                 // Need to check a condition here that will prevent it 
                 // sending input in twice if it has been received
-                if (m_buttonInfo.m_aheldFor <= 1)       
+                if (m_buttonInfo.m_lightAttackheldFor <= 1)       
                 {
-                    m_storedBuffer.m_attack = true;
+                    m_storedBuffer.m_lightAttack = true;
+                    m_storedBuffer.m_heavyAttack = false;
                     m_storedBuffer.m_run = false;
                     m_storedBuffer.m_dash = false;
                     m_storedBuffer.m_dataConsumed = false;
@@ -180,11 +245,27 @@ public class BasicBuffer
                     return m_storedBuffer;
                 }
             }
-            if (m_buttonInfo.m_bButton)
+            if(m_buttonInfo.m_heavyAttackButton)
             {
-                if (m_buttonInfo.m_bHeldFor > m_heldframesBeforeRun && !m_staminaDrained)
+                if (m_buttonInfo.m_heavyAttackheldFor <= 1)
                 {
-                    m_storedBuffer.m_attack = false;
+                    m_storedBuffer.m_lightAttack = false;
+                    m_storedBuffer.m_heavyAttack = true;
+                    m_storedBuffer.m_run = false;
+                    m_storedBuffer.m_dash = false;
+                    m_storedBuffer.m_dataConsumed = false;
+                    m_framesSinceLastInput = 0;
+                    return m_storedBuffer;
+                }
+            }
+
+
+            if (m_buttonInfo.m_rollRunButton)
+            {
+                if (m_buttonInfo.m_rollRunHeldFor > m_heldframesBeforeRun && !m_staminaDrained)
+                {
+                    m_storedBuffer.m_lightAttack = false;
+                    m_storedBuffer.m_heavyAttack = false;
                     m_storedBuffer.m_run = true;
                     m_storedBuffer.m_dash = false;
                     m_storedBuffer.m_dataConsumed = false;
@@ -200,10 +281,11 @@ public class BasicBuffer
         // last frame and theframes since last input
         // is greater than 0. Might have issues with dodging
         // after running. Oh my god it actually works.
-        else if (m_buttonInfo.m_bReleased && m_framesSinceLastInput > 0 && !m_staminaDrained || m_buttonInfo.m_bHeldFor > m_heldframesBeforeRun)
+        else if (m_buttonInfo.m_rollRunReleased && m_framesSinceLastInput > 0 && !m_staminaDrained || m_buttonInfo.m_rollRunHeldFor > m_heldframesBeforeRun)
         {
             {
-                m_storedBuffer.m_attack = false;
+                m_storedBuffer.m_lightAttack = false;
+                m_storedBuffer.m_heavyAttack = false;
                 m_storedBuffer.m_run = false;
                 m_storedBuffer.m_dash = true;
                 m_storedBuffer.m_dataConsumed = false;

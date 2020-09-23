@@ -212,14 +212,25 @@ public class Player : MonoBehaviour
         // y axis
         m_animator.SetFloat("Input/Z", a_y);
         // If attack pressed and enough stamina.
-        if (a_input.m_attack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStaminaDrain))
+        if (a_input.m_lightAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStaminaDrain))
         {
-            m_animator.SetBool("Input/Attack", true);
+            m_animator.SetBool("Input/AttackLight", true);
         }
         else
         {
-            m_animator.SetBool("Input/Attack", false);
+            m_animator.SetBool("Input/AttackLight", false);
         }
+        if (a_input.m_heavyAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStaminaDrain))
+        {
+            Debug.Log("Heavy");
+            m_animator.SetBool("Input/AttackHeavy", true);
+        }
+        else
+        {
+            m_animator.SetBool("Input/AttackHeavy", false);
+        }
+
+
         if (a_input.m_dash && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_rollStaminaDrain) && !m_animator.GetBool("Output/IsRolling"))
         {
             m_animator.SetBool("Input/Roll", true);
@@ -475,9 +486,9 @@ public class Player : MonoBehaviour
         }
         m_storedRollDirection.y = 0;
 
-        m_animator.SetFloat("Movement/X", 0);
-        m_animator.SetFloat("Movement/Z", 0);
-        m_animator.SetFloat("MovementSpeedMult", 0);
+        //m_animator.SetFloat("Movement/X", 0);
+        //m_animator.SetFloat("Movement/Z", 0);
+        //m_animator.SetFloat("MovementSpeedMult", 0);
 
     }
 
