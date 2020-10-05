@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c35fbc3b01f69d54499fff2518f6a3ea
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -52,8 +52,13 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Player__Skin
     second: {fileID: 2100000, guid: d36a3e1d483456a4aad4cd1bf4391741, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player__eyebrow
+    second: {fileID: 2100000, guid: ba2260a72f9637f46ac77e0c295d6562, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -120,6 +125,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -146,7 +152,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -165,8 +170,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: facbc8cbef5e75940be1722453bc7ce7,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

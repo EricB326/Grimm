@@ -1039,6 +1039,12 @@ MonoBehaviour:
   m_runSpeed: 7
   m_rollSpeed: 12
   m_rotationTime: 0.8
+<<<<<<< HEAD
+=======
+  m_attackStaminaDrain: 20
+  m_heavyStaminaDrain: 30
+  m_rollAttackStaminaDrain: 20
+>>>>>>> Kaz
   m_rollStaminaDrain: 25
   m_runStaminaDrain: 0.7
   m_rollDamagemultiplier: 0.8
@@ -3248,7 +3254,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4253519557111134604, guid: c35fbc3b01f69d54499fff2518f6a3ea, type: 3}
+  - {fileID: 2100000, guid: ba2260a72f9637f46ac77e0c295d6562, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3421,7 +3427,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4253519557111134604, guid: c35fbc3b01f69d54499fff2518f6a3ea, type: 3}
+  - {fileID: 2100000, guid: ba2260a72f9637f46ac77e0c295d6562, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5027,7 +5033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4930070707828600763}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3291738641834433036}
@@ -7289,8 +7295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe9641e41e09f84e86af7334cf0256d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_visualeffect: {fileID: 0}
   m_particleOffset: 0
+=======
+>>>>>>> Kaz
 --- !u!1 &7130467465952118442
 GameObject:
   m_ObjectHideFlags: 0
