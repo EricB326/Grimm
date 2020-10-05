@@ -12,7 +12,6 @@ public class AttackColliderPlayer : MonoBehaviour
 {
     private Collider m_collider;
 
-
     // Disables trigger box at start.
     void Start()
     {
@@ -28,6 +27,8 @@ public class AttackColliderPlayer : MonoBehaviour
         {
             EntityStats.Instance.DeminishHealthOffEntity("Boss", EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_attackDamage);
             EntityStats.Instance.GetObjectOfEntity("Player").GetComponentInChildren<AnimationEventsPlayer>().DeavtivateHitBox();
+            //plays the boss' hit comfirm sound
+            EntityStats.Instance.GetObjectOfEntity("Boss").GetComponentInChildren<RavenSound>().PlayRavenSound("hit confirm");
 
             // Should be inside an on hit event.
             //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().IncreaseRevengeValue(); // REVENGE VALUE REMOVED LOGIC DEFCUNT

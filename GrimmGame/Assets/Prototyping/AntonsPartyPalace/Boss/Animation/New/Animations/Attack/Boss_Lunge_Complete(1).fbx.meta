@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 7a44282a83d25fc48b0671fb720549d9
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 7888352009808751862
     second: Boss_Lunge_Complete
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -59,20 +59,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.26331362
-        functionName: ActivateHitBox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.5502958
-        functionName: DeactivateHitBox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
       - time: 0
         functionName: RotateOn
         data: 
@@ -87,6 +73,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.26331362
+        functionName: ActivateHitBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.30434784
         functionName: ActivateHitBox
         data: 
@@ -94,7 +87,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.51778656
+      - time: 0.43264878
+        functionName: DeactivateHitBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.44292024
         functionName: DeactivateHitBox
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -117,6 +117,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -143,7 +144,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -663,8 +663,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 65f8151037438b14eb29a657114910d0,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

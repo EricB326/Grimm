@@ -60,7 +60,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.20030123
-        functionName: PlayerSound
+        functionName: PlayPlayerSound
+        data: footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7262357
+        functionName: PlayPlayerSound
         data: footstep
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -59,23 +59,23 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.07423118
+      - time: 0
+        functionName: PlayPlayerSound
+        data: roll
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
         functionName: IFramesOnRoll
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.4984093
+      - time: 0.79520077
         functionName: IFramesOff
         data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: PlayerSound
-        data: roll
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
