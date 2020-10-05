@@ -65,15 +65,15 @@ public class Player : MonoBehaviour
     // Damage per attack. Should be consistent.
     [SerializeField]
     [Tooltip("0 Light attack" +
-        " 1 Heavy attack" +
-        " 2 Roll attack" +
+        " 1 Roll attack" +
+        " 2 Heavy attack" +
         " 3 Sprint attack")]
     public List<float> m_attacksDamage;
 
     [SerializeField]
     [Tooltip("0 Light attack" +
-        " 1 Heavy attack" +
-        " 2 Roll attack" +
+        " 1 Roll attack" +
+        " 2 Heavy attack" +
         " 3 Sprint attack")]
     public List<float> m_attackStamina;
 
