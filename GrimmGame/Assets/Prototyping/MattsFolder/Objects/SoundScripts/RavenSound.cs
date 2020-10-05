@@ -40,7 +40,7 @@ public class RavenSound : MonoBehaviour
     //put parameters here
     #endregion
 
-    RavenSound(string action)
+    public void PlayRavenSound(string action)
     {
         //no capitals and spaces in the action names. Exclude raven/player prefix.
         switch (action)

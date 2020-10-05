@@ -455,6 +455,7 @@ Transform:
   - {fileID: 769745456721110813}
   - {fileID: 7661308527991522787}
   - {fileID: 5105361839773566779}
+  - {fileID: 6872660809587645617}
   m_Father: {fileID: 8005627673661644897}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -912,6 +913,7 @@ GameObject:
   - component: {fileID: 7130467466059079128}
   - component: {fileID: 7130467466059079131}
   - component: {fileID: 7130467466059079130}
+  - component: {fileID: 7652643980951255531}
   m_Layer: 2
   m_Name: Brynn
   m_TagString: Player
@@ -977,7 +979,7 @@ Animator:
   m_GameObject: {fileID: 1285055828845462741}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: facbc8cbef5e75940be1722453bc7ce7, type: 3}
-  m_Controller: {fileID: 9100000, guid: b5a366f19079d484da676ccf997c005a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 785ec6d07e4c4ef49a5b7988bea4f601, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
@@ -1044,7 +1046,10 @@ MonoBehaviour:
   m_attackStaminaDrain: 20
   m_heavyStaminaDrain: 30
   m_rollAttackStaminaDrain: 20
+<<<<<<< HEAD
 >>>>>>> Kaz
+=======
+>>>>>>> Matt
   m_rollStaminaDrain: 25
   m_runStaminaDrain: 0.7
   m_rollDamagemultiplier: 0.8
@@ -1067,6 +1072,26 @@ MonoBehaviour:
     m_staminaDrained: 0
   m_respawnPos: {fileID: 0}
   m_startPos: {x: 0, y: 0, z: 0}
+--- !u!114 &7652643980951255531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285055828845462741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ae648278c109344b2978ec353a41af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordEmitter: {fileID: 4946632631522018555}
+  headEmitter: {fileID: 7239863179962812460}
+  centreEmitter: {fileID: 2251685858898577755}
+  footEmitter: {fileID: 3246172019206966763}
+  playerSwordAttack: 
+  playerHitConfirm: event:/Player/hitconfirm
+  playerRoll: event:/Player/roll
+  playerFootstep: event:/Player/footstep
 --- !u!1 &1295807933842311742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,6 +2739,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.063185066, y: 1.0156996, z: -0.10414861}
     m_Extent: {x: 0.011010634, y: 0.040080905, z: 0.021468926}
   m_DirtyAABB: 0
+--- !u!1 &2251685858898577755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4091198333510618249}
+  m_Layer: 2
+  m_Name: Centre Sound Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4091198333510618249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2251685858898577755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3848659974939861386}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2259718899555787212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3204,6 +3259,36 @@ Transform:
   - {fileID: 6973864129531431142}
   m_Father: {fileID: 4786303183336637147}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3246172019206966763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3077565178751816354}
+  m_Layer: 2
+  m_Name: Foot Sound Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3077565178751816354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246172019206966763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6973864129531431142}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3264016970881048204
 GameObject:
@@ -3765,6 +3850,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9054718742689605010}
+  - {fileID: 4091198333510618249}
   m_Father: {fileID: 9218861489427273129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5181,6 +5267,36 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00066900253, y: 0.87669635, z: -0.032641158}
     m_Extent: {x: 0.5662968, y: 0.5197692, z: 0.18213521}
   m_DirtyAABB: 0
+--- !u!1 &4946632631522018555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6901292315897250390}
+  m_Layer: 2
+  m_Name: Sword Sound Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6901292315897250390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946632631522018555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.77, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8876649749290086470}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4978745416777357378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,6 +5387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8964876432107335352}
+  - {fileID: 3077565178751816354}
   m_Father: {fileID: 8892513795226535476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7296,10 +7413,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_visualeffect: {fileID: 0}
   m_particleOffset: 0
 =======
 >>>>>>> Kaz
+=======
+>>>>>>> Matt
 --- !u!1 &7130467465952118442
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,6 +7511,36 @@ Transform:
   - {fileID: 4502055819767803176}
   m_Father: {fileID: 6823581875366202921}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7239863179962812460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6872660809587645617}
+  m_Layer: 2
+  m_Name: Head Sound Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6872660809587645617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239863179962812460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.008, y: 0.08, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5454995436479385349}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7292234414631101910
 GameObject:
@@ -9439,6 +9589,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ba917dd4d8d4beb46a91e76d8eb560a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a208b545c8da9e940a5dc229ce857a83, type: 3}
+<<<<<<< HEAD
+=======
+--- !u!4 &8876649749290086470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1856806356426660137, guid: a208b545c8da9e940a5dc229ce857a83,
+    type: 3}
+  m_PrefabInstance: {fileID: 7130467465414404463}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Matt
 --- !u!4 &5167208052493732244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2684460084258152699, guid: a208b545c8da9e940a5dc229ce857a83,

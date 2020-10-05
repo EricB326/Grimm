@@ -35,6 +35,8 @@ public class AttackColliderPlayer : MonoBehaviour
             m_visualeffect.Play();
             EntityStats.Instance.DeminishHealthOffEntity("Boss", player.m_attacksDamage[player.m_attackStats]);
             EntityStats.Instance.GetObjectOfEntity("Player").GetComponentInChildren<AnimationEventsPlayer>().DeavtivateHitBox();
+            //plays the boss' hit comfirm sound
+            EntityStats.Instance.GetObjectOfEntity("Boss").GetComponentInChildren<RavenSound>().PlayRavenSound("hit confirm");
 
             // Should be inside an on hit event.
             //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().IncreaseRevengeValue(); // REVENGE VALUE REMOVED LOGIC DEFCUNT

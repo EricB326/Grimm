@@ -59,15 +59,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.11144577
-        functionName: PlayerSound
+      - time: 0.12748855
+        functionName: PlayPlayerSound
         data: footstep
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.46536142
-        functionName: PlayerSound
+      - time: 0.57766086
+        functionName: PlayPlayerSound
         data: footstep
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

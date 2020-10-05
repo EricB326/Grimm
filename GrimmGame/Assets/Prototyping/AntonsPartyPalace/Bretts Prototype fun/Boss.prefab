@@ -3320,8 +3320,8 @@ MonoBehaviour:
   footEmitter: {fileID: 0}
   ravenSwordAttack1: 
   ravenClawAttack1: 
-  ravenHitConfirm: 
-  ravenFootstep1: 
+  ravenHitConfirm: event:/Raven/hitconfirm
+  ravenFootstep1: event:/Raven/footstep
 --- !u!1 &7545919590980641719
 GameObject:
   m_ObjectHideFlags: 0

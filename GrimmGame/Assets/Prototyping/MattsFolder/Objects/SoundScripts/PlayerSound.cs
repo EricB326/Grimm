@@ -39,8 +39,9 @@ public class PlayerSound : MonoBehaviour
     private int swordSwingNumber;
     #endregion
 
-    PlayerSound(string action)
+    public void PlayPlayerSound(string action)
     {
+        Debug.Log(action);
         //no capitals and spaces in the action names. Exclude raven/player prefix.
         //cases should only carry information based on the animation.
         //eg: "sword attack 1" and "sword attack 2" are different cases but "footstep path" and "footstep mud" are the same.
