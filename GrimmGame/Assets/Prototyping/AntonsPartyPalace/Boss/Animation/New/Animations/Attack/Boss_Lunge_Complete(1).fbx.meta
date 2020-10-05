@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 7a44282a83d25fc48b0671fb720549d9
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 7888352009808751862
     second: Boss_Lunge_Complete
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -77,7 +77,7 @@ ModelImporter:
         functionName: RotateOn
         data: 
         objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0.1
+        floatParameter: 0.06
         intParameter: 0
         messageOptions: 0
       - time: 0.14935066
@@ -117,6 +117,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -143,7 +144,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -663,8 +663,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 65f8151037438b14eb29a657114910d0,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

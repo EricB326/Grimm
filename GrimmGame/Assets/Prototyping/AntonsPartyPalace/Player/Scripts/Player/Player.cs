@@ -52,11 +52,9 @@ public class Player : MonoBehaviour
 
     private GameObject m_lifter;
 
-    // Stamina drain on attack. Should be consistent.
-    public float m_attackStaminaDrain = 20;
-    public float m_heavyStaminaDrain = 30;
+
     // Could be removed 
-    public float m_rollAttackStaminaDrain = 20;
+    //public float m_rollAttackStaminaDrain = 20;
     // Roll Stamina drain
     public float m_rollStaminaDrain = 25;
 
@@ -65,8 +63,29 @@ public class Player : MonoBehaviour
     [Range(0, 1)]
     public float m_rollDamagemultiplier = 0.80f;
     // Damage per attack. Should be consistent.
-    public float m_attackDamage = 10;
-    
+    [SerializeField]
+    [Tooltip("0 Light attack" +
+        " 1 Heavy attack" +
+        " 2 Roll attack" +
+        " 3 Sprint attack")]
+    public List<float> m_attacksDamage;
+
+    [SerializeField]
+    [Tooltip("0 Light attack" +
+        " 1 Heavy attack" +
+        " 2 Roll attack" +
+        " 3 Sprint attack")]
+    public List<float> m_attackStamina;
+
+
+    //public float m_lightAttackDamage = 10;
+    //public float m_heavyAttackDamage = 15;
+
+    // Passed in to drain stamina and do damage.
+    // 0 Light
+    // 1 Heavy
+    // 2 Roll
+    public int m_attackStats = 0;
 
     // Only used to decide if the player can be hit. Basicaly god mode.
     // Unable to be hit if IFrames true;
@@ -212,7 +231,7 @@ public class Player : MonoBehaviour
         // y axis
         m_animator.SetFloat("Input/Z", a_y);
         // If attack pressed and enough stamina.
-        if (a_input.m_lightAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStaminaDrain))
+        if (a_input.m_lightAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStamina[0]))
         {
             m_animator.SetBool("Input/AttackLight", true);
         }
@@ -220,7 +239,7 @@ public class Player : MonoBehaviour
         {
             m_animator.SetBool("Input/AttackLight", false);
         }
-        if (a_input.m_heavyAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStaminaDrain))
+        if (a_input.m_heavyAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStamina[1]))
         {
             Debug.Log("Heavy");
             m_animator.SetBool("Input/AttackHeavy", true);

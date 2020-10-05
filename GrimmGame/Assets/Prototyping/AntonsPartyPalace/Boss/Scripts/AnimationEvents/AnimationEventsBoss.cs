@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.VFX;
+using UnityEngine.VFX;
 
 // Boss Colliders
 // 1. Sword
@@ -19,7 +19,8 @@ public class AnimationEventsBoss : MonoBehaviour
     // For calls to the camera
     CameraRotation m_cameraList;
 
-    
+    public VisualEffect m_leftFoot;
+    public VisualEffect m_rightFoot;
 
 
     private void Start()
@@ -68,14 +69,24 @@ public class AnimationEventsBoss : MonoBehaviour
     public void FootDownLeft()
     {
         // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
-        //this.gameObject.GetComponent<BossVariables>().m_weaponColliders[3].gameObject.GetComponent<VisualEffect>().Play();
+        m_leftFoot.Play();
     }
 
-
+        
     public void FootDownRight()
     {
         // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
-        //this.gameObject.GetComponent<BossVariables>().m_weaponColliders[2].gameObject.GetComponent<VisualEffect>().Play();
+        m_rightFoot.Play();
+    }
+
+    public void HandDownLeft()
+    {
+
+    }
+
+    public void HandDownRight()
+    {
+
     }
 
 

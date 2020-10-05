@@ -224,6 +224,10 @@ public class BasicBuffer
 
     // What are the rules for the 
     // received input.
+    // This does not cover the case of multiple button inputs.
+    // Shit is fucked.
+
+
     private BufferInput InterpretInput()
     {
         // Firstly check if any input at all

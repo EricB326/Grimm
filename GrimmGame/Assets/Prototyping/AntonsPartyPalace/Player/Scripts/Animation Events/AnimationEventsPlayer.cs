@@ -9,16 +9,38 @@ using UnityEngine;
 
 public class AnimationEventsPlayer : MonoBehaviour
 {
-   
+    // Hitbox activate requires a number
+    // The number will signify what kind of attack 
+    // it is.
+    // 0 light attack drain and damage.
+    // 1 heavy attack drain and damage.
+    // 2 roll attack drain and damage
+    // 3 run attack drain and damage
+
     // Activates hitboxes on player model to cause damage
-    public void ActivateHitBox()
+    public void ActivateHitBox(int damageAndStaminaID)
     {
         //Debug.Log(a_colliderNumber);  
         Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         player.GetAttackHitBox().enabled = true;
         player.GetSwordHitBox().enabled = true;
-        EntityStats.Instance.DeminishStaminaOffEntity("Player", player.m_attackStaminaDrain);
+
+        player.m_attackStats = damageAndStaminaID;
+        EntityStats.Instance.DeminishStaminaOffEntity("Player", player.m_attackStamina[damageAndStaminaID]);
     }
+
+    // Activates hitboxes on player model to cause damage
+    // The variant for heavy attack - Should really just pass in a number.
+    //public void ActivateHitBoxHeavy()
+    //{
+    //    //Debug.Log(a_colliderNumber);  
+    //    Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+    //    player.GetAttackHitBox().enabled = true;
+    //    player.GetSwordHitBox().enabled = true;
+    //    EntityStats.Instance.DeminishStaminaOffEntity("Player", player.m_heavyStaminaDrain);
+    //}
+
+
     // Disables hitboxes on player model to no longer cause damage
     // Occurs when hitting boss or swing near end.
     public void DeavtivateHitBox()

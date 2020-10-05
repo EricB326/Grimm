@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/Master.strings.bank
   Name: Master.strings
-  lastModified: 637363831387710233
+  lastModified: 637370162491357269
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/raven.bank
   Name: raven
-  lastModified: 637363831387740155
+  lastModified: 637370162491378148
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/player.bank
   Name: player
-  lastModified: 637363831387730181
+  lastModified: 637370162491378148
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/User/Desktop/Abortions/Grimm/GrimmGame/Assets/FMOD banks/Master.bank
   Name: Master
-  lastModified: 637363831387700259
+  lastModified: 637370162491368399
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -834,7 +834,7 @@ MonoBehaviour:
   - {fileID: -346763630072436977}
   StringsBanks:
   - {fileID: -2713803628324781290}
-  stringsBankWriteTime: 637363831387710233
+  stringsBankWriteTime: 637370162491357269
   cacheVersion: 5
 --- !u!114 &20121289848526603
 MonoBehaviour:

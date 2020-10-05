@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.VFX;
 
 
 // For the player weapon.
@@ -11,7 +11,8 @@ using UnityEngine;
 public class AttackColliderPlayer : MonoBehaviour
 {
     private Collider m_collider;
-
+    public VisualEffect m_visualeffect;
+    public float m_particleOffset;
 
     // Disables trigger box at start.
     void Start()
@@ -26,7 +27,13 @@ public class AttackColliderPlayer : MonoBehaviour
     {
         if(other.tag == "Boss")
         {
-            EntityStats.Instance.DeminishHealthOffEntity("Boss", EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_attackDamage);
+            Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+
+            m_visualeffect.transform.LookAt(player.transform.position);
+            Vector3 newPos = player.transform.position - other.transform.position;
+            m_visualeffect.transform.position = other.transform.position + newPos.normalized + new Vector3(0, m_particleOffset, 0);
+            m_visualeffect.Play();
+            EntityStats.Instance.DeminishHealthOffEntity("Boss", player.m_attacksDamage[player.m_attackStats]);
             EntityStats.Instance.GetObjectOfEntity("Player").GetComponentInChildren<AnimationEventsPlayer>().DeavtivateHitBox();
 
             // Should be inside an on hit event.
