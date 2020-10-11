@@ -1,5 +1,140 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8924067411154650063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/raven.bank
+  m_EditorClassIdentifier: 
+  Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/raven.bank
+  Name: raven
+  lastModified: 637376661864903519
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 18400
+  Exists: 1
+--- !u!114 &-8428822461863441245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Player/footstep
+  guid: 1e15f68899396c448218b12f98ce24b9
+  Banks:
+  - {fileID: 6737233743824363528}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5351053786622856999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Raven/hitconfirm
+  m_EditorClassIdentifier: 
+  Path: event:/Raven/hitconfirm
+  guid: 30121a2b6e247e45b2983ef7e735580b
+  Banks:
+  - {fileID: -8924067411154650063}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2559773548195320652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/roll
+  m_EditorClassIdentifier: 
+  Path: event:/Player/roll
+  guid: 12176ea1f8fd0f40a15245c478d9b509
+  Banks:
+  - {fileID: 6737233743824363528}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2369077339487353081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/hitconfirm
+  m_EditorClassIdentifier: 
+  Path: event:/Player/hitconfirm
+  guid: 567f8f2548e86843b34a723574dee6ce
+  Banks:
+  - {fileID: 6737233743824363528}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-787423655118857356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Raven/footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Raven/footstep
+  guid: 895c0e184467b2419eaa4c5d61190af3
+  Banks:
+  - {fileID: -8924067411154650063}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +147,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
+  EditorBanks:
+  - {fileID: 5724680040526254773}
+  - {fileID: 5193402215960462185}
+  - {fileID: 6737233743824363528}
+  - {fileID: -8924067411154650063}
+  EditorEvents:
+  - {fileID: -2559773548195320652}
+  - {fileID: -8428822461863441245}
+  - {fileID: -2369077339487353081}
+  - {fileID: -5351053786622856999}
+  - {fileID: -787423655118857356}
+  - {fileID: 6461352793582699401}
   EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  stringsBankWriteTime: 0
+  MasterBanks:
+  - {fileID: 5193402215960462185}
+  StringsBanks:
+  - {fileID: 5724680040526254773}
+  stringsBankWriteTime: 637376661856660030
   cacheVersion: 5
+--- !u!114 &5193402215960462185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/Master.bank
+  Name: Master
+  lastModified: 637376661856510407
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2096
+  Exists: 1
+--- !u!114 &5724680040526254773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/Master.strings.bank
+  Name: Master.strings
+  lastModified: 637376661856660030
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1196
+  Exists: 1
+--- !u!114 &6461352793582699401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/SFX Volume
+  m_EditorClassIdentifier: 
+  Path: snapshot:/SFX Volume
+  guid: f3bb713d91efb84aa2cd3e28c63522f2
+  Banks:
+  - {fileID: 5193402215960462185}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &6737233743824363528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/player.bank
+  m_EditorClassIdentifier: 
+  Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/player.bank
+  Name: player
+  lastModified: 637376661861377388
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 50112
+  Exists: 1
