@@ -119,7 +119,7 @@ public class EntityStats : MonoBehaviour
         ReplenishStamina();
 
         // If the boss loses a life from a phase, each entity should regain.
-        if (shouldStatsRestore)
+        if (restoreInProcess)
         {
             RestoreAllStats();
         }
@@ -136,27 +136,27 @@ public class EntityStats : MonoBehaviour
     private void HandleZeroHealthEntity(int _entityIndex)
     {
         newData = entityList[_entityIndex];
+        //newData.health = newData.maxHealth;
         newData.lives--;
-        newData.health = newData.maxHealth;
         entityList[_entityIndex] = newData;
 
         // Still lives available.
         if (entityList[_entityIndex].lives > 0)
         {
             // Handle player losing a life.
+            // if(entityList[_entityIndex].name == "Player")
             if (entityList[_entityIndex].name == "Player")
             {
                 if (onPlayerLifeLost != null)
                     onPlayerLifeLost(this, EventArgs.Empty);
 
-                // PhaseReset();
+                PhaseReset(_entityIndex);
             }
             else // Handle boss losing a life (phase).
             {
                 if (onBossPhaseChange != null)
                     onBossPhaseChange(this, EventArgs.Empty);
 
-                //TransitionManager.Instance.PlayBossTransition(entityList[_entityIndex].maxLives - (entityList[_entityIndex].lives + 1));
                 NextPhase(_entityIndex);
 
                 entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
@@ -166,19 +166,17 @@ public class EntityStats : MonoBehaviour
         {
             if (entityList[_entityIndex].name == "Player") // Handle player losing final life.
             {
-                EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
-                // GameOverLose();
+                //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
+                GameOverLose();
             }
             else // Handle boss losing final life.
             {
-                Debug.Log("Winner");
-
                 // Remove the final phase indicator.
                 if (onBossPhaseChange != null)
                     onBossPhaseChange(this, EventArgs.Empty);
                 entityList[_entityIndex].entityObject.GetComponent<BossBrain>().m_bossPhaseList.RemoveAt(0);
 
-                // GameOverWin();
+                GameOverWin();
             }
 
             newData.lives = 0;
@@ -190,15 +188,42 @@ public class EntityStats : MonoBehaviour
     {
 		switch (entityList[_entityIndex].lives)
 		{
-            case 5:
-                //TransitionManager.Instance.trans
-
-            default:
-				break;
+   //         case 4:
+   //             Transition.PhaseOneTransition();
+   //             break;
+			//case 3:
+   //             Transition.PhaseTwoTransition();
+			//	break;
+			//case 2:
+   //             Transition.PhaseThreeTransition();
+   //             break;
+			//case 1:
+   //             Transition.PhaseFourTransition();
+   //             break;
+			default:
+                Transition.DefaultBossTransision();
+                break;
 		}
-
 	}
 
+    private void PhaseReset(int _entityIndex)
+    {
+        Transition.PlayerPhaseResetTransiton();
+    }
+
+    private void GameOverWin()
+    {
+        Transition.BossDefeatedTransition();
+
+        // Also should have some sort of end game thing go off to stop the game.
+    }
+
+    private void GameOverLose()
+    {
+        Transition.PlayerDefeatedTransition();
+
+        // Also should have some sort of end game thing go off to stop the game.
+    }
 
     /* @brief Handles replenishing the entities stamina based on set conditions on if they are able to replenish as well as
      *        if they actually need to replenish.
@@ -233,35 +258,72 @@ public class EntityStats : MonoBehaviour
         }
     }
 
-    private bool shouldStatsRestore = false;
+    private bool restoreInProcess = false;
 
     public void RestoreAllStats()
     {
-        shouldStatsRestore = true;
-        if (onHealthReplenish != null)
+        restoreInProcess = true;
+
+		int bossIndex = DoesEntityExist("Boss");
+		int playerIndex = DoesEntityExist("Player");
+
+        if (entityList[bossIndex].health >= entityList[bossIndex].maxHealth && entityList[playerIndex].health >= entityList[playerIndex].maxHealth)
+        { 
+			restoreInProcess = false;
+
+            // Make sure both entities are not about the max.
+            newData = entityList[bossIndex];
+            newData.health = newData.maxHealth;
+            entityList[bossIndex] = newData;
+
+			newData = entityList[playerIndex];
+			newData.health = newData.maxHealth;
+			entityList[playerIndex] = newData;
+		}
+
+		if (onHealthReplenish != null)
             onHealthReplenish(this, EventArgs.Empty);
 
         for (int i = 0; i < entityList.Count; i++)
         {
-            RestoreStatsOfEntity(i);
+            RestoreStatsOfEntity(entityList[i].name);
         }
     }
 
-    private void RestoreStatsOfEntity(int _entityIndex)
-    {
-        
-        newData = entityList[_entityIndex];
+	public void RestoreAllStatsInstant()
+	{
+		int bossIndex = DoesEntityExist("Boss");
+		int playerIndex = DoesEntityExist("Player");
 
-        if (entityList[_entityIndex].name != "Player")
+        newData = entityList[bossIndex];
+        newData.health = newData.maxHealth;
+        entityList[bossIndex] = newData;
+
+		newData = entityList[playerIndex];
+		newData.health = newData.maxHealth;
+		entityList[playerIndex] = newData;
+
+		if (onHealthReplenish != null)
+			onHealthReplenish(this, EventArgs.Empty);
+	}
+
+	public void RestoreStatsOfEntity(string _entityName)
+    {
+        int entityIndex = DoesEntityExist(_entityName);
+
+        newData = entityList[entityIndex];
+
+        if (entityList[entityIndex].name != "Player")
             newData.stamina = newData.maxStamina;
 
-        if (entityList[_entityIndex].health != entityList[_entityIndex].maxHealth)
+        if (entityList[entityIndex].health != entityList[entityIndex].maxHealth)
             newData.health += newData.speedOfHealthRegain;
         else
             newData.health = newData.maxHealth;
 
-        entityList[_entityIndex] = newData;
-    }
+        entityList[entityIndex] = newData;
+
+	}
 
     public GameObject GetObjectOfEntity(string _entityName)
     {
@@ -367,7 +429,7 @@ public class EntityStats : MonoBehaviour
         if (entityIndex == ENTITY_INDEX_OUT_OF_RANGE)
             return;
 
-        shouldStatsRestore = false;
+        restoreInProcess = false;
 
         // See the last two lines of commented code in this function.
         newData = entityList[entityIndex];
@@ -476,4 +538,24 @@ public class EntityStats : MonoBehaviour
         Debug.LogError("ERROR: DoesEntityExist(string) call. The entity: " + _entityName + ", does not exists within the entity list.");
         return ENTITY_INDEX_OUT_OF_RANGE;
     }
+
+    // yo sorry bro
+    public int GetLivesOfEntity(string _entityName)
+    {
+        return entityList[DoesEntityExist(_entityName)].lives;
+    }
+    public void SetHealthOfEntity(string _entityName, float _newHealth)
+    {
+        int playerIndex = DoesEntityExist(_entityName);
+
+        newData = entityList[playerIndex];
+        newData.health = _newHealth;
+        entityList[playerIndex] = newData;
+
+        if (onHealthReplenish != null)
+            onHealthReplenish(this, EventArgs.Empty);
+    }
+
+
+
 }

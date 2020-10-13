@@ -10,10 +10,10 @@ Material:
   m_Name: Grimm_FlatClouds
   m_Shader: {fileID: -6465566751694194690, guid: 73b0aac8f81ae974caee58cde6d10ca2,
     type: 3}
-  m_ShaderKeywords: _BLENDMODE_ALPHA _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
+  m_ShaderKeywords: _ALPHATEST_ON _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
@@ -30,33 +30,33 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _AlphaCutoffEnable: 0
+    - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _AroundSkyBias: 0.002
+    - _AroundSkyBias: 0.1
     - _BlendMode: 0
-    - _CloudSpeed1: 1
-    - _CloudSpeed2: 0.05
-    - _CloudSpeedMaster: 0.01
-    - _Coverage: 0.494
-    - _CullMode: 0
-    - _CullModeForward: 0
+    - _CloudSpeed1: 0.5
+    - _CloudSpeed2: 0.2
+    - _CloudSpeedMaster: 0.015
+    - _Coverage: 0.35
+    - _CullMode: 2
+    - _CullModeForward: 2
     - _DepthFade: 0.89
-    - _DoubleSidedEnable: 1
+    - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 0
     - _DstBlend: 10
     - _EnableFogOnTransparent: 1
     - _LightingOffsetDist: 0
     - _NoiseTexScale1: 0.1
-    - _NoiseTexScale2: 0.2
-    - _NoiseTexScaleMaster: 0.05
+    - _NoiseTexScale2: 0.18
+    - _NoiseTexScaleMaster: 0.06
     - _ReceivesSSR: 1
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
-    - _RimLightStr: 1
-    - _SSSBoost: 0.948
-    - _SSSPow: 10.31
-    - _SSSRim: 0.729
+    - _RimLightStr: 0.003
+    - _SSSBoost: 0.1
+    - _SSSPow: 0.01
+    - _SSSRim: 0.7
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -69,20 +69,20 @@ Material:
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
     - _SurfaceType: 1
-    - _TopDownOffset: -0.381
+    - _TopDownOffset: -0.719
     - _TopDownShadingLevel: 0.586
     - _TopDownShadingOpacity: 0.598
-    - _TopDownShadingSoftness: 0.51
+    - _TopDownShadingSoftness: 0.386
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 4
-    - _ZTestGBuffer: 4
+    - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 0
-    - __Softness: 0.485
+    - __Softness: 0.5
     m_Colors:
     - _DoubleSidedConstants: {r: -1, g: -1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

@@ -66,16 +66,16 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.92694074
-        functionName: IFramesOff
-        data: 
+      - time: 0
+        functionName: PlayPlayerSound
+        data: hit confirm
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: PlayPlayerSound
-        data: hit confirm
+      - time: 0.92694074
+        functionName: IFramesOff
+        data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

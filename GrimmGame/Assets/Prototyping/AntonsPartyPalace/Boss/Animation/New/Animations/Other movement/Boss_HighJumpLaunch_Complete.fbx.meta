@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: c2694d4846ef4b54f9c72b88c123c4c9
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: 3509036366214165191
-    second: Boss_HighJumpLaunch_Complete
+    second: OldBoss_HighJumpLaunch_Complete
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_HighJumpLaunch_Complete
+      name: OldBoss_HighJumpLaunch_Complete
       takeName: Boss_HighJumpLaunch_Complete
       internalID: 0
       firstFrame: 1
@@ -89,6 +89,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -115,7 +116,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -635,8 +635,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 65f8151037438b14eb29a657114910d0,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

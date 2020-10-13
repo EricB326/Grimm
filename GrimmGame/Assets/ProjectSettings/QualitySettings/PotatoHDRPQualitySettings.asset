@@ -220,9 +220,9 @@ MonoBehaviour:
     supportTerrainHole: 0
     supportRayTracing: 0
     lightLoopSettings:
-      cookieAtlasSize: 128
+      cookieAtlasSize: 2048
       cookieFormat: 74
-      pointCookieSize: 64
+      pointCookieSize: 128
       cubeCookieTexArraySize: 16
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 1
@@ -274,12 +274,12 @@ MonoBehaviour:
       screenSpaceShadowBufferFormat: 48
     decalSettings:
       drawDistance: 1000
-      atlasWidth: 512
-      atlasHeight: 512
-      perChannelMask: 1
+      atlasWidth: 1024
+      atlasHeight: 1024
+      perChannelMask: 0
     postProcessSettings:
       m_LutSize: 32
-      lutFormat: 74
+      lutFormat: 48
       bufferFormat: 74
     dynamicResolutionSettings:
       enabled: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 010000
+        m_Values: 000000
         m_SchemaId:
           m_Id: 
     maximumLODLevel:
@@ -343,7 +343,9 @@ MonoBehaviour:
   availableMaterialQualityLevels: 1
   m_DefaultMaterialQualityLevel: 1
   diffusionProfileSettings: {fileID: 0}
-  diffusionProfileSettingsList: []
+  diffusionProfileSettingsList:
+  - {fileID: 11400000, guid: eddabc4febaac7344ad915308d19bf84, type: 2}
+  - {fileID: 11400000, guid: bc008ea83939fe44e93ff9dab5d86571, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
   afterPostProcessCustomPostProcesses: []

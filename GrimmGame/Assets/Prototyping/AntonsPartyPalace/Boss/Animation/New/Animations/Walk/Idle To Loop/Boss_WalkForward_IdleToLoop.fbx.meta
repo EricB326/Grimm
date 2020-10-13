@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 06de573fe71e63a4796d03c941d2a2a5
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -8559921373001067077
-    second: Boss_WalkForward_IdleToLoop
+    second: OldBoss_WalkForward_IdleToLoop
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -19,34 +19,10 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: Boss_Rig:Root
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'Boss_Rig:Jnt_Leg_Low_L'
-      : rotation error = 28.167833 deg\n\t'Boss_Rig:Jnt_Leg_Low_R' : rotation error
-      = 78.332809 deg\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Boss_WalkForward_IdleToLoop' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation DOF
-      on avatar to improve retargeting quality.\n\t'Boss_Rig:Jnt_Spine_01' has translation
-      animation that will be discarded.\n\t'Boss_Rig:Jnt_Neck_01' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_L'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Boss_Rig:Jnt_Leg_Low_R'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Boss_WalkForward_IdleToLoop':\n\tLeftLowerLeg
-      average position error 40.8 mm and maximum position error 57.6 mm at time 0:
-      1 (0.0%) Frame 1\n\tLeftFoot average position error 4.7 mm and maximum position
-      error 8.2 mm at time 0:19 (62.1%) Frame 19\n\tRightLowerLeg average position
-      error 172.7 mm and maximum position error 405.7 mm at time 0:11 (34.5%) Frame
-      11\n\tRightFoot average position error 36.5 mm and maximum position error 118.1
-      mm at time 0:11 (34.5%) Frame 11\n\tLeftUpperArm average position error 1.3
-      mm and maximum position error 2.8 mm at time 1: 0 (100.0%) Frame 30\n\tLeftLowerArm
-      average position error 1.2 mm and maximum position error 2.8 mm at time 1: 0
-      (100.0%) Frame 30\n\tLeftHand average position error 1.3 mm and maximum position
-      error 2.8 mm at time 1: 0 (100.0%) Frame 30\n\tRightUpperArm average position
-      error 1.3 mm and maximum position error 2.8 mm at time 1: 0 (100.0%) Frame 30\n\tRightLowerArm
-      average position error 1.3 mm and maximum position error 2.8 mm at time 1: 0
-      (100.0%) Frame 30\n\tRightHand average position error 1.3 mm and maximum position
-      error 2.8 mm at time 1: 0 (100.0%) Frame 30\n\tHead average position error 5.5
-      mm and maximum position error 9.6 mm at time 1: 0 (100.0%) Frame 30\n"
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -57,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: OldBoss_WalkForward_IdleToLoop
+      takeName: Boss_WalkForward_IdleToLoop
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -70,6 +75,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -96,7 +102,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -616,8 +621,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 65f8151037438b14eb29a657114910d0,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "ca.andydbc.unity-texture-packer": "file:C:/Users/360ju/Documents/Project Grimm/unity-texture-packer-master",
     "com.unity.burst": "1.3.3",
     "com.unity.cinemachine": "2.6.0",
     "com.unity.collab-proxy": "1.2.16",

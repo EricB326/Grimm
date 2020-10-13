@@ -45,6 +45,11 @@ public class ConsumeDataBoss : StateMachineBehaviour
                         animator.SetInteger("CutScene", 0);
                         break;
                     }
+                case BossDataEnums.AI_DEATH:
+                    {
+                        animator.SetInteger("Death", 0);
+                        break;
+                    }
                 default:
                     {
                         Debug.Log("VALUE " + m_dataToClear.ToString() + " NOT SET TO BE CONSUMED AS OF YET. IT'S ANTON'S FAULT.");
@@ -90,6 +95,11 @@ public class ConsumeDataBoss : StateMachineBehaviour
                 case BossDataEnums.MOVEMENT_Z:
                     {
                         animator.SetFloat("Movement/Z", 0);
+                        break;
+                    }
+                case BossDataEnums.AI_DEATH:
+                    {
+                        animator.SetInteger("Death", 0);
                         break;
                     }
                 case BossDataEnums.AI_CUSTSCENE:

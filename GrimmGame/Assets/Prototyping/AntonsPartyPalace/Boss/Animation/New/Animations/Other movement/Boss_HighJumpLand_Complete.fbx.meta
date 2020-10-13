@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -5560381697776758257
-    second: Boss_HighJumpLand_Complete
+    second: OldBoss_HighJumpLand_Complete
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_HighJumpLand_Complete
+      name: OldBoss_HighJumpLand_Complete
       takeName: Boss_HighJumpLand_Complete
       internalID: 0
       firstFrame: 38

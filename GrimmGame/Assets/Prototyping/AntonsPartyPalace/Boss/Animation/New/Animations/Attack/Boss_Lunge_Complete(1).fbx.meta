@@ -66,7 +66,7 @@ ModelImporter:
         floatParameter: 0.06
         intParameter: 0
         messageOptions: 0
-      - time: 0.14935066
+      - time: 0.15391687
         functionName: RotateOff
         data: 
         objectReferenceParameter: {instanceID: 0}

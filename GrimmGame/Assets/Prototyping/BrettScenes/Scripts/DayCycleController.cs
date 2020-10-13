@@ -6,6 +6,8 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class DayCycleController : MonoBehaviour
 {
+    public bool disableDayNightCycle = false;
+
     [Range(0, 24)]
     public float TimeOfDay;
 
@@ -14,6 +16,10 @@ public class DayCycleController : MonoBehaviour
     public Light moon;
     public Volume skyVolume;
     public AnimationCurve starsCurve;
+
+    public float happyBrettRotation;
+
+    public bool changeRotation = true;
 
     private bool isNight;
     private PhysicallyBasedSky sky;
@@ -27,11 +33,14 @@ public class DayCycleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeOfDay += Time.deltaTime * orbitSpeed;
-        if (TimeOfDay > 24)
-            TimeOfDay = 0;
+        if (!disableDayNightCycle)
+        {
+            TimeOfDay += Time.deltaTime * orbitSpeed;
+            if (TimeOfDay > 24)
+                TimeOfDay = 0;
 
-        UpdateTime();
+            UpdateTime();
+        }
     }
 
     private void OnValidate()
@@ -46,8 +55,10 @@ public class DayCycleController : MonoBehaviour
         float sunRotation = Mathf.Lerp(-90, 270, alpha);
         float moonRotation = sunRotation - 180;
 
-        sun.transform.rotation = Quaternion.Euler(sunRotation, -35.0f, 0);
-        moon.transform.rotation = Quaternion.Euler(moonRotation, -35.0f, 0);
+
+
+        sun.transform.rotation = Quaternion.Euler(sunRotation, happyBrettRotation, 0);
+        moon.transform.rotation = Quaternion.Euler(moonRotation, happyBrettRotation, 0);
 
         sky.spaceEmissionMultiplier.value = starsCurve.Evaluate(alpha) * 0.5f;
 

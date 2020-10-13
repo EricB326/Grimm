@@ -26,7 +26,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Player__Eye wet material1
-    second: {fileID: 2100000, guid: 1122a87d39cf2564996a309c38c2367d, type: 2}
+    second: {fileID: 2100000, guid: c13b5252822210947a2f74e8d8e34fba, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -99,6 +99,8 @@ public class Player : MonoBehaviour
     public GameObject m_respawnPos;
     [HideInInspector]
     public Vector3 m_startPos;
+    //[HideInInspector]
+    public bool m_Dead = false; // A workaround. Player was constantly triggering the death transition event.
 
     private void Start()
     {       
@@ -128,7 +130,7 @@ public class Player : MonoBehaviour
             //{
             //    FreeLook(axisZ, axisX);
             //}
-
+            
             // Can only occur when currently rolling
 
             if (m_animator.GetBool("Output/IsRolling"))
@@ -192,7 +194,7 @@ public class Player : MonoBehaviour
                     float largestDistance = Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.z));
                     if (lockOnRange > largestDistance)
                     {
-                        Debug.Log(largestDistance);
+                        //Debug.Log(largestDistance);
                         this.m_lockon = true;
                     }
                     else
@@ -206,7 +208,7 @@ public class Player : MonoBehaviour
             m_currentFrame = m_inputBuffer.GetBufferInput();
 
 
-            if (!m_animator.GetBool("Input/Stop"))
+            if (!m_animator.GetBool("Input/Stop") || m_Dead == false)
             {
                 UpdateAnimations(axisX, axisZ, m_currentFrame);
             }
@@ -241,7 +243,6 @@ public class Player : MonoBehaviour
         }
         if (a_input.m_heavyAttack && EntityStats.Instance.CanEntityMoveOccur("Player", this.m_attackStamina[1]))
         {
-            Debug.Log("Heavy");
             m_animator.SetBool("Input/AttackHeavy", true);
         }
         else

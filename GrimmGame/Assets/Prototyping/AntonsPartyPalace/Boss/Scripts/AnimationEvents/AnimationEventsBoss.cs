@@ -32,8 +32,8 @@ public class AnimationEventsBoss : MonoBehaviour
 
     public void ActivateHitBox(int a_colliderNumber)
     {
-       GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
-       BossBrain brain = boss.GetComponent<BossBrain>();
+        GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
+        BossBrain brain = boss.GetComponent<BossBrain>();
 
         // Need to get correct colider from attack stored within boss.
         // int colliderToModify = (int)brain.m_currentAttackVariables.m_colliderToActivate[brain.m_currentAttackVariables.m_attackInChain];
@@ -45,7 +45,7 @@ public class AnimationEventsBoss : MonoBehaviour
     {
         GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
         BossBrain brain = boss.GetComponent<BossBrain>();
-      
+
         boss.GetComponent<BossVariables>().m_weaponColliders[a_colliderNumber].enabled = false;
     }
 
@@ -62,21 +62,20 @@ public class AnimationEventsBoss : MonoBehaviour
         this.GetComponent<BossBrain>().SetActionRotationSpeed(0);
         this.gameObject.GetComponent<Animator>().SetBool("Ai/CanRotate", false);
     }
-    
+
     // Istantiates the particle effect at the point?
     // Probably better to just play a particle on a collider
     // Which will include sounds?
     public void FootDownLeft()
     {
         // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
-        m_leftFoot.Play();
+        //m_leftFoot.Play();
     }
 
-        
     public void FootDownRight()
     {
         // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
-        m_rightFoot.Play();
+        //m_rightFoot.Play();
     }
 
     public void HandDownLeft()
@@ -88,7 +87,6 @@ public class AnimationEventsBoss : MonoBehaviour
     {
 
     }
-
 
     // Need to do.
     public void ShakeCameraOn(float a_value)
@@ -113,14 +111,29 @@ public class AnimationEventsBoss : MonoBehaviour
 
     public void EnableModel()
     {
-        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_swordModel.enabled = true;
-        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model.enabled = true;
+        List<SkinnedMeshRenderer> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
+        foreach (SkinnedMeshRenderer t in model)
+        {
+            t.enabled = true;
+        }
     }
 
     public void DisableModel()
     {
-        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_swordModel.enabled = false;
-        EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model.enabled = false;
+        List<SkinnedMeshRenderer> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
+
+        foreach (SkinnedMeshRenderer t in model)
+        {
+            t.enabled = false;
+        }
     }
 
+    public void ResetAnimator()
+    {
+        Animator animator = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>();
+
+        animator.SetFloat("Movement/X", 0);
+        animator.SetFloat("Movement/Z", 0);
+        //animator.SetInteger("Ai/Action", 0);
+    }
 }

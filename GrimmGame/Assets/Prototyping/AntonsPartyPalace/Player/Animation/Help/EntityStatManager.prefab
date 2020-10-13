@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &116482728385830715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116482728385830717}
+  - component: {fileID: 116482728385830743}
+  - component: {fileID: 116482728385830742}
+  - component: {fileID: 116482728385830745}
+  - component: {fileID: 116482729824055215}
+  m_Layer: 0
+  m_Name: EntityStatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &116482728385830717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116482728385830715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5560044, y: 1.3009553, z: -9.158691}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &116482728385830743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116482728385830715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19ccedb2aabb364089964eaeb3a7ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityList:
+  - name: Player
+    entityObject: {fileID: 0}
+    health: 100
+    lives: 4
+    stamina: 100
+    mass: 0
+    inputBuffer: 0
+    timeBeforeStaminaRegain: 1
+    speedOfHealthRegain: 0.5
+    speedOfStaminaRegain: 1
+    maxLives: 0
+    maxHealth: 0
+    maxStamina: 0
+    timeSinceLastStaminaDeminish: 0
+  - name: Boss
+    entityObject: {fileID: 0}
+    health: 120
+    lives: 0
+    stamina: 100
+    mass: 0
+    inputBuffer: 0
+    timeBeforeStaminaRegain: 3
+    speedOfHealthRegain: 0.5
+    speedOfStaminaRegain: 0
+    maxLives: 0
+    maxHealth: 0
+    maxStamina: 0
+    timeSinceLastStaminaDeminish: 0
+--- !u!114 &116482728385830742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116482728385830715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab06682283c2c894982658c1423d6e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  blurCamera: {fileID: 0}
+  blurMaterial: {fileID: 2100000, guid: 097353479241602459d0160b58378005, type: 2}
+--- !u!114 &116482728385830745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116482728385830715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9037ad07fa938d44ba9f7f715312ebbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffectList:
+  - name: Hello
+    hitEffect: 0
+    effectForce: {x: 0, y: 0, z: 0}
+    animationsToPlay: {fileID: 0}
+    particlesToPlay:
+    - {fileID: 0}
+    soundsToPlay: []
+--- !u!114 &116482729824055215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116482728385830715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56b9e8764842b442a2279dbcd85f235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -14,7 +14,7 @@ public class AttackColliderBoss : MonoBehaviour
 
     public float timescaleSlowDownOnIFrames = 0.2f;
 
-
+    // Attack needs to stop damage
 
     // I just wanted to try this out.
     IEnumerator SlowDown(Player player)

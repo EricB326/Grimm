@@ -14,9 +14,7 @@ public class BossVariables : MonoBehaviour
 
     public Collider m_hitbox;
 
-
-    public SkinnedMeshRenderer m_model;
-    public SkinnedMeshRenderer m_swordModel;
+    public List<SkinnedMeshRenderer> m_model;
 
     //public Collider m_sword;
     //public Collider m_claw;

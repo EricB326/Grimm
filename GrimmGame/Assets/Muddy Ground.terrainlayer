@@ -7,16 +7,16 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Muddy Ground
-  m_DiffuseTexture: {fileID: 2800000, guid: 05f3f081f84664d4a887e174328d7c04, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: b35b4d6fa679e3c4ebc2163cbd5e46f3, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: b714c746931d8634bba7929a54887448, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 053ab16a7e9dd6e4ca0a2011a78f1a7d, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: d02519e049ff57649a88873c7d626861, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 20696db860cf9354f8d53ae8f1288553, type: 3}
   m_TileSize: {x: 5, y: 5}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
   m_Smoothness: 0
-  m_NormalScale: 1
+  m_NormalScale: 1.5
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0.3346439}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0.31474343}
+  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 0.68701965}

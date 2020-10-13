@@ -11,22 +11,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boss_Rig_Clothes
-    second: {fileID: 2100000, guid: a7a2fe1cd6dac3647897d11b78f00379, type: 2}
+    second: {fileID: 2100000, guid: 303f7679cf0563a4684a904fe1280a53, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boss_Rig_Head
-    second: {fileID: 2100000, guid: 9a5cf6cf9e82d3b408243b1e5f7f5421, type: 2}
+    second: {fileID: 2100000, guid: 23c3380878cb88749baa8ea9cd89e699, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boss_Rig_Sword2
+    second: {fileID: 2100000, guid: 5dce8722eed26b14389c1d807d0d5a4a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boss_Rig_lambert21
-    second: {fileID: 2100000, guid: 4b33d6ff150c46348ba08c4fc59890b7, type: 2}
+    second: {fileID: 2100000, guid: 3a9e324100aa48643ad35dfc25bc1b10, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boss_Rig_lambert22
-    second: {fileID: 2100000, guid: 1bd61d58552d9d84090d0d283b96fcee, type: 2}
+    second: {fileID: 2100000, guid: a6321c529048d064dbe74b84c1a1bea2, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -92,7 +97,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -105,7 +110,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Boss_Rig:Root
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -113,7 +118,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

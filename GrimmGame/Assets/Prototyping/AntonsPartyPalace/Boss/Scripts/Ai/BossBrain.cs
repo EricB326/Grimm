@@ -93,13 +93,13 @@ public class BossBrain : MonoBehaviour
         m_chanceOfPreMove = m_PreMoveFloor;
         this.enabled = false;
         // Boss will dissapear if these are set
-        if (this.GetComponent<BossVariables>().m_swordModel != null)
-        {
-            this.GetComponent<BossVariables>().m_swordModel.enabled = false;
-        }
         if (this.GetComponent<BossVariables>().m_model != null)
         {
-            this.GetComponent<BossVariables>().m_model.enabled = false;
+            List<SkinnedMeshRenderer> list = this.GetComponent<BossVariables>().m_model;
+            foreach (SkinnedMeshRenderer t in list)
+            {
+                t.enabled = false;
+            }
         }
 
     }

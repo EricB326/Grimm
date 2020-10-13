@@ -7,16 +7,16 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RockyPath
-  m_DiffuseTexture: {fileID: 2800000, guid: 1a98f346d66fc4540b612d5b50d0e706, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 6b592f1cf97298d41bb6171c429253e1, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: 6047eafc4660fe84aa66adbdf3a5643b, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 1000a816efa11334582aaaa0cd6e2eab, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 45b2d634badb55d40bc53746dcdb8c38, type: 3}
   m_TileSize: {x: 5, y: 5}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
   m_Smoothness: 0
-  m_NormalScale: 1
+  m_NormalScale: 1.5
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 0.13964272}

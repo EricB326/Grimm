@@ -120,6 +120,7 @@ public class AnimationEventsPlayer : MonoBehaviour
     public void Respawn()
     {
         Player player = this.GetComponent<Player>();
+
         if (player.m_respawnPos != null)
         {
             EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().BossReset();
@@ -131,7 +132,35 @@ public class AnimationEventsPlayer : MonoBehaviour
         {
             player.transform.position = player.m_startPos;
         }
+        // Player was stuck in infinite without the bool
+        EntityStats.Instance.RestoreAllStats();
+        player.m_Dead = false;
     }
 
 
+
+    // Clear all input in animator.
+    // Mostly for any stte/ common states
+    public void ResetAnimator()
+    {
+        Animator playerAnim = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>();
+        playerAnim.SetFloat("MovementSpeedMult", 0);
+        playerAnim.SetFloat("Movement/X", 0);
+        playerAnim.SetFloat("Movement/Z", 0);
+
+        playerAnim.SetInteger("AnyState/Damage", 0);
+        playerAnim.SetInteger("AnyState/Cutscene", 0);
+
+        playerAnim.SetBool("Input/Roll", false);
+        playerAnim.SetBool("Input/Running", false);
+        playerAnim.SetBool("Input/AttackHeavy", false);
+        playerAnim.SetBool("Input/AttackLight", false);
+    }
+
+    public void Undie()
+    {
+        Animator playerAnim = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>();
+        playerAnim.SetInteger("AnyState/Death", 0);
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_InvinceFrames = false;
+    }
 }
