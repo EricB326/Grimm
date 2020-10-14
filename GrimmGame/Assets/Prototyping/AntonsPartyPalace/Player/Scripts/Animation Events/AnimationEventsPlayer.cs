@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 // Centralized place for player animation events.
 // If something take place on an animation timeline, it'll take place here.
@@ -163,4 +165,24 @@ public class AnimationEventsPlayer : MonoBehaviour
         playerAnim.SetInteger("AnyState/Death", 0);
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_InvinceFrames = false;
     }
+
+    public IEnumerator ChangeScene()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene(0);
+    }
+
+    public void CheckLives()
+    {
+        if (EntityStats.Instance.GetLivesOfEntity("Player") >= 1)
+        {
+            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetTrigger("Debug/Live");
+        }
+    }
+    public void DisableLockon()
+    {
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_lockon = false;
+    }
+
+
 }

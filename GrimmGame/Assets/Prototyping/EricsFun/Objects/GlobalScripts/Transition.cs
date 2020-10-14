@@ -104,6 +104,8 @@ public class Transition
     //	//EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
     //}
 
+
+
     static public void BossDefeatedTransition()
     {
         Debug.Log("Ripperino in pelagrino.");
@@ -112,6 +114,7 @@ public class Transition
 
         EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().enabled = false;
         EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().SetInteger("Death",1);
+
 
     }
 

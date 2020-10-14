@@ -177,22 +177,24 @@ public class Player : MonoBehaviour
             // Camera lockon
             if (XCI.GetButtonDown(XboxButton.RightStick))
             {
-                if (this.m_lockon)
+                GameObject Boss = EntityStats.Instance.GetObjectOfEntity("Boss");
+                if (this.m_lockon || Boss.GetComponent<BossVariables>().m_dead)
                 {
                     this.m_lockon = false;
+
                 }
                 else
                 {
+
                     // Target aquizition needs to occur here.
-
-
-                    Vector3 direction = EntityStats.Instance.GetObjectOfEntity("Boss").transform.position - this.transform.position;
+                   
+                    Vector3 direction = Boss.transform.position - this.transform.position;
 
                     //Ray toBoss = new Ray(this.transform.position + (this.transform.up / 2), this.transform.position + direciton);
                     float lockOnRange = 20;
                     
                     float largestDistance = Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.z));
-                    if (lockOnRange > largestDistance)
+                    if (lockOnRange > largestDistance && !Boss.GetComponent<BossVariables>().m_dead)
                     {
                         //Debug.Log(largestDistance);
                         this.m_lockon = true;

@@ -24,6 +24,9 @@ public class BossVariables : MonoBehaviour
 
     public QuickActivation m_activationScript;
     public GateActivater m_gate;
+
+    public bool m_dead = false; 
+
     private void Start()
     {
         //m_sword.enabled = false;

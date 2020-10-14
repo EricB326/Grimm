@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.SceneManagement;
+
 
 // Boss Colliders
 // 1. Sword
@@ -134,6 +136,30 @@ public class AnimationEventsBoss : MonoBehaviour
 
         animator.SetFloat("Movement/X", 0);
         animator.SetFloat("Movement/Z", 0);
-        //animator.SetInteger("Ai/Action", 0);
     }
+
+
+    public IEnumerator ChangeScene()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        SceneManager.LoadScene(0);
+    }
+
+    public void DisableCollider()
+    {
+        this.GetComponent<BossVariables>().m_hitbox.enabled = false;
+    }
+
+    public void DisableLockon()
+    {
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_lockon = false;
+    }
+
+    public void BossDeath()
+    {
+        DisableLockon();
+        this.gameObject.GetComponent<BossVariables>().m_dead = true;
+    }
+
+
 }
