@@ -60,14 +60,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: RotationOn
+        functionName: RotateOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0.2
         intParameter: 0
         messageOptions: 0
       - time: 0.19313304
-        functionName: RotationOff
+        functionName: RotateOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0.2

@@ -160,6 +160,4 @@ public class AnimationEventsBoss : MonoBehaviour
         DisableLockon();
         this.gameObject.GetComponent<BossVariables>().m_dead = true;
     }
-
-
 }
