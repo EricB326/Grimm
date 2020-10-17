@@ -185,7 +185,6 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-
                     // Target aquizition needs to occur here.
                    
                     Vector3 direction = Boss.transform.position - this.transform.position;

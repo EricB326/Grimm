@@ -255,7 +255,7 @@ public class BossPhase
                 // Should be passed in by action.
                 
 
-                float range = 2;
+                float range = a_distanceToTarget;
                 // Check if the moves result is neutral.
 
                 if (resultingDistance == a_distanceToTarget)
@@ -310,6 +310,7 @@ public class BossPhase
                 else
                 {
                     output = t;
+                    m_lastNeutralAction = m_timeBetweenNeutral + Time.time;
                     reroll = 2;
                 }
                 reroll++;
