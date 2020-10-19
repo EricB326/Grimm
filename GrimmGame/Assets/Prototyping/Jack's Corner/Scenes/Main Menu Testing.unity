@@ -6518,6 +6518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 327874875}
+  sfxSlider: {fileID: 1409582003}
+  musicSlider: {fileID: 1234647216}
+  ambienceSlider: {fileID: 97794693}
 --- !u!114 &1659764599
 MonoBehaviour:
   m_ObjectHideFlags: 0
