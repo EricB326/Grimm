@@ -11,6 +11,9 @@ using UnityEngine.SceneManagement;
 
 public class AnimationEventsPlayer : MonoBehaviour
 {
+
+    //public float m_swingRotationSpeed = 0.3f;
+
     // Hitbox activate requires a number
     // The number will signify what kind of attack 
     // it is.
@@ -111,11 +114,32 @@ public class AnimationEventsPlayer : MonoBehaviour
                 Vector3 cameraPosition = (cameraz + camerax);
 
                 Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, player.m_rollSpeed);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.3f);
             }
+        }
+        else
+        {
+            Vector3 bossdirection = this.GetComponent<Player>().m_target.transform.position - this.transform.position;
+            bossdirection = bossdirection.normalized;
+
+            // To make sure player doesn't up or down. Only facing.
+            // Take not that head will need the y.
+            bossdirection.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.3f);
         }
     }
 
+
+    public void RotateOn()
+    {
+        this.GetComponent<Animator>().SetBool("Output/CanRotate", true);
+    }
+
+    public void RotateOff()
+    {
+        this.GetComponent<Animator>().SetBool("Output/CanRotate", false);
+    }
 
     // Player has lives.
     // Mostly a placeholder.

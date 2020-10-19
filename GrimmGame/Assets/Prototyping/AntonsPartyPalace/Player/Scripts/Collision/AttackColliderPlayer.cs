@@ -31,8 +31,11 @@ public class AttackColliderPlayer : MonoBehaviour
 
             m_visualeffect.transform.LookAt(player.transform.position);
             Vector3 newPos = player.transform.position - other.transform.position;
-            m_visualeffect.transform.position = other.transform.position + newPos.normalized + new Vector3(0, m_particleOffset, 0);
-            m_visualeffect.Play();
+            if (m_visualeffect != null)
+            {
+                m_visualeffect.transform.position = other.transform.position + newPos.normalized + new Vector3(0, m_particleOffset, 0);
+                m_visualeffect.Play();
+            }
             EntityStats.Instance.DeminishHealthOffEntity("Boss", player.m_attacksDamage[player.m_attackStats]);
             EntityStats.Instance.GetObjectOfEntity("Player").GetComponentInChildren<AnimationEventsPlayer>().DeavtivateHitBox();
             //plays the boss' hit comfirm sound

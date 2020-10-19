@@ -152,6 +152,16 @@ public class Player : MonoBehaviour
             {
                 FreeLook(axisZ, axisX);
             }
+            else if(m_animator.GetBool("Output/CanRotate"))
+            {
+                AttackRotation();
+            }
+
+
+
+
+
+
 
         }
     }
@@ -577,6 +587,40 @@ public class Player : MonoBehaviour
             //m_animator.gameObject.transform.rotation;
         }
     }
+
+
+    public void AttackRotation()
+    {
+        Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        if (!player.m_lockon)
+        {
+            // Get the input out of the animator
+            float z = player.m_animator.GetFloat("Input/Z");
+            float x = player.m_animator.GetFloat("Input/X");
+            if (z != 0 && x != 0)
+            {
+                Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * x);
+                Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * z);
+                Vector3 cameraPosition = (cameraz + camerax);
+
+                Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.3f);
+            }
+        }
+        else
+        {
+            Vector3 bossdirection = this.GetComponent<Player>().m_target.transform.position - this.transform.position;
+            bossdirection = bossdirection.normalized;
+
+            // To make sure player doesn't up or down. Only facing.
+            // Take not that head will need the y.
+            bossdirection.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.3f);
+        }
+    }
+
+
 
 
     // Getters

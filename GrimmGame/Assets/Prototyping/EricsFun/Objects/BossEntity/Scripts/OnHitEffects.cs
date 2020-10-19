@@ -62,7 +62,8 @@ public class OnHitEffects : MonoBehaviour
 
     public void ResolveKnockbackStrong(GameObject _effectedEntity)
     {
-        int index = LocateHitEffect(HitEffectsEnum.KNOCKBACK_STRONG);
+        _effectedEntity.GetComponent<Animator>().SetInteger("AnyState/Damage", 2);
+        //int index = LocateHitEffect(HitEffectsEnum.KNOCKBACK_STRONG);
     }
 
     public void ResolveKnockdown(GameObject _effectedEntity)
