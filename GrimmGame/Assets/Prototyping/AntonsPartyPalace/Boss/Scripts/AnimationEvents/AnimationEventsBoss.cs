@@ -24,6 +24,7 @@ public class AnimationEventsBoss : MonoBehaviour
     public VisualEffect m_leftFoot;
     public VisualEffect m_rightFoot;
 
+    public float m_particleScaler = 5;
 
     private void Start()
     {
@@ -68,16 +69,83 @@ public class AnimationEventsBoss : MonoBehaviour
     // Istantiates the particle effect at the point?
     // Probably better to just play a particle on a collider
     // Which will include sounds?
-    public void FootDownLeft()
+    public void FootDownLeft(int direciton)
     {
-        // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
-        //m_leftFoot.Play();
+
+        m_leftFoot.SetFloat("Lifetime_Max", Random.Range(0.3f, 2f));
+        Vector3 directionMoved = Vector3.zero;
+        // Moving forward
+        // DIRECITON NEEDS TO BE ADJUSTED ON ANIMATIONS EVENTS
+        // Possibly better is to get the delta of the frame
+        // and then normalize before multiplying.
+        if(direciton == 0)
+        {
+            directionMoved = Vector3.zero;
+        }
+
+        else if (direciton == 1)
+        {
+            directionMoved = -this.transform.forward;
+        }
+        // Moving backwards
+        else if (direciton == 2)
+        {
+            directionMoved = this.transform.forward;
+        }
+        // Moving Left
+        else if (direciton == 3)
+        {
+            directionMoved = this.transform.right;
+        }
+        // Moving right
+        else if(direciton == 4)
+        {
+            directionMoved = -this.transform.right;
+        }
+ 
+
+        //this.transform.localToWorldMatrix * directionMoved;
+        //Debug.Log(directionMoved * m_particleScaler);
+        m_leftFoot.SetVector3("Dirt_Velocity_Max", directionMoved * m_particleScaler);
+        m_leftFoot.SetVector3("Rock_Velocity_Max", directionMoved * (m_particleScaler / 2));
+        m_leftFoot.Play();
     }
 
-    public void FootDownRight()
+    public void FootDownRight(int direciton)
     {
-        // Play particle and sound effect on foot. NEEDS TO BE CHANGED TO A VFX GRAPH
-        //m_rightFoot.Play();
+        m_rightFoot.SetFloat("Lifetime_Max", Random.Range(0.3f, 2f));
+        Vector3 directionMoved = Vector3.zero;
+        // Moving forward
+        // DIRECITON NEEDS TO BE ADJUSTED ON ANIMATIONS EVENTS
+        if (direciton == 0)
+        {
+            directionMoved = Vector3.zero;
+        }
+
+        else if (direciton == 1)
+        {
+            directionMoved = -this.transform.forward;
+        }
+        // Moving backwards
+        else if (direciton == 2)
+        {
+            directionMoved = this.transform.forward;
+        }
+        // Moving Left
+        else if (direciton == 3)
+        {
+            directionMoved = this.transform.right;
+        }
+        // Moving right
+        else if (direciton == 4)
+        {
+            directionMoved = -this.transform.right;
+        }
+        //Vector3 directionMoved = -this.transform.forward;
+        //Debug.Log(directionMoved * m_particleScaler);
+        m_rightFoot.SetVector3("Dirt_Velocity_Max", directionMoved * m_particleScaler);
+        m_rightFoot.SetVector3("Rock_Velocity_Max", directionMoved * (m_particleScaler / 2));
+        m_rightFoot.Play();
     }
 
     public void HandDownLeft()

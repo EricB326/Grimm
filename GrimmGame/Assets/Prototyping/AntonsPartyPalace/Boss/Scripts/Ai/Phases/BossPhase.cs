@@ -251,14 +251,13 @@ public class BossPhase
                 float distanceCovered = t.GetDestinationDistance;
                 // Need to check if the distance covered is beneficial
 
-                float resultingDistance = a_distanceToTarget - distanceCovered;
+                float resultingDistanceWhenMoveUsed = a_distanceToTarget - distanceCovered;
                 // Should be passed in by action.
-                
 
-                float range = a_distanceToTarget;
+                float rangeThreshold = 2;
+
                 // Check if the moves result is neutral.
-
-                if (resultingDistance == a_distanceToTarget)
+                if (resultingDistanceWhenMoveUsed == a_distanceToTarget)
                     {
                     if (m_lastSeekAction != null)
                     {
@@ -273,7 +272,9 @@ public class BossPhase
                 }
                 // Check if the move gets boss closer to optimal position without passing
                 // through player.
-                else if (resultingDistance <= m_desiredRange && resultingDistance > 0)
+
+                                                                                        // If 0 or neg
+                else if ((resultingDistanceWhenMoveUsed - a_distanceToTarget) >= m_desiredRange && resultingDistanceWhenMoveUsed > 0)
                 {
                     if (m_lastSeekAction != null)
                     {

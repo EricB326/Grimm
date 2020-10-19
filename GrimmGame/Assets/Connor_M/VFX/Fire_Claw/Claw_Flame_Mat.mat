@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Claw_Flame_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: c9e96f53a281f8a4b86ce330aca95664,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Main_Texture:
+        m_Texture: {fileID: 2800000, guid: 2248402f8d229a34fa0b9fa509badbf1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_11E2839F: 1.8
+    - Vector1_30D658EB: 0.28
+    - Vector1_3FBA4D3F: 0.06
+    - Vector1_BB8CFF55: 2.24
+    - Vector1_D88A6AA0: 0.55
+    - Vector1_E2F2D5A: 1.27
+    m_Colors:
+    - Color_343945A8: {r: 0.3962264, g: 0.38440502, b: 0.35323957, a: 0}
+    - Vector2_46C36E76: {r: 0, g: -0.3, b: 0, a: 0}
+    - Vector2_94A2E7B2: {r: -0.1, g: -0.5, b: 0, a: 0}
