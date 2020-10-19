@@ -2505,7 +2505,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2519593183090915854}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.75
   m_Height: 1.82
   m_Direction: 2
@@ -4370,11 +4370,25 @@ CapsuleCollider:
   m_GameObject: {fileID: 4378377312489819814}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.09
   m_Height: 1.59
   m_Direction: 1
   m_Center: {x: 0, y: -0.49, z: 0}
+--- !u!114 &1046432171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378377312489819814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe9641e41e09f84e86af7334cf0256d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_visualeffect: {fileID: 0}
+  m_particleOffset: 0.8
 --- !u!1 &4532261892489816292
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,11 +5628,11 @@ MonoBehaviour:
   m_lookPoint: {fileID: 2519593183686749491}
   m_target: {fileID: 0}
   m_swordHitBox: {fileID: 2519593182950855744}
-  m_attackHitBox: {fileID: 2519593183090915855}
+  m_attackHitBox: {fileID: 2519593182950855744}
   m_walkSpeed: 5
   m_runSpeed: 7
   m_rollSpeed: 12
-  m_rotationTime: 0.8
+  m_rotationTime: 0.4
   m_rollStaminaDrain: 25
   m_runStaminaDrain: 0.7
   m_rollDamagemultiplier: 0.8
