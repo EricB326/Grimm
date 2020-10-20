@@ -38,7 +38,7 @@ Material:
     - _CloudSpeed1: 0.5
     - _CloudSpeed2: 0.2
     - _CloudSpeedMaster: 0.015
-    - _Coverage: 0.35
+    - _Coverage: 0.249
     - _CullMode: 2
     - _CullModeForward: 2
     - _DepthFade: 0.89
@@ -53,10 +53,10 @@ Material:
     - _ReceivesSSR: 1
     - _RenderQueueType: 5
     - _RequireSplitLighting: 0
-    - _RimLightStr: 0.003
-    - _SSSBoost: 0.1
-    - _SSSPow: 0.01
-    - _SSSRim: 0.7
+    - _RimLightStr: 0.0005
+    - _SSSBoost: 0.092
+    - _SSSPow: -0.34
+    - _SSSRim: 0.645
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
