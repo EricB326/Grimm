@@ -22,16 +22,6 @@ public class VolumeController : MonoBehaviour
         _ambienceSlider = ambienceSlider.GetComponent<Slider>();
         volumeScript = GetComponent<VolumeScript>();
     }
-
-	// Start is called before the first frame update
-	void Start()
-	{
-		_volumeSlider = volumeSlider.GetComponent<Slider>();
-		_sfxSlider = sfxSlider.GetComponent<Slider>();
-		_musicSlider = musicSlider.GetComponent<Slider>();
-		_ambienceSlider = ambienceSlider.GetComponent<Slider>();
-		volumeScript = GetComponent<VolumeScript>();
-
     public void SFXVolumeChange()
     {
         volumeScript.sfxVolumeDB = volumeScript.lowerVolumeBound - ((_sfxSlider.value / _sfxSlider.maxValue) * volumeScript.lowerVolumeBound);
