@@ -1,30 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public Camera blurCamera;
-    public Material blurMaterial;
+    public GameObject[] menuButtons;
+    public GameObject optionsUI;
+
+    public GameObject defaultStartingButton;
+    public GameObject optionsStartingButton;
+
     public static bool isPaused;
+    public static bool isInOptions = false;
+
+    //public Camera blurCamera;
+    //public Material blurMaterial;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
 
-        if (blurCamera.targetTexture != null)
-            blurCamera.targetTexture.Release();
-
-        blurCamera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32, 1);
-        blurMaterial.SetTexture("_RenTex", blurCamera.targetTexture);
+        #region blur
+        //if (blurCamera.targetTexture != null)
+        //    blurCamera.targetTexture.Release();
+        //
+        //blurCamera.targetTexture = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32, 1);
+        //blurMaterial.SetTexture("_RenTex", blurCamera.targetTexture);
+        #endregion
     }
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || XCI.GetButtonDown(XboxButton.Start))
         {
             if (isPaused)
             {
@@ -42,6 +56,9 @@ public class PauseMenuController : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(defaultStartingButton);
     }
 
     public void ResumeGame()
@@ -49,6 +66,56 @@ public class PauseMenuController : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public void OpenSettings()
+    {
+        if (isInOptions)
+        {
+            isInOptions = false;
+            foreach (GameObject button in menuButtons)
+            {
+                button.SetActive(true);
+
+                foreach (Transform child in button.transform)
+                {
+                    Image this_image = child.GetComponent<Image>();
+					if (this_image != null && this_image.name == "Highlight")
+                        this_image.gameObject.SetActive(false);
+				}
+            }
+
+            optionsUI.SetActive(false);
+
+			EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(defaultStartingButton);
+        }
+        else
+        {
+            isInOptions = true;
+            foreach (GameObject button in menuButtons)
+			{
+				button.SetActive(false);
+			}
+
+			optionsUI.SetActive(true);
+
+			foreach (Transform child in optionsUI.transform)
+			{
+                if (child.gameObject.name == "Back Button")
+                {
+                    foreach (Transform veryChild in child.transform)
+                    {
+                        Image this_image = veryChild.GetComponent<Image>();
+                        if (this_image != null && this_image.name == "Highlight")
+                            this_image.gameObject.SetActive(false);
+                    }
+                }
+			}
+
+			EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(optionsStartingButton);
+		}
     }
 
     public void ExitGame()
