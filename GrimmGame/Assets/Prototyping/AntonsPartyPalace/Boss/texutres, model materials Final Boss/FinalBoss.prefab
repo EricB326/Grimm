@@ -3175,8 +3175,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.48037577, y: 2.6327763, z: -1.5204225}
-    m_Extent: {x: 0.3790269, y: 0.2176516, z: 1.2089484}
+    m_Center: {x: 0.48037568, y: 2.6327763, z: -1.5204225}
+    m_Extent: {x: 0.37902686, y: 0.2176516, z: 1.2089484}
   m_DirtyAABB: 0
 --- !u!183 &6655854534739343026
 Cloth:
@@ -5663,18 +5663,6 @@ MonoBehaviour:
       destinationDistance: 1
       attackEffectList: 00000000
       collidersToModify: 
-    - attackName: DashBack
-      actionTimeLimit: 0
-      animationNumber: 11
-      attackDamage: 0
-      attackRange: 0
-      attackWeight: 0
-      lastTimeUsed: 0
-      timesUnused: 0
-      behaviourType: 1
-      destinationDistance: -1
-      attackEffectList: 00000000
-      collidersToModify: 
     - attackName: Spin Attack
       actionTimeLimit: 0
       animationNumber: 6
@@ -6527,8 +6515,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.52920663, y: 2.632776, z: -1.5163664}
-    m_Extent: {x: 0.3866371, y: 0.2176516, z: 1.2077905}
+    m_Center: {x: -0.5292063, y: 2.6327763, z: -1.5163658}
+    m_Extent: {x: 0.38663685, y: 0.2176516, z: 1.2077901}
   m_DirtyAABB: 0
 --- !u!183 &9100489747321478638
 Cloth:
