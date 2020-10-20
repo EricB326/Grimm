@@ -22,6 +22,9 @@ public class BossVariables : MonoBehaviour
     public GameObject m_leftFootParticle;
     public GameObject m_rightFootParticle;
 
+    [Tooltip("1. Sword 2. Claw")]
+    public List<GameObject> m_trails;
+ 
     public QuickActivation m_activationScript;
     public GateActivater m_gate;
 
@@ -33,6 +36,11 @@ public class BossVariables : MonoBehaviour
         //m_sword.enabled = false;
         //m_leftFoot.enabled = false;
         //m_rightFoot.enabled = false;
+
+        foreach (GameObject t in m_trails)
+        {
+            t.SetActive(false);
+        }
 
         foreach(Collider c in m_weaponColliders)
         {

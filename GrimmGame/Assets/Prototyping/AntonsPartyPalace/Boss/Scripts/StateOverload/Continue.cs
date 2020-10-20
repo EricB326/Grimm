@@ -13,7 +13,7 @@ public class Continue : StateMachineBehaviour
     {
     Vector3 t = animator.gameObject.GetComponent<BossBrain>().m_target.transform.position - animator.gameObject.transform.position;
     float largestDistance = Mathf.Max(Mathf.Abs(t.x), Mathf.Abs(t.z));
-        if (largestDistance < distance)
+        if (largestDistance < distance && animator.gameObject.GetComponent<BossBrain>().m_target.GetComponent<Animator>().GetInteger("AnyState/Death") == 0)
         {
             animator.SetBool("Ai/Continue", true);
         }

@@ -326,7 +326,7 @@ public class BossBrain : MonoBehaviour
                         else
                         {
                             // Increase chance boss will do something before
-                            // an move.
+                            // a move.
                             m_chanceOfPreMove += m_increasePerPremove;
                             if(m_chanceOfPreMove > 100)
                             {

@@ -228,4 +228,54 @@ public class AnimationEventsBoss : MonoBehaviour
         DisableLockon();
         this.gameObject.GetComponent<BossVariables>().m_dead = true;
     }
+
+
+    public void ActivateTrail(int a_trailNumber)
+    {
+        if (a_trailNumber <= this.GetComponent<BossVariables>().m_trails.Count)
+        {
+            if (a_trailNumber == 0)
+            {
+                Debug.Log("TRAIL NUMBER REQUIRED ON ANIMATION");
+                //Debug.Log(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0));
+            }
+            else
+            {
+                this.GetComponent<BossVariables>().m_trails[a_trailNumber - 1].SetActive(true);
+                Debug.Log("Enable");
+            }
+        }
+        else
+        {
+            Debug.Log("Trail list exceed. Trail not activated");
+        }
+    }
+
+    public void DeactivateTrail(int a_trailNumber)
+    {
+        if(a_trailNumber <= this.GetComponent<BossVariables>().m_trails.Count)
+        {
+            if (a_trailNumber == 0)
+            {
+                Debug.Log("TRAIL NUMBER REQUIRED ON ANIMATION");
+                //Debug.Log(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0));
+            }
+            else
+            {
+                this.GetComponent<BossVariables>().m_trails[a_trailNumber - 1].SetActive(false);
+                Debug.Log("Disable");
+            }
+        }
+        else
+        {
+            Debug.Log("Trail list exceed. Trail not activated");
+        }
+    }
+
+
+    public void ChangeTrailColor()
+    {
+
+    }
+
 }
