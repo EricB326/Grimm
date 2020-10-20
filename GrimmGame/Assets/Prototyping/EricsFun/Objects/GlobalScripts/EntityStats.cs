@@ -166,8 +166,11 @@ public class EntityStats : MonoBehaviour
         {
             if (entityList[_entityIndex].name == "Player") // Handle player losing final life.
             {
-                //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
-                GameOverLose();
+                // Remove the final life indicator.
+                if (onPlayerLifeLost != null)
+					onPlayerLifeLost(this, EventArgs.Empty);
+
+				GameOverLose();
             }
             else // Handle boss losing final life.
             {

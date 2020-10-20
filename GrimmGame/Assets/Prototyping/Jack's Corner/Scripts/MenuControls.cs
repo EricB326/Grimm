@@ -20,8 +20,9 @@ public class MenuControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+		//EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(test2);
+	}
 
     // Update is called once per frame
     void Update()
@@ -70,12 +71,14 @@ public class MenuControls : MonoBehaviour
             }
             menuCollection.SetActive(false);
             optionCollection.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(test);
             optionsFade = false;
         }
         else
         {
             menuCollection.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(test2);
             optionCollection.SetActive(false);
 

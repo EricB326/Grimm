@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116482728385830717}
   - component: {fileID: 116482728385830743}
-  - component: {fileID: 116482728385830742}
   - component: {fileID: 116482728385830745}
-  - component: {fileID: 116482729824055215}
   m_Layer: 0
   m_Name: EntityStatManager
   m_TagString: Untagged
@@ -75,21 +73,6 @@ MonoBehaviour:
     maxHealth: 0
     maxStamina: 0
     timeSinceLastStaminaDeminish: 0
---- !u!114 &116482728385830742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116482728385830715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab06682283c2c894982658c1423d6e52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  blurCamera: {fileID: 0}
-  blurMaterial: {fileID: 2100000, guid: 097353479241602459d0160b58378005, type: 2}
 --- !u!114 &116482728385830745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,15 +93,3 @@ MonoBehaviour:
     particlesToPlay:
     - {fileID: 0}
     soundsToPlay: []
---- !u!114 &116482729824055215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116482728385830715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56b9e8764842b442a2279dbcd85f235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

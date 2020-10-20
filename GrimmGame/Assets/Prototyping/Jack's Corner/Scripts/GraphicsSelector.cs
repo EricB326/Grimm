@@ -16,18 +16,30 @@ public class GraphicsSelector : MonoBehaviour
 
 	private void Awake()
 	{
-        QualitySettings.SetQualityLevel(qualityDropdown.value);
+		if (ImplSettingsFromMenu.Instance)
+		{
+			SetQuality(ImplSettingsFromMenu.Instance.QualitySettings);
+			qualityDropdown.value = ImplSettingsFromMenu.Instance.QualitySettings;
 
-        if (fullscreenToggle.isOn)
+			fullscreenToggle.isOn = ImplSettingsFromMenu.Instance.IsFullscreen;
+
+			SetResolution(ImplSettingsFromMenu.Instance.ResolutionIndex);
+			resDropdown.value = ImplSettingsFromMenu.Instance.ResolutionIndex;
+		}
+
+		if (fullscreenToggle.isOn)
 			Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
 		else
 			Screen.fullScreenMode = FullScreenMode.Windowed;
-	}
+    }
 
 	public void SetQuality(int a_qualityIndex)
     {
         QualitySettings.SetQualityLevel(a_qualityIndex);
         Debug.Log(a_qualityIndex);
+
+        if (ImplSettingsFromMenu.Instance)
+            ImplSettingsFromMenu.Instance.QualitySettings = a_qualityIndex;
     }
 
     public void SetResolution(int a_resIndex)
@@ -37,13 +49,26 @@ public class GraphicsSelector : MonoBehaviour
         int yRes = Convert.ToInt32(splitRes[2]);
 
         Screen.SetResolution(xRes, yRes, fullscreenToggle.isOn);
+
+        if (ImplSettingsFromMenu.Instance)
+            ImplSettingsFromMenu.Instance.ResolutionIndex = a_resIndex;
     }
 
     public void SetFullscreen()
     {
         if (fullscreenToggle.isOn)
-			Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        {
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+
+            if (ImplSettingsFromMenu.Instance)
+                ImplSettingsFromMenu.Instance.IsFullscreen = true;
+        }
         else
+        { 
             Screen.fullScreenMode = FullScreenMode.Windowed;
+
+            if (ImplSettingsFromMenu.Instance)
+                ImplSettingsFromMenu.Instance.IsFullscreen = false;
+        }
     }
 }
