@@ -7650,7 +7650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4428c2f7c4582414abe5691c11b04ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLifeParent: {fileID: 0}
+  playerLifeParent: {fileID: 7791464276497098714}
   featherParent: {fileID: 7791464276748862093}
   originalFeather: {fileID: 6315821061487546992, guid: cd154c9bd28f5a647b4bdfdab39bedf2,
     type: 3}

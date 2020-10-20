@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prototyping/Jack's Corner/Scenes/Main Menu Testing.unity
     guid: cd849cc19ff2d3344bf89a6891534dbf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Prototyping/BrettScenes/Grimm Map Alpha/Scenes/Grimm Beta Map.unity
     guid: ed79c08a445eead4bbba93e822a9f625
   - enabled: 0
-    path: Assets/Prototyping/EricsFun/MYDUPLICATEDMAP.unity
-    guid: 316a4c6ff1c26ff41844f92a67c1ce12
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
