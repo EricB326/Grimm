@@ -150,12 +150,12 @@ public class AnimationEventsBoss : MonoBehaviour
 
     public void HandDownLeft()
     {
-
+        Debug.Log("No Hand Particle Left");
     }
 
     public void HandDownRight()
     {
-
+        Debug.Log("No Hand Particle Right");
     }
 
     // Need to do.

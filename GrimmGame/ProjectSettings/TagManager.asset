@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Sword
   - AttackHitBox
+  - Gate
   layers:
   - Default
   - TransparentFX
