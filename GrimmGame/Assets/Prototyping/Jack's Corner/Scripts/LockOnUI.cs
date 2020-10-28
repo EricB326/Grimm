@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class LockOnUI : MonoBehaviour
 {
-    public Image UILockOnObject;
+    //public Image UILockOnObject;
+    public GameObject UILockOnObject;
     public Transform lockOnPoint;
 
     // Start is called before the first frame update
@@ -19,11 +20,13 @@ public class LockOnUI : MonoBehaviour
     {
         if (CameraShaker.Instance.cameraInfo.m_selectedCamera == 1)
         {
-            UILockOnObject.enabled = true;
+            //UILockOnObject.enabled = true;
+            UILockOnObject.SetActive(true);
             Vector3 lockOnPos = Camera.main.WorldToScreenPoint(lockOnPoint.position);
             UILockOnObject.transform.position = lockOnPos;
         }
         else
-            UILockOnObject.enabled = false;
+            //UILockOnObject.enabled = false;
+            UILockOnObject.SetActive(false);
     }
 }

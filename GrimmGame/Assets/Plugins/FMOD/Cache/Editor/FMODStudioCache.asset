@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/raven.bank
   Name: raven
-  lastModified: 637376661864903519
+  lastModified: 637393132839655532
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -164,7 +164,7 @@ MonoBehaviour:
   - {fileID: 5193402215960462185}
   StringsBanks:
   - {fileID: 5724680040526254773}
-  stringsBankWriteTime: 637376661856660030
+  stringsBankWriteTime: 637393132840090791
   cacheVersion: 5
 --- !u!114 &5193402215960462185
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/Master.bank
   Name: Master
-  lastModified: 637376661856510407
+  lastModified: 637393132841397221
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/Master.strings.bank
   Name: Master.strings
-  lastModified: 637376661856660030
+  lastModified: 637393132840090791
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:/DOCUMENTS/Game design projects/Grimm/Grimm/GrimmGame/Assets/FMOD banks/player.bank
   Name: player
-  lastModified: 637376661861377388
+  lastModified: 637393132840090791
   LoadResult: 0
   FileSizes:
   - Name: 

@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Sword
   - AttackHitBox
+  - UIbutton
   layers:
   - Default
   - TransparentFX
