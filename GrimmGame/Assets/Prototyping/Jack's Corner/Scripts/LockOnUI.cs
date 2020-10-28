@@ -34,7 +34,7 @@ public class LockOnUI : MonoBehaviour
             UILockOnObject.transform.position = lockOnPos;
         }
         else
-            //UILockOnObject.enabled = false;
-            UILockOnObject.SetActive(false);
+            UILockOnObject.enabled = false;
+            //UILockOnObject.SetActive(false);
     }
 }
