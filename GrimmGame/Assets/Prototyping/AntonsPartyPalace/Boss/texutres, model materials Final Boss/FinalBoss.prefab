@@ -612,6 +612,36 @@ Transform:
   m_Father: {fileID: 232598933485161360}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &151345976033070340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908404366191835709}
+  m_Layer: 0
+  m_Name: Foot Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &908404366191835709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151345976033070340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.079, y: 0.422, z: -0.047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1685159303710813299}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &157116431390291053
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +1009,66 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &582074655163860795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5469283730110447872}
+  m_Layer: 0
+  m_Name: Claw Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5469283730110447872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582074655163860795}
+  m_LocalRotation: {x: -0.000000016762016, y: 2.4482683e-10, z: 0.043903712, w: 0.99903584}
+  m_LocalPosition: {x: -0.334, y: -0.072, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7866905690296622847}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.0330005}
+--- !u!1 &834223747104955493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9114899010239891102}
+  m_Layer: 0
+  m_Name: Centre Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9114899010239891102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834223747104955493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5828935692799162400}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &925045671822910615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1468,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0077355467, y: -0.13020712, z: 0.7284865}
     m_Extent: {x: 0.11851394, y: 0.22424728, z: 1.3098168}
   m_DirtyAABB: 0
+--- !u!1 &2487230545609262452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2627085684668816269}
+  m_Layer: 0
+  m_Name: Sword Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2627085684668816269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2487230545609262452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.098, z: 1.459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3466947102166221184}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2498606707256145813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1777,7 @@ Transform:
   - {fileID: 3925659432344835546}
   - {fileID: 1392394373}
   - {fileID: 261033581}
+  - {fileID: 7493018284453911983}
   m_Father: {fileID: 7951568681347161805}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1726,6 +1847,7 @@ Transform:
   - {fileID: 8792511490710469816}
   - {fileID: 6257287540570809665}
   - {fileID: 7155933720366710806}
+  - {fileID: 908404366191835709}
   m_Father: {fileID: 1607582638821509891}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2055,6 +2177,7 @@ Transform:
   m_Children:
   - {fileID: 5310790449450632567}
   - {fileID: 9067091090492488438}
+  - {fileID: 9114899010239891102}
   m_Father: {fileID: 8038140659665189814}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3175,8 +3298,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.48037568, y: 2.6327763, z: -1.5204225}
-    m_Extent: {x: 0.37902686, y: 0.2176516, z: 1.2089484}
+    m_Center: {x: 0.48037583, y: 2.6327763, z: -1.520422}
+    m_Extent: {x: 0.37902695, y: 0.2176516, z: 1.2089479}
   m_DirtyAABB: 0
 --- !u!183 &6655854534739343026
 Cloth:
@@ -4676,6 +4799,7 @@ Transform:
   - {fileID: 7929397874954451744}
   - {fileID: 8375309915490192785}
   - {fileID: 7381496528920454970}
+  - {fileID: 5469283730110447872}
   m_Father: {fileID: 4872748289777402357}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4707,6 +4831,36 @@ MonoBehaviour:
   m_tagToLookFor: Player
   m_hangTime: 0
   timescaleSlowDownOnIFrames: 0
+--- !u!1 &7273155345181304972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7493018284453911983}
+  m_Layer: 0
+  m_Name: Head Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7493018284453911983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273155345181304972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5677078164837968714}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7369195089056591892
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,6 +5010,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1273224936037113072}
+  - {fileID: 2627085684668816269}
   m_Father: {fileID: 5081553881518002918}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5853,15 +6008,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f928efcbb03b61644b83156e28ac8db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordEmitter: {fileID: 0}
-  clawEmitter: {fileID: 0}
-  headEmitter: {fileID: 0}
-  centreEmitter: {fileID: 0}
-  footEmitter: {fileID: 0}
-  ravenSwordAttack1: 
-  ravenClawAttack1: 
-  ravenHitConfirm: 
-  ravenFootstep1: 
+  swordEmitter: {fileID: 2487230545609262452}
+  clawEmitter: {fileID: 582074655163860795}
+  headEmitter: {fileID: 7273155345181304972}
+  centreEmitter: {fileID: 834223747104955493}
+  footEmitter: {fileID: 151345976033070340}
+  ravenSwordAttack1: event:/Raven/raven combo 1
+  ravenClawAttack1: event:/Raven/raven combo 2
+  ravenHitConfirm: event:/Raven/hit confirm
+  ravenFootstep1: event:/Raven/footstep
 --- !u!1 &9067091090492488439
 GameObject:
   m_ObjectHideFlags: 0
@@ -6515,8 +6670,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.5292063, y: 2.6327763, z: -1.5163658}
-    m_Extent: {x: 0.38663685, y: 0.2176516, z: 1.2077901}
+    m_Center: {x: -0.5292071, y: 2.632776, z: -1.5163662}
+    m_Extent: {x: 0.3866374, y: 0.2176516, z: 1.2077906}
   m_DirtyAABB: 0
 --- !u!183 &9100489747321478638
 Cloth:
