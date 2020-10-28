@@ -119,7 +119,7 @@ public class TutorialScript : MonoBehaviour
                     break;
                 case PlayerVerb.Lockon:
                     //replace K with some kind of actual reference
-                    if (Input.GetKeyDown(KeyCode.K))
+                    if (CameraShaker.Instance.cameraInfo.m_selectedCamera == 1))
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Dodge:
