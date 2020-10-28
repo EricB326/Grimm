@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LockOnUI : MonoBehaviour
 {
-    public Image UILockOnObject;
+    public Image[] UILockOnObjects;
     public Transform[] lockOnPoint;
     Transform closestTransform;
     GameObject player;
@@ -29,12 +29,17 @@ public class LockOnUI : MonoBehaviour
                     closestTransform = lockOnPoint[i];
                 }
             }
-            UILockOnObject.enabled = true;
-            Vector3 lockOnPos = Camera.main.WorldToScreenPoint(closestTransform.position);
-            UILockOnObject.transform.position = lockOnPos;
+            for (int i = 0; i < UILockOnObjects.Length; i++)
+            {
+                UILockOnObjects[i].enabled = true;
+                Vector3 lockOnPos = Camera.main.WorldToScreenPoint(closestTransform.position);
+                UILockOnObjects[i].transform.position = lockOnPos;
+            }
         }
         else
-            UILockOnObject.enabled = false;
-            //UILockOnObject.SetActive(false);
+            for (int i = 0; i < UILockOnObjects.Length; i++)
+            {
+                UILockOnObjects[i].enabled = false;
+            }
     }
 }
