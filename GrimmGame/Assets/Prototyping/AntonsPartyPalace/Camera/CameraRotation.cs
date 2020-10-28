@@ -1,4 +1,4 @@
-﻿using Cinemachine;
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -128,6 +128,8 @@ public class CameraRotation : MonoBehaviour
                 m_recenter = false;
             }
         }
+
+
     }
 
     public void Recenter(Vector3 a_forward)
@@ -137,6 +139,23 @@ public class CameraRotation : MonoBehaviour
             Debug.Log("Recenter");
             m_centerTarget = (180 / 3.14159f) * Mathf.Atan2(a_forward.x, a_forward.z);
             m_recenter = true;
+        }
+    }
+
+    // Should move the other camera towards the current cam
+    // Should remove snapping.
+    public void SyncCams()
+    {
+        // X value of cameras should be the same
+        //active cam should be saved over other camera.
+
+        if(m_selectedCamera == 0)
+        {
+            m_camList[1].m_XAxis = m_camList[0].m_XAxis;
+        }
+        else
+        {
+            m_camList[0].m_XAxis = m_camList[1].m_XAxis;
         }
     }
 }
