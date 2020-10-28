@@ -242,7 +242,6 @@ public class AnimationEventsBoss : MonoBehaviour
             else
             {
                 this.GetComponent<BossVariables>().m_trails[a_trailNumber - 1].SetActive(true);
-                Debug.Log("Enable");
             }
         }
         else
@@ -263,7 +262,6 @@ public class AnimationEventsBoss : MonoBehaviour
             else
             {
                 this.GetComponent<BossVariables>().m_trails[a_trailNumber - 1].SetActive(false);
-                Debug.Log("Disable");
             }
         }
         else

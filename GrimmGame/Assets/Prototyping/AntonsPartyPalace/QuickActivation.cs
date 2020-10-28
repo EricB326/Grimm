@@ -31,7 +31,6 @@ public class QuickActivation : MonoBehaviour
         if(m_fogWallFade)
         {
             float rate =  Mathf.Lerp(0, 1, m_currentRate);
-            Debug.Log(rate);
             m_currentRate += m_fadeInRate;
             m_fogWall.GetComponent<MeshRenderer>().material.SetFloat("Alpha_Int", Mathf.Lerp(0, 1, rate));
             if(m_fogWall.GetComponent<MeshRenderer>().material.GetFloat("Alpha_Int") >= 1)
@@ -45,6 +44,7 @@ public class QuickActivation : MonoBehaviour
     public void ResetWall()
     {
         m_fogWall.GetComponent<MeshRenderer>().material.SetFloat("Alpha_Int", 0.0f);
+        m_currentRate = 0;
         m_fogWall.SetActive(false);
     }
 

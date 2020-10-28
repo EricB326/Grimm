@@ -8,11 +8,14 @@ using UnityEngine.VFX;
 // Once target is hit will disable itself unitl next swing.
 // Does damage to boss here.
 
+
 public class AttackColliderPlayer : MonoBehaviour
 {
     private Collider m_collider;
     public VisualEffect m_visualeffect;
     public float m_particleOffset;
+
+    // Needs a reference to the tutorial ui
 
     // Disables trigger box at start.
     void Start()
@@ -25,7 +28,6 @@ public class AttackColliderPlayer : MonoBehaviour
     // When trigger box collides with boss do damage.
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if(other.tag == "Boss")
         {
             Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
@@ -51,18 +53,15 @@ public class AttackColliderPlayer : MonoBehaviour
         {
             Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
 
-            if (player.m_attackStats == 0 || player.m_attackStats == 1 ||
-                player.m_attackStats == 3)
-            {
-
-                other.GetComponent<Animator>().SetTrigger("Shake");
-
-            }
-            else if (player.m_attackStats == 2)
+            if (player.m_attackStats == 2)
             {
                 other.GetComponent<Animator>().SetTrigger("Break");
                 other.GetComponent<GateBreaker>().m_disabledCollider.enabled = false;
                 other.GetComponent<Animator>().SetBool("Broken", true);
+            }
+            else
+            {
+                other.GetComponent<Animator>().SetTrigger("Shake");
             }
         }
     }

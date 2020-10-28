@@ -37,7 +37,7 @@ public class TutorialScript : MonoBehaviour
     //public bool dodgeComplete = false;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         //frankensteining tutVerb arrays together
         tutVerbArray = new PlayerVerb[][]
@@ -133,7 +133,7 @@ public class TutorialScript : MonoBehaviour
             }
 
             //replace this with input from the gate
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.O))
             { ProgressActiveAnimator(activeGroup); }
 
             if (successful)
