@@ -17,16 +17,14 @@ MonoBehaviour:
   - {fileID: 7904806139297608414, guid: c29b094abdec2ef4584066ec9fcc9adf, type: 3}
   - {fileID: 8632977291124583399, guid: 9ff96c23a39dbd84ba03d2b381dd8e57, type: 3}
   - {fileID: 6610836305396197052, guid: 6b3546d09bf439c41ad23f17e6092814, type: 3}
-  - {fileID: 7243209615218423865, guid: 4bf5c9392e6410f4285e07b62126ba5f, type: 3}
-  - {fileID: 436777448057077585, guid: a9e367353bdc80842874b8462a935198, type: 3}
   paintType: 0
-  brushSize: 2.19
+  brushSize: 0.4
   minBrushSize: 0.1
   maxBrushSize: 20
   paintDeltaDistance: 0.5
   maxPaintDeltaDistance: 3.5
   minPaintDeltaDistance: 0.4
-  prefabsPerStroke: 3
+  prefabsPerStroke: 5
   maxprefabsPerStroke: 10
   minprefabsPerStroke: 2
   spawnHeight: 10
@@ -37,8 +35,8 @@ MonoBehaviour:
   checkSlope: 0
   requiredTagMask: 0
   requiredLayerMask: 0
-  minRequiredSlope: 15.302013
-  maxRequiredSlope: 54.161076
+  minRequiredSlope: 0
+  maxRequiredSlope: 0
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
   draggingAction: 0
@@ -46,7 +44,7 @@ MonoBehaviour:
   rotationSensitivity: 10
   parentingStyle: 0
   parent: {fileID: 0}
-  rotateToMatchSurface: 1
+  rotateToMatchSurface: 0
   rotateSurfaceDirection: 0
   randomizeRotation: 1
   minXRotation: 0
