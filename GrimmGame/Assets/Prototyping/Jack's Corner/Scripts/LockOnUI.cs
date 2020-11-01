@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class LockOnUI : MonoBehaviour
 {
-    public Image UILockOnObject;
-    public Transform lockOnPoint;
+    public Image[] UILockOnObjects;
+    public Transform[] lockOnPoint;
+    Transform closestTransform;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        closestTransform = lockOnPoint[0];
+        player = EntityStats.Instance.GetObjectOfEntity("Player"); 
     }
 
     // Update is called once per frame
@@ -19,11 +22,24 @@ public class LockOnUI : MonoBehaviour
     {
         if (CameraShaker.Instance.cameraInfo.m_selectedCamera == 1)
         {
-            UILockOnObject.enabled = true;
-            Vector3 lockOnPos = Camera.main.WorldToScreenPoint(lockOnPoint.position);
-            UILockOnObject.transform.position = lockOnPos;
+            for (int i = 0; i < lockOnPoint.Length; i++)
+            {
+                if (Vector3.Distance(player.transform.position, closestTransform.position) > Vector3.Distance(player.transform.position, lockOnPoint[i].position))
+                {
+                    closestTransform = lockOnPoint[i];
+                }
+            }
+            for (int i = 0; i < UILockOnObjects.Length; i++)
+            {
+                UILockOnObjects[i].enabled = true;
+                Vector3 lockOnPos = Camera.main.WorldToScreenPoint(closestTransform.position);
+                UILockOnObjects[i].transform.position = lockOnPos;
+            }
         }
         else
-            UILockOnObject.enabled = false;
+            for (int i = 0; i < UILockOnObjects.Length; i++)
+            {
+                UILockOnObjects[i].enabled = false;
+            }
     }
 }

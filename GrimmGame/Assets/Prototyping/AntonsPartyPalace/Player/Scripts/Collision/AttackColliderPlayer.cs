@@ -8,11 +8,14 @@ using UnityEngine.VFX;
 // Once target is hit will disable itself unitl next swing.
 // Does damage to boss here.
 
+
 public class AttackColliderPlayer : MonoBehaviour
 {
     private Collider m_collider;
     public VisualEffect m_visualeffect;
     public float m_particleOffset;
+
+    // Needs a reference to the tutorial ui
 
     // Disables trigger box at start.
     void Start()
@@ -45,6 +48,21 @@ public class AttackColliderPlayer : MonoBehaviour
             //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>().IncreaseRevengeValue(); // REVENGE VALUE REMOVED LOGIC DEFCUNT
             // Need to trigger visual effects on boss taking damage.
             // Should have a OnHitEffects with a list of things to do.
+        }
+        else if(other.tag == "Gate")
+        {
+            Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+
+            if (player.m_attackStats == 2)
+            {
+                other.GetComponent<Animator>().SetTrigger("Break");
+                other.GetComponent<GateBreaker>().m_disabledCollider.enabled = false;
+                other.GetComponent<Animator>().SetBool("Broken", true);
+            }
+            else
+            {
+                other.GetComponent<Animator>().SetTrigger("Shake");
+            }
         }
     }
 }

@@ -73,6 +73,20 @@ ModelImporter:
         floatParameter: 0.2
         intParameter: 0
         messageOptions: 0
+      - time: 0.25637418
+        functionName: DisableCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.48331505
+        functionName: BossDeath
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.92622954
         functionName: DisableCollider
         data: 
@@ -85,13 +99,6 @@ ModelImporter:
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0.2
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.897541
-        functionName: BossDeath
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []

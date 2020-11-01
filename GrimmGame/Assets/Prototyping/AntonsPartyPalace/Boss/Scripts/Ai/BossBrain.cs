@@ -806,6 +806,7 @@ public class BossBrain : MonoBehaviour
         m_animator.SetFloat("Movement/X", 0);
         m_animator.SetInteger("Ai/Action", 0);
         m_animator.SetInteger("CutScene", 2);
+        this.GetComponent<BossVariables>().m_activationScript.ResetWall();
         this.enabled = false;
     }
 

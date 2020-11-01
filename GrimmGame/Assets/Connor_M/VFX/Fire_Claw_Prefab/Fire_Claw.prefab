@@ -97,7 +97,7 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    numCornerVertices: 21
+    numCornerVertices: 70
     numCapVertices: 0
     alignment: 0
     textureMode: 2
@@ -191,7 +191,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 387ea1c99778e5941bdd6fd4dbb84a8a,
         type: 3}
       propertyPath: m_Name
-      value: Boss_Claw (2)
+      value: Fire_Claw
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 387ea1c99778e5941bdd6fd4dbb84a8a, type: 3}

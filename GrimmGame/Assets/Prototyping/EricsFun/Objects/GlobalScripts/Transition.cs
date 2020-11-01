@@ -122,7 +122,7 @@ public class Transition
     // Aint gotta be filled in.
     static public void DefaultBossTransision()
 	{
-		Debug.Log("Default Boss x");
+
         //////////////////////
         // All Example Shit //
         //////////////////////

@@ -28,7 +28,11 @@ public class BossVariables : MonoBehaviour
     public QuickActivation m_activationScript;
     public GateActivater m_gate;
 
-    public bool m_dead = false; 
+    public bool m_dead = false;
+
+    // Reference to turn off cloth colliders.
+    public Cloth m_cloth;
+
 
     private void Start()
     {

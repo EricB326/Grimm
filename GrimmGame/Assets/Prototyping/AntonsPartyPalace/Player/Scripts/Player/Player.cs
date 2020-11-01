@@ -106,7 +106,13 @@ public class Player : MonoBehaviour
     {       
         // This is better to be set with in game logic but I'll
         // cover that again when I go over the camera.
-        m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
+        if(m_target == null)
+        {
+            m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
+        }
+
+
+
         //m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
         //m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
         m_startPos = this.transform.position;
@@ -156,13 +162,6 @@ public class Player : MonoBehaviour
             {
                 AttackRotation();
             }
-
-
-
-
-
-
-
         }
     }
 
@@ -177,7 +176,6 @@ public class Player : MonoBehaviour
         //{
         //    EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
         //}
-
 
         if (!PauseMenuController.isPaused)
         {
@@ -197,7 +195,7 @@ public class Player : MonoBehaviour
                 {
                     // Target aquizition needs to occur here.
                    
-                    Vector3 direction = Boss.transform.position - this.transform.position;
+                    Vector3 direction = m_target.transform.position - this.transform.position;
 
                     //Ray toBoss = new Ray(this.transform.position + (this.transform.up / 2), this.transform.position + direciton);
                     float lockOnRange = 20;
@@ -595,19 +593,25 @@ public class Player : MonoBehaviour
         if (!player.m_lockon)
         {
             // Get the input out of the animator
-            float z = player.m_animator.GetFloat("Input/Z");
-            float x = player.m_animator.GetFloat("Input/X");
+            //float z = player.m_animator.GetFloat("Input/Z");
+            //float x = player.m_animator.GetFloat("Input/X");
 
-            //float z = XCI.GetAxis(XboxAxis.LeftStickX);
-            //float x = XCI.GetAxis(XboxAxis.LeftStickY);
-            //if (z != 0 && x != 0)
+            float x = XCI.GetAxis(XboxAxis.LeftStickX);
+            float z = XCI.GetAxis(XboxAxis.LeftStickY);
+            if (z != 0 || x != 0)
             {
                 Vector3 camerax = (new Vector3(Camera.main.transform.right.x, this.transform.up.x, Camera.main.transform.right.z) * x);
                 Vector3 cameraz = (new Vector3(Camera.main.transform.forward.x, this.transform.up.x, Camera.main.transform.forward.z) * z);
                 Vector3 cameraPosition = (cameraz + camerax);
 
-                Quaternion targetRotation = Quaternion.LookRotation(cameraPosition);
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.2f);
+                cameraPosition.y = 0;
+
+
+                //cameraPosition = this.transform.worldToLocalMatrix * cameraPosition;
+
+                Quaternion targetRotation = Quaternion.LookRotation(cameraPosition.normalized);
+                Debug.DrawRay(this.transform.position, cameraPosition.normalized, Color.red, 2f);
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.15f);
             }
         }
         else
@@ -619,7 +623,7 @@ public class Player : MonoBehaviour
             // Take not that head will need the y.
             bossdirection.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(bossdirection);
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.2f);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.15f);
         }
     }
 

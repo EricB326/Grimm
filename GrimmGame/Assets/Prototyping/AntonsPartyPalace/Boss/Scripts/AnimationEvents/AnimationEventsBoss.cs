@@ -150,12 +150,12 @@ public class AnimationEventsBoss : MonoBehaviour
 
     public void HandDownLeft()
     {
-
+        Debug.Log("No Hand Particle Left");
     }
 
     public void HandDownRight()
     {
-
+        Debug.Log("No Hand Particle Right");
     }
 
     // Need to do.
@@ -216,6 +216,14 @@ public class AnimationEventsBoss : MonoBehaviour
     public void DisableCollider()
     {
         this.GetComponent<BossVariables>().m_hitbox.enabled = false;
+        if (this.GetComponent<BossVariables>().m_cloth != null)
+        {
+            Cloth cloth = this.GetComponent<BossVariables>().m_cloth;
+            foreach (Collider c in cloth.capsuleColliders)
+            {
+                c.enabled = false;
+            }
+        }
     }
 
     public void DisableLockon()
@@ -242,7 +250,6 @@ public class AnimationEventsBoss : MonoBehaviour
             else
             {
                 this.GetComponent<BossVariables>().m_trails[a_trailNumber - 1].SetActive(true);
-                Debug.Log("Enable");
             }
         }
         else
@@ -263,7 +270,6 @@ public class AnimationEventsBoss : MonoBehaviour
             else
             {
                 this.GetComponent<BossVariables>().m_trails[a_trailNumber - 1].SetActive(false);
-                Debug.Log("Disable");
             }
         }
         else
