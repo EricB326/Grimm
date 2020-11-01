@@ -32,8 +32,7 @@ public class MenuControls : MonoBehaviour
 
     public void NewGame()
     {
-        Debug.Log("Scene Will Change");
-        SceneManager.LoadScene(1);
+        SceneManagement.instance.LoadGrimm();
     }
 
     public void Options()
@@ -49,7 +48,6 @@ public class MenuControls : MonoBehaviour
 
     public void Credits()
     {
-        Debug.Log("Scene Will Change");
         //SceneManager.LoadScene("Credits");
     }
 
