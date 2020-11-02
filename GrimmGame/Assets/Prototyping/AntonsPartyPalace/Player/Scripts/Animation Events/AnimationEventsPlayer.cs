@@ -11,6 +11,12 @@ using UnityEngine.SceneManagement;
 
 public class AnimationEventsPlayer : MonoBehaviour
 {
+    // I fucking give up
+    [SerializeField]
+    private TutorialScript m_tut;
+
+
+
 
     //public float m_swingRotationSpeed = 0.3f;
 
@@ -208,5 +214,26 @@ public class AnimationEventsPlayer : MonoBehaviour
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_lockon = false;
     }
 
+
+
+    public void TutorialLightAttack()
+    {
+        m_tut.m_lastAnimation = AnimEnums.Light;
+    }
+
+    public void TutorialHeavyAttack()
+    {
+        m_tut.m_lastAnimation = AnimEnums.Heavy;
+    }
+
+    public void TutorialDodge()
+    {
+        m_tut.m_lastAnimation = AnimEnums.Dodge;
+    }
+
+    public void TutorialRun()
+    {
+        m_tut.m_lastAnimation = AnimEnums.Run;
+    }
 
 }

@@ -36,6 +36,13 @@ public class TutorialScript : MonoBehaviour
     //public bool gateComplete = false;
     //public bool dodgeComplete = false;
 
+
+    //----
+    // Antons additional shit
+    // Get rid of it if you want
+    [HideInInspector]
+    public AnimEnums m_lastAnimation;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -107,14 +114,16 @@ public class TutorialScript : MonoBehaviour
             var currentVerb = tutVerbArray[activeGroup][activeGroupAnimator[activeGroup]];
             var successful = false; //this is true if the current verb's condition was fulfilled
 
+            
+
             switch (currentVerb)
             {
                 case PlayerVerb.Light_Attack:
-                    if (playerAnimator.GetBool("Input/AttackLight"))
+                    if (m_lastAnimation == AnimEnums.Light)
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Heavy_Attack:
-                    if (playerAnimator.GetBool("Input/AttackHeavy"))
+                    if (m_lastAnimation == AnimEnums.Heavy)
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Lockon:
@@ -123,11 +132,11 @@ public class TutorialScript : MonoBehaviour
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Dodge:
-                    if (playerAnimator.GetBool("Input/Roll"))
+                    if (m_lastAnimation == AnimEnums.Dodge)
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Run:
-                    if (playerAnimator.GetBool("Input/Running"))
+                    if (m_lastAnimation == AnimEnums.Run)
                     { TriggerCurrentButton(); successful = true; }
                     break;
             }
@@ -231,4 +240,8 @@ public class TutorialScript : MonoBehaviour
             Debug.Log("Trigger was exited, nothing was disabled");
         }
     }
+
+
+
+
 }
