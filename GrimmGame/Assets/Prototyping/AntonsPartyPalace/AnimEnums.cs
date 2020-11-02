@@ -7,5 +7,6 @@ public enum AnimEnums
     Light,
     Heavy,
     Dodge,
-    Run
+    Run,
+    None
 }

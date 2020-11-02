@@ -32,10 +32,13 @@ public class TutorialScript : MonoBehaviour
 
     //Non-generalised logic vars
     private bool[] tutGroupComplete;
+    private bool lockonPressed; //this is false if lockon was off for the previous frame
     //public bool lockonComplete = false;
     //public bool gateComplete = false;
     //public bool dodgeComplete = false;
 
+    //Gate Animator Reference
+    public Animator gateAnimator;
 
     //----
     // Antons additional shit
@@ -114,8 +117,6 @@ public class TutorialScript : MonoBehaviour
             var currentVerb = tutVerbArray[activeGroup][activeGroupAnimator[activeGroup]];
             var successful = false; //this is true if the current verb's condition was fulfilled
 
-            
-
             switch (currentVerb)
             {
                 case PlayerVerb.Light_Attack:
@@ -127,9 +128,11 @@ public class TutorialScript : MonoBehaviour
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Lockon:
-                    //replace K with some kind of actual reference
                     if (CameraShaker.Instance.cameraInfo.m_selectedCamera == 1)
-                    { TriggerCurrentButton(); successful = true; }
+                    { TriggerCurrentButton(); successful = true; } else
+                    {
+                        lockonPressed = false;
+                    }
                     break;
                 case PlayerVerb.Dodge:
                     if (m_lastAnimation == AnimEnums.Dodge)
@@ -143,7 +146,7 @@ public class TutorialScript : MonoBehaviour
 
             //replace this with input from the gate
             if (Input.GetKeyDown(KeyCode.O))
-            { ProgressActiveAnimator(activeGroup); }
+            { ; }
 
             if (successful)
             {
@@ -152,14 +155,27 @@ public class TutorialScript : MonoBehaviour
                     //if(activeGroup == 0 || activeGroup == 2)
                     //tutGroupComplete[activeGroup] = true;
                     tutGroupComplete[activeGroup] = true;
+                } else if (activeGroup == 1)
+                {
+                    ProgressActiveAnimator(activeGroup);
                 }
+                m_lastAnimation = AnimEnums.None;
+
             }
         }
     }
 
     public void TriggerCurrentButton()
     {
-        animatorArray[activeGroup][activeGroupAnimator[activeGroup]].SetBool("Pressed", true);
+        if (activeGroup != 0 || lockonPressed == false)
+        {
+            Debug.Log("Button Triggered");
+            animatorArray[activeGroup][activeGroupAnimator[activeGroup]].SetBool("Pressed", true);
+            if(activeGroup == 0)
+            {
+                lockonPressed = true;
+            }
+        }
     }
 
     public void UntriggerCurrentButton()
@@ -186,6 +202,12 @@ public class TutorialScript : MonoBehaviour
         if (activeGroupAnimator[activeGroup] < animatorArray[activeGroup].Length)
         {
             activeGroupAnimator[activeGroup]++;
+
+            //if it's the gate-break animator group and it's on its last index
+            if(activeGroup == 1 && activeGroupAnimator[activeGroup] == tutVerbArray[activeGroup].Length - 1)
+            {
+                gateAnimator.SetBool("CanBreak", true);
+            }
         } else
         {
             Debug.Log("Active animator advanced outside expected range");
