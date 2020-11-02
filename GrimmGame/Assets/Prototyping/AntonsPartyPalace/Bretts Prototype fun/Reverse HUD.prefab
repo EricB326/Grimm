@@ -1395,7 +1395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4405098618192879092
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2545,7 +2545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5104729191643544867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6159,7 +6159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2778615162388693354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6305,6 +6305,7 @@ MonoBehaviour:
   minFramerateText: {fileID: 342465356914639928}
   maxFramerateText: {fileID: 8608406026945230386}
   avgFramerateText: {fileID: 4511105637685564533}
+  parents: []
 --- !u!1 &7286143972185672142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6904,6 +6905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7791464276717740953}
   - component: {fileID: 2256253551705374080}
+  - component: {fileID: 3819489149411190949}
   m_Layer: 5
   m_Name: Reverse HUD
   m_TagString: Untagged
@@ -6938,8 +6940,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893ce9173c7a1db468c5c67edc4e22a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UILockOnObject: {fileID: 0}
-  lockOnPoint: {fileID: 0}
+  UILockOnObjects: []
+  lockOnPoint:
+  - {fileID: 0}
+--- !u!114 &3819489149411190949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791464276717740952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfb480f0b35a164f87cfba6d48904c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  child: {fileID: 7791464277560178075}
 --- !u!1 &7791464276748862093
 GameObject:
   m_ObjectHideFlags: 0
@@ -9070,7 +9086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &746257069469256313
 RectTransform:
   m_ObjectHideFlags: 0

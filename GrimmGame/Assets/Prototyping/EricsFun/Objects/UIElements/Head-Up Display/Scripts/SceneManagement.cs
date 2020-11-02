@@ -21,6 +21,7 @@ public class SceneManagement : MonoBehaviour
 	[SerializeField] private GameObject loadingDisplay;
 	[SerializeField] private Slider progBar;
 	[SerializeField] private TextMeshProUGUI textDisplay;
+	private bool isDone = false;
 
 	private void Awake()
 	{
@@ -55,22 +56,27 @@ public class SceneManagement : MonoBehaviour
 				totalSceneProgress = 0;
 
 				foreach (AsyncOperation this_op in scenesLoading)
-				{ 
+				{
 					totalSceneProgress += this_op.progress;
-					//Debug.Log("Progress: " + totalSceneProgress);
 				}
 
-				totalSceneProgress = (totalSceneProgress / scenesLoading.Count) * 100f;
-				Debug.Log("Progress: " + totalSceneProgress);
-				progBar.value = Mathf.RoundToInt(totalSceneProgress);
+				while (progBar.value != totalSceneProgress)
+				{
+					totalSceneProgress = (totalSceneProgress / scenesLoading.Count) * 100f;
+					if (totalSceneProgress > 100f)
+						totalSceneProgress = 100f;
 
+					progBar.value = Mathf.Lerp(progBar.value, totalSceneProgress, .1f);
+					progBar.value = Mathf.CeilToInt(progBar.value);
+
+					yield return false;
+				}
 
 				yield return false;
 			}
 		}
 
 		textDisplay.text = "Press 'A' on your controller to continue...";
-
 		while (!playerStarted)
 		{
 			if (Input.GetKeyDown(KeyCode.Return) || XCI.GetButtonDown(XboxButton.A))
@@ -80,6 +86,12 @@ public class SceneManagement : MonoBehaviour
 		}
 
 		loadingDisplay.SetActive(false);
+		isDone = true;
+	}
+
+	public bool IsDone()
+	{
+		return isDone;
 	}
 
 }
