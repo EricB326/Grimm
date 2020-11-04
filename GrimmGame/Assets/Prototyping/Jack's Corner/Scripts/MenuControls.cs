@@ -32,8 +32,7 @@ public class MenuControls : MonoBehaviour
 
     public void NewGame()
     {
-        Debug.Log("Scene Will Change");
-        SceneManager.LoadScene(1);
+        SceneManagement.instance.LoadGrimm();
     }
 
     public void Options()
@@ -49,7 +48,6 @@ public class MenuControls : MonoBehaviour
 
     public void Credits()
     {
-        Debug.Log("Scene Will Change");
         //SceneManager.LoadScene("Credits");
     }
 
@@ -58,7 +56,19 @@ public class MenuControls : MonoBehaviour
         
         if (fade)
         {
-            for (int i = 0; i < menuUIs.Length; i++)
+			foreach (GameObject button in menuUIs)
+			{
+				button.SetActive(true);
+
+				foreach (Transform child in button.transform)
+				{
+					Image this_image = child.GetComponent<Image>();
+					if (this_image != null && this_image.name == "Highlighted")
+						this_image.gameObject.SetActive(false);
+				}
+			}
+            
+			for (int i = 0; i < menuUIs.Length; i++)
             {
                 Color textMeshColor = menuUIs[i].GetComponentInChildren<TextMeshProUGUI>().color;
                 for (float j = 1; j >= 0 - fadeThreshold; j -= Time.deltaTime * fadeSpeed)
@@ -69,12 +79,13 @@ public class MenuControls : MonoBehaviour
                     yield return null;
                 }
             }
-            menuCollection.SetActive(false);
+
+			menuCollection.SetActive(false);
             optionCollection.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(test);
             optionsFade = false;
-        }
+		}
         else
         {
             menuCollection.SetActive(true);
@@ -82,19 +93,31 @@ public class MenuControls : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(test2);
             optionCollection.SetActive(false);
 
-            for (int i = 0; i < menuUIs.Length; i++)
+			for (int i = 0; i < menuUIs.Length; i++)
             {
                 Color textMeshColor = menuUIs[i].GetComponentInChildren<TextMeshProUGUI>().color;
                 for (float j = 0; j <= 1 + fadeThreshold; j += Time.deltaTime * fadeSpeed)
                 {
-                    Debug.Log("Menu UI" + i + ": " + j);
-                    
                     menuUIs[i].GetComponent<Image>().color = new Color(1, 1, 1, j);
                     menuUIs[i].GetComponentInChildren<TextMeshProUGUI>().color = new Color(textMeshColor.r, textMeshColor.g, textMeshColor.b, j);
                     yield return null;
                 }
             }
-            optionsFade = true;
+
+			foreach (Transform child in optionCollection.transform)
+			{
+				if (child.gameObject.name == "Back Button")
+				{
+					foreach (Transform veryChild in child.transform)
+					{
+						Image this_image = veryChild.GetComponent<Image>();
+						if (this_image != null && this_image.name == "Highlight")
+							this_image.gameObject.SetActive(false);
+					}
+				}
+			}
+
+			optionsFade = true;
         }
     }
 }

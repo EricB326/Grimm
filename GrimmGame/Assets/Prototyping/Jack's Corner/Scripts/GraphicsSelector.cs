@@ -35,10 +35,9 @@ public class GraphicsSelector : MonoBehaviour
 
 	public void SetQuality(int a_qualityIndex)
     {
-        QualitySettings.SetQualityLevel(a_qualityIndex);
-        Debug.Log(a_qualityIndex);
+		QualitySettings.SetQualityLevel(a_qualityIndex);
 
-        if (ImplSettingsFromMenu.Instance)
+		if (ImplSettingsFromMenu.Instance)
             ImplSettingsFromMenu.Instance.QualitySettings = a_qualityIndex;
     }
 

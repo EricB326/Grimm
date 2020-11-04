@@ -84,7 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RenTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: faa1b9aadb3827545b8ff3d47c3f88d1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -128,7 +128,7 @@ Material:
     - _BlendMode: 0
     - _BlueEdgeSharp: 11.86
     - _BlueEffect: 0.0028
-    - _BlueStrength: 0.00321
+    - _BlueStrength: 0.00067
     - _BlurOpacity: 10
     - _CoatMask: 0
     - _CullMode: 0
