@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuickActivation : MonoBehaviour
 {
+    public bool m_playedIntro = true;
+    public GameObject m_cutscene;
 
     public GameObject m_BossHealth;
     public GameObject m_BossCounters;
@@ -13,12 +15,11 @@ public class QuickActivation : MonoBehaviour
 
     private float m_fadeInRate = 0.001f;
     private float m_currentRate = 0.0f;
-    // Update is called once per frame
-
+    
 
     private void Awake()
     {
-
+        m_playedIntro = true;
         m_BossHealth.SetActive(false);
         m_BossCounters.SetActive(false);
         ResetWall();
@@ -53,20 +54,28 @@ public class QuickActivation : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
-            boss.SetActive(true);
-            boss.GetComponent<BossBrain>().enabled = true;
-            boss.GetComponent<Animator>().SetInteger("CutScene", 1);
-            m_BossHealth.SetActive(true);
-            m_BossCounters.SetActive(true);
-            EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_target = boss;
-            Camera.main.GetComponent<CameraRotation>().m_camList[1].LookAt = boss.GetComponent<BossVariables>().m_lookPoint;
 
-            // Triggers Kaz cutscene
+            if (!m_playedIntro)
+            {
+                // Disable player
+                m_playedIntro = true;
+                m_cutscene.SetActive(true);
+            }
+            else
+            {
+                GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
+                boss.SetActive(true);
+                boss.GetComponent<BossBrain>().enabled = true;
+                boss.GetComponent<Animator>().SetInteger("CutScene", 1);
+                m_BossHealth.SetActive(true);
+                m_BossCounters.SetActive(true);
+                EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_target = boss;
+                Camera.main.GetComponent<CameraRotation>().m_camList[1].LookAt = boss.GetComponent<BossVariables>().m_lookPoint;
 
-            // Turn on fog gate.
-            m_fogWall.SetActive(true);
-            m_fogWallFade = true;
+                // Turn on fog gate.
+                m_fogWall.SetActive(true);
+                m_fogWallFade = true;
+            }
         }
     }
 }

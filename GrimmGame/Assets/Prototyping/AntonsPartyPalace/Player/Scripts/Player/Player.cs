@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
         //    EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
         //}
 
-        if (!PauseMenuController.isPaused)
+        if (!PauseMenuController.isPaused /*||Cutscene */)
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
@@ -229,6 +229,11 @@ public class Player : MonoBehaviour
             }
 
         }
+        //else if(/*Cutscene*/)
+        //{
+
+        //    // do fade and play complete cutscene.
+        //}
     }
 
     // Send inputs to animator.
