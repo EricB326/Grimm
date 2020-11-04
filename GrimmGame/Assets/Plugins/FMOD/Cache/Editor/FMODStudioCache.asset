@@ -294,6 +294,26 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-7964404295056245837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/roll/material
+  m_EditorClassIdentifier: 
+  Name: material
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-7720733783827301135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/Master.bank
   Name: Master
-  lastModified: 637399357787108442
+  lastModified: 637400879052286402
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -662,6 +682,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6015482427162141595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/atmos/proximity
+  m_EditorClassIdentifier: 
+  Name: proximity
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-5820904658557986856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,7 +742,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -2723717478899453058}
+  - {fileID: -7964404295056245837}
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
@@ -1308,7 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/raven.bank
   Name: raven
-  lastModified: 637399357794990335
+  lastModified: 637400879050281772
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1332,7 +1372,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -1526491883955431192}
+  - {fileID: 4460976277517057660}
   MinDistance: 1
   MaxDistance: 5.6
   Length: 1845
@@ -1869,7 +1909,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 2941095755803758322}
+  - {fileID: -6015482427162141595}
   MinDistance: 0
   MaxDistance: 0
   Length: 59289
@@ -2020,7 +2060,7 @@ MonoBehaviour:
   - {fileID: -7629994403879681479}
   StringsBanks:
   - {fileID: 7497704140397195079}
-  stringsBankWriteTime: 637399357787153481
+  stringsBankWriteTime: 637400879050242116
   cacheVersion: 5
 --- !u!114 &181615089461167545
 MonoBehaviour:
@@ -2631,6 +2671,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &4460976277517057660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/footstep/material
+  m_EditorClassIdentifier: 
+  Name: material
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &4464296514013969446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,7 +3123,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 2405558582234160262}
+  - {fileID: 8627793082429915209}
   MinDistance: 1
   MaxDistance: 20
   Length: 2039
@@ -3144,7 +3204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/player.bank
   Name: player
-  lastModified: 637399357793076418
+  lastModified: 637400879050341624
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3226,7 +3286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/Master.strings.bank
   Name: Master.strings
-  lastModified: 637399357787153481
+  lastModified: 637400879050242116
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -3404,6 +3464,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
+--- !u!114 &8627793082429915209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 'parameter:/hit confirm/type of attack '
+  m_EditorClassIdentifier: 
+  Name: 'type of attack '
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &8848157618750799069
 MonoBehaviour:
   m_ObjectHideFlags: 0
