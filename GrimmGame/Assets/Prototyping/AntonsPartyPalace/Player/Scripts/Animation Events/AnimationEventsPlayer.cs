@@ -236,4 +236,15 @@ public class AnimationEventsPlayer : MonoBehaviour
         m_tut.m_lastAnimation = AnimEnums.Run;
     }
 
+    public void FadeIn()
+    {
+        FadeScreen.instance.FadeIn();
+    }
+
+    public void FadeOut()
+    {
+        FadeScreen.instance.FadeOut();
+    }
+
+
 }

@@ -14,7 +14,8 @@ public class WaitForLoading : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-		if (SceneManagement.instance.IsDone())
-			child.SetActive(true);
+		if (SceneManagement.instance)
+			if (SceneManagement.instance.IsDone())
+				child.SetActive(true);
     }
 }

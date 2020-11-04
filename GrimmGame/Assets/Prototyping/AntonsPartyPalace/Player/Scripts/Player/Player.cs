@@ -456,6 +456,7 @@ public class Player : MonoBehaviour
             float animX = Mathf.Lerp(m_animator.GetFloat("Movement/X"), toAnim.x, 0.2f);
             float animZ = Mathf.Lerp(m_animator.GetFloat("Movement/Z"), toAnim.z, 0.2f);
             float scale;
+
             if (Mathf.Abs(a_axisX) + Mathf.Abs(a_axisZ) >= 1)
             {
                 scale = 1;

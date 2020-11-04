@@ -73,6 +73,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.46009392
+        functionName: TutorialLightAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.7886179
         functionName: DeavtivateHitBox
         data: 
@@ -82,13 +89,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.80380183
         functionName: RotateOff
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: TutorialLightAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
