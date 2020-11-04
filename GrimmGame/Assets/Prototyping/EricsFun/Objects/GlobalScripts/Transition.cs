@@ -152,7 +152,6 @@ public class Transition
 
 	static public void PlayerPhaseResetTransiton()
 	{
-
         GameObject player = EntityStats.Instance.GetObjectOfEntity("Player");
 
         if (!player.GetComponent<Player>().m_Dead) // I don't really like this

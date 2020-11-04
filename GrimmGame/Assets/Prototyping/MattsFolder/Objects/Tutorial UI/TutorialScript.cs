@@ -32,10 +32,20 @@ public class TutorialScript : MonoBehaviour
 
     //Non-generalised logic vars
     private bool[] tutGroupComplete;
+    private bool lockonPressed; //this is false if lockon was off for the previous frame
     //public bool lockonComplete = false;
     //public bool gateComplete = false;
     //public bool dodgeComplete = false;
 
+    //Gate Animator Reference
+    public Animator gateAnimator;
+
+    //----
+    // Antons additional shit
+    // Get rid of it if you want
+    [HideInInspector]
+    public AnimEnums m_lastAnimation;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -110,31 +120,33 @@ public class TutorialScript : MonoBehaviour
             switch (currentVerb)
             {
                 case PlayerVerb.Light_Attack:
-                    if (playerAnimator.GetBool("Input/AttackLight"))
+                    if (m_lastAnimation == AnimEnums.Light)
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Heavy_Attack:
-                    if (playerAnimator.GetBool("Input/AttackHeavy"))
+                    if (m_lastAnimation == AnimEnums.Heavy)
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Lockon:
-                    //replace K with some kind of actual reference
                     if (CameraShaker.Instance.cameraInfo.m_selectedCamera == 1)
-                    { TriggerCurrentButton(); successful = true; }
+                    { TriggerCurrentButton(); successful = true; } else
+                    {
+                        lockonPressed = false;
+                    }
                     break;
                 case PlayerVerb.Dodge:
-                    if (playerAnimator.GetBool("Input/Roll"))
+                    if (m_lastAnimation == AnimEnums.Dodge)
                     { TriggerCurrentButton(); successful = true; }
                     break;
                 case PlayerVerb.Run:
-                    if (playerAnimator.GetBool("Input/Running"))
+                    if (m_lastAnimation == AnimEnums.Run)
                     { TriggerCurrentButton(); successful = true; }
                     break;
             }
 
             //replace this with input from the gate
             if (Input.GetKeyDown(KeyCode.O))
-            { ProgressActiveAnimator(activeGroup); }
+            { ; }
 
             if (successful)
             {
@@ -143,14 +155,27 @@ public class TutorialScript : MonoBehaviour
                     //if(activeGroup == 0 || activeGroup == 2)
                     //tutGroupComplete[activeGroup] = true;
                     tutGroupComplete[activeGroup] = true;
+                } else if (activeGroup == 1)
+                {
+                    ProgressActiveAnimator(activeGroup);
                 }
+                m_lastAnimation = AnimEnums.None;
+
             }
         }
     }
 
     public void TriggerCurrentButton()
     {
-        animatorArray[activeGroup][activeGroupAnimator[activeGroup]].SetBool("Pressed", true);
+        if (activeGroup != 0 || lockonPressed == false)
+        {
+            Debug.Log("Button Triggered");
+            animatorArray[activeGroup][activeGroupAnimator[activeGroup]].SetBool("Pressed", true);
+            if(activeGroup == 0)
+            {
+                lockonPressed = true;
+            }
+        }
     }
 
     public void UntriggerCurrentButton()
@@ -177,6 +202,12 @@ public class TutorialScript : MonoBehaviour
         if (activeGroupAnimator[activeGroup] < animatorArray[activeGroup].Length)
         {
             activeGroupAnimator[activeGroup]++;
+
+            //if it's the gate-break animator group and it's on its last index
+            if(activeGroup == 1 && activeGroupAnimator[activeGroup] == tutVerbArray[activeGroup].Length - 1)
+            {
+                gateAnimator.SetBool("CanBreak", true);
+            }
         } else
         {
             Debug.Log("Active animator advanced outside expected range");
@@ -231,4 +262,8 @@ public class TutorialScript : MonoBehaviour
             Debug.Log("Trigger was exited, nothing was disabled");
         }
     }
+
+
+
+
 }

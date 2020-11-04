@@ -60,22 +60,22 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: IFramesOn
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.97716904
-        functionName: IFramesOff
+        functionName: DeavtivateHitBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0
-        functionName: PlayerSound
-        data: hit confirm
+        functionName: RotateOff
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: IFramesOn
+        data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
@@ -87,15 +87,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: DeavtivateHitBox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: RotateOff
+      - time: 0.97716904
+        functionName: IFramesOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -49,20 +49,29 @@ public class AttackColliderPlayer : MonoBehaviour
             // Need to trigger visual effects on boss taking damage.
             // Should have a OnHitEffects with a list of things to do.
         }
-        else if(other.tag == "Gate")
-        {
-            Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
+        // I honestly don't even know why I put this on the player rather then the gate.
+        //else if(other.tag == "Gate")
+        //{
+        //    Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
 
-            if (player.m_attackStats == 2)
-            {
-                other.GetComponent<Animator>().SetTrigger("Break");
-                other.GetComponent<GateBreaker>().m_disabledCollider.enabled = false;
-                other.GetComponent<Animator>().SetBool("Broken", true);
-            }
-            else
-            {
-                other.GetComponent<Animator>().SetTrigger("Shake");
-            }
-        }
+        //    if (player.m_attackStats == 2)
+        //    {
+        //        if (other.GetComponent<Animator>().GetBool("CanBreak"))
+        //        {
+        //            other.GetComponent<Animator>().SetTrigger("Break");
+        //            other.GetComponent<GateBreaker>().m_disabledCollider.enabled = false;
+        //            other.GetComponent<Animator>().SetBool("Broken", true);
+        //        }
+        //        else
+        //        {
+        //            other.GetComponent<Animator>().SetTrigger("Shake");
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        other.GetComponent<Animator>().SetTrigger("Shake");
+        //    }
+        //}
     }
 }

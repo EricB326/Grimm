@@ -11,6 +11,8 @@ public class Framerate : MonoBehaviour
 	[SerializeField] private TMP_Text maxFramerateText;
 	[SerializeField] private TMP_Text avgFramerateText;
 
+    [SerializeField] private GameObject[] parents;
+
 	private float frameCounter = 0f;
 
     private float minFramerate = 9999f;
@@ -22,9 +24,14 @@ public class Framerate : MonoBehaviour
     private float timeCounter = 0f;
     private float refreshTime = 0.1f;
 
+    private bool isDisplaying = false;
+
 	// Update is called once per frame
 	void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F3))
+            DisplayFPS();
+
         if (!PauseMenuController.isPaused)
         { 
             if (timeCounter < refreshTime)
@@ -71,4 +78,15 @@ public class Framerate : MonoBehaviour
 		    }
         }
     }
+
+    private void DisplayFPS()
+    {
+        isDisplaying = !isDisplaying;
+
+        parents[0].SetActive(isDisplaying);
+        parents[1].SetActive(isDisplaying);
+        parents[2].SetActive(isDisplaying);
+        parents[3].SetActive(isDisplaying);
+    }
+
 }

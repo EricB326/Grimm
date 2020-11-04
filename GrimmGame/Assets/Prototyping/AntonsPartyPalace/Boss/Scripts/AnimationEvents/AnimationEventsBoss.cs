@@ -284,4 +284,10 @@ public class AnimationEventsBoss : MonoBehaviour
 
     }
 
+    public void FadeOut()
+    {
+        FadeScreen.instance.FadeOut();
+    }
+
+
 }

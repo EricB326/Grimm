@@ -16,7 +16,8 @@ public class ConsumeDataPlayer : StateMachineBehaviour
             {
                 case PlayerDataEnums.INPUT_ATTACK:
                     {
-                        //animator.SetBool("Input/Attack", false); - Might need 
+                        animator.SetBool("Input/AttackLight", false);
+                        animator.SetBool("Input/AttackHeavy", false);
                         animator.gameObject.GetComponentInParent<Player>().m_inputBuffer.ConsumeInput();
                         break;
                     }
