@@ -6,7 +6,7 @@ public class ImplSettingsFromMenu : MonoBehaviour
 {
 	private float resWidth, resHeight;
 	private bool isFullscreen = true;
-	private int qualitySettings, resolutionIndex;
+	private int qualitySettings, resolutionIndex = 1;
 	private float masterVolume, sfxVolume, musicVolume, ambianceVolume;
 	private float sliderMasterVolume = 100, sliderSfxVolume = 100, sliderMusicVolume = 100, sliderAmbianceVolume = 100;
 
