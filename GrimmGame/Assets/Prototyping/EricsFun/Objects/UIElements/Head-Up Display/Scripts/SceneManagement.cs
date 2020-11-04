@@ -43,6 +43,7 @@ public class SceneManagement : MonoBehaviour
 		scenesLoading.Add(SceneManager.LoadSceneAsync(Convert.ToInt32(sceneIndicies.GRIMM), LoadSceneMode.Additive));
 
 		StartCoroutine(GetSceneLoadingProgress());
+		FadeScreen.instance.FadeIn();
 	}
 
 	float totalSceneProgress;
@@ -80,7 +81,10 @@ public class SceneManagement : MonoBehaviour
 		while (!playerStarted)
 		{
 			if (Input.GetKeyDown(KeyCode.Return) || XCI.GetButtonDown(XboxButton.A))
+			{
 				playerStarted = true;
+				FadeScreen.instance.FadeOut();
+			}
 
 			yield return false;
 		}
