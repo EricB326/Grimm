@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuickActivation : MonoBehaviour
 {
-    public bool m_playedIntro = true;
+    public bool m_playedIntro = false;
     public GameObject m_cutscene;
 
     public GameObject m_BossHealth;
@@ -19,7 +19,8 @@ public class QuickActivation : MonoBehaviour
 
     private void Awake()
     {
-        m_playedIntro = true;
+        m_playedIntro = false;
+        m_cutscene.SetActive(false);
         m_BossHealth.SetActive(false);
         m_BossCounters.SetActive(false);
         ResetWall();
@@ -55,13 +56,20 @@ public class QuickActivation : MonoBehaviour
         if (other.tag == "Player")
         {
 
-            if (!m_playedIntro)
-            {
-                // Disable player
-                m_playedIntro = true;
-                m_cutscene.SetActive(true);
-            }
-            else
+            if (m_playedIntro)
+
+             //{ 
+             //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_disableControls = true;
+             //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetFloat("Input/Z", 0);
+             //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetFloat("Input/X", 0);
+
+             //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetFloat("Movement/X", 0);
+             //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetFloat("Movement/Z", 0);
+            
+             //m_playedIntro = true;
+             //m_cutscene.SetActive(true);
+             //}
+           
             {
                 GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
                 boss.SetActive(true);

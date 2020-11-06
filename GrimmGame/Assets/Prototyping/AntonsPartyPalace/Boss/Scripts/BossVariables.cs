@@ -14,8 +14,8 @@ public class BossVariables : MonoBehaviour
 
     public Collider m_hitbox;
 
-    public List<SkinnedMeshRenderer> m_model;
-
+    //public List<SkinnedMeshRenderer> m_model;
+    public List<GameObject> m_model;
     //public Collider m_sword;
     //public Collider m_claw;
 
@@ -32,6 +32,9 @@ public class BossVariables : MonoBehaviour
 
     // Reference to turn off cloth colliders.
     public Cloth m_cloth;
+
+
+
 
 
     private void Start()

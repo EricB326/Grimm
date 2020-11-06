@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class AnimationEventsCutscene : MonoBehaviour
     public void CompleteCutscene()
     {
         GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
-        FadeScreen.instance.FadeIn();
+        //FadeScreen.instance.FadeIn();
         boss.SetActive(true);
         boss.GetComponent<BossBrain>().enabled = true;
         m_quick.m_BossHealth.SetActive(true);
@@ -23,8 +24,7 @@ public class AnimationEventsCutscene : MonoBehaviour
         boss.GetComponent<AnimationEventsBoss>().EnableModel();
         m_quick.m_fogWall.SetActive(true);
         m_quick.m_fogWallFade = true;
-
         m_cutScene.SetActive(false);
+        EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_disableControls = false;
     }
-
 }
