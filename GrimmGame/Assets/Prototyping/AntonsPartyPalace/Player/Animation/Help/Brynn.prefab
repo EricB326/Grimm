@@ -5539,6 +5539,7 @@ GameObject:
   - component: {fileID: 2519593183856621123}
   - component: {fileID: 5897052154590113613}
   - component: {fileID: 1698724746375543781}
+  - component: {fileID: 166666846}
   m_Layer: 2
   m_Name: Brynn
   m_TagString: Player
@@ -5645,6 +5646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dce1587e324fe04dbcf9374fc25da8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tut: {fileID: 0}
 --- !u!114 &2519593183856621123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5665,7 +5667,8 @@ MonoBehaviour:
   m_walkSpeed: 5
   m_runSpeed: 7
   m_rollSpeed: 12
-  m_rotationTime: 0.4
+  m_rotationTime: 0.3
+  m_disableControls: 0
   m_rollStaminaDrain: 25
   m_runStaminaDrain: 0.7
   m_rollDamagemultiplier: 0.8
@@ -5683,7 +5686,7 @@ MonoBehaviour:
   m_InvinceFrames: 0
   m_lockon: 0
   m_inputBuffer:
-    m_framesToRetainFor: 40
+    m_framesToRetainFor: 30
     m_heldframesBeforeRun: 20
     m_staminaDrained: 0
   m_respawnPos: {fileID: 0}
@@ -5717,10 +5720,27 @@ MonoBehaviour:
   headEmitter: {fileID: 2648760185064719882}
   centreEmitter: {fileID: 7284959363722080706}
   footEmitter: {fileID: 7918822179146451803}
-  playerSwordAttack: event:/Player/Attacks/sword swing animation 1
+  playerLightAttack: event:/Player/Attacks/sword swing animation 1
+  playerHeavyAttack: event:/Player/Attacks/sword swing animation 1
   playerHitConfirm: event:/Player/hit confirm
+  playerDeath: event:/Player/player death
+  playerRevive: event:/Player/player revive
   playerRoll: event:/Player/roll
   playerFootstep: event:/Player/footstep
+--- !u!114 &166666846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897052154590113612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da22f6df7e9bdc4193573ab9bac48a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  safetyNet: {fileID: 0}
+  trigger: 23
 --- !u!1 &5906546452714709415
 GameObject:
   m_ObjectHideFlags: 0
@@ -9534,6 +9554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176499009441369168, guid: a208b545c8da9e940a5dc229ce857a83,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 2684460084258152699, guid: a208b545c8da9e940a5dc229ce857a83,
         type: 3}
