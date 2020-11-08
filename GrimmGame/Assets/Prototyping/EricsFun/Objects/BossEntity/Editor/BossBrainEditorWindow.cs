@@ -182,6 +182,7 @@ public class BossBrainEditorWindow : ExtendedEditorWindow
                     //DrawField("m_preDefinedActions", true);
                     //DrawField("m_counterMoves", true);
                     DrawField("m_timeBetweenMovementAction", true);
+                    DrawField("m_healthAtStart", true);
 
 
                     EditorGUILayout.BeginHorizontal("box");

@@ -92,6 +92,9 @@ public class BossBrain : MonoBehaviour
         m_diagnosticMode = false;
         m_chanceOfPreMove = m_PreMoveFloor;
         this.enabled = false;
+
+        EntityStats.Instance.SetMaxHealthOfEntity("Boss", this.m_bossPhaseList[m_currentPhase].m_healthAtStart);
+        EntityStats.Instance.SetHealthOfEntity("Boss", this.m_bossPhaseList[m_currentPhase].m_healthAtStart);
         // Boss will dissapear if these are set
         if (this.GetComponent<BossVariables>().m_model != null)
         {
@@ -104,7 +107,6 @@ public class BossBrain : MonoBehaviour
                 t.SetActive(false);
             }
         }
-
     }
 
     private void Update()
@@ -128,7 +130,6 @@ public class BossBrain : MonoBehaviour
                 {
                     // Default rotation speed
                     RotateBoss(directionToMove);
-
                 }
                 else
                 {
