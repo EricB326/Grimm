@@ -9,13 +9,22 @@ public class QuickActivation : MonoBehaviour
 
     public GameObject m_BossHealth;
     public GameObject m_BossCounters;
+
+    public GameObject m_playerHealth;
+    public GameObject m_playerStamina;
+    public GameObject m_playerLives;
+
+
     public GameObject m_fogWall;
 
     public bool m_fogWallFade = false;
 
     private float m_fadeInRate = 0.001f;
     private float m_currentRate = 0.0f;
-    
+
+    // After cutscene reapply old x rotation.
+    [HideInInspector]
+    public float m_xRotation;
 
     private void Awake()
     {
