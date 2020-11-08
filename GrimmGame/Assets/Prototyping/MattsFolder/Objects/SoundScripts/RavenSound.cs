@@ -22,13 +22,11 @@ public class RavenSound : MonoBehaviour
 
     //Attacks
     [FMODUnity.EventRef]
-    public string ravenSwordAttack1;
-    [FMODUnity.EventRef]
-    public string ravenClawAttack1;
+    public string ravenSwordAttack, ravenCombo;
 
     //Living and breathing
     [FMODUnity.EventRef]
-    public string ravenHitConfirm;
+    public string ravenHitConfirm, ravenDeath;
 
     //Locomotion
     [FMODUnity.EventRef]
@@ -46,17 +44,32 @@ public class RavenSound : MonoBehaviour
         switch (action)
         {
             case "sword attack 1":
-                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenSwordAttack1, swordEmitter);
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenSwordAttack, swordEmitter);
                 //Debug.Log("glock note runs");
                 break;
             case "claw attack 1":
-                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenClawAttack1, clawEmitter);
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenSwordAttack, clawEmitter);
+                break;
+            case "combo 3":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenCombo, swordEmitter);
+                break;
+            case "spin":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenSwordAttack, swordEmitter);
+                break;
+            case "slam":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenCombo, clawEmitter);
+                break;
+            case "lunge1":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenSwordAttack, swordEmitter);
                 break;
             case "hit confirm":
                 FMODUnity.RuntimeManager.PlayOneShotAttached(ravenHitConfirm, centreEmitter);
                 break;
             case "footstep":
                 FMODUnity.RuntimeManager.PlayOneShotAttached(ravenFootstep1, footEmitter);
+                break;
+            case "ravenDeath":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(ravenDeath, headEmitter);
                 break;
             default:
                 //throw error with class name and the action string

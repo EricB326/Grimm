@@ -20,11 +20,11 @@ public class PlayerSound : MonoBehaviour
 
     //Attacks
     [FMODUnity.EventRef]
-    public string playerSwordAttack;
+    public string playerLightAttack, playerHeavyAttack;
 
     //Living and breathing
     [FMODUnity.EventRef]
-    public string playerHitConfirm;
+    public string playerHitConfirm, playerDeath, playerRevive;
 
     //Locomotion
     [FMODUnity.EventRef]
@@ -48,11 +48,11 @@ public class PlayerSound : MonoBehaviour
         switch (action)
         {
             case "sword attack 1":
-                FMODUnity.RuntimeManager.PlayOneShotAttached(playerSwordAttack, swordEmitter);
+                FMODUnity.RuntimeManager.PlayOneShotAttached(playerLightAttack, swordEmitter);
                 //Debug.Log("glock note runs");
                 break;
             case "sword attack 2":
-                FMODUnity.RuntimeManager.PlayOneShotAttached(playerSwordAttack, swordEmitter);
+                FMODUnity.RuntimeManager.PlayOneShotAttached(playerHeavyAttack, swordEmitter);
                 break;
             case "hit confirm":
                 FMODUnity.RuntimeManager.PlayOneShotAttached(playerHitConfirm, centreEmitter);
@@ -68,6 +68,12 @@ public class PlayerSound : MonoBehaviour
                 //footsteps.start();
                 //footsteps.release();
                 FMODUnity.RuntimeManager.PlayOneShotAttached(playerFootstep, footEmitter);
+                break;
+            case "death":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(playerDeath, centreEmitter);
+                break;
+            case "revive":
+                FMODUnity.RuntimeManager.PlayOneShotAttached(playerRevive, centreEmitter);
                 break;
             default:
                 //throw error with class name and the action string

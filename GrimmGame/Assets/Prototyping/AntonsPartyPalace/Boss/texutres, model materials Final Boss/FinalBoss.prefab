@@ -6063,9 +6063,10 @@ MonoBehaviour:
   headEmitter: {fileID: 7273155345181304972}
   centreEmitter: {fileID: 834223747104955493}
   footEmitter: {fileID: 151345976033070340}
-  ravenSwordAttack1: event:/Raven/raven combo 1
-  ravenClawAttack1: event:/Raven/raven combo 2
+  ravenSwordAttack: event:/Raven/raven sword swing
+  ravenCombo: event:/Raven/raven combo 2
   ravenHitConfirm: event:/Raven/hit confirm
+  ravenDeath: event:/Raven/raven death
   ravenFootstep1: event:/Raven/footstep
 --- !u!1 &9067091090492488439
 GameObject:

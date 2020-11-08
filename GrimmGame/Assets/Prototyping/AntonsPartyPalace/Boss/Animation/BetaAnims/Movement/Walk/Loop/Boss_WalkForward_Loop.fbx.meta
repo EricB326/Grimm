@@ -66,9 +66,23 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.46404475
+        functionName: PlayRavenSound
+        data: footstep
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.9911437
         functionName: FootDownRight
         data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99621934
+        functionName: PlayRavenSound
+        data: footstep
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
