@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class AnimationEventsCutscene : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class AnimationEventsCutscene : MonoBehaviour
 
     public GameObject m_cutScene;
     public QuickActivation m_quick;
+
+    private void Update()
+    {
+        if(XCI.GetButtonDown(XboxButton.Start))
+        {
+            CompleteCutscene();
+        }
+    }
 
 
     public void CompleteCutscene()

@@ -38,7 +38,10 @@ public class PauseMenuController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || XCI.GetButtonDown(XboxButton.Start))
+        // I hate this and am sorry for doing this. Especially every frame
+        // Starting the cutscene could change a value here instead.
+        bool disableControls = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_disableControls;
+        if (Input.GetKeyDown(KeyCode.Escape) || XCI.GetButtonDown(XboxButton.Start) && !disableControls)
         {
             if (isPaused)
             {
