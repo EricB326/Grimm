@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
     private GameObject m_lifter;
 
 
+    public bool m_disableControls  = false;
+
     // Could be removed 
     //public float m_rollAttackStaminaDrain = 20;
     // Roll Stamina drain
@@ -110,9 +112,6 @@ public class Player : MonoBehaviour
         {
             m_target = EntityStats.Instance.GetObjectOfEntity("Boss");
         }
-
-
-
         //m_swordHitBox = GameObject.Find("Sword").GetComponent<Collider>();
         //m_attackHitBox = GameObject.Find("AttackHitBox").GetComponent<Collider>();
         m_startPos = this.transform.position;
@@ -122,7 +121,7 @@ public class Player : MonoBehaviour
     // Movement occurs in this update.
     private void FixedUpdate()
     {
-        if (!PauseMenuController.isPaused)
+        if (!m_disableControls && !PauseMenuController.isPaused)
         {
             // May need to move camera to occur everyFrame instead
             // to remove jittering from physics
@@ -177,7 +176,7 @@ public class Player : MonoBehaviour
         //    EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_animator.SetInteger("AnyState/Death", 1);
         //}
 
-        if (!PauseMenuController.isPaused)
+        if (!PauseMenuController.isPaused || m_disableControls)
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY);
@@ -229,6 +228,11 @@ public class Player : MonoBehaviour
             }
 
         }
+        //else if(/*Cutscene*/)
+        //{
+
+        //    // do fade and play complete cutscene.
+        //}
     }
 
     // Send inputs to animator.

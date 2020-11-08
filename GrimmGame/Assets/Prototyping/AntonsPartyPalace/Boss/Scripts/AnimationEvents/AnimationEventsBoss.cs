@@ -31,8 +31,6 @@ public class AnimationEventsBoss : MonoBehaviour
         m_cameraList = Camera.main.GetComponent<CameraRotation>();
     }
 
-
-
     public void ActivateHitBox(int a_colliderNumber)
     {
         GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
@@ -103,7 +101,6 @@ public class AnimationEventsBoss : MonoBehaviour
             directionMoved = -this.transform.right;
         }
  
-
         //this.transform.localToWorldMatrix * directionMoved;
         //Debug.Log(directionMoved * m_particleScaler);
         m_leftFoot.SetVector3("Dirt_Velocity_Max", directionMoved * m_particleScaler);
@@ -178,23 +175,27 @@ public class AnimationEventsBoss : MonoBehaviour
         this.transform.position = this.GetComponent<BossBrain>().m_startPos;
     }
 
-
     public void EnableModel()
     {
-        List<SkinnedMeshRenderer> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
-        foreach (SkinnedMeshRenderer t in model)
+        //List<SkinnedMeshRenderer> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
+        List<GameObject> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
+        //foreach (SkinnedMeshRenderer t in model)
+        foreach (GameObject t in model)
         {
-            t.enabled = true;
+            //t.enabled = true;
+            t.SetActive(true);
         }
     }
 
     public void DisableModel()
     {
-        List<SkinnedMeshRenderer> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
-
-        foreach (SkinnedMeshRenderer t in model)
+        //List<SkinnedMeshRenderer> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
+        List<GameObject> model = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossVariables>().m_model;
+        //foreach (SkinnedMeshRenderer t in model)
+        foreach (GameObject t in model)
         {
-            t.enabled = false;
+            //t.enabled = false;
+            t.SetActive(false);
         }
     }
 
@@ -205,7 +206,6 @@ public class AnimationEventsBoss : MonoBehaviour
         animator.SetFloat("Movement/X", 0);
         animator.SetFloat("Movement/Z", 0);
     }
-
 
     public IEnumerator ChangeScene()
     {
@@ -236,7 +236,6 @@ public class AnimationEventsBoss : MonoBehaviour
         DisableLockon();
         this.gameObject.GetComponent<BossVariables>().m_dead = true;
     }
-
 
     public void ActivateTrail(int a_trailNumber)
     {
@@ -278,7 +277,6 @@ public class AnimationEventsBoss : MonoBehaviour
         }
     }
 
-
     public void ChangeTrailColor()
     {
 
@@ -288,6 +286,5 @@ public class AnimationEventsBoss : MonoBehaviour
     {
         FadeScreen.instance.FadeOut();
     }
-
 
 }

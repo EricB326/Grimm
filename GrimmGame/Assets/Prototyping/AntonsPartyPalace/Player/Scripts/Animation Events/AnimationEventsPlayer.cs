@@ -35,7 +35,6 @@ public class AnimationEventsPlayer : MonoBehaviour
         Player player = EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>();
         player.GetAttackHitBox().enabled = true;
         player.GetSwordHitBox().enabled = true;
-
         player.m_attackStats = damageAndStaminaID;
         EntityStats.Instance.DeminishStaminaOffEntity("Player", player.m_attackStamina[damageAndStaminaID]);
     }

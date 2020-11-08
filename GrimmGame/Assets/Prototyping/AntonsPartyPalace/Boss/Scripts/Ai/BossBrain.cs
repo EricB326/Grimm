@@ -95,10 +95,13 @@ public class BossBrain : MonoBehaviour
         // Boss will dissapear if these are set
         if (this.GetComponent<BossVariables>().m_model != null)
         {
-            List<SkinnedMeshRenderer> list = this.GetComponent<BossVariables>().m_model;
-            foreach (SkinnedMeshRenderer t in list)
+            List<GameObject> list = this.GetComponent<BossVariables>().m_model;
+            //List<SkinnedMeshRenderer> list = this.GetComponent<BossVariables>().m_model;
+            //foreach (SkinnedMeshRenderer t in list)
+            foreach (GameObject t in list)
             {
-                t.enabled = false;
+                //t.enabled = false;
+                t.SetActive(false);
             }
         }
 

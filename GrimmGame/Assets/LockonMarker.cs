@@ -18,8 +18,5 @@ public class LockonMarker : MonoBehaviour
         {
             this.transform.LookAt(player.transform.position);
         }
-
-        
-        //Camera.main.
     }
 }
