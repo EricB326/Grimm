@@ -339,7 +339,11 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
+<<<<<<< refs/remotes/origin/Brett
   - {fileID: 3040921009498036926}
+=======
+  - {fileID: 6437740015641674253}
+>>>>>>> Menu int.
   MinDistance: 0
   MaxDistance: 0
   Length: 59289
@@ -458,6 +462,26 @@ MonoBehaviour:
   lastModified: 637399088187191243
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &-7453252585114028982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lock on or off/on or off
+  m_EditorClassIdentifier: 
+  Name: on or off
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
   Exists: 1
 --- !u!114 &-7433651076422332360
 MonoBehaviour:
@@ -1641,6 +1665,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 6.6
   Length: 0
+--- !u!114 &-3544982721310659984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/footstep/material
+  m_EditorClassIdentifier: 
+  Name: material
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-3456496299656779132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,6 +2160,26 @@ MonoBehaviour:
   Name: on or off
   Min: 0
   Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &-2219007824917965822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/roll/material
+  m_EditorClassIdentifier: 
+  Name: material
+  Min: 0
+  Max: 2
   Default: 0
   ID:
     data1: 0
@@ -2767,7 +2831,11 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
+<<<<<<< refs/remotes/origin/Brett
   - {fileID: 8241305718380116924}
+=======
+  - {fileID: -2219007824917965822}
+>>>>>>> Menu int.
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
@@ -2952,7 +3020,11 @@ MonoBehaviour:
   - {fileID: 4565124929062854974}
   StringsBanks:
   - {fileID: 6430537469667457724}
+<<<<<<< refs/remotes/origin/Brett
   stringsBankWriteTime: 637405159561165929
+=======
+  stringsBankWriteTime: 637405157350789792
+>>>>>>> Menu int.
   cacheVersion: 5
 --- !u!114 &181615089461167545
 MonoBehaviour:
@@ -3034,6 +3106,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &472997621484709255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/boss music/boss phase
+  m_EditorClassIdentifier: 
+  Name: boss phase
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &516907744097729440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3445,6 +3537,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &2201455008461220251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/footstep/speed
+  m_EditorClassIdentifier: 
+  Name: speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &2264318289876579001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3465,7 +3577,11 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
+<<<<<<< refs/remotes/origin/Brett
   - {fileID: 2737762951617149066}
+=======
+  - {fileID: 3335781367597379859}
+>>>>>>> Menu int.
   MinDistance: 1
   MaxDistance: 20
   Length: 2039
@@ -3879,6 +3995,26 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &3335781367597379859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 'parameter:/hit confirm/type of attack '
+  m_EditorClassIdentifier: 
+  Name: 'type of attack '
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &3534755122620379440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3999,7 +4135,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/player.bank
   Name: player
+<<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561275949
+=======
+  lastModified: 637405157351009205
+>>>>>>> Menu int.
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4057,7 +4197,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/raven.bank
   Name: raven
+<<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561210943
+=======
+  lastModified: 637405157350829694
+>>>>>>> Menu int.
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4081,7 +4225,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
+<<<<<<< refs/remotes/origin/Brett
   - {fileID: -7847235837423159632}
+=======
+  - {fileID: -7453252585114028982}
+>>>>>>> Menu int.
   MinDistance: 0
   MaxDistance: 0
   Length: 1893
@@ -4205,7 +4353,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/Master.bank
   Name: Master
+<<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561811040
+=======
+  lastModified: 637405157352495241
+>>>>>>> Menu int.
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4314,8 +4466,13 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
+<<<<<<< refs/remotes/origin/Brett
   - {fileID: -8634174095715284618}
   - {fileID: -6039262630190425111}
+=======
+  - {fileID: 2201455008461220251}
+  - {fileID: -3544982721310659984}
+>>>>>>> Menu int.
   MinDistance: 1
   MaxDistance: 5.6
   Length: 1845
@@ -4651,11 +4808,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/Master.strings.bank
   Name: Master.strings
+<<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561165929
+=======
+  lastModified: 637405157350789792
+>>>>>>> Menu int.
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 2712
+  Exists: 1
+--- !u!114 &6437740015641674253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/atmos/proximity
+  m_EditorClassIdentifier: 
+  Name: proximity
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
   Exists: 1
 --- !u!114 &6438736465808089427
 MonoBehaviour:
@@ -5161,7 +5342,11 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
+<<<<<<< refs/remotes/origin/Brett
   - {fileID: -118520319583640948}
+=======
+  - {fileID: 472997621484709255}
+>>>>>>> Menu int.
   MinDistance: 1
   MaxDistance: 20
   Length: 372000
