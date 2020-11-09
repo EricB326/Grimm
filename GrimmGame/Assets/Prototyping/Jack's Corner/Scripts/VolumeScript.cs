@@ -42,7 +42,7 @@ public class VolumeScript : MonoBehaviour
     }
 
     [FMODUnity.EventRef]
-    public string masterExample, sfxExample, musicExample, ambienceExample;
+    public string masterExample, sfxExample, ambienceExample;
 
     [SerializeField]
     private Transform audioListener;
@@ -76,7 +76,7 @@ public class VolumeScript : MonoBehaviour
                 break;
             case busIndex.music:
                 musicBus.setVolume(DecimalToLinear(musicVolumeDB));
-                FMODUnity.RuntimeManager.PlayOneShot(musicExample, audioListener.position);
+                //FMODUnity.RuntimeManager.PlayOneShot(musicExample, audioListener.position);
                 break;
             case busIndex.ambience:
                 ambienceBus.setVolume(DecimalToLinear(ambienceVolumeDB));

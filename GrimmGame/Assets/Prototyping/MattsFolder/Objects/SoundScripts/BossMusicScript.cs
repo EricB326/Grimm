@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossMusicScript : MonoBehaviour
 {
     private int bossPhase;
-    private FMODUnity.StudioEventEmitter bossMusicEmitter;
+    private FMODUnity.StudioEventEmitter bossMusicEmitter, cutsceneMusicEmitter;
     [SerializeField]
     private GameObject atmosObject, cutsceneMusicObject;
 
@@ -13,11 +13,12 @@ public class BossMusicScript : MonoBehaviour
     {
         bossPhase = 0;
         bossMusicEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
+        cutsceneMusicEmitter = cutsceneMusicObject.GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
     private void OnEnable()
     {
-        cutsceneMusicObject.SetActive(false);
+        cutsceneMusicEmitter.Stop();
     }
 
     public void IncrementBossPhase()
