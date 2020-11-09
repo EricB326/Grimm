@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AtmosSound : MonoBehaviour
 {
-    public float distanceMax;
+    private float distanceMax;
     [SerializeField]
     private Transform crowTransform;
+    private bool ravenDead;
 
     private FMODUnity.StudioEventEmitter atmosEmitter;
 
@@ -22,10 +23,19 @@ public class AtmosSound : MonoBehaviour
         return Vector3.Distance(transform.position, crowTransform.position);
     }
 
+    public void RavenIsDead()
+    {
+        ravenDead = true;
+        atmosEmitter.SetParameter("proximity", 0);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        atmosEmitter.SetParameter("proximity", Mathf.Clamp01(1-GetCrowDistance() / distanceMax));
-        Debug.Log(GetCrowDistance() / distanceMax);
+        if (!ravenDead)
+        {
+            atmosEmitter.SetParameter("proximity", Mathf.Clamp01(1 - GetCrowDistance() / distanceMax));
+            Debug.Log(GetCrowDistance() / distanceMax);
+        }  
     }
 }
