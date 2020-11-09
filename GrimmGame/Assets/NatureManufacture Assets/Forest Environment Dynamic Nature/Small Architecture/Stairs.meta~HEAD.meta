@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
 guid: 77c6b02f6495d404fa48a04b1994c5b5
 =======
 guid: c36156065dfd4614b8b713cbb3bbf1d6
 >>>>>>> Menu int.
+=======
+guid: c36156065dfd4614b8b713cbb3bbf1d6
+>>>>>>> Eric
 DefaultImporter:
   externalObjects: {}
   userData: 

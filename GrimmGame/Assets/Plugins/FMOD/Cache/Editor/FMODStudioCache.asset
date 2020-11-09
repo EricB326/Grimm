@@ -339,11 +339,15 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   - {fileID: 3040921009498036926}
 =======
   - {fileID: 6437740015641674253}
 >>>>>>> Menu int.
+=======
+  - {fileID: 6437740015641674253}
+>>>>>>> Eric
   MinDistance: 0
   MaxDistance: 0
   Length: 59289
@@ -2831,11 +2835,15 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   - {fileID: 8241305718380116924}
 =======
   - {fileID: -2219007824917965822}
 >>>>>>> Menu int.
+=======
+  - {fileID: -2219007824917965822}
+>>>>>>> Eric
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
@@ -3020,11 +3028,15 @@ MonoBehaviour:
   - {fileID: 4565124929062854974}
   StringsBanks:
   - {fileID: 6430537469667457724}
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   stringsBankWriteTime: 637405159561165929
 =======
   stringsBankWriteTime: 637405157350789792
 >>>>>>> Menu int.
+=======
+  stringsBankWriteTime: 637405157350789792
+>>>>>>> Eric
   cacheVersion: 5
 --- !u!114 &181615089461167545
 MonoBehaviour:
@@ -3577,11 +3589,15 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   - {fileID: 2737762951617149066}
 =======
   - {fileID: 3335781367597379859}
 >>>>>>> Menu int.
+=======
+  - {fileID: 3335781367597379859}
+>>>>>>> Eric
   MinDistance: 1
   MaxDistance: 20
   Length: 2039
@@ -4135,11 +4151,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/player.bank
   Name: player
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561275949
 =======
   lastModified: 637405157351009205
 >>>>>>> Menu int.
+=======
+  lastModified: 637405157351009205
+>>>>>>> Eric
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4197,11 +4217,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/raven.bank
   Name: raven
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561210943
 =======
   lastModified: 637405157350829694
 >>>>>>> Menu int.
+=======
+  lastModified: 637405157350829694
+>>>>>>> Eric
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4225,11 +4249,15 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   - {fileID: -7847235837423159632}
 =======
   - {fileID: -7453252585114028982}
 >>>>>>> Menu int.
+=======
+  - {fileID: -7453252585114028982}
+>>>>>>> Eric
   MinDistance: 0
   MaxDistance: 0
   Length: 1893
@@ -4353,11 +4381,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/Master.bank
   Name: Master
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561811040
 =======
   lastModified: 637405157352495241
 >>>>>>> Menu int.
+=======
+  lastModified: 637405157352495241
+>>>>>>> Eric
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4466,6 +4498,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   - {fileID: -8634174095715284618}
   - {fileID: -6039262630190425111}
@@ -4473,6 +4506,10 @@ MonoBehaviour:
   - {fileID: 2201455008461220251}
   - {fileID: -3544982721310659984}
 >>>>>>> Menu int.
+=======
+  - {fileID: 2201455008461220251}
+  - {fileID: -3544982721310659984}
+>>>>>>> Eric
   MinDistance: 1
   MaxDistance: 5.6
   Length: 1845
@@ -4808,11 +4845,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD banks/Master.strings.bank
   Name: Master.strings
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   lastModified: 637405159561165929
 =======
   lastModified: 637405157350789792
 >>>>>>> Menu int.
+=======
+  lastModified: 637405157350789792
+>>>>>>> Eric
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -5342,11 +5383,15 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/Brett
   - {fileID: -118520319583640948}
 =======
   - {fileID: 472997621484709255}
 >>>>>>> Menu int.
+=======
+  - {fileID: 472997621484709255}
+>>>>>>> Eric
   MinDistance: 1
   MaxDistance: 20
   Length: 372000
