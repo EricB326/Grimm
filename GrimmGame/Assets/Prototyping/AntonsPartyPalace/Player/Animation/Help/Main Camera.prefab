@@ -104,8 +104,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945802072787549483}
-  m_LocalRotation: {x: -0.01216275, y: -0.16501135, z: 0.00008257222, w: 0.9862167}
-  m_LocalPosition: {x: -24.933342, y: 5.8658032, z: -13.535366}
+  m_LocalRotation: {x: -0.0141000645, y: -0.20099026, z: -0.00031390274, w: 0.9794918}
+  m_LocalPosition: {x: -19.404701, y: 5.540067, z: -13.200987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7144057653744870665}
@@ -339,6 +339,74 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
+--- !u!1 &1759365658064371942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8430771740352875855}
+  - component: {fileID: 191867252987699971}
+  - component: {fileID: 8635824619658031101}
+  m_Layer: 0
+  m_Name: Cutscene Music Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8430771740352875855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759365658064371942}
+  m_LocalRotation: {x: 0.17991912, y: 0.23342252, z: -0.04711222, w: 0.9544231}
+  m_LocalPosition: {x: 7.7727623, y: 2.3466358, z: -10.949316}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5281545418664806600}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &191867252987699971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759365658064371942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d914087cc41314fa132657ce6db792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atmosObject: {fileID: 7106125723210736729}
+--- !u!114 &8635824619658031101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759365658064371942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Music/Cutscene Music
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &5281545417365899954
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,8 +718,8 @@ MonoBehaviour:
     BarrelClipping: 0.25
     Anamorphism: 0
   m_Transitions:
-    m_BlendHint: 1
-    m_InheritPosition: 1
+    m_BlendHint: 3
+    m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -765,10 +833,8 @@ GameObject:
   - component: {fileID: 5281545418664806602}
   - component: {fileID: 5281545418664806601}
   - component: {fileID: 5281545418664806603}
-  - component: {fileID: 2193215223166774569}
   - component: {fileID: 3045144836669771004}
   - component: {fileID: 1600386095}
-  - component: {fileID: 1600386099}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -791,6 +857,9 @@ Transform:
   - {fileID: 1084053498236247429}
   - {fileID: 1596869864413152760}
   - {fileID: 4831820126658116976}
+  - {fileID: 7479375915007788926}
+  - {fileID: 8430771740352875855}
+  - {fileID: 3941675785835397586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -968,7 +1037,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: a1b486283d41a624e9a88f29ef3f9035, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -991,20 +1060,6 @@ MonoBehaviour:
   - {fileID: 5281545418576602556}
   - {fileID: 4721541907312253259}
   m_selectedCamera: 0
---- !u!114 &2193215223166774569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5281545418664806605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b4b2b2c37525c4e86d9a4bbde9264c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceMax: 0
-  crowTransform: {fileID: 0}
 --- !u!114 &3045144836669771004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1032,31 +1087,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraInfo: {fileID: 5281545418664806603}
---- !u!114 &1600386099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5281545418664806605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Event: event:/atmos/atmos
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: proximity
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!1 &5281545419210059349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.401412, z: -4.316021}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1260,7 +1290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.401412, z: -4.316021}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1404,7 +1434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.401412, z: -4.316021}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1921,6 +1951,76 @@ MonoBehaviour:
   m_Damping: 0.6
   m_DampingWhenOccluded: 0.6
   m_OptimalTargetDistance: 1
+--- !u!1 &7106125723210736729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3941675785835397586}
+  - component: {fileID: 6398344828316173524}
+  - component: {fileID: 1841864461118548938}
+  m_Layer: 0
+  m_Name: Atmos Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3941675785835397586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106125723210736729}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5281545418664806600}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6398344828316173524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106125723210736729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b4b2b2c37525c4e86d9a4bbde9264c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crowTransform: {fileID: 0}
+--- !u!114 &1841864461118548938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106125723210736729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/atmos/atmos
+  PlayEvent: 1
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  Params:
+  - Name: proximity
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &7208835182989536396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,8 +2079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0.2, z: -4.5}
+  m_BindingMode: 4
+  m_FollowOffset: {x: 0, y: 0.53, z: -4.21}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1991,7 +2091,7 @@ MonoBehaviour:
   m_AngularDamping: 0
   m_Heading:
     m_Definition: 2
-    m_VelocityFilterStrength: 4
+    m_VelocityFilterStrength: 0
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 0
@@ -2123,8 +2223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 0.2, z: -4.5}
+  m_BindingMode: 4
+  m_FollowOffset: {x: 0, y: 0.53, z: -4.21}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -2135,7 +2235,7 @@ MonoBehaviour:
   m_AngularDamping: 0
   m_Heading:
     m_Definition: 2
-    m_VelocityFilterStrength: 4
+    m_VelocityFilterStrength: 0
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 0
@@ -2268,7 +2368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.2, z: -4.5}
+  m_FollowOffset: {x: 0, y: 0.53, z: -4.21}
   m_XDamping: 1
   m_YDamping: 0
   m_ZDamping: 0.2
@@ -2353,3 +2453,72 @@ MonoBehaviour:
   m_AmplitudeGain: 0
   m_FrequencyGain: 1
   mNoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!1 &8880372697008247840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7479375915007788926}
+  - component: {fileID: 8922919333182728341}
+  - component: {fileID: 1891272009434762449}
+  m_Layer: 0
+  m_Name: Boss Music Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7479375915007788926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880372697008247840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5281545418664806600}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8922919333182728341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880372697008247840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d84ae1e81bc894abff9963019f5f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atmosObject: {fileID: 7106125723210736729}
+  cutsceneMusicObject: {fileID: 0}
+--- !u!114 &1891272009434762449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880372697008247840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Music/boss music
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
