@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class AnimationEventsCutscene : MonoBehaviour
 {
@@ -11,8 +12,22 @@ public class AnimationEventsCutscene : MonoBehaviour
     public QuickActivation m_quick;
 
 
+    private void Update()
+    {
+        if(XCI.GetButtonDown(XboxButton.Start))
+        {
+            CompleteCutscene();
+        }
+    }
+
+
     public void CompleteCutscene()
     {
+        // Enable player ui
+        m_quick.m_playerHealth.SetActive(true);
+        m_quick.m_playerStamina.SetActive(true);
+        m_quick.m_playerLives.SetActive(true);
+
         GameObject boss = EntityStats.Instance.GetObjectOfEntity("Boss");
         //FadeScreen.instance.FadeIn();
         boss.SetActive(true);
@@ -25,6 +40,8 @@ public class AnimationEventsCutscene : MonoBehaviour
         m_quick.m_fogWall.SetActive(true);
         m_quick.m_fogWallFade = true;
         m_cutScene.SetActive(false);
+
+        Camera.main.GetComponent<CameraRotation>().m_camList[0].m_XAxis.Value = m_quick.m_xRotation;
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_disableControls = false;
     }
 }

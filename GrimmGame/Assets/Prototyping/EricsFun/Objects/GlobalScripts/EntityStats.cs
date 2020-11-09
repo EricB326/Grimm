@@ -328,6 +328,23 @@ public class EntityStats : MonoBehaviour
 
 	}
 
+	public float GetMaxHealthOfEntity(string _entityName)
+	{
+		// Return the health of the entity at the index found within the entity list.
+		return entityList[DoesEntityExist(_entityName)].maxHealth;
+	}
+
+	public void SetMaxHealthOfEntity(string _entityName, float newMaxHP)
+    {
+		int entityIndex = DoesEntityExist(_entityName);
+
+		newData = entityList[entityIndex];
+
+		newData.maxHealth = newMaxHP;
+
+		entityList[entityIndex] = newData;
+	}
+
     public GameObject GetObjectOfEntity(string _entityName)
     {
         // Return the health of the entity at the index found within the entity list.

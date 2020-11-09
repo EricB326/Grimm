@@ -143,6 +143,10 @@ public class Transition
         //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
         //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
         //EntityStats.Instance.RestoreAllStats();
+        BossBrain bossbrain = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>();
+
+        EntityStats.Instance.SetMaxHealthOfEntity("Boss", bossbrain.m_bossPhaseList[bossbrain.m_currentPhase + 1].m_healthAtStart);
+
         EntityStats.Instance.RestoreAllStatsInstant();
 	}
 
