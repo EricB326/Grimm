@@ -1,26 +1,26 @@
 fileFormatVersion: 2
 guid: c5520af7462279a4d9b6c600f2cc02d7
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 19301
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Thatch_1
-    second: {fileID: 2100000, guid: 5b4f4e9ea93772441a2b932de3822409, type: 2}
+    second: {fileID: 2100000, guid: 45583bfa5de41a544aaee99b1cf8a075, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Thatch_Alpha
-    second: {fileID: 2100000, guid: cb602709507ef9c4bbf6c26ebf87cbfc, type: 2}
+    second: {fileID: 2100000, guid: dc234b0f70cc959488a50a0dd58b3a12, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_01
-    second: {fileID: 2100000, guid: 8145be8b138c55949850f0ae447eff93, type: 2}
+    second: {fileID: 2100000, guid: a34d18511b5803b4791c742daf283cb0, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 1
     materialSearch: 2
     materialLocation: 0
@@ -53,12 +53,14 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -83,7 +85,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -101,8 +102,10 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

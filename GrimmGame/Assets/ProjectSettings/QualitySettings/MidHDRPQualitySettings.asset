@@ -243,15 +243,15 @@ MonoBehaviour:
       maxDecalsOnScreen: 512
       maxPlanarReflectionOnScreen: 16
     hdShadowInitParams:
-      maxShadowRequests: 128
+      maxShadowRequests: 256
       directionalShadowsDepthBits: 16
-      shadowFilteringQuality: 0
+      shadowFilteringQuality: 1
       punctualLightShadowAtlas:
-        shadowAtlasResolution: 128
+        shadowAtlasResolution: 256
         shadowAtlasDepthBits: 16
         useDynamicViewportRescale: 0
       areaLightShadowAtlas:
-        shadowAtlasResolution: 128
+        shadowAtlasResolution: 256
         shadowAtlasDepthBits: 16
         useDynamicViewportRescale: 0
       shadowResolutionDirectional:
@@ -268,7 +268,7 @@ MonoBehaviour:
           m_Id: With4Levels
       maxDirectionalShadowMapResolution: 1024
       maxPunctualShadowMapResolution: 1024
-      maxAreaShadowMapResolution: 512
+      maxAreaShadowMapResolution: 1024
       supportScreenSpaceShadows: 0
       maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
