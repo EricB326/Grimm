@@ -35,7 +35,6 @@ public class AtmosSound : MonoBehaviour
         if (!ravenDead)
         {
             atmosEmitter.SetParameter("proximity", Mathf.Clamp01(1 - GetCrowDistance() / distanceMax));
-            Debug.Log(GetCrowDistance() / distanceMax);
         }  
     }
 }

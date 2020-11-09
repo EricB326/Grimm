@@ -166,7 +166,7 @@ public class AnimationEventsPlayer : MonoBehaviour
             player.transform.position = player.m_startPos;
         }
         // Player was stuck in infinite without the bool
-        EntityStats.Instance.RestoreAllStats();
+        EntityStats.Instance.RestoreAllStatsInstant();
         player.m_Dead = false;
     }
 

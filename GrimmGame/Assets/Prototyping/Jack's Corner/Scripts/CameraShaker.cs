@@ -19,13 +19,13 @@ public class CameraShaker : MonoBehaviour
 
     public static CameraShaker Instance { get { return instance; } }
 
-    public void startShake(float intensity)
+    public void StartShake(float intensity)
     {
         for (int i = 0; i < 2; i++)
             cameraInfo.m_camList[cameraInfo.m_selectedCamera].GetRig(i).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = intensity;
     }
 
-    public void stopShake()
+    public void StopShake()
     {
         for (int i = 0; i < cameraInfo.m_camList.Count; i++)
             for (int j = 0; j < 2; j++)

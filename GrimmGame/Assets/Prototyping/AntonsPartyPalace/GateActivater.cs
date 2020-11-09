@@ -11,7 +11,7 @@ public class GateActivater : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if(!m_activation.m_playedIntro)
+            if (!m_activation.m_playedIntro)
             {
                 // Disable player ui
                 m_activation.m_playerHealth.SetActive(false);
@@ -30,6 +30,11 @@ public class GateActivater : MonoBehaviour
 
                 m_activation.m_playedIntro = true;
                 m_activation.m_cutscene.SetActive(true);
+            }
+            else
+            {
+                m_activation.m_bossMusic.SetActive(true);
+                m_activation.m_bossMusic.GetComponent<BossMusicScript>().bossMusicEmitter.SetParameter("boss phase", m_activation.m_bossMusic.GetComponent<BossMusicScript>().bossPhase);
             }
             m_colliderToEnable.isTrigger = false;
         }

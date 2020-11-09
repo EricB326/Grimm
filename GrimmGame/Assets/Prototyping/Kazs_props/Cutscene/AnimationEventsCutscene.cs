@@ -40,6 +40,7 @@ public class AnimationEventsCutscene : MonoBehaviour
         m_quick.m_fogWall.SetActive(true);
         m_quick.m_fogWallFade = true;
         m_cutScene.SetActive(false);
+        m_quick.m_bossMusic.SetActive(true);
 
         Camera.main.GetComponent<CameraRotation>().m_camList[0].m_XAxis.Value = m_quick.m_xRotation;
         EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_disableControls = false;

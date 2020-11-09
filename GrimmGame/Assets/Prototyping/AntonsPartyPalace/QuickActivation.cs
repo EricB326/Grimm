@@ -14,6 +14,7 @@ public class QuickActivation : MonoBehaviour
     public GameObject m_playerStamina;
     public GameObject m_playerLives;
 
+    public GameObject m_bossMusic;
 
     public GameObject m_fogWall;
 

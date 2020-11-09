@@ -9,8 +9,8 @@ public class JackShakeTest : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
-            CameraShaker.Instance.startShake(intensity);
+            CameraShaker.Instance.StartShake(intensity);
         if (Input.GetKeyDown(KeyCode.O))
-            CameraShaker.Instance.stopShake();
+            CameraShaker.Instance.StopShake();
     }
 }

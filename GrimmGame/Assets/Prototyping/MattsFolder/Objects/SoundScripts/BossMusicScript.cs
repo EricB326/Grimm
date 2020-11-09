@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BossMusicScript : MonoBehaviour
 {
-    private int bossPhase;
-    private FMODUnity.StudioEventEmitter bossMusicEmitter;
+    [HideInInspector]
+    public int bossPhase;
+    [HideInInspector]
+    public FMODUnity.StudioEventEmitter bossMusicEmitter;
     [SerializeField]
     private GameObject atmosObject, cutsceneMusicObject;
 
@@ -23,11 +25,12 @@ public class BossMusicScript : MonoBehaviour
     public void IncrementBossPhase()
     {
         bossPhase++;
-
+        Debug.Log("Next track");
         if(bossPhase < 3)
         {
             bossMusicEmitter.SetParameter("boss phase", bossPhase);
-        } else
+        } 
+        else
         {
             atmosObject.SetActive(true);
             atmosObject.GetComponent<AtmosSound>().RavenIsDead();

@@ -191,18 +191,18 @@ public class EntityStats : MonoBehaviour
     {
 		switch (entityList[_entityIndex].lives)
 		{
-   //         case 4:
-   //             Transition.PhaseOneTransition();
-   //             break;
-			//case 3:
-   //             Transition.PhaseTwoTransition();
-			//	break;
-			//case 2:
-   //             Transition.PhaseThreeTransition();
-   //             break;
-			//case 1:
-   //             Transition.PhaseFourTransition();
-   //             break;
+            case 4:
+                Transition.PhaseOneTransition();
+                break;
+			case 3:
+                Transition.PhaseTwoTransition();
+				break;
+			case 2:
+                Transition.PhaseThreeTransition();
+                break;
+			case 1:
+                Transition.PhaseFourTransition();
+                break;
 			default:
                 Transition.DefaultBossTransision();
                 break;
