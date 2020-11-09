@@ -73,6 +73,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.39508507
+        functionName: PlayRavenSound
+        data: spin
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.4050633
         functionName: ActivateHitBox
         data: 
@@ -87,44 +94,37 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.70253164
+      - time: 0.5595463
+        functionName: PlayRavenSound
+        data: spin
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.6163778
         functionName: DeactivateTrail
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.70253164
+      - time: 0.6163778
         functionName: DeactivateTrail
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.70253164
+      - time: 0.6163778
         functionName: DeactivateHitBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.70253164
+      - time: 0.6163778
         functionName: DeactivateHitBox
         data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.39508507
-        functionName: PlayRavenSound
-        data: spin
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.5595463
-        functionName: PlayRavenSound
-        data: spin
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1

@@ -32,29 +32,29 @@ public class Transition
     //	EntityStats.Instance.RestoreAllStats();
     //}
 
-    //   static public void PhaseTwoTransition()
+    //static public void PhaseTwoTransition()
     //{
-    //       Debug.Log("PhaseTwoX");
-    //       //////////////////////
-    //       // All Example Shit //
-    //       //////////////////////
+    //Debug.Log("PhaseTwoX");
+    //////////////////////
+    // All Example Shit //
+    //////////////////////
 
-    //       // Set the positions of the characters for this transition.
-    //       //EntityStats.Instance.GetObjectOfEntity("Player").transform.position = . . .
-    //       //EntityStats.Instance.GetObjectOfEntity("Boss").transform.position = . . .
+    // Set the positions of the characters for this transition.
+    //EntityStats.Instance.GetObjectOfEntity("Player").transform.position = . . .
+    //EntityStats.Instance.GetObjectOfEntity("Boss").transform.position = . . .
 
-    //       // Disable the player camera and enable the cinematic camera.
-    //       //playerCam.gameObject.SetActive(false);
-    //       //cinematicCam.gameObject.SetActive(true);
+    // Disable the player camera and enable the cinematic camera.
+    //playerCam.gameObject.SetActive(false);
+    //cinematicCam.gameObject.SetActive(true);
 
-    //       // Do other cinematic camera functionality to get it ready.
-    //       //cinematicCam.transform.postion = . . .
-    //       //cinematicCam.transform.LookAt(cameraLockOnPoint);
+    // Do other cinematic camera functionality to get it ready.
+    //cinematicCam.transform.postion = . . .
+    //cinematicCam.transform.LookAt(cameraLockOnPoint);
 
-    //       // Begin animations of the characters
-    //       //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
-    //       //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
-    //   }
+    // Begin animations of the characters
+    //EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
+    //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
+    //}
 
     //static public void PhaseThreeTransition()
     //{
@@ -144,9 +144,7 @@ public class Transition
         //EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<Animator>().SetInteger("SomeAnimPara/PhaseOne", 0);
         //EntityStats.Instance.RestoreAllStats();
         BossBrain bossbrain = EntityStats.Instance.GetObjectOfEntity("Boss").GetComponent<BossBrain>();
-
         EntityStats.Instance.SetMaxHealthOfEntity("Boss", bossbrain.m_bossPhaseList[bossbrain.m_currentPhase + 1].m_healthAtStart);
-
         EntityStats.Instance.RestoreAllStatsInstant();
 	}
 

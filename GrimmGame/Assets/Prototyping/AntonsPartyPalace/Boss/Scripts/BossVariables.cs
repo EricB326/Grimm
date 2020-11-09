@@ -21,6 +21,8 @@ public class BossVariables : MonoBehaviour
 
     public GameObject m_leftFootParticle;
     public GameObject m_rightFootParticle;
+    public GameObject m_leftHandParticle;
+
 
     [Tooltip("1. Sword 2. Claw")]
     public List<GameObject> m_trails;

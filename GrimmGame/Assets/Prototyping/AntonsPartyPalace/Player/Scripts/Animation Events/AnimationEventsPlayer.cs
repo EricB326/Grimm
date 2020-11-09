@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 
 // Centralized place for player animation events.
@@ -15,7 +16,8 @@ public class AnimationEventsPlayer : MonoBehaviour
     [SerializeField]
     private TutorialScript m_tut;
 
-
+    public VisualEffect m_headParticle;
+    public VisualEffect m_legParticle;
 
 
     //public float m_swingRotationSpeed = 0.3f;
@@ -245,5 +247,24 @@ public class AnimationEventsPlayer : MonoBehaviour
         FadeScreen.instance.FadeOut();
     }
 
+    public void LegParticle()
+    {
+        if(m_legParticle != null)
+        {
+            m_legParticle.Play();
+        }
+        else
+        Debug.Log("No foot particle");
+    }
+
+    public void HeadParticle()
+    {
+        if (m_headParticle != null)
+        {
+            m_headParticle.Play();
+        }
+        else
+        Debug.Log("No Head particle");
+    }
 
 }

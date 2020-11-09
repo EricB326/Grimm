@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class Continue : StateMachineBehaviour
 {
-    public float distance = 2;
+    public float distance;
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    Vector3 t = animator.gameObject.GetComponent<BossBrain>().m_target.transform.position - animator.gameObject.transform.position;
-    float largestDistance = Mathf.Max(Mathf.Abs(t.x), Mathf.Abs(t.z));
-        if (largestDistance <= distance && animator.gameObject.GetComponent<BossBrain>().m_target.GetComponent<Animator>().GetInteger("AnyState/Death") == 0)
+        Vector3 t = animator.gameObject.GetComponent<BossBrain>().m_target.transform.position - animator.gameObject.transform.position;
+        float largestDistance = Mathf.Max(Mathf.Abs(t.x), Mathf.Abs(t.z));
+        if (largestDistance <= distance && !EntityStats.Instance.GetObjectOfEntity("Player").GetComponent<Player>().m_Dead)
         {
             animator.SetBool("Ai/Continue", true);
         }

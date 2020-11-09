@@ -101,14 +101,21 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.35640648
+      - time: 0.33270323
+        functionName: PlayRavenSound
+        data: combo 3
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.39581534
         functionName: FootDownRight
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.37260678
+      - time: 0.41201565
         functionName: FootDownLeft
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -129,19 +136,26 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.43457943
+        functionName: ShakeCameraOn
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0.2
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4719626
+        functionName: ShakeCameraOff
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0.2
+        intParameter: 0
+        messageOptions: 0
       - time: 0.6318115
         functionName: DeactivateTrail
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
-        messageOptions: 0
-      - time: 0.7540501
-        functionName: DeactivateTrail
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
         messageOptions: 0
       - time: 0.65822786
         functionName: RotateOn
@@ -150,18 +164,18 @@ ModelImporter:
         floatParameter: 0.1
         intParameter: 0
         messageOptions: 0
+      - time: 0.7540501
+        functionName: DeactivateTrail
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.96202534
         functionName: RotateOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0.1
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.33270323
-        functionName: PlayRavenSound
-        data: combo 3
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []

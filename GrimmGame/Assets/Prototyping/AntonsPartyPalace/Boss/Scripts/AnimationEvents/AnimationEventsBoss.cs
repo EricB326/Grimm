@@ -23,6 +23,9 @@ public class AnimationEventsBoss : MonoBehaviour
 
     public VisualEffect m_leftFoot;
     public VisualEffect m_rightFoot;
+    public VisualEffect m_leftHand;
+
+    public VisualEffect m_head;
 
     public float m_particleScaler = 5;
 
@@ -147,13 +150,19 @@ public class AnimationEventsBoss : MonoBehaviour
 
     public void HandDownLeft()
     {
-        Debug.Log("No Hand Particle Left");
+        m_leftHand.Play();
     }
 
     public void HandDownRight()
     {
-        Debug.Log("No Hand Particle Right");
+        Debug.Log("No Hand Particle Right emitter");
     }
+
+    public void HeadDirtParticle()
+    {
+        m_head.Play();
+    }
+
 
     // Need to do.
     public void ShakeCameraOn(float a_value)
