@@ -142,7 +142,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
     - _BlendMode: 0
-    - _BranchStiffness: 0.85
+    - _BranchStiffness: 0
     - _CoatMask: 0
     - _CullMode: 0
     - _CullModeForward: 0
@@ -196,7 +196,7 @@ Material:
     - _Ior: 1
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
-    - _LeafStiffness: 0.5
+    - _LeafStiffness: 0
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _Metallic: 0
@@ -244,15 +244,15 @@ Material:
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
-    - _TrunkStiffness: 0.9
-    - _Turbulence: 1.5
+    - _TrunkStiffness: 0
+    - _Turbulence: 0
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseNormalMap: 1
     - _UseShadowThreshold: 0
-    - _WindStrength: 2
+    - _WindStrength: 0.5
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
     - _ZTestModeDistortion: 8
@@ -278,4 +278,4 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _WindDir: {r: 3, g: 3, b: 0, a: 0}
+    - _WindDir: {r: 0, g: 0, b: 0, a: 0}
