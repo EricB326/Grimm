@@ -73,7 +73,7 @@ public class MenuControls : MonoBehaviour
 				foreach (Transform child in button.transform)
 				{
 					Image this_image = child.GetComponent<Image>();
-					if (this_image != null && this_image.name == "Highlighted")
+					if (this_image != null && this_image.name == "Highlight")
 						this_image.gameObject.SetActive(false);
 				}
 			}
@@ -142,7 +142,7 @@ public class MenuControls : MonoBehaviour
 				foreach (Transform child in button.transform)
 				{
 					Image this_image = child.GetComponent<Image>();
-					if (this_image != null && this_image.name == "Highlighted")
+					if (this_image != null && this_image.name == "Highlight")
 						this_image.gameObject.SetActive(false);
 				}
 			}
@@ -211,7 +211,7 @@ public class MenuControls : MonoBehaviour
 				foreach (Transform child in button.transform)
 				{
 					Image this_image = child.GetComponent<Image>();
-					if (this_image != null && this_image.name == "Highlighted")
+					if (this_image != null && this_image.name == "Highlight")
 						this_image.gameObject.SetActive(false);
 				}
 			}

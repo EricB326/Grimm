@@ -11,12 +11,15 @@ public class PauseMenuController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject[] menuButtons;
     public GameObject optionsUI;
+    public GameObject controlsUI;
 
     public GameObject defaultStartingButton;
     public GameObject optionsStartingButton;
+    public GameObject controlsStartingButton;
 
     public static bool isPaused;
     public static bool isInOptions = false;
+    public static bool isInControls = false;
 
     //public Camera blurCamera;
     //public Material blurMaterial;
@@ -120,6 +123,56 @@ public class PauseMenuController : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(optionsStartingButton);
 		}
     }
+
+    public void OpenControls()
+    {
+		if (isInControls)
+		{
+            isInControls = false;
+			foreach (GameObject button in menuButtons)
+			{
+				button.SetActive(true);
+
+				foreach (Transform child in button.transform)
+				{
+					Image this_image = child.GetComponent<Image>();
+					if (this_image != null && this_image.name == "Highlight")
+						this_image.gameObject.SetActive(false);
+				}
+			}
+
+            controlsUI.SetActive(false);
+
+			EventSystem.current.SetSelectedGameObject(null);
+			EventSystem.current.SetSelectedGameObject(defaultStartingButton);
+		}
+		else
+		{
+            isInControls = true;
+			foreach (GameObject button in menuButtons)
+			{
+				button.SetActive(false);
+			}
+
+            controlsUI.SetActive(true);
+
+			foreach (Transform child in optionsUI.transform)
+			{
+				if (child.gameObject.name == "Back Button")
+				{
+					foreach (Transform veryChild in child.transform)
+					{
+						Image this_image = veryChild.GetComponent<Image>();
+						if (this_image != null && this_image.name == "Highlight")
+							this_image.gameObject.SetActive(false);
+					}
+				}
+			}
+
+			EventSystem.current.SetSelectedGameObject(null);
+			EventSystem.current.SetSelectedGameObject(controlsStartingButton);
+		}
+	}
 
     public void ExitGame()
     {
