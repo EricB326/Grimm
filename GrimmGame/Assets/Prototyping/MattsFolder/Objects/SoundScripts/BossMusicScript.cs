@@ -15,12 +15,13 @@ public class BossMusicScript : MonoBehaviour
     {
         bossPhase = 0;
         bossMusicEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
-        cutsceneMusicEmitter = cutsceneMusicObject.GetComponent<FMODUnity.StudioEventEmitter>();
+        //cutsceneMusicEmitter = cutsceneMusicObject.GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
     private void OnEnable()
     {
-        cutsceneMusicEmitter.Stop();
+        cutsceneMusicObject.SetActive(false);
+        //cutsceneMusicEmitter.Stop();
     }
 
     public void IncrementBossPhase()
