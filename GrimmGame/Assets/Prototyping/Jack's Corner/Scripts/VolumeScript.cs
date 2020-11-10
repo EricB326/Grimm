@@ -10,18 +10,18 @@ public class VolumeScript : MonoBehaviour
     private FMOD.Studio.Bus masterBus; 
 
     //sfx
-    [SerializeField]
-    private string sfxBusString;
+    //[SerializeField]
+    private string sfxBusString = "bus:/submaster/notmusic/sfx";
     private FMOD.Studio.Bus sfxBus;
 
     //music
-    [SerializeField]
-    private string musicBusString;
+    //[SerializeField]
+    private string musicBusString = "bus:/submaster/music";
     private FMOD.Studio.Bus musicBus;
 
     //ambience
-    [SerializeField]
-    private string ambienceBusString;
+    //[SerializeField]
+    private string ambienceBusString = "bus:/submaster/notmusic/ambience";
     private FMOD.Studio.Bus ambienceBus;
 
     #endregion
@@ -42,7 +42,7 @@ public class VolumeScript : MonoBehaviour
     }
 
     [FMODUnity.EventRef]
-    public string masterExample, sfxExample, musicExample, ambienceExample;
+    public string masterExample, sfxExample, ambienceExample;
 
     [SerializeField]
     private Transform audioListener;
@@ -50,9 +50,10 @@ public class VolumeScript : MonoBehaviour
 
     void Awake()
     {
-        SetBus(sfxBus,      sfxBusString);
-        SetBus(musicBus,    musicBusString);
-        SetBus(ambienceBus, ambienceBusString);
+        SetBus(ref masterBus,   masterBusString);
+        SetBus(ref sfxBus,      sfxBusString);
+        SetBus(ref musicBus,    musicBusString);
+        SetBus(ref ambienceBus, ambienceBusString);
     }
 
     void Update()
@@ -60,6 +61,16 @@ public class VolumeScript : MonoBehaviour
         //sfxBus      .setVolume(DecimalToLinear(sfxVolumeDB));
         //musicBus    .setVolume(DecimalToLinear(musicVolumeDB));
         //ambienceBus .setVolume(DecimalToLinear(ambienceVolumeDB));
+
+        //if(Input.GetKeyDown(KeyCode.Keypad0))
+        //{
+        //    masterBus.setVolume(0);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Keypad1))
+        //{
+        //    masterBus.setVolume(1);
+        //}
+
     }
 
     public void SetBusVolume(busIndex busIndex)
@@ -76,7 +87,7 @@ public class VolumeScript : MonoBehaviour
                 break;
             case busIndex.music:
                 musicBus.setVolume(DecimalToLinear(musicVolumeDB));
-                FMODUnity.RuntimeManager.PlayOneShot(musicExample, audioListener.position);
+                //FMODUnity.RuntimeManager.PlayOneShot(musicExample, audioListener.position);
                 break;
             case busIndex.ambience:
                 ambienceBus.setVolume(DecimalToLinear(ambienceVolumeDB));
@@ -94,7 +105,7 @@ public class VolumeScript : MonoBehaviour
         return linear;
     }
 
-    public void SetBus(FMOD.Studio.Bus bus, string path)
+    public void SetBus(ref FMOD.Studio.Bus bus, string path)
     {
         bus = FMODUnity.RuntimeManager.GetBus(path);
     }
