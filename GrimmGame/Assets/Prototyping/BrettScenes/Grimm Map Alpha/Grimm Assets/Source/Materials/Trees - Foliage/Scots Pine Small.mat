@@ -129,7 +129,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
     - _BlendMode: 0
-    - _BranchStiffness: 0
+    - _BranchStiffness: 0.5
     - _CoatMask: 0
     - _CullMode: 0
     - _CullModeForward: 0
@@ -231,15 +231,15 @@ Material:
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
-    - _TrunkStiffness: 0
-    - _Turbulence: 0
+    - _TrunkStiffness: 0.85
+    - _Turbulence: 2
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseNormalMap: 1
     - _UseShadowThreshold: 0
-    - _WindStrength: 0.5
+    - _WindStrength: 2.5
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
     - _ZTestModeDistortion: 8
@@ -265,7 +265,7 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _WindDir: {r: 0, g: 0, b: 0, a: 0}
+    - _WindDir: {r: 3, g: 3, b: 0, a: 0}
 --- !u!114 &5154936177318930088
 MonoBehaviour:
   m_ObjectHideFlags: 11
